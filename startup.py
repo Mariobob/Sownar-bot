@@ -33,6 +33,8 @@ async def on_ready():
   bot.load_extension("fun")
   bot.load_extension("main")
   bot.load_extension("owner")
+  bot.load_extension("random")
+  bot.load_extension("mod")
 
 @bot.event()
 async def get_uptime():
