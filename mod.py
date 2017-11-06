@@ -11,6 +11,8 @@ import requests
 
 prefix='s.'
 bot=commands.Bot(command_prefix=prefix)
+perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
+perm_errorbis = discord.Embed(title=":warning: Error!",description="I do not have the permission to use this command",color=0xff0000)
 
 class Mod():
     print('Mod loaded')
@@ -31,11 +33,11 @@ class Mod():
                         await bot.ban(member)
                         await bot.say(":white_check_mark: Succesfully banned {}".format(member))
                     else:
-                        await bot.say("You can not kick someone equal or higher than yourself")
+                        await bot.say(embed=perm_error)
                 else:
-                    await bot.say("You do not have the permissions to do so")
+                    await bot.say(embed=perm_error)
         else:
-            await bot.say("I do not have the permissions to do so")
+            await bot.say(embed=perm_errorbis)
             
     @bot.command(pass_context = True)
     async def kick(ctx, *, member: discord.Member = None):
@@ -48,11 +50,11 @@ class Mod():
                         await bot.kick(member)
                         await bot.say(":white_check_mark: Succesfully kicked {}".format(member))
                     else:
-                        await bot.say("You can not kick someone equal or higher than yourself")
+                        await bot.say(embed=perm_error)
                 else:
-                    await bot.say("You do not have the permissions to do so")
+                    await bot.say(embed=perm_error)
         else:
-            await bot.say("I do not have the permissions to do so")
+            await bot.say(embed=perm_errorbis)
     
     
 

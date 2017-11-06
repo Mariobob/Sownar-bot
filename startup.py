@@ -21,7 +21,8 @@ ownerids=['221381001476046849', '221263215496134656']
 bot=commands.Bot(command_prefix=prefix)
 bot.remove_command("help")
 game = ('{0}help | {1} servers'.format(prefix, len(bot.servers)))
-startup_extensions = ["utils.py", "mod.py", "fun.py", "owner.py", "random.py", "main.py"]
+startup_extensions = ["utils", "mod", "fun", "owner", "random", "main"]
+perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
 
 @bot.event()
 async def on_ready():
@@ -74,7 +75,7 @@ async def uptime():
 @bot.command(pass_context = True)
 async def reload(ctx, ext_name: str):
     if ctx.message.author.id not in ownerids:
-        await bot.say("You do not have permission to execute this command")
+        await bot.say(embed=perm_error)
     else:
       if ext_name in startup_extensions:
         bot.unload_extension(ext_name)
@@ -86,7 +87,7 @@ async def reload(ctx, ext_name: str):
 @bot.command(pass_context = True)
 async def load(ctx, ext_name: str):
     if ctx.message.author.id not in ownerids:
-        await bot.say("You do not have permission to execute this command")
+        await bot.say(embed=perm_error)
     else:
       if ext_name in startup_extensions:
         bot.load_extension(ext_name)
@@ -97,7 +98,7 @@ async def load(ctx, ext_name: str):
 @bot.command(pass_context = True)
 async def unload(ctx, ext_name: str):
     if ctx.message.author.id not in ownerids:
-        await bot.say("You do not have permission to execute this command")
+        await bot.say(embed=perm_error)
     else:
       if ext_name in startup_extensions:
         bot.unload_extension(ext_name)
@@ -108,7 +109,7 @@ async def unload(ctx, ext_name: str):
 @bot.command(pass_context = True)
 async def extlist(ctx):
     if ctx.message.author.id not in ownerids:
-        await bot.say("You don not have permission to execute this command")
+        await bot.say(embed=perm_error)
     else:
         for item in todo_list:
             await bot.say('`item`')

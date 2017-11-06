@@ -66,23 +66,55 @@ class Utils():
         await ctx.bot.send_message(ctx.message.channel, "Check your DM's :envelope_with_arrow:")
 
     @commands.command(pass_context = True)
-    async def help(ctx):
-        await ctx.bot.say("This command is undergoing a rewrite, please try again later!")
-        gen = discord.Embed(title="__General commands!__", description="", color=0x00ff00)
-        gen.add_field(name="s.help", value="Show this message", inline=False)
-        gen.add_field(name="s.invite", value="DM's all the useful links about the bot", inline=False)
-        #######
-        util = discord.Embed(title="__Utility commands!__", description="", color=0x00ff00)
-        util.add_field(name="s.servers", value="Show the number of servers and members the bot is serving", inline=False)
-        util.add_field(name="s.serverinfo", value="Shoes information on the server", inline=False)
-        util.add_field(name="s.ticket", value="Sends a ticket to the dev team", inline=False)
-        util.add_field(name="s.suggest", value="Sends a suggestion to the dev team", inline=False)
-        util.add_field(name="s.about", value="Shows info on the bot", inline=False)
-        util.add_field(name="s.stats", value="Shows the bot's stats", inline=False)
-        #######
-        await ctx.bot_send_message(ctx.message.author, embed=gen)
-        await ctx.bot_send_message(ctx.message.author, embed=util)
-        await ctx.bot_send_message(ctx.message.author, gen=fun)
+    async def help(ctx, *, help: str):
+        if help == "":
+          gen = discord.Embed(title="__Bot commands!__", description="", color=0x00ff00)
+          gen.add_field(name=":warning: **Remember**", value="More commands will be added in the future", inline=False)
+          gen.add_field(name="**For info on a certain command**", value="s.help <command>", inline=False)
+          gen.add_field(name="s.help", value="Show this message", inline=False)
+          gen.add_field(name="s.invite", value="DM's all the useful links about the bot", inline=False)
+          #######
+          gen.add_field(name="__Utility commands!__", value="", inline=False)
+          gen.add_field(name="s.servers", value="Show the number of servers and members the bot is serving", inline=False)
+          gen.add_field(name="s.serverinfo", value="Shoes information on the server", inline=False)
+          gen.add_field(name="s.ticket", value="Sends a ticket to the dev team", inline=False)
+          gen.add_field(name="s.suggest", value="Sends a suggestion to the dev team", inline=False)
+          gen.add_field(name="s.about", value="Shows info on the bot", inline=False)
+          gen.add_field(name="s.stats", value="Shows the bot's stats", inline=False)
+          gen.add_field(name="s.ping", value="Shows the bot's latency", inline=False)
+          ######
+          gen.add_field(name="__Fun commands!__", value="", inline=False)
+          gen.add_field(name="s.flip", value="Flips a coin", inline=False)
+          gen.add_field(name="s.roll", value="Rolls a dice", inline=False)
+          #######
+          gen.add_field(name="__Random commands!__", value="", inline=False)
+          gen.add_field(name="s.dog", value="Gets a dog picture", inline=False)
+          gen.add_field(name="s.cat", value="Gets a cat picture", inline=False)
+          #######
+          gen.add_field(name="__Moderator commands!__", value="", inline=False)
+          gen.add_field(name="s.ban", value="Bans a certain user", inline=False)
+          gen.add_field(name="s.kick", value="Kicks a certain user", inline=False)
+          #######
+          await ctx.bot.send_message(ctx.message.author, embed=gen)
+          await ctx.bot.say("Check your dm's :envelope_with_arrow:")
+          
+          
+        else:
+          if help == "ticket":
+            gen = discord.Embed(title="__Ticket command__", description="Usage: s.ticket <ticket>", color=0x00ff00)
+          elif help == "suggest":
+            gen = discord.Embed(title="__Suggest command__", description="Usage: s.suggest <suggestion>", color=0x00ff00)
+          elif help == "ban":
+            gen = discord.Embed(title="__Ban command__", description="Usage: s.ban <@user>", color=0x00ff00)
+          elif help == "kick":
+            gen = discord.Embed(title="__Kick command__", description="Usage: s.kick <@user>", color=0x00ff00)
+            
+            
+            
+          await ctx.bot.say(embed=gen)
+        
+            
+            
 
     @commands.command(pass_context = True)
     async def suggest(ctx, *, suggests: str):
@@ -128,9 +160,9 @@ class Utils():
                 totalchannels += 1
         embed = discord.Embed(title="Here are my stats!", color = 0x000000)
         embed.set_thumbnail(url=ctx.message.server.me.avatar_url)
-        embed.add_field(name="Commands Executed", value=str(commandsExcecuted))
         embed.add_field(name="Total Servers", value=str(len(bot.servers)))
         embed.add_field(name="Users", value='Total users: {0}''\nTotal human users: {1}''\nTotal bot users: {2}''\nOnline users: {3}'.format(totalusers, humanusers, botusers, onlineusers))
+        embed.add_field(name="Total Channels", value="Total channels: {}".format(totalchannels))
         
 def setup(bot):
     bot.add_cog(Utils)

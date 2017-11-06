@@ -20,6 +20,7 @@ prefix='s.'
 ownerids=['221381001476046849', '221263215496134656']
 
 bot=commands.Bot(command_prefix=prefix)
+perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
 
 class Main():
     print('main Loaded')
@@ -34,9 +35,6 @@ class Main():
       embed.add_field(name="Server Region", value=server.region, inline=True)
       await bot.send_message(console, embed=embed)
       await bot.send_message(logs, embed=embed)
-      print("New server joined !")
-      embed = discord.Embed(title="__Thanks for inviting me!__", description="If you have any questions regarding my commands, please use {0}help".format(prefix), color=0x00ff00)
-      await bot.send_message(server.default_channel, embed=embed)
     
     @bot.event
     async def on_server_remove(server):
@@ -47,7 +45,6 @@ class Main():
       embed.add_field(name="Server Region", value=server.region, inline=True)
       await bot.send_message(console, embed=embed)
       await bot.send_message(logs, embed=embed)
-      print("Server Left")
     
 
 # -- Random.py --
@@ -57,25 +54,9 @@ class Main():
 
 
     @bot.command(pass_context = True)
-    async def reload(ctx, ext_name: str):
-      if ctx.message.author.id not in ownerids:
-          await bot.say("You do not have permission to execute this command")
-      else:
-          bot.unload_extension(ext_name)
-          bot.load_extension(ext_name)
-          await bot.say("Extension **{}** reloaded".format(ext_name))
-    
-    @bot.command(pass_context = True)
-    async def extlist(ctx):
-      if ctx.message.author.id not in ownerids:
-        await bot.say("You don not have permission to execute this command")
-      else:
-        await bot.say(startup_extensions)
-
-    @bot.command(pass_context = True)
     async def todoadd(ctx, *, todo: str):
       if ctx.message.author.id not in ownerids:
-          await bot.say("You do not have permission to execute this command")
+          await bot.say(embed=perm_error)
       else:
           if not os.path.isfile("todo_file.pk1"):
               todo_list = []
@@ -90,7 +71,7 @@ class Main():
     @bot.command(pass_context = True)
     async def todo(ctx):
       if ctx.message.author.id not in ownerids:
-          await bot.say("You do not have permission to execute this command")
+          await bot.say(embed=perm_error)
       else:
           with open("todo_file.pk1", "r") as todo_file:
               todo_list = json.load(todo_file)
@@ -99,9 +80,12 @@ class Main():
 
     @bot.command(pass_context = True)
     async def tododel(ctx, *, item: str):
-      try:
-          with open('todo_file.pk1', 'r') as todo_list:        
-              todo = json.load(todo_list)
+      if ctx.message.author.id not in ownerids:
+          await bot.say(embed=perm_error)
+      else:
+        try:
+          with open('todo_file.pk1', 'r') as todo_list:
+            todo = json.load(todo_list)
       
           for element in todo:
               if item in element:
