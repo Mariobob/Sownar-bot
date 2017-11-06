@@ -8,6 +8,7 @@ import time
 import traceback
 import requests
 
+logs = discord.Object("376778387676594176")
 console = discord.Object("376552211817299968")
 tickets = discord.Object("376563001643499522")
 seconds=0
@@ -32,6 +33,7 @@ class Main():
       embed.add_field(name="Member Count", value="{0} members".format(server.member_count), inline=True)
       embed.add_field(name="Server Region", value=server.region, inline=True)
       await bot.send_message(console, embed=embed)
+      await bot.send_message(logs, embed=embed)
       print("New server joined !")
       embed = discord.Embed(title="__Thanks for inviting me!__", description="If you have any questions regarding my commands, please use {0}help".format(prefix), color=0x00ff00)
       await bot.send_message(server.default_channel, embed=embed)
@@ -44,6 +46,7 @@ class Main():
       embed.add_field(name="Member Count", value="{0} members".format(server.member_count), inline=True)
       embed.add_field(name="Server Region", value=server.region, inline=True)
       await bot.send_message(console, embed=embed)
+      await bot.send_message(logs, embed=embed)
       print("Server Left")
     
 
