@@ -76,7 +76,8 @@ class Utils():
         gen.add_field(name="s.servers", value="Show the number of servers and members the bot is serving", inline=False)
         gen.add_field(name="s.serverinfo", value="Shoes information on the server", inline=False)
         gen.add_field(name="s.ticket", value="Sends a ticket to the dev team", inline=False)
-        gen.add_field(name="s.suggest", value="Sends a suggestion to the dev team", inline=False)          gen.add_field(name="s.about", value="Shows info on the bot", inline=False)
+        gen.add_field(name="s.suggest", value="Sends a suggestion to the dev team", inline=False)          
+        gen.add_field(name="s.about", value="Shows info on the bot", inline=False)
         gen.add_field(name="s.stats", value="Shows the bot's stats", inline=False)
         gen.add_field(name="s.ping", value="Shows the bot's latency", inline=False)
           ######
