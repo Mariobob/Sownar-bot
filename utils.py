@@ -74,7 +74,7 @@ class Utils():
         gen.add_field(name="s.invite", value="DM's all the useful links about the bot", inline=False)          
         gen.add_field(name="__Utility commands!__", value="", inline=False
 #        gen.add_field(name="s.servers", value="Show the number of servers and members the bot is serving", inline=False)
-        gen.add_field(name="s.serverinfo", value="Shoes information on the server", inline=False)
+#        gen.add_field(name="s.serverinfo", value="Shoes information on the server", inline=False)
         gen.add_field(name="s.ticket", value="Sends a ticket to the dev team", inline=False)
         gen.add_field(name="s.suggest", value="Sends a suggestion to the dev team", inline=False)          
         gen.add_field(name="s.about", value="Shows info on the bot", inline=False)
