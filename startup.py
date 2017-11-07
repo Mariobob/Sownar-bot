@@ -121,4 +121,4 @@ class startup():
 #bot.loop.create_task(get_uptime())
 with open("token.txt", "r") as token_file:
   token = json.load(token_file)
-  bot.run(token)
+bot.run(token)
