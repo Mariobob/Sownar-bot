@@ -66,52 +66,41 @@ class Utils():
         await ctx.bot.send_message(ctx.message.channel, "Check your DM's :envelope_with_arrow:")
 
     @commands.command(pass_context = True)
-    async def help(ctx, *, helptxt: str):
-        if helptxt == "":
-          gen = discord.Embed(title="__Bot commands!__", description="", color=0x00ff00)
-          gen.add_field(name=":warning: **Remember**", value="More commands will be added in the future", inline=False)
-          gen.add_field(name="**For info on a certain command**", value="s.help <command>", inline=False)
-          gen.add_field(name="s.help", value="Show this message", inline=False)
-          gen.add_field(name="s.invite", value="DM's all the useful links about the bot", inline=False)
-          #######
-          gen.add_field(name="__Utility commands!__", value="", inline=False)
-          gen.add_field(name="s.servers", value="Show the number of servers and members the bot is serving", inline=False)
-          gen.add_field(name="s.serverinfo", value="Shoes information on the server", inline=False)
-          gen.add_field(name="s.ticket", value="Sends a ticket to the dev team", inline=False)
-          gen.add_field(name="s.suggest", value="Sends a suggestion to the dev team", inline=False)
-          gen.add_field(name="s.about", value="Shows info on the bot", inline=False)
-          gen.add_field(name="s.stats", value="Shows the bot's stats", inline=False)
-          gen.add_field(name="s.ping", value="Shows the bot's latency", inline=False)
+    async def help(ctx)
+        gen = discord.Embed(title="__Bot commands!__", description="", color=0x00ff00)
+        gen.add_field(name=":warning: **Remember**", value="More commands will be added in the future", inline=False)
+        gen.add_field(name="**For info on a certain command**", value="s.help <command>", inline=False)
+        gen.add_field(name="s.help", value="Show this message", inline=False)
+        gen.add_field(name="s.invite", value="DM's all the useful links about the bot", inline=False)          
+        gen.add_field(name="__Utility commands!__", value="", inline=False
+        gen.add_field(name="s.servers", value="Show the number of servers and members the bot is serving", inline=False)
+        gen.add_field(name="s.serverinfo", value="Shoes information on the server", inline=False)
+        gen.add_field(name="s.ticket", value="Sends a ticket to the dev team", inline=False)
+        gen.add_field(name="s.suggest", value="Sends a suggestion to the dev team", inline=False)          gen.add_field(name="s.about", value="Shows info on the bot", inline=False)
+        gen.add_field(name="s.stats", value="Shows the bot's stats", inline=False)
+        gen.add_field(name="s.ping", value="Shows the bot's latency", inline=False)
           ######
-          gen.add_field(name="__Fun commands!__", value="", inline=False)
-          gen.add_field(name="s.flip", value="Flips a coin", inline=False)
-          gen.add_field(name="s.roll", value="Rolls a dice", inline=False)
+        gen.add_field(name="__Fun commands!__", value="", inline=False)
+        gen.add_field(name="s.flip", value="Flips a coin", inline=False)
+        gen.add_field(name="s.roll", value="Rolls a dice", inline=False)
           #######
-          gen.add_field(name="__Random commands!__", value="", inline=False)
-          gen.add_field(name="s.dog", value="Gets a dog picture", inline=False)
-          gen.add_field(name="s.cat", value="Gets a cat picture", inline=False)
+        gen.add_field(name="__Random commands!__", value="", inline=False)
+        gen.add_field(name="s.dog", value="Gets a dog picture", inline=False)
+        gen.add_field(name="s.cat", value="Gets a cat picture", inline=False)
           #######
-          gen.add_field(name="__Moderator commands!__", value="", inline=False)
-          gen.add_field(name="s.ban", value="Bans a certain user", inline=False)
-          gen.add_field(name="s.kick", value="Kicks a certain user", inline=False)
+        gen.add_field(name="__Moderator commands!__", value="", inline=False)
+        gen.add_field(name="s.ban", value="Bans a certain user", inline=False)
+        gen.add_field(name="s.kick", value="Kicks a certain user", inline=False)
           #######
-          await ctx.bot.send_message(ctx.message.author, embed=gen)
-          await ctx.bot.say("Check your dm's :envelope_with_arrow:")
+        await ctx.bot.send_message(ctx.message.author, embed=gen)
+        await ctx.bot.say("Check your dm's :envelope_with_arrow:")
           
           
-        else:
-          if helptxt == "ticket":
-            gen = discord.Embed(title="__Ticket command__", description="Usage: s.ticket <ticket>", color=0x00ff00)
-          elif helptxt == "suggest":
-            gen = discord.Embed(title="__Suggest command__", description="Usage: s.suggest <suggestion>", color=0x00ff00)
-          elif helptxt == "ban":
-            gen = discord.Embed(title="__Ban command__", description="Usage: s.ban <@user>", color=0x00ff00)
-          elif helptxt == "kick":
-            gen = discord.Embed(title="__Kick command__", description="Usage: s.kick <@user>", color=0x00ff00)
+        
             
             
             
-          await ctx.bot.say(embed=gen)
+
         
             
             
