@@ -26,7 +26,7 @@ perm_error = discord.Embed(title=":warning: Error!",description="You do not have
 
 class startup():
   
-  @bot.event()
+  @bot.event
   async def on_ready():
     print("Logged in as")
     print(bot.user.name)
@@ -39,7 +39,7 @@ class startup():
     bot.load_extension("random")
     bot.load_extension("mod")
 
-  @bot.event()
+  @bot.event
   async def get_uptime():
       await bot.wait_until_ready()
       global seconds
