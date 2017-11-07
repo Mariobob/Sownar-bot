@@ -24,7 +24,7 @@ game = ('{0}help | {1} servers'.format(prefix, len(bot.servers)))
 startup_extensions = ["utils", "mod", "fun", "owner", "random", "main"]
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
 
-@bot.event(coro)
+@bot.event()
 async def on_ready():
   print("Logged in as")
   print(bot.user.name)
