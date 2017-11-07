@@ -93,7 +93,7 @@ class Main():
       
           with open('todo_file.pk1', 'w') as todo_list:
               todo = json.dump(todo, todo_list)
-      except IndexError:
+        except IndexError:
           await bot.say("Please use a valid todo item")
         
 def setup(bot):
