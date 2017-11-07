@@ -66,8 +66,8 @@ class Utils():
         await ctx.bot.send_message(ctx.message.channel, "Check your DM's :envelope_with_arrow:")
 
     @commands.command(pass_context = True)
-    async def help(ctx, *, help: str):
-        if help == "":
+    async def help(ctx, *, helptxt: str):
+        if helptxt == "":
           gen = discord.Embed(title="__Bot commands!__", description="", color=0x00ff00)
           gen.add_field(name=":warning: **Remember**", value="More commands will be added in the future", inline=False)
           gen.add_field(name="**For info on a certain command**", value="s.help <command>", inline=False)
@@ -100,13 +100,13 @@ class Utils():
           
           
         else:
-          if help == "ticket":
+          if helptxt == "ticket":
             gen = discord.Embed(title="__Ticket command__", description="Usage: s.ticket <ticket>", color=0x00ff00)
-          elif help == "suggest":
+          elif helptxt == "suggest":
             gen = discord.Embed(title="__Suggest command__", description="Usage: s.suggest <suggestion>", color=0x00ff00)
-          elif help == "ban":
+          elif helptxt == "ban":
             gen = discord.Embed(title="__Ban command__", description="Usage: s.ban <@user>", color=0x00ff00)
-          elif help == "kick":
+          elif helptxt == "kick":
             gen = discord.Embed(title="__Kick command__", description="Usage: s.kick <@user>", color=0x00ff00)
             
             
