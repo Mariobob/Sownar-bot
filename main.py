@@ -6,7 +6,7 @@ import datetime
 from discord.ext import commands
 import time
 import traceback
-import requests
+
 
 logs = discord.Object("376778387676594176")
 console = discord.Object("376552211817299968")

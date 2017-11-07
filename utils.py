@@ -7,7 +7,7 @@ import datetime
 from discord.ext import commands
 import time
 import traceback
-import requests
+
 
 tickets = discord.Object("376563001643499522")
 suggest = discord.Object('376776759221288961')
