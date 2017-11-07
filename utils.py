@@ -66,7 +66,7 @@ class Utils():
         await ctx.bot.send_message(ctx.message.channel, "Check your DM's :envelope_with_arrow:")
 
     @commands.command(pass_context = True)
-    async def help(ctx)
+    async def help(ctx):
         gen = discord.Embed(title="__Bot commands!__", description="", color=0x00ff00)
         gen.add_field(name=":warning: **Remember**", value="More commands will be added in the future", inline=False)
         gen.add_field(name="**For info on a certain command**", value="s.help <command>", inline=False)
