@@ -97,6 +97,6 @@ class Main():
           await bot.say("Please use a valid todo item")
         
 def setup(bot):
-    bot.add_cog(main)
+    bot.add_cog(Main)
 
 
