@@ -115,14 +115,14 @@ class Utils():
     @commands.command(pass_context = True)
     async def servers(ctx):
       
-      server = 0
+      serverCount = 0
       members = 0
       for server in ctx.bot.servers:
-        server += 1
+        serverCount += 1
         for member in server.members:
             members += 1
         
-      embed = discord.Embed(title="Serving", description='{0} servers for {1} users'.format(server, members), color=0x00ff00)
+      embed = discord.Embed(title="Serving", description='{0} servers for {1} users'.format(serverCount, members), color=0x00ff00)
       await ctx.bot.say(embed=embed)
         
     @commands.command(pass_context = True)
