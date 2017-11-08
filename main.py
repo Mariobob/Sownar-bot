@@ -55,7 +55,7 @@ class Main():
           with open("todo_file.pk1", "r") as todo_file:
               todo_list = json.load(todo_file)
           for item in todo_list:
-              await ctx.bot.say(`item`)
+              await ctx.bot.say(item)
 
     @commands.command(pass_context = True)
     async def tododel(ctx, *, item: str):
