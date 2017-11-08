@@ -19,7 +19,6 @@ weeks=0
 prefix='s.'
 ownerids=['221381001476046849', '221263215496134656']
 
-bot=commands.bot(command_prefix=prefix)
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
 
 class Main():
@@ -31,7 +30,7 @@ class Main():
 #@ctx.bot.command(pass_context = True)
 #async def say(ctx, *, echo: str):
 #    await ctx.bot.say(echo)
-
+    
 
     @commands.command(pass_context = True)
     async def todoadd(ctx, *, todo: str):
