@@ -115,11 +115,12 @@ class Utils():
     @commands.command(pass_context = True)
     async def servers(ctx):
       
-      server = len(ctx.bot.servers)
+      server = 0
       members = 0
       for server in ctx.bot.servers:
-          for member in server.members:
-              members += 1
+        server += 1
+        for member in server.members:
+            members += 1
         
       embed = discord.Embed(title="Serving", description='{0} servers for {1} users'.format(server, members), color=0x00ff00)
       await ctx.bot.say(embed=embed)
@@ -131,18 +132,20 @@ class Utils():
         onlineusers = "N/A"
         humanusers = "N/A"
         botusers = "N/A"
+        serverCount=0
         members = 0
         channels = []
         for server in ctx.bot.servers:
             members += len(server.members)
             channels += [len(server.channels)]
+            serverCount += 1
             for member in server.members:
                 totalusers += 1
             for channel in server.channels:
                 totalchannels += 1
         embed = discord.Embed(title="Here are my stats!", color = 0x000000)
         embed.set_thumbnail(url=ctx.message.server.me.avatar_url)
-        embed.add_field(name="Total Servers", value=str(len(bot.servers)))
+        embed.add_field(name="Total Servers", value=serverCount)
         embed.add_field(name="Users", value='Total users: {0}''\nTotal human users: {1}''\nTotal bot users: {2}''\nOnline users: {3}'.format(members, humanusers, botusers, onlineusers))
         embed.add_field(name="Total Channels", value="Total channels: {}".format(totalchannels))
         await ctx.bot.say(embed=embed)
