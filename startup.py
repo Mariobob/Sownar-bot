@@ -21,7 +21,7 @@ ownerids=['221381001476046849', '221263215496134656']
 bot=commands.Bot(command_prefix=prefix)
 bot.remove_command("help")
 game = ('{0}help | {1} servers'.format(prefix, len(bot.servers)))
-startup_extensions = ["utils", "mod", "fun", "owner", "random", "main"]
+startup_extensions = ["utils", "mod", "fun", "owner", "cool", "main"]
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
 
 class startup():
@@ -56,7 +56,7 @@ class startup():
     bot.load_extension("fun")
     bot.load_extension("main")
     bot.load_extension("owner")
-    bot.load_extension("random")
+    bot.load_extension("cool")
     bot.load_extension("mod")
     
 #  @bot.event
