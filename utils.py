@@ -131,7 +131,7 @@ class Utils():
         onlineusers = "N/A"
         humanusers = "N/A"
         botusers = "N/A"
-        members = []
+        members = 0
         channels = []
         for server in ctx.bot.servers:
             members += [len(server.members)]
