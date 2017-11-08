@@ -113,7 +113,7 @@ class Utils():
 
     @commands.command(pass_context = True)
     async def servers(ctx):
-        server = len(ctx.bot.servers)
+        server = int(len(ctx.bot.servers))
         members = 0
         for server in ctx.bot.servers:
             for member in server.members:
