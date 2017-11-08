@@ -89,8 +89,8 @@ class Utils():
         gen.add_field(name="__Moderator commands!__", value="", inline=False)
         gen.add_field(name="s.ban", value="Bans a certain user", inline=False)
         gen.add_field(name="s.kick", value="Kicks a certain user", inline=False)
-        await ctx.bot.send_message(ctx.message.author, embed=gen)
-        await ctx.bot.send_message(ctx.message.channel, "Check your DM's :envelope_with_arrow:")
+#        await ctx.bot.send_message(ctx.message.author, embed=gen)
+        await ctx.bot.send_message(ctx.message.channel, "Some commands may not be available at the time, sorry for the inconvinience")
           
           
         
