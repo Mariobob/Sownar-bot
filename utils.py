@@ -128,9 +128,9 @@ class Utils():
     async def stats(ctx):
         totalusers = 0
         totalchannels = 0
-        onlineusers = N/A
-        humanusers = N/A
-        botusers = N/A
+        onlineusers = "N/A"
+        humanusers = "N/A"
+        botusers = "N/A"
         members = []
         channels = []
         for server in ctx.bot.servers:
