@@ -12,7 +12,7 @@ import traceback
 prefix='s.'
 bot=commands.Bot(command_prefix=prefix)
 
-class randFun():
+class Cool():
     print('random loaded')
     print('------')
 
@@ -21,4 +21,4 @@ class randFun():
         await ctx.bot.say("I am working!")
 
 def setup(bot):
-    bot.add_cog(randFun)
+    bot.add_cog(Cool)
