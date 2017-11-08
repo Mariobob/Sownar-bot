@@ -19,7 +19,7 @@ weeks=0
 prefix='s.'
 ownerids=['221381001476046849', '221263215496134656']
 
-bot=commands.Bot(command_prefix=prefix)
+bot=commands.bot(command_prefix=prefix)
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
 
 class Main():
@@ -28,15 +28,15 @@ class Main():
     
 
 # -- Random.py --
-#@bot.command(pass_context = True)
+#@ctx.bot.command(pass_context = True)
 #async def say(ctx, *, echo: str):
-#    await bot.say(echo)
+#    await ctx.bot.say(echo)
 
 
     @commands.command(pass_context = True)
     async def todoadd(ctx, *, todo: str):
       if ctx.message.author.id not in ownerids:
-          await bot.say(embed=perm_error)
+          await ctx.ctx.bot.say(embed=perm_error)
       else:
           if not os.path.isfile("todo_file.pk1"):
               todo_list = []
@@ -46,22 +46,22 @@ class Main():
           todo_list.append(todo)
           with open("todo_file.pk1", "w") as todo_file:
               json.dump(todo_list, todo_file)
-          await bot.say("Added to todo list")
+          await ctx.bot.say("Added to todo list")
 
     @commands.command(pass_context = True)
     async def todo(ctx):
       if ctx.message.author.id not in ownerids:
-          await bot.say(embed=perm_error)
+          await ctx.bot.say(embed=perm_error)
       else:
           with open("todo_file.pk1", "r") as todo_file:
               todo_list = json.load(todo_file)
           for item in todo_list:
-              await bot.say('`item`')
+              await ctx.ctx.bot.say('`item`')
 
     @commands.command(pass_context = True)
     async def tododel(ctx, *, item: str):
       if ctx.message.author.id not in ownerids:
-          await bot.say(embed=perm_error)
+          await ctx.ctx.bot.say(embed=perm_error)
       else:
         try:
           with open('todo_file.pk1', 'r') as todo_list:
@@ -74,9 +74,9 @@ class Main():
           with open('todo_file.pk1', 'w') as todo_list:
               todo = json.dump(todo, todo_list)
         except IndexError:
-          await bot.say("Please use a valid todo item")
+          await ctx.bot.say("Please use a valid todo item")
         
-def setup(bot):
-    bot.add_cog(Main)
+def setup(ctx.bot):
+    ctx.bot.add_cog(Main)
 
 
