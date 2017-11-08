@@ -134,7 +134,7 @@ class Utils():
         members = 0
         channels = []
         for server in ctx.bot.servers:
-            members += [len(server.members)]
+            members += len(server.members)
             channels += [len(server.channels)]
             for member in server.members:
                 totalusers += 1
