@@ -66,7 +66,7 @@ class Utils():
         await ctx.bot.send_message(ctx.message.channel, "Check your DM's :envelope_with_arrow:")
 
     @commands.command(pass_context = True)
-    async def help(ctx):
+    async def help(self, ctx):
         gen = discord.Embed(title="__Bot commands!__", description="", color=0x00ff00)
         gen.add_field(name=":warning: **Remember**", value="More commands will be added in the future", inline=False)
         gen.add_field(name="**For info on a certain command**", value="s.help <command>", inline=False)
@@ -89,8 +89,8 @@ class Utils():
         gen.add_field(name="__Moderator commands!__", value="", inline=False)
         gen.add_field(name="s.ban", value="Bans a certain user", inline=False)
         gen.add_field(name="s.kick", value="Kicks a certain user", inline=False)
-        await ctx.bot.send_message(ctx.message.author, embed=gen)
-        await ctx.bot.say("Check your dm's :envelope_with_arrow:")
+        await self.bot.send_message(ctx.message.author, embed=gen)
+        await self.bot.say("Check your dm's :envelope_with_arrow:")
           
           
         
