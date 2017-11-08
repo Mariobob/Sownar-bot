@@ -114,14 +114,15 @@ class Utils():
 
     @commands.command(pass_context = True)
     async def servers(ctx):
-        server = int(len(ctx.bot.servers))
-        members = 0
-        for server in ctx.bot.servers:
-            for member in server.members:
-                members += 1
+      
+      server = len(ctx.bot.servers)
+      members = 0
+      for server in ctx.bot.servers:
+          for member in server.members:
+              members += 1
         
-        embed = discord.Embed(title="Serving", description='{0} servers for {1} users'.format(server, members), color=0x00ff00)
-        await ctx.bot.say(embed=embed)
+      embed = discord.Embed(title="Serving", description='{0} servers for {1} users'.format(server, members), color=0x00ff00)
+      await ctx.bot.say(embed=embed)
         
     @commands.command(pass_context = True)
     async def stats(ctx):
