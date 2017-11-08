@@ -67,7 +67,7 @@ class Utils():
 
     @commands.command(pass_context = True)
     async def help(ctx):
-        gen = discord.Embed(title="__Bot commands!__", description="", color=0x00ff00)
+        embed = discord.Embed(title="__Bot commands!__", description="", color=0x00ff00)
         gen.add_field(name=":warning: **Remember**", value="More commands will be added in the future", inline=False)
         gen.add_field(name="**For info on a certain command**", value="s.help <command>", inline=False)
         gen.add_field(name="s.help", value="Show this message", inline=False)
@@ -150,6 +150,7 @@ class Utils():
         embed.add_field(name="Total Servers", value=str(len(bot.servers)))
         embed.add_field(name="Users", value='Total users: {0}''\nTotal human users: {1}''\nTotal bot users: {2}''\nOnline users: {3}'.format(totalusers, humanusers, botusers, onlineusers))
         embed.add_field(name="Total Channels", value="Total channels: {}".format(totalchannels))
+        await ctx.bot.say(embed=embed)
         
 def setup(bot):
     bot.add_cog(Utils)
