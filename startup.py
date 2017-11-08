@@ -27,24 +27,24 @@ perm_error = discord.Embed(title=":warning: Error!",description="You do not have
 class startup():
   
   @bot.event
-    async def on_server_join(server):
-      embed = discord.Embed(title="__Server Joined!__", description="I have joined a new server !", color=0x00ff00)
-      embed.add_field(name="Server Name", value=server.name, inline=True)
-      embed.add_field(name="Server Owner", value=server.owner, inline=True)
-      embed.add_field(name="Member Count", value="{0} members".format(server.member_count), inline=True)
-      embed.add_field(name="Server Region", value=server.region, inline=True)
-      await bot.send_message(console, embed=embed)
-      await bot.send_message(logs, embed=embed)
+  async def on_server_join(server):
+    embed = discord.Embed(title="__Server Joined!__", description="I have joined a new server !", color=0x00ff00)
+    embed.add_field(name="Server Name", value=server.name, inline=True)
+    embed.add_field(name="Server Owner", value=server.owner, inline=True)
+    embed.add_field(name="Member Count", value="{0} members".format(server.member_count), inline=True)
+    embed.add_field(name="Server Region", value=server.region, inline=True)
+    await bot.send_message(console, embed=embed)
+    await bot.send_message(logs, embed=embed)
     
-    @bot.event
-    async def on_server_remove(server):
-      embed = discord.Embed(title="__Server Left!__", description="I have left a server !", color=0xff0000)
-      embed.add_field(name="Server Name", value=server.name, inline=True)
-      embed.add_field(name="Server Owner", value=server.owner, inline=True)
-      embed.add_field(name="Member Count", value="{0} members".format(server.member_count), inline=True)
-      embed.add_field(name="Server Region", value=server.region, inline=True)
-      await bot.send_message(console, embed=embed)
-      await bot.send_message(logs, embed=embed)
+  @bot.event
+  async def on_server_remove(server):
+    embed = discord.Embed(title="__Server Left!__", description="I have left a server !", color=0xff0000)
+    embed.add_field(name="Server Name", value=server.name, inline=True)
+    embed.add_field(name="Server Owner", value=server.owner, inline=True)
+    embed.add_field(name="Member Count", value="{0} members".format(server.member_count), inline=True)
+    embed.add_field(name="Server Region", value=server.region, inline=True)
+    await bot.send_message(console, embed=embed)
+    await bot.send_message(logs, embed=embed)
   
   @bot.event
   async def on_ready():
