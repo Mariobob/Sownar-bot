@@ -25,26 +25,6 @@ perm_error = discord.Embed(title=":warning: Error!",description="You do not have
 class Main():
     print('main Loaded')
     print('------')
-
-    @bot.event
-    async def on_server_join(server):
-      embed = discord.Embed(title="__Server Joined!__", description="I have joined a new server !", color=0x00ff00)
-      embed.add_field(name="Server Name", value=server.name, inline=True)
-      embed.add_field(name="Server Owner", value=server.owner, inline=True)
-      embed.add_field(name="Member Count", value="{0} members".format(server.member_count), inline=True)
-      embed.add_field(name="Server Region", value=server.region, inline=True)
-      await bot.send_message(console, embed=embed)
-      await bot.send_message(logs, embed=embed)
-    
-    @bot.event
-    async def on_server_remove(server):
-      embed = discord.Embed(title="__Server Left!__", description="I have left a server !", color=0xff0000)
-      embed.add_field(name="Server Name", value=server.name, inline=True)
-      embed.add_field(name="Server Owner", value=server.owner, inline=True)
-      embed.add_field(name="Member Count", value="{0} members".format(server.member_count), inline=True)
-      embed.add_field(name="Server Region", value=server.region, inline=True)
-      await bot.send_message(console, embed=embed)
-      await bot.send_message(logs, embed=embed)
     
 
 # -- Random.py --
@@ -53,7 +33,7 @@ class Main():
 #    await bot.say(echo)
 
 
-    @bot.command(pass_context = True)
+    @commands.command(pass_context = True)
     async def todoadd(ctx, *, todo: str):
       if ctx.message.author.id not in ownerids:
           await bot.say(embed=perm_error)
@@ -68,7 +48,7 @@ class Main():
               json.dump(todo_list, todo_file)
           await bot.say("Added to todo list")
 
-    @bot.command(pass_context = True)
+    @commands.command(pass_context = True)
     async def todo(ctx):
       if ctx.message.author.id not in ownerids:
           await bot.say(embed=perm_error)
@@ -78,7 +58,7 @@ class Main():
           for item in todo_list:
               await bot.say('`item`')
 
-    @bot.command(pass_context = True)
+    @commands.command(pass_context = True)
     async def tododel(ctx, *, item: str):
       if ctx.message.author.id not in ownerids:
           await bot.say(embed=perm_error)
