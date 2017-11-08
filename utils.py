@@ -26,7 +26,7 @@ class Utils():
     async def serverinfo(ctx):
         server = ctx.message.author.server
         ago = (ctx.message.timestamp - server.created_at).days
-        embed = discord.Embed(title="__Server Info!__", description="embederal information on the server", color=0x00ff00)
+        embed = discord.Embed(title="__Server Info!__", description="Information on the server", color=0x00ff00)
         embed.add_field(name="Server Name", value=server.name, inline=True)
         embed.add_field(name="Server Owner", value=server.owner, inline=True)
         embed.add_field(name="Member Count", value="{0} members".format(server.member_count), inline=True)
@@ -133,7 +133,7 @@ class Utils():
         botusers = 0
         members = []
         channels = []
-        for server in bot.servers:
+        for server in ctx.bot.servers:
             members += [len(server.members)]
             channels += [len(server.channels)]
             for member in server.members:
