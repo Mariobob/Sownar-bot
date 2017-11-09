@@ -59,18 +59,20 @@ class Main():
 
     @commands.command(pass_context = True)
     async def tododel(ctx, *, item: str):
-      if ctx.message.author.id not in ownerids:
-          await ctx.bot.say(embed=perm_error)
+      if
       else:
-        try:
-          with open('todo_file.pk1', 'r') as todo_list:
-            todo = json.load(todo_list)
+        if ctx.message.author.id not in ownerids:
+          
+          await ctx.bot.say(embed=perm_error)
+        else:
+         try:
+           with open('todo_file.pk1', 'r') as todo_list:
+             todo = json.load(todo_list)
+           for element in todo:
+             if item in element:
+               del element[item]
       
-          for element in todo:
-              if item in element:
-                  del element[item]
-      
-          with open('todo_file.pk1', 'w') as todo_list:
+           with open('todo_file.pk1', 'w') as todo_list:
               todo = json.dump(todo, todo_list)
         except IndexError:
           await ctx.bot.say("Please use a valid todo item")
