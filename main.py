@@ -59,7 +59,8 @@ class Main():
 
     @commands.command(pass_context = True)
     async def tododel(ctx, *, item: str):
-      if
+      if item == "":
+        await ctx.bot.say("Please specify an argument")
       else:
         if ctx.message.author.id not in ownerids:
           
@@ -70,7 +71,7 @@ class Main():
              todo = json.load(todo_list)
            for element in todo:
              if item in element:
-               del element[item]
+               del element(item)
       
            with open('todo_file.pk1', 'w') as todo_list:
               todo = json.dump(todo, todo_list)
