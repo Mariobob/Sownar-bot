@@ -68,7 +68,6 @@ class Utils():
     @commands.command(pass_context = True)
     async def help(ctx):
       await ctx.bot.send_message(ctx.message.channel, "Some commands may not be available at the time, sorry for the inconvinience")
-      await ctx.bot.say("s.servers")
       embed = discord.Embed(title="__Bot commands!__", description="", color=0x00ff00)
       embed.add_field(name=":warning: **Remember**", value="More commands will be added in the future", inline=False)
       embed.add_field(name="**For info on a certain command**", value="s.help <command>", inline=False)
@@ -92,23 +91,14 @@ class Utils():
       mod = discord.Embed(title="__Moderator commands!__", description="", color=0x00ff00)
       mod.add_field(name="s.ban", value="Bans a certain user", inline=False)
       mod.add_field(name="s.kick", value="Kicks a certain user", inline=False)
-#        await ctx.bot.send_message(ctx.message.author, embed=embed)
-      await ctx.bot.say(embed=embed)
-      await ctx.bot.say(embed=util)
-      await ctx.bot.say(embed=fun)
-      await ctx.bot.say(embed=cool)
-      await ctx.bot.say(embed=mod)
-      #await ctx.bot.send_message(ctx.message.channel, "Some commands may not be available at the time, sorry for the inconvinience")
-          
-          
-        
-            
-            
-            
-
-        
-            
-            
+      await ctx.bot.say("Check your DM's :envelope_with_arrow:")
+      await ctx.bot.send_message(ctx.message.author, embed=embed)
+      await ctx.bot.send_message(ctx.message.author, embed=util)
+      await ctx.bot.send_message(ctx.message.author, embed=fun)
+      await ctx.bot.send_message(ctx.message.author, embed=cool)
+      await ctx.bot.send_message(ctx.message.author, embed=mod)
+      
+      
 
     @commands.command(pass_context = True)
     async def suggest(ctx, *, suggests: str):
