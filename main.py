@@ -61,11 +61,10 @@ class Main():
         await ctx.bot.say(embed=perm_error)
       
       else:
-        if item in todo_list:
+        
           del todo_list[item]
           await ctx.bot.say("Successfully deleted **{}** from the list".format(item))
-        else:
-          await ctx.bot.say("Please use a valid todo item, s.todo")
+          
         
 def setup(bot):
     bot.add_cog(Main)
