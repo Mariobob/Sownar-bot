@@ -86,7 +86,7 @@ class Utils():
       fun.add_field(name="s.flip", value="Flips a coin", inline=False)
       fun.add_field(name="s.roll", value="Rolls a dice", inline=False)
       fun.add_field(name="s.rps [rock/paper/scissors]", value="Plays a game of rock, paper, scissors", inline=False)
-      cool. = discord.Embed(title="__Random commands!__", description="", color=0x00ff00)
+      cool = discord.Embed(title="__Random commands!__", description="", color=0x00ff00)
       cool.add_field(name="s.dog", value="Gets a dog picture", inline=False)
       cool.add_field(name="s.cat", value="Gets a cat picture", inline=False)
       mod = discord.Embed(title="__Moderator commands!__", description="", color=0x00ff00)
