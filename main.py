@@ -38,6 +38,9 @@ class Main():
       if ctx.message.author.id not in ownerids:
           await ctx.bot.say(embed=perm_error)
       else:
+        if todo in todo_list:
+          await ctx.bot.say("**{}** is already in the todo list".format(todo))
+        else:
           todo_list.append(todo)
           await ctx.bot.say("Added to todo list")
 
@@ -46,23 +49,23 @@ class Main():
       if ctx.message.author.id not in ownerids:
           await ctx.bot.say(embed=perm_error)
       else:
-          for x in todo_list:
-            await ctx.bot.say(x)
+        num=0
+        for x in todo_list:
+          num += 1
+          await ctx.bot.say("{0}: {1}".format(num, x))
 
     @commands.command(pass_context = True)
-    async def tododel(ctx, *, item: str):
+    async def tododel(ctx, *, item: int):
       if ctx.message.author.id not in ownerids:
         
         await ctx.bot.say(embed=perm_error)
+      
       else:
-        if item == "":
-          await ctx.bot.say("Please specify an argument")
+        if item in todo_list:
+          del todo_list[item]
+          await ctx.bot.say("Successfully deleted **{}** from the list".format(item))
         else:
-          if item in todo_list:
-            del todo_list(item)
-            await ctx.bot.say("Successfully deleted **{}** from the list".format(item))
-          else:
-            await ctx.bot.say("Please use a valid todo item, s.todo")
+          await ctx.bot.say("Please use a valid todo item, s.todo")
         
 def setup(bot):
     bot.add_cog(Main)
