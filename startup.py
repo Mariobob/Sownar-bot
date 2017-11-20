@@ -112,6 +112,7 @@ class startup():
           bot.load_extension("owner")
           bot.load_extension("cool")
           bot.load_extension("mod")
+          await ctx.bot.say("All extensions successfully reloaded!")
         else:
           if ext_name in startup_extensions:
             bot.unload_extension(ext_name)

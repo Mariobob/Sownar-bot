@@ -62,7 +62,7 @@ class Main():
       
       else:
         
-          del todo_list[item]
+          del todo_list[item-1]
           await ctx.bot.say("Successfully deleted **{}** from the list".format(item))
           
         
