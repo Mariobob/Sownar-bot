@@ -58,8 +58,6 @@ class startup():
     bot.load_extension("owner")
     bot.load_extension("cool")
     bot.load_extension("mod")
-    
-  @bot.event
   async def get_uptime():
     await bot.wait_until_ready()
     global seconds
