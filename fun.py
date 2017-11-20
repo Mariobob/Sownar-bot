@@ -12,6 +12,10 @@ import traceback
 prefix='s.'
 bot=commands.Bot(command_prefix=prefix)
 
+flips = ["Heads", "Tails"]
+rolls = ["1", "2", "3", "4", "5", "6"]
+rpss = ["Rock", "Paper", "Scissors"]
+
 class Fun():
     print('Fun loaded')
     print('------')
@@ -22,12 +26,12 @@ class Fun():
       
     @bot.command(pass_context = True)
     async def flip(ctx):
-      flip = random.choice["Heads", "Tails"]
+      flip = random.choice(flips)
       await ctx.bot.say("It's {}!".format(flip))
     
     @bot.command(pass_context = True)
     async def roll(ctx):
-      roll = random.choice["1", "2", "3", "4", "5", "6"]
+      roll = random.choice(rolls)
       await ctx.bot.say("It's a {}!".format(roll))
       
     @bot.command(pass_context = True)
@@ -35,7 +39,7 @@ class Fun():
       if rps == "":
         await ctx.bot.say("Please specify [rock, paper or scissors]")
       else:
-        rps_bot = random.choice["Rock", "Paper", "Scissors"]
+        rps_bot = random.choice(rpss)
         if rps == "rock":
           if rps_bot == "Paper":
             await ctx.bot.say("Paper! I win")
