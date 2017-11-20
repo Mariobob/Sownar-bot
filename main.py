@@ -37,14 +37,7 @@ class Main():
       if ctx.message.author.id not in ownerids:
           await ctx.bot.say(embed=perm_error)
       else:
-          if not os.path.isfile("todo_file.pk1"):
-              todo_list = []
-          else:
-              with open("todo_file.pk1", "r") as todo_file:
-                  todo_list = json.load(todo_file)
           todo_list.append(todo)
-          with open("todo_file.pk1", "w") as todo_file:
-              json.dump(todo_list, todo_file)
           await ctx.bot.say("Added to todo list")
 
     @commands.command(pass_context = True)
@@ -65,9 +58,10 @@ class Main():
           await ctx.bot.say("Please specify an argument")
         else:
           if item in todo_list:
-            del element(item)
+            del todo_list(item)
+            await ctx.bot.say("Successfully deleted **{}** from the list".format(item))
           else:
-            await ctx.bot.say("Please use a valid todo item")
+            await ctx.bot.say("Please use a valid todo item, s.todo")
         
 def setup(bot):
     bot.add_cog(Main)
