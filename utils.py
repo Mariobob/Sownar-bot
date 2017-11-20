@@ -69,7 +69,7 @@ class Utils():
     async def help(ctx):
       await ctx.bot.send_message(ctx.message.channel, "Some commands may not be available at the time, sorry for the inconvinience")
       await ctx.bot.say("s.servers")
-      #embed = discord.Embed(title="__Bot commands!__", description="", color=0x00ff00)
+      embed = discord.Embed(title="__Bot commands!__", description="", color=0x00ff00)
       #embed.add_field(name=":warning: **Remember**", value="More commands will be added in the future", inline=False)
       #embed.add_field(name="**For info on a certain command**", value="s.help <command>", inline=False)
       #embed.add_field(name="s.help", value="Show this message", inline=False)
@@ -85,6 +85,7 @@ class Utils():
       #embed.add_field(name="__Fun commands!__", value="", inline=False)
       #embed.add_field(name="s.flip", value="Flips a coin", inline=False)
       #embed.add_field(name="s.roll", value="Rolls a dice", inline=False)
+      embed.add_field(name="s.rps [rock/paper/scissors]", value="Plays a game of rock, paper, scissors", inline=False)
       #embed.add_field(name="__Random commands!__", value="", inline=False)
       #embed.add_field(name="s.dog", value="Gets a dog picture", inline=False)
       #embed.add_field(name="s.cat", value="Gets a cat picture", inline=False)
@@ -92,7 +93,7 @@ class Utils():
       #embed.add_field(name="s.ban", value="Bans a certain user", inline=False)
       #embed.add_field(name="s.kick", value="Kicks a certain user", inline=False)
 #        await ctx.bot.send_message(ctx.message.author, embed=embed)
-      #await ctx.bot.say(embed=embed)
+      await ctx.bot.say(embed=embed)
       #await ctx.bot.send_message(ctx.message.channel, "Some commands may not be available at the time, sorry for the inconvinience")
           
           
