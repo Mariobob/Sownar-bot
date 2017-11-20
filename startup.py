@@ -24,6 +24,34 @@ game = ('{0}help | {1} servers'.format(prefix, len(bot.servers)))
 startup_extensions = ["utils", "mod", "fun", "owner", "cool", "main"]
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
 
+async def get_uptime():
+    await bot.wait_until_ready()
+    global seconds
+    seconds = 0
+    global minutes
+    minutes = 0
+    global hours
+    hours = 0
+    global days
+    days = 0
+    global weeks
+    weeks = 0
+    while not bot.is_closed:
+        await asyncio.sleep(1)
+        seconds += 1
+        if seconds==60:
+            minutes += 1
+            seconds = 0
+        if minutes==60:
+            hours += 1
+            minutes = 0
+        if hours==24:
+            days += 1
+            hours = 0
+        if days==7:
+            weeks += 1
+            days = 0
+            
 class startup():
   
   @bot.event
@@ -58,33 +86,7 @@ class startup():
     bot.load_extension("owner")
     bot.load_extension("cool")
     bot.load_extension("mod")
-  async def get_uptime():
-    await bot.wait_until_ready()
-    global seconds
-    seconds = 0
-    global minutes
-    minutes = 0
-    global hours
-    hours = 0
-    global days
-    days = 0
-    global weeks
-    weeks = 0
-    while not bot.is_closed:
-        await asyncio.sleep(1)
-        seconds += 1
-        if seconds==60:
-            minutes += 1
-            seconds = 0
-        if minutes==60:
-            hours += 1
-            minutes = 0
-        if hours==24:
-            days += 1
-            hours = 0
-        if days==7:
-            weeks += 1
-            days = 0
+  
   
   @bot.command()
   async def uptime():
