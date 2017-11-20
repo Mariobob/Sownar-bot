@@ -49,7 +49,7 @@ class Main():
       if ctx.message.author.id not in ownerids:
           await ctx.bot.say(embed=perm_error)
       else:
-        if x == 0:
+        if len(todo_list) == 0:
           await ctx.bot.say("Todo list is empty! Use s.todoadd [arg]")
         else:
           num=0
