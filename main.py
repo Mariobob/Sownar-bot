@@ -52,31 +52,22 @@ class Main():
       if ctx.message.author.id not in ownerids:
           await ctx.bot.say(embed=perm_error)
       else:
-          with open("todo_file.pk1", "r") as todo_file:
-              todo_list = json.load(todo_file)
-          for item in todo_list:
-              await ctx.bot.say(item)
+          for x in todo_list:
+            await ctx.bot.say(x)
 
     @commands.command(pass_context = True)
     async def tododel(ctx, *, item: str):
-      if item == "":
-        await ctx.bot.say("Please specify an argument")
+      if ctx.message.author.id not in ownerids:
+        
+        await ctx.bot.say(embed=perm_error)
       else:
-        if ctx.message.author.id not in ownerids:
-          
-          await ctx.bot.say(embed=perm_error)
+        if item == "":
+          await ctx.bot.say("Please specify an argument")
         else:
-         try:
-           with open('todo_file.pk1', 'r') as todo_list:
-             todo = json.load(todo_list)
-           for element in todo:
-             if item in element:
-               del element(item)
-      
-           with open('todo_file.pk1', 'w') as todo_list:
-              todo = json.dump(todo, todo_list)
-         except IndexError:
-          await ctx.bot.say("Please use a valid todo item")
+          if item in todo_list:
+            del element(item)
+          else:
+            await ctx.bot.say("Please use a valid todo item")
         
 def setup(bot):
     bot.add_cog(Main)

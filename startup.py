@@ -99,13 +99,26 @@ class startup():
       if ctx.message.author.id not in ownerids:
           await bot.say(embed=perm_error)
       else:
-        # TODO: write code...se:
-        if ext_name in startup_extensions:
-          bot.unload_extension(ext_name)
-          bot.load_extension(ext_name)
-          await bot.say("Extension **{}** reloaded".format(ext_name))
+        if ext_name == "all":
+          bot.unload_extension("mod")
+          bot.unload_extension("utils")
+          bot.unload_extension("main")
+          bot.unload_extension("owner")
+          bot.unload_extension("cool")
+          bot.unload_extension("fun")
+          bot.load_extension("utils")
+          bot.load_extension("fun")
+          bot.load_extension("main")
+          bot.load_extension("owner")
+          bot.load_extension("cool")
+          bot.load_extension("mod")
         else:
-          await bot.say("Not a valid extension, see s.extlist for options")
+          if ext_name in startup_extensions:
+            bot.unload_extension(ext_name)
+            bot.load_extension(ext_name)
+            await bot.say("Extension **{}** reloaded".format(ext_name))
+          else:
+            await bot.say("Not a valid extension, see s.extlist for options")
         
   @bot.command(pass_context = True)
   async def load(ctx, ext_name: str):
