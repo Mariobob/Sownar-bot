@@ -18,6 +18,7 @@ days=0
 weeks=0
 prefix='s.'
 ownerids=['221381001476046849', '221263215496134656']
+todo_list=[]
 
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
 
