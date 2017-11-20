@@ -59,34 +59,34 @@ class startup():
     bot.load_extension("cool")
     bot.load_extension("mod")
     
-#  @bot.event
-#  async def get_uptime():
-#    await bot.wait_until_ready()
-#    global seconds
-#    seconds = 0
-#    global minutes
-#    minutes = 0
-#    global hours
-#    hours = 0
-#    global days
-#    days = 0
-#    global weeks
-#    weeks = 0
-#    while not bot.is_closed:
-#        await asyncio.sleep(1)
-#        seconds += 1
-#        if seconds==60:
-#            minutes += 1
-#            seconds = 0
-#        if minutes==60:
-#            hours += 1
-#            minutes = 0
-#        if hours==24:
-#            days += 1
-#            hours = 0
-#        if days==7:
-#            weeks += 1
-#            days = 0
+  @bot.event
+  async def get_uptime():
+    await bot.wait_until_ready()
+    global seconds
+    seconds = 0
+    global minutes
+    minutes = 0
+    global hours
+    hours = 0
+    global days
+    days = 0
+    global weeks
+    weeks = 0
+    while not bot.is_closed:
+        await asyncio.sleep(1)
+        seconds += 1
+        if seconds==60:
+            minutes += 1
+            seconds = 0
+        if minutes==60:
+            hours += 1
+            minutes = 0
+        if hours==24:
+            days += 1
+            hours = 0
+        if days==7:
+            weeks += 1
+            days = 0
   
   @bot.command()
   async def uptime():
@@ -152,7 +152,7 @@ class startup():
               await bot.say(item)
 
 
-#bot.loop.create_task(get_uptime())
+bot.loop.create_task(get_uptime())
 with open("token_file.pk1", "r") as token_file:
   token = json.load(token_file)
   bot.run(token)
