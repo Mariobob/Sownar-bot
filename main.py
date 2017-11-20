@@ -50,7 +50,7 @@ class Main():
           await ctx.bot.say(embed=perm_error)
       else:
         if len(todo_list) == 0:
-          await ctx.bot.say("Todo list is empty! Use s.todoadd [arg]")
+          await ctx.bot.say("Todo list is empty! Use `s.todoadd [arg]`")
         else:
           num=0
           for x in todo_list:
