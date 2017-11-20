@@ -134,7 +134,7 @@ class startup():
       if ctx.message.author.id not in ownerids:
           await bot.say(embed=perm_error)
       else:
-          for item in todo_list:
+          for item in startup_extensions:
               await bot.say('`item`')
 
 
