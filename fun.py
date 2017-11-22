@@ -35,7 +35,7 @@ class Fun():
       await ctx.bot.say("It's a {}!".format(roll))
       
     @bot.command(pass_context = True)
-    async def rps(ctx, rps = str):
+    async def rps(ctx, *, rps = str):
       if rps == "":
         await ctx.bot.say("Please specify [rock, paper or scissors]")
       else:
@@ -61,6 +61,7 @@ class Fun():
             await ctx.bot.say("Paper! You win")
           elif rps_bot == "Scissors":
             await ctx.bot.say("Scissors! It's a tie")
+      await ctx.bot.say("Hmm, it seems like the command didn't function correctly. Please send my dev team a ticket `s. ticket [message]`")
           
 
 def setup(bot):
