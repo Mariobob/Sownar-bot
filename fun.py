@@ -61,7 +61,39 @@ class Fun():
             await ctx.bot.say("Paper! You win")
           elif rps_bot == "Scissors":
             await ctx.bot.say("Scissors! It's a tie")
-      await ctx.bot.say("Hmm, it seems like the command didn't function correctly. Please send my dev team a ticket `s. ticket [message]`")
+      await ctx.bot.say("Hmm, it seems like the command didn't function correctly. Please send my dev team a ticket `s.ticket [message]`")
+      
+    @bot.command(pass_context = True)
+    async def rpsgod(ctx):
+      umsg = ctx.message.content.lower()
+      args = umsg.split(' ')
+      args = umsg.replace(args[0], "")
+      args = args[1:]
+      var = int(random.random() * 3)
+      if args == "paper" or args == "rock" or args == "scissors":
+        if (var == 0):
+          if args == "paper":
+            await ctx.send(":moyai: You win!")
+          elif args == "rock":
+            await ctx.send(":moyai: It's a draw!")
+          elif args == "scissors":
+            await ctx.send(":moyai: You lose!")
+        elif (var == 1):
+          if args == "paper":
+            await ctx.send(":newspaper: It's a draw!")
+          elif args == "rock":
+            await ctx.send(":newspaper: You lose!")
+          elif args == "scissors":
+            await ctx.send(":newspaper: You win!")
+          elif (var == 2):
+            if args == "paper":
+              await ctx.send(":scissors: You lose!")
+            elif args == "rock":
+              await ctx.send(":scissors: You win!")
+            elif args == "scissors":
+              await ctx.send(":scissors: It's a draw!")
+      else:
+          await ctx.send(":x: You must specify either rock, paper, or scissors!")
           
 
 def setup(bot):
