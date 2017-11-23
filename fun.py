@@ -7,7 +7,6 @@ import datetime
 from discord.ext import commands
 import time
 import traceback
-from utils.tools import *
 from discord import Webhook, RequestsWebhookAdapter
 import requests
 
