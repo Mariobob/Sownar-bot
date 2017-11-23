@@ -73,25 +73,25 @@ class Fun():
       if args == "paper" or args == "rock" or args == "scissors":
         if (var == 0):
           if args == "paper":
-            await ctx.bot.say(":moyai: You win!")
+            await ctx.bot.say("Rock, You win!")
           elif args == "rock":
-            await ctx.bot.say(":moyai: It's a draw!")
+            await ctx.bot.say("Rock, It's a draw!")
           elif args == "scissors":
-            await ctx.bot.say(":moyai: You lose!")
+            await ctx.bot.say("Rock, You lose!")
         elif (var == 1):
           if args == "paper":
-            await ctx.bot.say(":newspaper: It's a draw!")
+            await ctx.bot.say("Paper, It's a draw!")
           elif args == "rock":
-            await ctx.bot.say(":newspaper: You lose!")
+            await ctx.bot.say("Paper, You lose!")
           elif args == "scissors":
-            await ctx.bot.say(":newspaper: You win!")
+            await ctx.bot.say("Paper, You win!")
           elif (var == 2):
             if args == "paper":
-              await ctx.bot.say(":scissors: You lose!")
+              await ctx.bot.say("Scissors, You lose!")
             elif args == "rock":
-              await ctx.bot.say(":scissors: You win!")
+              await ctx.bot.say("Scissors, You win!")
             elif args == "scissors":
-              await ctx.bot.say(":scissors: It's a draw!")
+              await ctx.bot.say("Scissors, It's a draw!")
       else:
           await ctx.bot.say(":x: You must specify either rock, paper, or scissors!")
           
