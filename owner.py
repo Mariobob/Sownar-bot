@@ -57,6 +57,13 @@ class Owner():
         
           del todo_list[item-1]
           await ctx.bot.say("Successfully deleted element, **{}** from the list".format(item))
+          
+    @bot.command(pass_context = True)
+    async def gameset(ctx, *, game):
+      if ctx.message.author.id not in ownerids:
+        await ctx.bot.say(embed=perm_error)
+      else:
+        await bot.change_status(game=discord.Game(name=game))
 
 def setup(bot):
     bot.add_cog(Owner)
