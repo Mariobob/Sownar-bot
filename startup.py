@@ -141,15 +141,17 @@ class startup():
           bot.unload_extension(ext_name)
           await bot.say("Extension **{}** unloaded".format(ext_name))
         else:
-          await bot.say("Not a valid extension, see s.extlist for options")
+          await bot.say("Not a valid extension, see s.cogs for options")
         
   @bot.command(pass_context = True)
-  async def extlist(ctx):
+  async def cogs(ctx):
       if ctx.message.author.id not in ownerids:
           await bot.say(embed=perm_error)
       else:
-          for item in startup_extensions:
-              await bot.say(item)
+        embed = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
+        for item in startup_extensions:
+          embed.add_field(name="", value=item, inline=True)
+        await ctx.bot.say(embed=embed)
 
 
 bot.loop.create_task(get_uptime())
