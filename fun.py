@@ -70,7 +70,8 @@ class Fun():
             elif args == "scissors":
               await ctx.bot.say("Scissors, It's a draw!")
       else:
-          await ctx.bot.say(":x: You must specify either rock, paper, or scissors!")
+          embed = discord.Embed(title=":x: Error", description="You must specify either rock, paper, or scissors!", color=0xff0000)
+          await ctx.bot.say(embed=embed)
           
     @bot.command(name="8ball", pass_context = True)
     async def _8ball(ctx):
