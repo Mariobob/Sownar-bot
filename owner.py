@@ -63,7 +63,7 @@ class Owner():
       if ctx.message.author.id not in ownerids:
         await ctx.bot.say(embed=perm_error)
       else:
-        await bot.change_presence(game=discord.Game(name=game))
+        await bot.change_presence(game=discord.Game(name='game'))
 
 def setup(bot):
     bot.add_cog(Owner)
