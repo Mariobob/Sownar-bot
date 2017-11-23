@@ -89,7 +89,7 @@ class Fun():
         elif (balls == 3):
           answer = random.choice(ballok)
           dcolor = 0xffae00
-        embed = discord.Embed(title=args, description=answer, color=dcolor)
+        embed = discord.Embed(title="{} ?".format(args), description=answer, color=dcolor)
         await ctx.bot.say(embed=embed)
           
       else:
