@@ -7,7 +7,6 @@ import datetime
 from discord.ext import commands
 import time
 import traceback
-import requests
 
 prefix='s.'
 bot=commands.Bot(command_prefix=prefix)
@@ -15,6 +14,9 @@ bot=commands.Bot(command_prefix=prefix)
 flips = ["Heads", "Tails"]
 rolls = ["1", "2", "3", "4", "5", "6"]
 rpss = ["Rock", "Paper", "Scissors"]
+ballgud = ["Signs point to yes", "You may rely on it", "It is certain", "Without a doubt"] 
+ballbad = ["Don't count on it", "Outlook not so good", "Very doubtful", "Don't count on it"]
+ballok = ["Reply hazy, try again later", "Concentrate and ask again"]
 
 class Fun():
     print('Fun loaded')
@@ -77,12 +79,22 @@ class Fun():
       args = umsg.replace(omsg[0], "")
       args = args[1:]
       if args != "":
-          r = requests.get('https://8ball.delegator.com/magic/JSON/'+args)
-          js = r.json()
-          answer = js['magic']['answer']
-          await ctx.send(":crystal_ball: {}.".format(answer))
+        balls = int(random.random() * 3)
+        if (balls == 1):
+          answer = random.choice(ballgud)
+          dcolor = 0x00ff00
+        elif (balls == 2):
+          answer = random.choice(ballbad)
+          dcolor = 0xff0000
+        elif (balls == 3):
+          answer = random.choice(ballok)
+          dcolor = 0xffae00
+        embed = discord.Embed(title=args, description=answer, color=dcolor)
+        await ctx.bot.say(embed=embed)
+          
       else:
-          await ctx.send(":x: Specify a question.")
+        embed = discord.Embed(title=":x: Error", description="You need to specify a question", color=0xff0000)
+        await ctx.bot.say(embed=embed)
           
 
 def setup(bot):
