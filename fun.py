@@ -72,8 +72,8 @@ class Fun():
       else:
           await ctx.bot.say(":x: You must specify either rock, paper, or scissors!")
           
-    @bot.command(pass_context = True)
-    async def 8ball(ctx):
+    @bot.command(name="8ball", pass_context = True)
+    async def _8ball(ctx):
       umsg = ctx.message.content
       omsg = umsg.split(' ')
       args = umsg.replace(omsg[0], "")

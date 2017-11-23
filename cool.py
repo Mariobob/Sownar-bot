@@ -19,6 +19,10 @@ class Cool():
     @bot.command(pass_context = True)
     async def rand(ctx):
         await ctx.bot.say("I am working!")
+        
+    @bot.command(pass_context = True)
+    async def say(ctx, *, echo: str):
+      await ctx.bot.say(echo)
 
 def setup(bot):
     bot.add_cog(Cool)
