@@ -27,44 +27,19 @@ class Fun():
     @bot.command(pass_context = True)
     async def flip(ctx):
       flip = random.choice(flips)
-      await ctx.bot.say("It's {}!".format(flip))
+      embed = discord.Embed(title="Flipped...", description="It's {}".format(flip), color=0x00ff00)
+      await ctx.bot.say(embed=embed)
+      
     
     @bot.command(pass_context = True)
     async def roll(ctx):
       roll = random.choice(rolls)
-      await ctx.bot.say("It's a {}!".format(roll))
+      embed = discord.Embed(title="Rolled...", description="It's a {}".format(roll), color=0x00ff00)
+      await ctx.bot.say(embed=embed)
+      
       
     @bot.command(pass_context = True)
-    async def rps(ctx, *, rps = str):
-      if rps == "":
-        await ctx.bot.say("Please specify [rock, paper or scissors]")
-      else:
-        rps_bot = random.choice(rpss)
-        if rps == "rock":
-          if rps_bot == "Paper":
-            await ctx.bot.say("Paper! I win")
-          elif rps_bot == "Scissors":
-            await ctx.bot.say("Scissors! You win")
-          elif rps_bot == "Rock":
-            await ctx.bot.say("Rock! It's a tie")
-        elif rps == "paper":
-          if rps_bot == "Rock":
-            await ctx.bot.say("Rock! You win")
-          elif rps_bot == "Scissors":
-            await ctx.bot.say("Scissors! I win")
-          elif rps_bot == "Paper":
-            await ctx.bot.say("Paper! It's a tie")
-        elif rps == "scissors":
-          if rps_bot == "Rock":
-            await ctx.bot.say("Rock! I win")
-          elif rps_bot == "Paper":
-            await ctx.bot.say("Paper! You win")
-          elif rps_bot == "Scissors":
-            await ctx.bot.say("Scissors! It's a tie")
-      await ctx.bot.say("Hmm, it seems like the command didn't function correctly. Please send my dev team a ticket `s.ticket [message]`")
-      
-    @bot.command(pass_context = True)
-    async def rpsgod(ctx):
+    async def rps(ctx):
       umsg = ctx.message.content.lower()
       args = umsg.split(' ')
       args = umsg.replace(args[0], "")
