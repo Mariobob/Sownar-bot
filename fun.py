@@ -7,7 +7,9 @@ import datetime
 from discord.ext import commands
 import time
 import traceback
-
+from utils.tools import *
+from discord import Webhook, RequestsWebhookAdapter
+import requests
 
 prefix='s.'
 bot=commands.Bot(command_prefix=prefix)
@@ -69,6 +71,20 @@ class Fun():
               await ctx.bot.say("Scissors, It's a draw!")
       else:
           await ctx.bot.say(":x: You must specify either rock, paper, or scissors!")
+          
+    @bot.command(pass_context = True)
+    async def 8ball(ctx):
+      umsg = ctx.message.content
+      omsg = umsg.split(' ')
+      args = umsg.replace(omsg[0], "")
+      args = args[1:]
+      if args != "":
+          r = requests.get('https://8ball.delegator.com/magic/JSON/'+args)
+          js = r.json()
+          answer = js['magic']['answer']
+          await ctx.send(":crystal_ball: {}.".format(answer))
+      else:
+          await ctx.send(":x: Specify a question.")
           
 
 def setup(bot):
