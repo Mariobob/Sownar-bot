@@ -59,7 +59,7 @@ class Owner():
           await ctx.bot.say("Successfully deleted element, **{}** from the list".format(item))
           
     @bot.command(pass_context = True)
-    async def gameset(ctx, *, game):
+    async def gameset(ctx, *, game = str):
       if ctx.message.author.id not in ownerids:
         await ctx.bot.say(embed=perm_error)
       else:
