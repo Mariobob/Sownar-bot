@@ -116,7 +116,7 @@ class startup():
             bot.load_extension(ext_name)
             await bot.say("Extension **{}** reloaded".format(ext_name))
           else:
-            await bot.say("Not a valid extension, see s.extlist for options")
+            await bot.say("Not a valid extension, see `s.cogslist` for options")
         
   @bot.command(pass_context = True)
   async def load(ctx, ext_name: str):
@@ -127,7 +127,7 @@ class startup():
           bot.load_extension(ext_name)
           await bot.say("Extension **{}** loaded".format(ext_name))
         else:
-          await bot.say("Not a valid extension, see s.extlist for options")
+          await bot.say("Not a valid extension, see `s.cogslist` for options")
     
   @bot.command(pass_context = True)
   async def unload(ctx, ext_name: str):
@@ -138,16 +138,16 @@ class startup():
           bot.unload_extension(ext_name)
           await bot.say("Extension **{}** unloaded".format(ext_name))
         else:
-          await bot.say("Not a valid extension, see s.cogs for options")
+          await bot.say("Not a valid extension, see `s.cogslist` for options")
         
-  @bot.command(name = "cogs", pass_context = True)
-  async def _cogs(ctx):
+  @bot.command(pass_context = True)
+  async def cogslist(ctx):
       if ctx.message.author.id not in ownerids:
           await bot.say(embed=perm_error)
       else:
         embed = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
         for item in startup_extensions:
-          embed.add_field(name=item, value="", inline=True)
+          embed.add_field(name=item, inline=True)
         await ctx.bot.say(embed=embed)
 
 
