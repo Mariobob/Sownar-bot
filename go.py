@@ -146,12 +146,11 @@ class startup():
           await bot.say(embed=perm_error)
       else:
         embed = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
-        item = 0
-        items = len(startup_extensions)
-        while (items != item):
-          arg = startup_extensions[item]
-          embed.add_field(name=arg, value="", inline=True)
-          item += 1
+        
+        for arg in startup_extensions:
+          
+          embed.add_field(name="{0}".format(arg), value="", inline=True)
+          
         await ctx.bot.say(embed=embed)
 
 
