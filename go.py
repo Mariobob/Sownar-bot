@@ -149,7 +149,8 @@ class startup():
         item = 0
         items = len(startup_extensions)
         while (items != item):
-          embed.add_field(name=item, value="", inline=True)
+          arg = startup_extensions[item]
+          embed.add_field(name=arg, value="", inline=True)
           item += 1
         await ctx.bot.say(embed=embed)
 
