@@ -147,7 +147,7 @@ class startup():
       else:
         embed = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
         for item in startup_extensions:
-          embed.add_field(name=item, inline=True)
+          embed.add_field(name=item, value="", inline=True)
         await ctx.bot.say(embed=embed)
 
 
