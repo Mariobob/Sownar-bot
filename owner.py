@@ -65,17 +65,7 @@ class Owner():
       else:
         await ctx.bot.change_presence(game=discord.Game(name='game'))
         
-    @bot.command(pass_context = True)
-    async def broadcast(ctx, *, arg = str):
-      if ctx.message.author.id not in ownerids:
-        await ctx.bot.say(embed=perm_error)
-      else:
-        serverCount = 0
-        for server in ctx.bot.servers:
-          serverCount += 1
-        discord.Embed(title=":warning: New Message!",description=arg,color=0xff0000)
-        for loop in range serverCount:
-          await ctx.bot.send_message(server.default_channel, embed=embed)
+
           
         
 
