@@ -148,10 +148,10 @@ class startup():
         embed = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
         
         for arg in startup_extensions:
-          
+          embed = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
           embed.add_field(name="{0}".format(arg), value="", inline=True)
-          
-        await ctx.bot.say(embed=embed)
+          await ctx.bot.say(embed=embed)
+        
 
 
 bot.loop.create_task(get_uptime())
