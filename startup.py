@@ -140,8 +140,8 @@ class startup():
         else:
           await bot.say("Not a valid extension, see s.cogs for options")
         
-  @bot.command(pass_context = True)
-  async def cogs(ctx):
+  @bot.command(name = "cogs", pass_context = True)
+  async def _cogs(ctx):
       if ctx.message.author.id not in ownerids:
           await bot.say(embed=perm_error)
       else:
