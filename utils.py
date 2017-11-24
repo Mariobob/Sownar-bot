@@ -20,6 +20,7 @@ bot.remove_command('help')
 class Utils():
     print('Utils Loaded')
     print('------')
+    self.bot=bot
     
 
     @commands.command(pass_context = True)
@@ -32,42 +33,42 @@ class Utils():
         embed.add_field(name="Member Count", value="{0} members".format(server.member_count), inline=True)
         embed.add_field(name="Server Region", value=server.region, inline=True)
         embed.add_field(name="Server created at", value="{0}, about {1} day ago".format(server.created_at, ago), inline=True)
-        await ctx.bot.say(embed=embed)
+        await self.bot.say(embed=embed)
 
     @commands.command(pass_context = True)
     async def test(ctx):
-        await ctx.bot.say("I am working!")
+        await self.bot.say("I am working!")
 
     @commands.command(pass_context = True)
     async def ticket(ctx, *, ticket: str):
         embed = discord.Embed(title="__New Ticket!__", description="I have recieved a new ticket !", color=0x00ff00)
         embed.add_field(name="Sent by", value=ctx.message.author, inline=True)
         embed.add_field(name="Ticket", value=ticket, inline=True)
-        await ctx.bot.delete_message(ctx.message)
-        await ctx.bot.send_message(tickets, embed=embed)
-        await ctx.bot.say("Your ticket has been sent to my dev team!")
+        await self.bot.delete_message(ctx.message)
+        await self.bot.send_message(tickets, embed=embed)
+        await self.bot.say("Your ticket has been sent to my dev team!")
 
     @commands.command(pass_context = True)
     async def ping(ctx):
         channel = ctx.message.channel
         t1 = time.perf_counter()
-        await ctx.bot.send_typing(channel)
+        await self.bot.send_typing(channel)
         t2 = time.perf_counter()
-        await ctx.bot.say("Pong! `{}ms`".format(round((t2-t1)*1000)))
+        await self.bot.say("Pong! `{}ms`".format(round((t2-t1)*1000)))
 
     @commands.command(pass_context = True)
     async def about(ctx):
-        await ctx.bot.say("This command is undergoing a rewrite, please try again later!")
+        await self.bot.say("This command is undergoing a rewrite, please try again later!")
 
     @commands.command(pass_context = True)
     async def invite(ctx):
         embed = discord.Embed(title=":link: __Bot Links__", description='[{}]({})''\n[{}]({})'.format("Bot invite", bot_invite, "Support Server", support), color=0x00ff00)
-        await ctx.bot.send_message(ctx.message.author, embed=embed)
-        await ctx.bot.send_message(ctx.message.channel, "Check your DM's :envelope_with_arrow:")
+        await self.bot.send_message(ctx.message.author, embed=embed)
+        await self.bot.send_message(ctx.message.channel, "Check your DM's :envelope_with_arrow:")
 
     @commands.command(pass_context = True)
     async def help(ctx):
-      await ctx.bot.send_message(ctx.message.channel, "Some commands may not be available at the time, sorry for the inconvinience")
+      await self.bot.send_message(ctx.message.channel, "Some commands may not be available at the time, sorry for the inconvinience")
       embed = discord.Embed(title="__Bot commands!__", description="", color=0x00ff00)
       embed.add_field(name=":warning: **Remember**", value="More commands will be added in the future", inline=False)
       embed.add_field(name="**For info on a certain command**", value="s.help <command>", inline=False)
@@ -93,12 +94,12 @@ class Utils():
       mod = discord.Embed(title="__Moderator commands!__", description="", color=0x00ff00)
       mod.add_field(name="s.ban", value="Bans a certain user", inline=False)
       mod.add_field(name="s.kick", value="Kicks a certain user", inline=False)
-      await ctx.bot.say("Check your DM's :envelope_with_arrow:")
-      await ctx.bot.send_message(ctx.message.author, embed=embed)
-      await ctx.bot.send_message(ctx.message.author, embed=util)
-      await ctx.bot.send_message(ctx.message.author, embed=fun)
-      await ctx.bot.send_message(ctx.message.author, embed=cool)
-      await ctx.bot.send_message(ctx.message.author, embed=mod)
+      await self.bot.say("Check your DM's :envelope_with_arrow:")
+      await self.bot.send_message(ctx.message.author, embed=embed)
+      await self.bot.send_message(ctx.message.author, embed=util)
+      await self.bot.send_message(ctx.message.author, embed=fun)
+      await self.bot.send_message(ctx.message.author, embed=cool)
+      await self.bot.send_message(ctx.message.author, embed=mod)
       
       
 
@@ -107,22 +108,22 @@ class Utils():
         embed = discord.Embed(title="__New suggestion!__", description="I have recieved a new suggestion !", color=0x00ff00)
         embed.add_field(name="Sent by", value=ctx.message.author, inline=True)
         embed.add_field(name="Suggestion", value=suggests, inline=True)
-        await ctx.bot.delete_message(ctx.message)
-        await ctx.bot.send_message(suggest, embed=embed)
-        await ctx.bot.say("Your suggestion has been sent to my dev team!")
+        await self.bot.delete_message(ctx.message)
+        await self.bot.send_message(suggest, embed=embed)
+        await self.bot.say("Your suggestion has been sent to my dev team!")
 
     @commands.command(pass_context = True)
     async def servers(ctx):
       
       serverCount = 0
       members = 0
-      for server in ctx.bot.servers:
+      for server in self.bot.servers:
         serverCount += 1
         for member in server.members:
             members += 1
         
       embed = discord.Embed(title="Serving", description='{0} servers for {1} users'.format(serverCount, members), color=0x00ff00)
-      await ctx.bot.say(embed=embed)
+      await self.bot.say(embed=embed)
         
     @commands.command(pass_context = True)
     async def stats(ctx):
@@ -134,7 +135,7 @@ class Utils():
         serverCount=0
         members = 0
         channels = []
-        for server in ctx.bot.servers:
+        for server in self.bot.servers:
             members += len(server.members)
             channels += [len(server.channels)]
             serverCount += 1
@@ -147,7 +148,7 @@ class Utils():
         embed.add_field(name="Total Servers", value=serverCount)
         embed.add_field(name="Users", value='Total users: {0}''\nTotal human users: {1}''\nTotal bot users: {2}''\nOnline users: {3}'.format(members, humanusers, botusers, onlineusers))
         embed.add_field(name="Total Channels", value="Total channels: {}".format(totalchannels))
-        await ctx.bot.say(embed=embed)
+        await self.bot.say(embed=embed)
         
 def setup(bot):
     bot.add_cog(Utils)
