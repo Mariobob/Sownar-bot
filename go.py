@@ -147,7 +147,8 @@ class startup():
       else:
         embed = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
         item = 0
-        for loop in range (len(startup_extensions)):
+        items = len(startup_extensions)
+        for loop in range items:
           embed.add_field(name=item, value="", inline=True)
           item += 1
         await ctx.bot.say(embed=embed)
