@@ -20,11 +20,12 @@ bot.remove_command('help')
 class Utils():
     print('Utils Loaded')
     print('------')
-    self.bot=bot
+    def __init__(bot, self):
+      self.bot=bot
     
 
     @commands.command(pass_context = True)
-    async def serverinfo(ctx):
+    async def serverinfo(ctx, self):
         server = ctx.message.author.server
         ago = (ctx.message.timestamp - server.created_at).days
         embed = discord.Embed(title="__Server Info!__", description="Information on the server", color=0x00ff00)
@@ -36,11 +37,11 @@ class Utils():
         await self.bot.say(embed=embed)
 
     @commands.command(pass_context = True)
-    async def test(ctx):
+    async def test(ctx, self):
         await self.bot.say("I am working!")
 
     @commands.command(pass_context = True)
-    async def ticket(ctx, *, ticket: str):
+    async def ticket(ctx, self, *, ticket: str):
         embed = discord.Embed(title="__New Ticket!__", description="I have recieved a new ticket !", color=0x00ff00)
         embed.add_field(name="Sent by", value=ctx.message.author, inline=True)
         embed.add_field(name="Ticket", value=ticket, inline=True)
@@ -49,7 +50,7 @@ class Utils():
         await self.bot.say("Your ticket has been sent to my dev team!")
 
     @commands.command(pass_context = True)
-    async def ping(ctx):
+    async def ping(ctx, self):
         channel = ctx.message.channel
         t1 = time.perf_counter()
         await self.bot.send_typing(channel)
@@ -57,17 +58,17 @@ class Utils():
         await self.bot.say("Pong! `{}ms`".format(round((t2-t1)*1000)))
 
     @commands.command(pass_context = True)
-    async def about(ctx):
+    async def about(ctx, self):
         await self.bot.say("This command is undergoing a rewrite, please try again later!")
 
     @commands.command(pass_context = True)
-    async def invite(ctx):
+    async def invite(ctx, self):
         embed = discord.Embed(title=":link: __Bot Links__", description='[{}]({})''\n[{}]({})'.format("Bot invite", bot_invite, "Support Server", support), color=0x00ff00)
         await self.bot.send_message(ctx.message.author, embed=embed)
         await self.bot.send_message(ctx.message.channel, "Check your DM's :envelope_with_arrow:")
 
     @commands.command(pass_context = True)
-    async def help(ctx):
+    async def help(ctx, self):
       await self.bot.send_message(ctx.message.channel, "Some commands may not be available at the time, sorry for the inconvinience")
       embed = discord.Embed(title="__Bot commands!__", description="", color=0x00ff00)
       embed.add_field(name=":warning: **Remember**", value="More commands will be added in the future", inline=False)
@@ -104,7 +105,7 @@ class Utils():
       
 
     @commands.command(pass_context = True)
-    async def suggest(ctx, *, suggests: str):
+    async def suggest(ctx, self, *, suggests: str):
         embed = discord.Embed(title="__New suggestion!__", description="I have recieved a new suggestion !", color=0x00ff00)
         embed.add_field(name="Sent by", value=ctx.message.author, inline=True)
         embed.add_field(name="Suggestion", value=suggests, inline=True)
@@ -113,7 +114,7 @@ class Utils():
         await self.bot.say("Your suggestion has been sent to my dev team!")
 
     @commands.command(pass_context = True)
-    async def servers(ctx):
+    async def servers(ctx, self):
       
       serverCount = 0
       members = 0
@@ -126,7 +127,7 @@ class Utils():
       await self.bot.say(embed=embed)
         
     @commands.command(pass_context = True)
-    async def stats(ctx):
+    async def stats(ctx, self):
         totalusers = 0
         totalchannels = 0
         onlineusers = "N/A"
