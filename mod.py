@@ -59,10 +59,10 @@ class Mod():
     async def clear(ctx, number):
       mgs = [] 
       number = int(number) 
-      for x in Client.logs_from(ctx.message.channel, limit = number):
+      for x in ctx.bot.logs_from(ctx.message.channel, limit = number):
         mgs.append(x)
-    await ctx.bot.delete_messages(mgs)
-    await ctx.bot.say(":white_check_mark: Succesfully deleted {} messages!".format(len(msgs)))
+      await ctx.bot.delete_messages(mgs)
+      await ctx.bot.say(":white_check_mark: Succesfully deleted {} messages!".format(len(mgs)))
 
 def setup(bot):
     bot.add_cog(Mod)
