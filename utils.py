@@ -150,5 +150,13 @@ class Utils():
         embed.add_field(name="Total Channels", value="Total channels: {}".format(totalchannels))
         await ctx.bot.say(embed=embed)
         
+      @commands.command(pass_context = True)
+      async def getid(ctx, *, member: discord.Member = None):
+        if member is None:
+          embed = discord.Embed(title="Your id is:", description=ctx.message.author.id, color=0x000000)
+        else:
+          embed = discord.Embed(title="Your id is:", description=member.id, color=0x000000)
+        await ctx.bot.say(embed=embed)
+        
 def setup(bot):
     bot.add_cog(Utils)
