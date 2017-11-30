@@ -155,7 +155,7 @@ class Utils():
       if member is None:
         embed = discord.Embed(title="Your id is:", description=ctx.message.author.id, color=0x000000)
       else:
-        embed = discord.Embed(title="Your id is:", description=member.id, color=0x000000)
+        embed = discord.Embed(title="{}'s id is:".format(member), description=member.id, color=0x000000)
       await ctx.bot.say(embed=embed)
         
 def setup(bot):
