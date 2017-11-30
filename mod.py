@@ -24,7 +24,7 @@ class Mod():
     @bot.command(pass_context = True)
     async def ban(ctx, *, member: discord.Member = None):
         if member is None:
-            await ctx.bot.say(ctx.message.author + ": Who do I ban ?")
+            await ctx.bot.say("Who do I ban ?")
     
         elif ctx.message.server.me.server_permissions.ban_members == True:
                 if ctx.message.author.server_permissions.ban_members == True:
@@ -41,7 +41,7 @@ class Mod():
     @bot.command(pass_context = True)
     async def kick(ctx, *, member: discord.Member = None):
         if member is None:
-            await ctx.bot.say(ctx.message.author + ": Who do I kick ?")
+            await ctx.bot.say("Who do I kick ?")
     
         if ctx.message.server.me.server_permissions.kick_members == True:
                 if ctx.message.author.server_permissions.kick_members == True:
