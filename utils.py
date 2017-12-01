@@ -147,7 +147,7 @@ class Utils():
                   botusers += 1
                 else:
                   humanusers += 1
-                if discord.Status == online:
+                if discord.Status.online == True:
                   onlineusers += 1
             for channel in server.channels:
                 totalchannels += 1
