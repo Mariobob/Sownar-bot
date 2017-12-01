@@ -146,11 +146,11 @@ class startup():
           await bot.say(embed=perm_error)
       else:
         embed = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
-        embed.add_field(name="{0}".format(startup_extensions[0]), value="", inline=True)
-        embed.add_field(name="{0}".format(startup_extensions[1]), value="", inline=True)
-        embed.add_field(name="{0}".format(startup_extensions[2]), value="", inline=True)
-        embed.add_field(name="{0}".format(startup_extensions[3]), value="", inline=True)
-        embed.add_field(name="{0}".format(startup_extensions[4]), value="", inline=True)
+        embed.add_field(name="utils", value="", inline=True)
+        embed.add_field(name="owner", value="", inline=True)
+        embed.add_field(name="mod", value="", inline=True)
+        embed.add_field(name="cool", value="", inline=True)
+        embed.add_field(name="fun", value="", inline=True)
         await ctx.bot.say(embed=embed)
 
 
