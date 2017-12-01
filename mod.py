@@ -56,7 +56,7 @@ class Mod():
             await ctx.bot.say(embed=perm_errorbis)
     
     @bot.command(pass_context = True)
-    async def clear(ctx, number):
+    async def clear(ctx, number: int):
       try:
         val = int(number)
       except ValueError:
