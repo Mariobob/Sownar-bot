@@ -88,7 +88,7 @@ class Mod():
         await ctx.bot.say(embed=embed)
       else:
         await ctx.bot.prune_members(ctx.message.server, days=num)
-        await ctx.bot.say("Pruned about {} users".format(bot.estimate_pruned_members(ctx.message.server, days=num)))
+        await ctx.bot.say("Pruned about {} users".format(int(bot.estimate_pruned_members(ctx.message.server, days=num))))
 
 def setup(bot):
     bot.add_cog(Mod)
