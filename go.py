@@ -146,12 +146,13 @@ class startup():
           await bot.say(embed=perm_error)
       else:
         embed = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
-        embed.add_field(name="utils", value="", inline=True)
-        embed.add_field(name="owner", value="", inline=True)
-        embed.add_field(name="mod", value="", inline=True)
-        embed.add_field(name="cool", value="", inline=True)
-        embed.add_field(name="fun", value="", inline=True)
-        await ctx.bot.say(embed=embed)
+        num = len(startup_extensions)
+        count = 0
+  
+        while num > count:
+          embed.add_field(name="{0}".format(startup_extensions[count]), value="", inline=True)
+          count += 1
+        await bot.say(embed=embed)
 
 
 bot.loop.create_task(get_uptime())
