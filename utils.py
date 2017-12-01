@@ -128,7 +128,7 @@ class Utils():
       await ctx.bot.say(embed=embed)
         
     @commands.command(pass_context = True)
-    async def stats(ctx, member: discord.Member):
+    async def stats(ctx):
         totalusers = 0
         totalchannels = 0
         onlineusers = 0
@@ -141,7 +141,7 @@ class Utils():
             members += len(server.members)
             channels += [len(server.channels)]
             serverCount += 1
-            for member in ctx.bot.servers:
+            for member in members:
                 totalusers += 1
                 if discord.User.bot == True:
                   botusers += 1
