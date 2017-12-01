@@ -128,7 +128,7 @@ class Utils():
       await ctx.bot.say(embed=embed)
         
     @commands.command(pass_context = True)
-    async def stats(ctx):
+    async def stats(ctx, member: discord.Member):
         totalusers = 0
         totalchannels = 0
         onlineusers = 0
