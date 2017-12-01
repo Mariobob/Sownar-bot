@@ -58,8 +58,10 @@ class Mod():
     @bot.command(pass_context = True)
     async def clear(ctx, number):
       number = int(number) 
+      if number == None:
+        await ctx.bot.say("Please specify a number of messages to delete!")
       await ctx.bot.purge_from(ctx.message.channel, limit=number)
-      await ctx.bot.say(":white_check_mark: Succesfully deleted {} messages!".format(len(mgs)))
+      
 
 def setup(bot):
     bot.add_cog(Mod)
