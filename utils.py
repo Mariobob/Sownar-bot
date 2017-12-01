@@ -141,7 +141,7 @@ class Utils():
             members += len(server.members)
             channels += [len(server.channels)]
             serverCount += 1
-            for member in ctx.bot.servers:
+            for server.members in ctx.bot.servers:
                 totalusers += 1
                 if discord.User.bot == True:
                   botusers += 1
