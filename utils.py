@@ -135,7 +135,6 @@ class Utils():
         serverCount = 0
         members = 0
         channels = []
-        user = disord.Member
         for server in ctx.bot.servers:
             members += len(server.members)
             channels += [len(server.channels)]
