@@ -72,7 +72,19 @@ class Mod():
         await ctx.bot.say(embed=embed)
       else:
         await ctx.bot.purge_from(ctx.message.channel, limit=val)
-      
+    
+    @bot.command(pass_context = True)
+    asyne def prune(ctx, *, num = None):
+      if num is None:
+        embed = discord.Embed(title=":warning: Error!",description="Please specify a number of days of inactivity!",color=0xff0000)
+        await ctx.bot.say(embed=embed)
+      try:
+        num = int(num)
+      except ValueError:
+        embed = discord.Embed(title=":warning: Error!",description="You must use a number",color=0xff0000)
+        await ctx.bot.say(embed=embed)
+      await ctx.bot.prune_members(ctx.message.server, day=num)
+      await ctx.bot.say("Pruned about {} users".format(bot.estimate_pruned_members(ctx.message.server, day=num)))
 
 def setup(bot):
     bot.add_cog(Mod)
