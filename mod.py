@@ -83,8 +83,8 @@ class Mod():
       except ValueError:
         embed = discord.Embed(title=":warning: Error!",description="You must use a number",color=0xff0000)
         await ctx.bot.say(embed=embed)
-      await ctx.bot.prune_members(ctx.message.server, day=num)
-      await ctx.bot.say("Pruned about {} users".format(bot.estimate_pruned_members(ctx.message.server, day=num)))
+      await ctx.bot.prune_members(ctx.message.server, days=num)
+      await ctx.bot.say("Pruned about {} users".format(bot.estimate_pruned_members(ctx.message.server, days=num)))
 
 def setup(bot):
     bot.add_cog(Mod)
