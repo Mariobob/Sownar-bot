@@ -24,7 +24,8 @@ class Mod():
     @bot.command(pass_context = True)
     async def ban(ctx, *, member: discord.Member = None):
         if member is None:
-            await ctx.bot.say("Who do I ban ?")
+          embed = discord.Embed(title=":warning: Error!",description="Who do I ban?",color=0xff0000)
+          await ctx.bot.say(embed=embed)
     
         elif ctx.message.server.me.server_permissions.ban_members == True:
                 if ctx.message.author.server_permissions.ban_members == True:
@@ -41,7 +42,8 @@ class Mod():
     @bot.command(pass_context = True)
     async def kick(ctx, *, member: discord.Member = None):
         if member is None:
-            await ctx.bot.say("Who do I kick ?")
+          embed = discord.Embed(title=":warning: Error!",description="Who do I kick?",color=0xff0000)
+          await ctx.bot.say(embed=embed)
     
         if ctx.message.server.me.server_permissions.kick_members == True:
                 if ctx.message.author.server_permissions.kick_members == True:
@@ -56,12 +58,18 @@ class Mod():
             await ctx.bot.say(embed=perm_errorbis)
     
     @bot.command(pass_context = True)
-    async def clear(ctx, number: int):
+    async def clear(ctx, number = None):
+      if number is None:
+        embed = discord.Embed(title=":warning: Error!",description="Please specify a number!",color=0xff0000)
+        await ctx.bot.say(embed=embed)
       try:
         val = int(number)
       except ValueError:
-        await ctx.bot.say("Please use a valid number `1-100`")
-#      await ctx.bot.say("Please specify a number of messages to delete!")
+        embed = discord.Embed(title=":warning: Error!",description="You must use a number from `1-100`",color=0xff0000)
+        await ctx.bot.say(embed=embed)
+      if number > 100:
+        embed = discord.Embed(title=":warning: Error!",description="Number must be under 100",color=0xff0000)
+        await ctx.bot.say(embed=embed)
       await ctx.bot.purge_from(ctx.message.channel, limit=number)
       
 
