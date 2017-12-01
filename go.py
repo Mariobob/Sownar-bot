@@ -148,7 +148,7 @@ class startup():
         embed = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
         num = len(startup_extensions)
         count = 0
-        while num >= count:
+        while num > count:
           embed.add_field(name="{0}".format(startup_extensions[count]), value="", inline=True)
           count += 1
         await ctx.bot.say(embed=embed)
