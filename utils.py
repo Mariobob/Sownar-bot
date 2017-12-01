@@ -131,7 +131,7 @@ class Utils():
     async def stats(ctx):
         totalusers = 0
         totalchannels = 0
-        onlineusers = "N/A"
+        onlineusers = 0
         humanusers = 0
         botusers = 0
         serverCount = 0
@@ -143,10 +143,12 @@ class Utils():
             serverCount += 1
             for member in server.members:
                 totalusers += 1
-                if discord.Member.bot == True:
+                if discord.User.bot == True:
                   botusers += 1
                 else:
                   humanusers += 1
+                if discord.Status == online:
+                  onlineusers += 1
             for channel in server.channels:
                 totalchannels += 1
         embed = discord.Embed(title="Here are my stats!", color = 0x000000)
