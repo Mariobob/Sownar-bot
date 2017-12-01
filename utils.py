@@ -142,7 +142,7 @@ class Utils():
             serverCount += 1
             for member in server.members:
                 totalusers += 1
-                if discord.User.bot = True:
+                if discord.User.bot == True:
                   botusers += 1
                 else:
                   humanusers += 1
