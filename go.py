@@ -149,7 +149,7 @@ class startup():
         num = len(startup_extensions)
         count = 0
         while num >= count:
-          embed.add_field(name="{0}".format(arg), value="", inline=True)
+          embed.add_field(name="{0}".format(startup_extensions[count]), value="", inline=True)
           count += 1
         await ctx.bot.say(embed=embed)
 
