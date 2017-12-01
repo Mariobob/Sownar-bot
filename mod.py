@@ -67,7 +67,7 @@ class Mod():
       except ValueError:
         embed = discord.Embed(title=":warning: Error!",description="You must use a number from `1-100`",color=0xff0000)
         await ctx.bot.say(embed=embed)
-      if number > 100:
+      if val > 100:
         embed = discord.Embed(title=":warning: Error!",description="Number must be under 100",color=0xff0000)
         await ctx.bot.say(embed=embed)
       await ctx.bot.purge_from(ctx.message.channel, limit=val)
