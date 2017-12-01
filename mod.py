@@ -57,9 +57,11 @@ class Mod():
     
     @bot.command(pass_context = True)
     async def clear(ctx, number):
-      number = int(number) 
-      if number == None:
-        await ctx.bot.say("Please specify a number of messages to delete!")
+      try:
+        val = int(number)
+      except ValueError:
+        await ctx.bot.say("Please use a valid number `1-100`")
+      await ctx.bot.say("Please specify a number of messages to delete!")
       await ctx.bot.purge_from(ctx.message.channel, limit=number)
       
 

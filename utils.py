@@ -130,8 +130,8 @@ class Utils():
         totalusers = 0
         totalchannels = 0
         onlineusers = "N/A"
-        humanusers = "N/A"
-        botusers = "N/A"
+        humanusers = 0
+        botusers = 0
         serverCount=0
         members = 0
         channels = []
@@ -141,6 +141,10 @@ class Utils():
             serverCount += 1
             for member in server.members:
                 totalusers += 1
+                if member == discord.User.bot:
+                  botusers += 1
+                else:
+                  humanusers += 1
             for channel in server.channels:
                 totalchannels += 1
         embed = discord.Embed(title="Here are my stats!", color = 0x000000)
@@ -157,6 +161,7 @@ class Utils():
       else:
         embed = discord.Embed(title="{}'s id is:".format(member), description=member.id, color=0x000000)
       await ctx.bot.say(embed=embed)
+      
         
 def setup(bot):
     bot.add_cog(Utils)
