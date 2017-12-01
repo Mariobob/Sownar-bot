@@ -132,7 +132,7 @@ class Utils():
         onlineusers = "N/A"
         humanusers = 0
         botusers = 0
-        serverCount=0
+        serverCount = 0
         members = 0
         channels = []
         for server in ctx.bot.servers:
@@ -141,7 +141,7 @@ class Utils():
             serverCount += 1
             for member in server.members:
                 totalusers += 1
-                if member == discord.User.bot:
+                if member == ctx.bot.discord.User.bot:
                   botusers += 1
                 else:
                   humanusers += 1

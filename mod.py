@@ -61,7 +61,7 @@ class Mod():
         val = int(number)
       except ValueError:
         await ctx.bot.say("Please use a valid number `1-100`")
-      await ctx.bot.say("Please specify a number of messages to delete!")
+#      await ctx.bot.say("Please specify a number of messages to delete!")
       await ctx.bot.purge_from(ctx.message.channel, limit=number)
       
 
