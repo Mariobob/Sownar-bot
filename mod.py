@@ -87,8 +87,12 @@ class Mod():
         embed = discord.Embed(title=":warning: Error!",description="You must use a number under 30",color=0xff0000)
         await ctx.bot.say(embed=embed)
       else:
+        server = ctx.message.author.server
+        usertotal = server.member_count
         await ctx.bot.prune_members(ctx.message.server, days=num)
-        await ctx.bot.say("Pruned about {} users".format(int(bot.estimate_pruned_members(ctx.message.server, days=num))))
+        newusertotal = server.member_count
+        pruned = (usertotal - newusertotal)
+        await ctx.bot.say("Kicked {} inactive users".format(pruned))
 
 def setup(bot):
     bot.add_cog(Mod)

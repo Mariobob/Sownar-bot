@@ -32,7 +32,7 @@ class Utils():
         embed.add_field(name="Server Owner", value=server.owner, inline=True)
         embed.add_field(name="Member Count", value="{0} members".format(server.member_count), inline=True)
         embed.add_field(name="Server Region", value=server.region, inline=True)
-        embed.add_field(name="Server created at", value="{0}, about {1} day ago".format(server.created_at, ago), inline=True)
+        embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(server.created_at, ago), inline=True)
         await ctx.bot.say(embed=embed)
 
     @commands.command(pass_context = True)
