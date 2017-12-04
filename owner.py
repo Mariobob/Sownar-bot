@@ -69,7 +69,7 @@ class Owner():
           embed = discord.Embed(title=":warning: Error!",description="Please specify a game status!",color=0xff0000)
           await ctx.bot.say(embed=embed)
         else:
-          await ctx.bot.change_presence(game=discord.Game(game))
+          await ctx.bot.change_presence(game=discord.Game(name=game))
       
         
 
