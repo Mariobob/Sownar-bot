@@ -21,7 +21,7 @@ ownerids=['221381001476046849', '221263215496134656']
 bot=commands.Bot(command_prefix=prefix)
 bot.remove_command("help")
 game = ('{0}help | {1} servers'.format(prefix, len(bot.servers)))
-startup_extensions = ["utils", "mod", "fun", "owner", "cool", "main"]
+startup_extensions = ["utils", "mod", "fun", "owner", "cool"]
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
 
 async def get_uptime():
@@ -51,7 +51,13 @@ async def get_uptime():
         if days==7:
             weeks += 1
             days = 0
-            
+
+async def game():
+  await bot.wait_until_ready
+  while not bot.is_closed:
+    await bot.change_presence(game=discord.Game(name='s.help | {} servers'.format(bot.servers)))
+    await asyncio.sleep(120)
+    
 class startup():
   
   @bot.event
@@ -145,14 +151,14 @@ class startup():
       if ctx.message.author.id not in ownerids:
           await bot.say(embed=perm_error)
       else:
-        embed = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
+        cogs = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
         num = len(startup_extensions)
         count = 0
   
         while num > count:
-          embed.add_field(name="{0}".format(startup_extensions[count]), value="", inline=True)
+          cogs.add_field(name="{0}".format(startup_extensions[count]), value="", inline=True)
           count += 1
-        await bot.say(embed=embed)
+        await bot.say(embed=cogs)
 
 
 bot.loop.create_task(get_uptime())
