@@ -59,15 +59,16 @@ class Owner():
           await ctx.bot.say("Successfully deleted element, **{}** from the list".format(item))
           
     @bot.command(pass_context = True)
-    async def gameset(ctx, *, game = str):
+    async def gameset(ctx, *, game: str):
       if ctx.message.author.id not in ownerids:
         await ctx.bot.say(embed=perm_error)
       else:
-        try:
-          await ctx.bot.change_presence(game=game)
-        except ValueError:
+        if game is None:
           embed = discord.Embed(title=":warning: Error!",description="Please specify a game status!",color=0xff0000)
           await ctx.bot.say(embed=embed)
+        else:
+          await ctx.bot.change_presence(game=game)
+      
         
 
           
