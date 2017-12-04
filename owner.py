@@ -48,18 +48,20 @@ class Owner():
             await ctx.bot.say("{0}: {1}".format(num, x))
 
     @bot.command(pass_context = True)
-    async def tododel(ctx, *, item: int):
+    async def tododel(ctx, *, item = None):
       if ctx.message.author.id not in ownerids:
         
         await ctx.bot.say(embed=perm_error)
       
       else:
-        
+        if item is None:
+          await ctx.bot.say("Please specify an element")
+        else:
           del todo_list[item-1]
           await ctx.bot.say("Successfully deleted element, **{}** from the list".format(item))
           
     @bot.command(pass_context = True)
-    async def gameset(ctx, *, game: str):
+    async def gameset(ctx, *, game = None):
       if ctx.message.author.id not in ownerids:
         await ctx.bot.say(embed=perm_error)
       else:
