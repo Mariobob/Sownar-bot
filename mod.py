@@ -73,7 +73,7 @@ class Mod():
       else:
         try:
           await ctx.bot.purge_from(ctx.message.channel, limit=val)
-        except HTTPException:
+        except:
           embed = discord.Embed(title=":warning: Error!",description="Can't delete messages more than 14 days old",color=0xff0000)
           await ctx.bot.say(embed=embed)
         
