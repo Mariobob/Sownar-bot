@@ -71,7 +71,12 @@ class Mod():
         embed = discord.Embed(title=":warning: Error!",description="Number must be under 100",color=0xff0000)
         await ctx.bot.say(embed=embed)
       else:
-        await ctx.bot.purge_from(ctx.message.channel, limit=val)
+        try:
+          await ctx.bot.purge_from(ctx.message.channel, limit=val)
+        except HTTPException:
+        embed = discord.Embed(title=":warning: Error!",description="Can't delete messages more than 14 days old",color=0xff0000)
+        await ctx.bot.say(embed=embed)
+        
     
     @bot.command(pass_context = True)
     async def prune(ctx, *, num = None):
