@@ -23,6 +23,10 @@ class Cool():
     @bot.command(pass_context = True)
     async def say(ctx, *, echo: str):
       await ctx.bot.say(echo)
+    
+    @bot.command(pass_context = True)
+    async def dog(ctx):
+      await ctx.bot.say('https://random.dog/')
 
 def setup(bot):
     bot.add_cog(Cool)
