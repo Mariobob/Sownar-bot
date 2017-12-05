@@ -6,6 +6,7 @@ import datetime
 from discord.ext import commands
 import time
 import traceback
+import aiohttp
 
 logs = discord.Object("376778387676594176")
 console = discord.Object("376552211817299968")
@@ -22,7 +23,7 @@ with open("token_file.pk1", "r") as token_file:
 with open("token_file2.pk1", "r") as token_file2:
   dbltoken = json.load(token_file2)
 
-client = DBLClient(token=dbltoken)
+await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbltoken})
 
 bot=commands.Bot(command_prefix=prefix)
 bot.remove_command("help")
@@ -75,10 +76,8 @@ class startup():
     embed.add_field(name="Server Region", value=server.region, inline=True)
     await bot.send_message(console, embed=embed)
     await bot.send_message(logs, embed=embed)
-    await client.post_stats(jsonObject={
-        "server_count": len(bot.servers)
-        })
-    
+    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbltoken})
+
   @bot.event
   async def on_server_remove(server):
     embed = discord.Embed(title="__Server Left!__", description="I have left a server !", color=0xff0000)
@@ -88,9 +87,8 @@ class startup():
     embed.add_field(name="Server Region", value=server.region, inline=True)
     await bot.send_message(console, embed=embed)
     await bot.send_message(logs, embed=embed)
-    await client.post_stats(jsonObject={
-        "server_count": len(bot.servers)
-        })
+    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbltoken})
+
   
   @bot.event
   async def on_ready():
