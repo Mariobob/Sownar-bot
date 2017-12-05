@@ -17,6 +17,10 @@ days=0
 weeks=0
 prefix='s.'
 ownerids=['221381001476046849', '221263215496134656']
+with open("token_file.pk1", "r") as token_file:
+  token = json.load(token_file)
+with open("token_file2.pk1", "r") as token_file2:
+  dbltoken = json.load(token_file2)
 
 bot=commands.Bot(command_prefix=prefix)
 bot.remove_command("help")
@@ -160,8 +164,5 @@ class startup():
           count += 1
         await bot.say(embed=cogs)
 
-
 bot.loop.create_task(get_uptime())
-with open("token_file.pk1", "r") as token_file:
-  token = json.load(token_file)
-  bot.run(token)
+bot.run(token)
