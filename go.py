@@ -21,9 +21,9 @@ ownerids=['221381001476046849', '221263215496134656']
 with open("token_file.pk1", "r") as token_file:
   bottoken = json.load(token_file)
 with open("token_file2.pk1", "r") as token_file2:
-  dbltoken = json.load(token_file2)
+  dbl = json.load(token_file2)
 
-await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbltoken})
+await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbl})
 
 bot=commands.Bot(command_prefix=prefix)
 bot.remove_command("help")
@@ -76,7 +76,7 @@ class startup():
     embed.add_field(name="Server Region", value=server.region, inline=True)
     await bot.send_message(console, embed=embed)
     await bot.send_message(logs, embed=embed)
-    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbltoken})
+    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbl})
 
   @bot.event
   async def on_server_remove(server):
@@ -87,7 +87,7 @@ class startup():
     embed.add_field(name="Server Region", value=server.region, inline=True)
     await bot.send_message(console, embed=embed)
     await bot.send_message(logs, embed=embed)
-    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbltoken})
+    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbl})
 
   
   @bot.event
