@@ -18,9 +18,11 @@ weeks=0
 prefix='s.'
 ownerids=['221381001476046849', '221263215496134656']
 with open("token_file.pk1", "r") as token_file:
-  token = json.load(token_file)
+  bottoken = json.load(token_file)
 with open("token_file2.pk1", "r") as token_file2:
   dbltoken = json.load(token_file2)
+
+client = DBLClient(token=dbltoken)
 
 bot=commands.Bot(command_prefix=prefix)
 bot.remove_command("help")
@@ -73,6 +75,9 @@ class startup():
     embed.add_field(name="Server Region", value=server.region, inline=True)
     await bot.send_message(console, embed=embed)
     await bot.send_message(logs, embed=embed)
+    await client.post_stats(jsonObject={
+        "server_count": len(bot.servers)
+        })
     
   @bot.event
   async def on_server_remove(server):
@@ -83,6 +88,9 @@ class startup():
     embed.add_field(name="Server Region", value=server.region, inline=True)
     await bot.send_message(console, embed=embed)
     await bot.send_message(logs, embed=embed)
+    await client.post_stats(jsonObject={
+        "server_count": len(bot.servers)
+        })
   
   @bot.event
   async def on_ready():
@@ -165,4 +173,4 @@ class startup():
         await bot.say(embed=cogs)
 
 bot.loop.create_task(get_uptime())
-bot.run(token)
+bot.run(bottoken)
