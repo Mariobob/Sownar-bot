@@ -23,7 +23,6 @@ with open("token_file.pk1", "r") as token_file:
 with open("token_file2.pk1", "r") as token_file2:
   dbl = json.load(token_file2)
 
-await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbl})
 
 bot=commands.Bot(command_prefix=prefix)
 bot.remove_command("help")
