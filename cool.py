@@ -36,7 +36,7 @@ class Cool():
                   response = await r.json()
                   embed = discord.Embed(title="Random Cat picture!", description="")
                   embed.set_image(url=response['file'])
-                  await ctx.bot.sat(embed=embed)
+                  await ctx.bot.say(embed=embed)
               else:
                   await ctx.bot.say('Error accessing the API')
     
