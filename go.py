@@ -73,32 +73,27 @@ async def game():
     await bot.change_presence(game=discord.Game(name='s.help | {} servers'.format(bot.servers)))
     await asyncio.sleep(120)
   
-async def cogstatus(x):
-  if x == mod:
-    if mod == 1:
-      return('Loaded')
-    else:
-      return('Unloaded')
-  elif x == owner:
-    if owner == 1:
-      return('Loaded')
-    else:
-      return('Unloaded')
-  elif x == utils:
-    if utils == 1:
-      return('Loaded')
-    else:
-      return('Unloaded')
-  elif x == fun:
-    if fun == 1:
-      return('Loaded')
-    else:
-      return('Unloaded')
-  elif x == cool:
-    if cool == 1:
-      return('Loaded')
-    else:
-      return('Unloaded')
+async def cogstatus():
+  if mod == 1:
+    mod = 'Loaded'
+  else:
+    mod = 'Unloaded'
+  elif owner == 1:
+    owner = 'Loaded'
+  else:
+    owner = 'Unloaded'
+  elif utils == 1:
+    utils = 'Loaded'
+  else:
+    utils = 'Unloaded'
+  elif fun == 1:
+    fun = 'Loaded'
+  else:
+    fun = 'Unloaded'
+  elif cool == 1:
+    cool = 'Loaded'
+  else:
+    cool = 'Unloaded'
       
     
 class startup():
@@ -200,10 +195,11 @@ class startup():
       else:
         cogs = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
         for cog in startup_extensions:
-          status = cogstatus(cog)
+          if cog == "utils":
+            status = 
           cogs.add_field(name=cog, value=status, inline=False)
         await bot.say(embed=cogs)
 
-
+bot.loop.create_task(cogstatus())
 bot.loop.create_task(get_uptime())
 bot.run(bottoken)
