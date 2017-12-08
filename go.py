@@ -163,7 +163,7 @@ class startup():
         status = 'N/A'
         cogs = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
         for cog in startup_extensions:
-          cogs.add_field(name=cog, value=status, inline=True)
+          cogs.add_field(name=cog, value=status, inline=False)
         await bot.say(embed=cogs)
 
 
