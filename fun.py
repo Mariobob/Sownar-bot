@@ -82,7 +82,7 @@ class Fun():
       args = umsg.replace(omsg[0], "")
       args = args[1:]
       if args != "":
-        balls = int(random.random() * 3)
+        balls = randint(0, 2)
         if (balls == 0):
           answer = random.choice(ballgud)
           dcolor = 0x00ff00
