@@ -83,13 +83,13 @@ class Fun():
       args = args[1:]
       if args != "":
         balls = int(random.random() * 3)
-        if (balls == 1):
+        if (balls == 0):
           answer = random.choice(ballgud)
           dcolor = 0x00ff00
-        elif (balls == 2):
+        elif (balls == 1):
           answer = random.choice(ballbad)
           dcolor = 0xff0000
-        elif (balls == 3):
+        elif (balls == 2):
           answer = random.choice(ballok)
           dcolor = 0xffae00
         embed = discord.Embed(title="{} ?".format(args), description=answer, color=dcolor)
