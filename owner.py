@@ -25,7 +25,7 @@ class Owner():
     async def own(ctx):
         await ctx.bot.say("I am working!")
 
-    @bot.command(pass_context = True)
+    @bot.group(pass_context = True)
     async def todo(ctx):
       if ctx.message.author.id not in ownerids:
           await ctx.bot.say(embed=perm_error)
@@ -42,7 +42,7 @@ class Owner():
               todo.add_field(name=num, value=x, inline=False)
             await ctx.bot.say(embed=todo)
           
-    @todo.command()
+    @todo.command(pass_context = True)
     async def delete(ctx, *, item = None):
       if ctx.message.author.id not in ownerids:
         
@@ -55,7 +55,7 @@ class Owner():
           del todo_list[item-1]
           await ctx.bot.say("Successfully deleted element, **{}** from the list".format(item))
           
-    @todo.command()
+    @todo.command(pass_context = True)
     async def add(ctx, *, todo: str):
       if ctx.message.author.id not in ownerids:
           await ctx.bot.say(embed=perm_error)
@@ -66,7 +66,7 @@ class Owner():
           todo_list.append(todo)
           await ctx.bot.say("Added **{}** to todo list".format(todo))
           
-    @todo.command()
+    @todo.command(pass_context=True)
     async def help(ctx):
       if ctx.message.author.id not in ownerids:
         await ctx.bot.say(embed=perm_error)
