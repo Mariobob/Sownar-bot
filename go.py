@@ -196,7 +196,15 @@ class startup():
         cogs = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
         for cog in startup_extensions:
           if cog == "utils":
-            status = 
+            status = utils
+          elif cog == "mod":
+            status = mod
+          elif cog == "owner":
+            status = owner
+          elif cog == "fun":
+            status = fun
+          elif cog == "cool":
+            status = cool
           cogs.add_field(name=cog, value=status, inline=False)
         await bot.say(embed=cogs)
 
