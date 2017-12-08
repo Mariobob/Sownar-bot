@@ -75,7 +75,7 @@ class startup():
     embed.add_field(name="Server Region", value=server.region, inline=True)
     await bot.send_message(console, embed=embed)
     await bot.send_message(logs, embed=embed)
-    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbl})
+#    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbl})
 
   @bot.event
   async def on_server_remove(server):
@@ -86,7 +86,7 @@ class startup():
     embed.add_field(name="Server Region", value=server.region, inline=True)
     await bot.send_message(console, embed=embed)
     await bot.send_message(logs, embed=embed)
-    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbl})
+#    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbl})
 
   
   @bot.event
@@ -161,13 +161,10 @@ class startup():
           await bot.say(embed=perm_error)
       else:
         cogs = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
-        num = len(startup_extensions)
-        count = 0
-  
-        while num > count:
-          cogs.add_field(name="{0}".format(startup_extensions[count]), value="", inline=True)
-          count += 1
-        await bot.say(embed=cogs)
+        for cog in startup_extensions:
+          cogs.add_field(name=cog)
+        await bot.say(embed=cog)
+
 
 bot.loop.create_task(get_uptime())
 bot.run(bottoken)
