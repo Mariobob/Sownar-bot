@@ -7,6 +7,7 @@ import datetime
 from discord.ext import commands
 import time
 import traceback
+from random import randint
 
 prefix='s.'
 bot=commands.Bot(command_prefix=prefix)
