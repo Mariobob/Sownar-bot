@@ -35,7 +35,6 @@ class Cool():
               if r.status == 200:
                   response = await r.json()
                   embed = discord.Embed(title="Random Cat picture!", description="")
-                  embed.set_author(name=f"{ctx.author.display_name}", icon_url=f"{ctx.author.avatar_url}")
                   embed.set_image(url=response['file'])
                   await ctx.bot.sat(embed=embed)
               else:
@@ -49,7 +48,6 @@ class Cool():
               if r.status == 200:
                   response = await r.json()
                   embed = discord.Embed(title="Random Dog picture!", description="")
-                  embed.set_author(name=f"{ctx.author.display_name}", icon_url=f"{ctx.author.avatar_url}")
                   embed.set_image(url=response['data'][0]["url"])
                   await ctx.bot.say(embed=embed)
               else:
