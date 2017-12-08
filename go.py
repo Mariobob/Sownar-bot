@@ -78,19 +78,19 @@ async def cogstatus():
     mod = 'Loaded'
   else:
     mod = 'Unloaded'
-  elif owner == 1:
+  if owner == 1:
     owner = 'Loaded'
   else:
     owner = 'Unloaded'
-  elif utils == 1:
+  if utils == 1:
     utils = 'Loaded'
   else:
     utils = 'Unloaded'
-  elif fun == 1:
+  if fun == 1:
     fun = 'Loaded'
   else:
     fun = 'Unloaded'
-  elif cool == 1:
+  if cool == 1:
     cool = 'Loaded'
   else:
     cool = 'Unloaded'
