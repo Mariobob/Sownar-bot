@@ -74,28 +74,28 @@ async def game():
     await asyncio.sleep(120)
   
 async def cogstatus(x):
-  if x = mod:
-    if mod = 1:
+  if x == mod:
+    if mod == 1:
       return('Loaded')
     else:
       return('Unloaded')
-  elif x = owner:
-    if owner = 1:
+  elif x == owner:
+    if owner == 1:
       return('Loaded')
     else:
       return('Unloaded')
-  elif x = utils:
-    if utils = 1:
+  elif x == utils:
+    if utils == 1:
       return('Loaded')
     else:
       return('Unloaded')
-  elif x = fun:
-    if fun = 1:
+  elif x == fun:
+    if fun == 1:
       return('Loaded')
     else:
       return('Unloaded')
-  elif x = cool:
-    if cool = 1:
+  elif x == cool:
+    if cool == 1:
       return('Loaded')
     else:
       return('Unloaded')
