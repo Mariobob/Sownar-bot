@@ -18,6 +18,8 @@ todo_list = []
 class Owner():
     print('Owner loaded')
     print('------')
+    global owner
+    owner = 1
 
     @bot.command(pass_context = True)
     async def own(ctx):

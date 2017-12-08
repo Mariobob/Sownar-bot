@@ -15,6 +15,8 @@ bot=commands.Bot(command_prefix=prefix)
 class Cool():
     print('random loaded')
     print('------')
+    global cool
+    cool = 1
 
     @bot.command(pass_context = True)
     async def rand(ctx):

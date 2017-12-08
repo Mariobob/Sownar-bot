@@ -21,6 +21,8 @@ ballok = ["Reply hazy, try again later", "Concentrate and ask again"]
 class Fun():
     print('Fun loaded')
     print('------')
+    global fun
+    fun = 1
 
     @bot.command(pass_context = True)
     async def fun(ctx):

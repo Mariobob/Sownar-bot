@@ -16,6 +16,8 @@ perm_errorbis = discord.Embed(title=":warning: Error!",description="I do not hav
 class Mod():
     print('Mod loaded')
     print('------')
+    global mod
+    mod = 1
 
     @bot.command(pass_context = True)
     async def mod(ctx):

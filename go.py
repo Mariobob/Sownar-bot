@@ -22,7 +22,16 @@ with open("token_file.pk1", "r") as token_file:
   bottoken = json.load(token_file)
 with open("token_file2.pk1", "r") as token_file2:
   dbl = json.load(token_file2)
-
+global owner
+owner = 0
+global mod
+mod = 0
+global fun
+fun = 0
+global cool
+cool = 0
+global utils
+utils = 0
 
 bot=commands.Bot(command_prefix=prefix)
 bot.remove_command("help")
@@ -63,6 +72,34 @@ async def game():
   while not bot.is_closed:
     await bot.change_presence(game=discord.Game(name='s.help | {} servers'.format(bot.servers)))
     await asyncio.sleep(120)
+  
+async def cogstatus(x):
+  if x = mod:
+    if mod = 1:
+      return('Loaded')
+    else:
+      return('Unloaded')
+  elif x = owner:
+    if owner = 1:
+      return('Loaded')
+    else:
+      return('Unloaded')
+  elif x = utils:
+    if utils = 1:
+      return('Loaded')
+    else:
+      return('Unloaded')
+  elif x = fun:
+    if fun = 1:
+      return('Loaded')
+    else:
+      return('Unloaded')
+  elif x = cool:
+    if cool = 1:
+      return('Loaded')
+    else:
+      return('Unloaded')
+      
     
 class startup():
   
@@ -154,15 +191,16 @@ class startup():
           await bot.say("Extension **{}** unloaded".format(ext_name))
         else:
           await bot.say("Not a valid extension, see `s.cogslist` for options")
+          
         
   @bot.command(pass_context = True)
   async def cogslist(ctx):
       if ctx.message.author.id not in ownerids:
           await bot.say(embed=perm_error)
       else:
-        status = 'N/A'
         cogs = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
         for cog in startup_extensions:
+          status = str(cogstatus(cog))
           cogs.add_field(name=cog, value=status, inline=False)
         await bot.say(embed=cogs)
 

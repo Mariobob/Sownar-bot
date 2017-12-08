@@ -20,6 +20,8 @@ bot.remove_command('help')
 class Utils():
     print('Utils Loaded')
     print('------')
+    global utils
+    utils = 1
 
     @commands.command(pass_context = True)
     async def serverinfo(ctx):
