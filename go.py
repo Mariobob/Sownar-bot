@@ -160,10 +160,11 @@ class startup():
       if ctx.message.author.id not in ownerids:
           await bot.say(embed=perm_error)
       else:
+        status = 'N/A'
         cogs = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
         for cog in startup_extensions:
           cogs.add_field(name=cog)
-        await bot.say(embed=cog)
+        await bot.say(embed=cog, value=status)
 
 
 bot.loop.create_task(get_uptime())
