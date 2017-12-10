@@ -30,7 +30,7 @@ class Utils():
         i = 0
         humanusers = 0
         botusers = 0
-        while i > len(server.members):
+        while i <= len(server.members):
           i += 1
           if discord.User.bot is True:
             botusers += 1
