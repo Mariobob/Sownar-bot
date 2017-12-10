@@ -33,8 +33,9 @@ class Utils():
         online = 0
         voicechanneles = 0
         textchannels = 0 
+        totalusers = 0
         for members in server.members:
-          i += 1
+          totalusers += 1
           if members.bot is True:
             botusers += 1
           else:
@@ -53,8 +54,8 @@ class Utils():
         embed.set_thumbnail(url=server.icon)
         embed.add_field(name="Server Name", value=server.name, inline=False)
         embed.add_field(name="Server Owner", value=server.owner, inline=False)
-        embed.add_field(name="Member Count", value="- {0} members \n- {1} bots \n- {2} / {0} online".format(humanusers, botusers, online), inline=False)
-        embed.add_field(name="Channels", value="- Default channel: {0}\n- Text channels: {1}\n- Voice channels: {2}\n- AFK: {3} after {4}min".format(server.default_channel, textchannels, voicechanneles, server.afk_channel, server.afk_timeout), inline=False)
+        embed.add_field(name="Member Count", value="- {0} members \n - {1} bots \n - {2} / {3} online".format(humanusers, botusers, online, totalusers), inline=False)
+        embed.add_field(name="Channels", value="- Default channel: {0} \n - Text channels: {1} \n - Voice channels: {2} \n - AFK: {3} after {4}min".format(server.default_channel, textchannels, voicechanneles, server.afk_channel, server.afk_timeout), inline=False)
         embed.add_field(name="Verification Level", value=server.verification_level, inline=False)
         embed.add_field(name="Server Region", value=server.region, inline=False)
         embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(server.created_at.strftime("%d/%m/%y %H:%M:%S"), ago), inline=False)
