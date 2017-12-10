@@ -42,7 +42,7 @@ class Utils():
           if members.status.online is True:
             online += 1
         for ChannelType in server.channels:
-          if ChannelType.text is True:
+          if ChannelType.ChannelType.text is True:
             textchannels += 1
           else:
             voicechanneles += 1
