@@ -28,6 +28,8 @@ class Utils():
     async def serverinfo(ctx):
         server = ctx.message.author.server
         i = 0
+        humanusers = 0
+        botusers = 0
         while i > len(server.members):
           i += 1
           if discord.User.bot is True:
