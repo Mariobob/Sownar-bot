@@ -30,19 +30,30 @@ class Utils():
         i = 0
         humanusers = 0
         botusers = 0
+        online = 0
+        voicechanneles = 0
+        textchannels = 0 
         for members in server.members:
           i += 1
           if members.bot is True:
             botusers += 1
           else:
             humanusers += 1
+          if members.Status.online is True:
+            online += 1
+        for channels in server.channels:
+          if channels.ChannelType.text is True:
+            textchannels += 1
+          else:
+            voicechanneles += 1
         
         ago = (ctx.message.timestamp - server.created_at).days
-        embed = discord.Embed(title="__Server Info!__", description="Information on the server", color=0x00ff00)
+        embed = discord.Embed(description="Information on {0} | `ID: {1}`".format(server.name, server.id), color=0x00ff00)
+        embed.set_thumbnail(url=server.icon)
         embed.add_field(name="Server Name", value=server.name, inline=False)
         embed.add_field(name="Server Owner", value=server.owner, inline=False)
-        embed.add_field(name="Human Count", value="{0} members".format(humanusers), inline=False)
-        embed.add_field(name="Bot Count", value="{0} bots".format(botusers), inline=False)
+        embed.add_field(name="Member Count", value="- {0} members \n- {1} bots \n- {2} / {0} online".format(humanusers, botusers, online), inline=False)
+        embed.add_field(name="Channels", value="- Default channel: {0}\n- Text channels: {1}\n- Voice channels: {2}\n- AFK: {3} after {4}min".format(server.default_channel, textchannels, voicechanneles, server.afk_channel, server.afk_timeout), inline=False)
         embed.add_field(name="Verification Level", value=server.verification_level, inline=False)
         embed.add_field(name="Server Region", value=server.region, inline=False)
         embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(server.created_at.strftime("%d/%m/%y %H:%M:%S"), ago), inline=False)
@@ -147,8 +158,8 @@ class Utils():
         totalusers = 0
         totalchannels = 0
         onlineusers = 0
-        humanusers = 0
-        botusers = 0
+        humans = 0
+        bots = 0
         serverCount = 0
         members = 0
         channels = []
@@ -158,13 +169,17 @@ class Utils():
             serverCount += 1
             for member in server.members:
                 totalusers += 1
+                if member.bot is True:
+                  bots += 1
+                else:
+                  humans += 1
             for channel in server.channels:
                 totalchannels += 1
         embed = discord.Embed(title="Here are my stats!", color = 0x000000)
         embed.set_thumbnail(url=ctx.message.server.me.avatar_url)
         embed.add_field(name="Total Servers", value=serverCount)
-        embed.add_field(name="Users", value='Total users: {0}'.format(members))
-        embed.add_field(name="Total Channels", value="Total channels: {}".format(totalchannels))
+        embed.add_field(name="Users", value='Total users: {0}\n Human users: {1}\n Bot users: {2}'.format(members, humans, bots))
+        embed.add_field(name="Channels", value="Total channels: {}".format(totalchannels))
         await ctx.bot.say(embed=embed)
         
     @commands.command(pass_context = True)
