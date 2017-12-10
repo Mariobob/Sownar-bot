@@ -156,7 +156,7 @@ class Utils():
         embed = discord.Embed(title="Here are my stats!", color = 0x000000)
         embed.set_thumbnail(url=ctx.message.server.me.avatar_url)
         embed.add_field(name="Total Servers", value=serverCount)
-        embed.add_field(name="Users", value='Total users: {0}''\nTotal human users: {1}''\nTotal bot users: {2}''\nOnline users: {3}'.format(members, humanusers, botusers, onlineusers))
+        embed.add_field(name="Users", value='Total users: {0}'.format(members))
         embed.add_field(name="Total Channels", value="Total channels: {}".format(totalchannels))
         await ctx.bot.say(embed=embed)
         
