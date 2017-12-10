@@ -41,8 +41,8 @@ class Utils():
             humanusers += 1
           if members.status.online is True:
             online += 1
-        for ChannelType in server.channels:
-          if ChannelType.ChannelType.text is True:
+        for channels in server.channels:
+          if channels.type == "text":
             textchannels += 1
           else:
             voicechanneles += 1
