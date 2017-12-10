@@ -145,11 +145,11 @@ class Utils():
             serverCount += 1
             for member in server.members:
                 totalusers += 1
-                if discord.User.bot == True:
+                if member.User.bot == True:
                   botusers += 1
                 else:
                   humanusers += 1
-                if discord.Status.online == True:
+                if member.Status.online == True:
                   onlineusers += 1
             for channel in server.channels:
                 totalchannels += 1
@@ -167,6 +167,11 @@ class Utils():
       else:
         embed = discord.Embed(title="{}'s id is:".format(member), description=member.id, color=0x000000)
       await ctx.bot.say(embed=embed)
+    
+    @commands.command(pass_context = True)
+    async def userinfo(ctx, *, member: discord.Member = None):
+      if member is None:
+        
       
         
 def setup(bot):
