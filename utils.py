@@ -168,9 +168,9 @@ class Utils():
         embed = discord.Embed(title="{}'s id is:".format(member), description=member.id, color=0x000000)
       await ctx.bot.say(embed=embed)
     
-    @commands.command(pass_context = True)
-    async def userinfo(ctx, *, member: discord.Member = None):
-      if member is None:
+#    @commands.command(pass_context = True)
+#    async def userinfo(ctx, *, member: discord.Member = None):
+#      if member is None:
         
       
         
