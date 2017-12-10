@@ -145,12 +145,6 @@ class Utils():
             serverCount += 1
             for member in server.members:
                 totalusers += 1
-                if member.User.bot == True:
-                  botusers += 1
-                else:
-                  humanusers += 1
-                if member.Status.online == True:
-                  onlineusers += 1
             for channel in server.channels:
                 totalchannels += 1
         embed = discord.Embed(title="Here are my stats!", color = 0x000000)
