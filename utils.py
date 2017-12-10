@@ -30,7 +30,7 @@ class Utils():
         i = 0
         humanusers = 0
         botusers = 0
-        for members in bot.server
+        for members in bot.server:
           i += 1
           if User.bot is True:
             botusers += 1
