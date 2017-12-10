@@ -39,7 +39,7 @@ class Utils():
             botusers += 1
           else:
             humanusers += 1
-          if members.Status.online is True:
+          if members.online is True:
             online += 1
         for channels in server.channels:
           if channels.ChannelType.text is True:
