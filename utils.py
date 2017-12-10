@@ -22,17 +22,24 @@ class Utils():
     print('------')
     global utils
     utils = 1
+    
 
     @commands.command(pass_context = True)
     async def serverinfo(ctx):
         server = ctx.message.author.server
+        for members in server:
+          if discord.User.bot is True:
+            botusers += 1
+          else:
+            humanusers += 1
+        
         ago = (ctx.message.timestamp - server.created_at).days
         embed = discord.Embed(title="__Server Info!__", description="Information on the server", color=0x00ff00)
-        embed.add_field(name="Server Name", value=server.name, inline=True)
-        embed.add_field(name="Server Owner", value=server.owner, inline=True)
-        embed.add_field(name="Member Count", value="{0} members".format(server.member_count), inline=True)
-        embed.add_field(name="Server Region", value=server.region, inline=True)
-        embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(server.created_at, ago), inline=True)
+        embed.add_field(name="Server Name", value=server.name, inline=False)
+        embed.add_field(name="Server Owner", value=server.owner, inline=False)
+        embed.add_field(name="Human Count", value="{0} members".format(humanusers), inline=False)
+        embed.add_field(name="Server Region", value=server.region, inline=False)
+        embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(server.created_at.strftime("%d/%m/%y %H:%M:%S"), ago), inline=False)
         await ctx.bot.say(embed=embed)
 
     @commands.command(pass_context = True)
@@ -161,10 +168,11 @@ class Utils():
       else:
         embed = discord.Embed(title="{}'s id is:".format(member), description=member.id, color=0x000000)
       await ctx.bot.say(embed=embed)
-    
-#    @commands.command(pass_context = True)
-#    async def userinfo(ctx, *, member: discord.Member = None):
-#      if member is None:
+      
+    @commands.command(pass_context = True)
+    async def userinfo(ctx, *, member: discord.Member = None):
+      if member is None:
+        
         
       
         
