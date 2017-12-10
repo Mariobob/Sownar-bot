@@ -32,7 +32,7 @@ class Utils():
         botusers = 0
         for members in server.members:
           i += 1
-          if User.bot is True:
+          if members.bot is True:
             botusers += 1
           else:
             humanusers += 1
