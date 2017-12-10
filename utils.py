@@ -38,6 +38,8 @@ class Utils():
         embed.add_field(name="Server Name", value=server.name, inline=False)
         embed.add_field(name="Server Owner", value=server.owner, inline=False)
         embed.add_field(name="Human Count", value="{0} members".format(humanusers), inline=False)
+        embed.add_field(name="Bot Count", value="{0} bots".format(botusers), inline=False)
+        embed.add_field(name="Verification Level", value=server.verification_level, inline=False)
         embed.add_field(name="Server Region", value=server.region, inline=False)
         embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(server.created_at.strftime("%d/%m/%y %H:%M:%S"), ago), inline=False)
         await ctx.bot.say(embed=embed)
