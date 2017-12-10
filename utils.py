@@ -27,7 +27,9 @@ class Utils():
     @commands.command(pass_context = True)
     async def serverinfo(ctx):
         server = ctx.message.author.server
-        for members in ctx.message.author.server:
+        i = 0
+        while i > len(server.members):
+          i += 1
           if discord.User.bot is True:
             botusers += 1
           else:
