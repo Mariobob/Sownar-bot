@@ -46,7 +46,6 @@ class Utils():
             textchannels += 1
           else:
             voicechanneles += 1
-          print(channels.type)
         
         ago = (ctx.message.timestamp - server.created_at).days
         embed = discord.Embed(description="Information on {0} | `ID: {1}`".format(server.name, server.id), color=0x00ff00)
@@ -58,7 +57,7 @@ class Utils():
         embed.add_field(name="Verification Level", value=server.verification_level, inline=False)
         embed.add_field(name="Server Region", value=server.region, inline=False)
         embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(server.created_at.strftime("%d/%m/%y %H:%M:%S"), ago), inline=False)
-        await ctx.bot.say(embed=embed)
+        await ctx.bot.send_message(ctx.message.channel, embed=embed)
 
     @commands.command(pass_context = True)
     async def test(ctx):
