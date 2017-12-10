@@ -46,6 +46,7 @@ class Utils():
             textchannels += 1
           else:
             voicechanneles += 1
+          print(channels.type)
         
         ago = (ctx.message.timestamp - server.created_at).days
         embed = discord.Embed(description="Information on {0} | `ID: {1}`".format(server.name, server.id), color=0x00ff00)
