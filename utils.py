@@ -34,6 +34,7 @@ class Utils():
         voicechanneles = 0
         textchannels = 0 
         totalusers = 0
+        totalchannels = 0
         for members in server.members:
           totalusers += 1
           if members.bot is True:
@@ -42,12 +43,13 @@ class Utils():
             humanusers += 1
           if members.status.online is True:
             online += 1
-        for channels in server.channels:
-          if channels.type == "text":
-            textchannels += 1
-          else:
-            voicechanneles += 1
-        print(textchannels)
+       for channels in server.channels:
+         totalchannels += 1
+ #         if channels.type == "text":
+  #          textchannels += 1
+   #       else:
+    #        voicechanneles += 1
+     #   print(textchannels)
         
         ago = (ctx.message.timestamp - server.created_at).days
         embed = discord.Embed(description="Information on {0} | `ID: {1}`".format(server.name, server.id), color=0x00ff00)
@@ -55,7 +57,7 @@ class Utils():
         embed.add_field(name="Server Name", value=server.name, inline=False)
         embed.add_field(name="Server Owner", value=server.owner, inline=False)
         embed.add_field(name="Member Count", value="- {0} members \n - {1} bots \n - {2} / {3} online".format(humanusers, botusers, online, totalusers), inline=False)
-        embed.add_field(name="Channels", value="- Default channel: {0} \n - Text channels: {1} \n - Voice channels: {2} \n - AFK: {3} after {4}min".format(server.default_channel, textchannels, voicechanneles, server.afk_channel, server.afk_timeout), inline=False)
+        embed.add_field(name="Channels", value="- Default channel: {0} \n - Total channels \n - AFK: {3} after {4}min".format(server.default_channel, totalchannels, server.afk_channel, server.afk_timeout), inline=False)
         embed.add_field(name="Verification Level", value=server.verification_level, inline=False)
         embed.add_field(name="Server Region", value=server.region, inline=False)
         embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(server.created_at, ago), inline=False)
