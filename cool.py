@@ -18,7 +18,7 @@ class Cool():
     print('------')
     global cool
     cool = 1
-
+    
     @bot.command(pass_context = True)
     async def rand(ctx):
         await ctx.bot.say("I am working!")
@@ -55,6 +55,17 @@ class Cool():
                   embed = discord.Embed(title='Error')
                   embed.description = x
                   await ctx.bot.say(embed=embed)
-
+                  
+    @bot.command(pass_context=True
+    async def embed(ctx, *, title: str, message: str ):
+      if title == "":
+        await ctx.bot.say("Missing a title!")
+      elif message == "":
+        await ctx.bot.say("Missing a message!")
+      embed = discord.Embed(title=title, description=message)
+      await ctx.bot.say(embed=embed)
+      
+      
+    
 def setup(bot):
     bot.add_cog(Cool)
