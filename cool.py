@@ -61,7 +61,7 @@ class Cool():
       try:
         embed = discord.Embed(title=title, description=message)
         await ctx.bot.say(embed=embed)
-      except CommandInvokeError from e:
+      except CommandInvokeError:
         error = discord.Embed(title=":warning: Error!",description="Please specify a message to embed!",color=0xff0000)
         await ctx.bot.say(embed=embed)
       
