@@ -56,7 +56,7 @@ class Cool():
                   embed.description = x
                   await ctx.bot.say(embed=embed)
                   
-    @bot.command(pass_context=True
+    @bot.command(pass_context=True)
     async def embed(ctx, *, title: str, message: str ):
       if title == "":
         await ctx.bot.say("Missing a title!")
