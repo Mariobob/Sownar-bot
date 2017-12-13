@@ -58,7 +58,7 @@ class Utils():
         embed.add_field(name="Channels", value="- Default channel: {0} \n - Text channels: {1} \n - Voice channels: {2} \n - AFK: {3} after {4}min".format(server.default_channel, textchannels, voicechanneles, server.afk_channel, server.afk_timeout), inline=False)
         embed.add_field(name="Verification Level", value=server.verification_level, inline=False)
         embed.add_field(name="Server Region", value=server.region, inline=False)
-        embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(server.created_at.strftime("%d/%m/%y %H:%M:%S"), ago), inline=False)
+        embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(server.created_at, ago), inline=False)
         await ctx.bot.send_message(ctx.message.channel, embed=embed)
 
     @commands.command(pass_context = True)
