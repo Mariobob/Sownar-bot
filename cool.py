@@ -60,7 +60,7 @@ class Cool():
     async def embed(ctx, *, message = None ):
       if message is None:
         error = discord.Embed(title=":warning: Error!",description="Please specify a message to embed!",color=0xff0000)
-        await ctx.bot.say(embed=embed)
+        await ctx.bot.say(embed=error)
       else:
         embed = discord.Embed(title = "", description=message)
         await ctx.bot.say(embed=embed)
