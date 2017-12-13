@@ -52,6 +52,7 @@ class Utils():
      #   print(textchannels)
         
         ago = (ctx.message.timestamp - server.created_at).days
+        channel = discord.Object(ctx.message.channel.id)
         embed = discord.Embed(description="Information on {0} | `ID: {1}`".format(server.name, server.id), color=0x00ff00)
         embed.set_thumbnail(url=server.icon)
         embed.add_field(name="Server Name", value=server.name, inline=False)
@@ -61,7 +62,7 @@ class Utils():
         embed.add_field(name="Verification Level", value=server.verification_level, inline=False)
         embed.add_field(name="Server Region", value=server.region, inline=False)
         embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(server.created_at, ago), inline=False)
-        await ctx.bot.send_message(ctx.message.channel.id, embed=embed)
+        await ctx.bot.send_message(channel, embed=embed)
 
     @commands.command(pass_context = True)
     async def test(ctx):
