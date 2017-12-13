@@ -57,14 +57,13 @@ class Cool():
                   await ctx.bot.say(embed=embed)
                   
     @bot.command(pass_context=True)
-    async def embed(ctx, *, title: str, message: str ):
-      if title == "":
-        await ctx.bot.say("Missing a title!")
-      elif message == "":
-        await ctx.bot.say("Missing a message!")
-      embed = discord.Embed(title=title, description=message)
-      await ctx.bot.say(embed=embed)
-      
+    async def embed(ctx, *, message: str ):
+      try:
+        embed = discord.Embed(title=title, description=message)
+        await ctx.bot.say(embed=embed)
+      except CommandInvokeError from e:
+        error = discord.Embed(title=":warning: Error!",description="Please specify a message to embed!",color=0xff0000)
+        await ctx.bot.say(embed=embed)
       
     
 def setup(bot):
