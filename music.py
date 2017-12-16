@@ -93,7 +93,7 @@ class Music:
                 pass
 
     @commands.command(pass_context=True, no_pm=True)
-    async def join(ctx, ctx, *, channel : discord.Channel):
+    async def join(ctx, *, channel : discord.Channel):
         """Joins a voice channel."""
         try:
             await ctx.create_voice_client(channel)
@@ -105,7 +105,7 @@ class Music:
             await ctx.bot.say('Ready to play audio in ' + channel.name)
 
     @commands.command(pass_context=True, no_pm=True)
-    async def summon(ctx, ctx):
+    async def summon(ctx):
         """Summons the bot to join your voice channel."""
         summoned_channel = ctx.message.author.voice_channel
         if summoned_channel is None:
@@ -121,7 +121,7 @@ class Music:
         return True
 
     @commands.command(pass_context=True, no_pm=True)
-    async def play(ctx, ctx, *, song : str):
+    async def play(ctx, *, song : str):
         """Plays a song.
         If there is a song currently in the queue, then it is
         queued until the next song is done playing.
@@ -152,7 +152,7 @@ class Music:
             await state.songs.put(entry)
 
     @commands.command(pass_context=True, no_pm=True)
-    async def volume(ctx, ctx, value : int):
+    async def volume(ctx, value : int):
         """Sets the volume of the currently playing song."""
 
         state = ctx.get_voice_state(ctx.message.server)
@@ -162,7 +162,7 @@ class Music:
             await ctx.bot.say('Set the volume to {:.0%}'.format(player.volume))
 
     @commands.command(pass_context=True, no_pm=True)
-    async def pause(ctx, ctx):
+    async def pause(ctx):
         """Pauses the currently played song."""
         state = ctx.get_voice_state(ctx.message.server)
         if state.is_playing():
@@ -170,7 +170,7 @@ class Music:
             player.pause()
 
     @commands.command(pass_context=True, no_pm=True)
-    async def resume(ctx, ctx):
+    async def resume(ctx):
         """Resumes the currently played song."""
         state = ctx.get_voice_state(ctx.message.server)
         if state.is_playing():
@@ -178,7 +178,7 @@ class Music:
             player.resume()
 
     @commands.command(pass_context=True, no_pm=True)
-    async def stop(ctx, ctx):
+    async def stop(ctx):
         """Stops playing audio and leaves the voice channel.
         This also clears the queue.
         """
@@ -197,7 +197,7 @@ class Music:
             pass
 
     @commands.command(pass_context=True, no_pm=True)
-    async def skip(ctx, ctx):
+    async def skip(ctx):
         """Vote to skip a song. The song requester can automatically skip.
         3 skip votes are needed for the song to be skipped.
         """
@@ -223,7 +223,7 @@ class Music:
             await ctx.bot.say('You have already voted to skip this song.')
 
     @commands.command(pass_context=True, no_pm=True)
-    async def playing(ctx, ctx):
+    async def playing(ctx):
         """Shows info about the currently played song."""
 
         state = ctx.get_voice_state(ctx.message.server)
