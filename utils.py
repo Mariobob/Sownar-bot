@@ -35,29 +35,27 @@ class Utils():
         textchannels = 0 
         totalusers = 0
         totalchannels = 0
+        totalroles = 0
         for members in server.members:
           totalusers += 1
           if members.bot is True:
             botusers += 1
           else:
             humanusers += 1
-          if members.Status.online is True:
-            online += 1
         for channels in server.channels:
           totalchannels += 1
- #         if channels.type == "text":
-  #          textchannels += 1
-   #       else:
-    #        voicechanneles += 1
-     #   print(textchannels)
+        for roles in server.roles:
+          totalroles += 1
+          
         
         ago = (ctx.message.timestamp - server.created_at).days
         embed = discord.Embed(title= "Server", description="-", color=0x00ff00)
 #        embed.set_thumbnail(url=server.icon)
         embed.add_field(name="Server Name", value="Name: {1} \nID: {2}".format(server.name, server.id), inline=False)
         embed.add_field(name="Server Owner", value="Name: {1} \nID: {2}".format(server.owner, server.owner.id), inline=False)
-        embed.add_field(name="Member Count", value="- {0} members \n- {1} bots \n- {2} / {3} online".format(humanusers, botusers, online, totalusers), inline=False)
-        embed.add_field(name="Channels", value="Total Channels : {}".format(totalchannels), inline=False)
+        embed.add_field(name="Member Count", value="- {0} members \n- {1} bots \n- {2} total".format(humanusers, botusers, totalusers), inline=False)
+        embed.add_field(name="Channels", value="Total Channels : {0}".format(totalchannels), inline=False)
+        embed.add_field(name="Roles", value=totalroles, inline=False)
         embed.add_field(name="Verification Level", value=server.verification_level, inline=False)
         embed.add_field(name="Server Region", value=server.region, inline=False)
         embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(server.created_at, ago), inline=False)
