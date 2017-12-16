@@ -57,7 +57,7 @@ class Utils():
         embed.set_thumbnail(url=server.icon)
         embed.add_field(name="Server Name", value=server.name, inline=True)
         embed.add_field(name="Server Owner", value=server.owner, inline=True)
-        embed.add_field(name="Member Count", value="- {0} members \n - {1} bots \n - {2} / {3} online".format(humanusers, botusers, online, totalusers), inline=True)
+#        embed.add_field(name="Member Count", value="- {0} members \n - {1} bots \n - {2} / {3} online".format(humanusers, botusers, online, totalusers), inline=True)
 #        embed.add_field(name="Channels", value="- Default channel: {0} \n - Total channels: {1} \n - AFK: {2} after {3}min".format(server.default_channel, totalchannels, server.afk_channel, server.afk_timeout), inline=True)
         embed.add_field(name="Verification Level", value=server.verification_level, inline=True)
         embed.add_field(name="Server Region", value=server.region, inline=True)
