@@ -51,8 +51,8 @@ class Utils():
         ago = (ctx.message.timestamp - server.created_at).days
         embed = discord.Embed(title= "Server", description="-", color=0x00ff00)
 #        embed.set_thumbnail(url=server.icon)
-        embed.add_field(name="Server Name", value="Name: {1} \nID: {2}".format(server.name, server.id), inline=False)
-        embed.add_field(name="Server Owner", value="Name: {1} \nID: {2}".format(server.owner, server.owner.id), inline=False)
+        embed.add_field(name="Server Name", value="Name: {0} \nID: {1}".format(server.name, server.id), inline=False)
+        embed.add_field(name="Server Owner", value="Name: {0} \nID: {1}".format(server.owner, server.owner.id), inline=False)
         embed.add_field(name="Member Count", value="- {0} members \n- {1} bots \n- {2} total".format(humanusers, botusers, totalusers), inline=False)
         embed.add_field(name="Channels", value="Total Channels : {0}".format(totalchannels), inline=False)
         embed.add_field(name="Roles", value=totalroles, inline=False)
