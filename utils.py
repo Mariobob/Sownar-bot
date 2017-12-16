@@ -26,7 +26,7 @@ class Utils():
 
     @commands.command(pass_context = True)
     async def serverinfo(ctx):
-        server = ctx.message.author.server
+        server = ctx.message.server
         i = 0
         humanusers = 0
         botusers = 0
@@ -52,7 +52,7 @@ class Utils():
      #   print(textchannels)
         
         ago = (ctx.message.timestamp - server.created_at).days
-        channel = discord.Object(ctx.message.channel.id)
+        channel = discord.Object("ctx.message.channel.id")
         embed = discord.Embed(title= "", description="Information on {0} | `ID: {1}`".format(server.name, server.id), color=0x00ff00)
         embed.set_thumbnail(url=server.icon)
         embed.add_field(name="Server Name", value=server.name, inline=True)
