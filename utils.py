@@ -53,14 +53,16 @@ class Utils():
         
         ago = (ctx.message.timestamp - server.created_at).days
         channel = discord.Object("ctx.message.channel.id")
-        embed = discord.Embed(title= "", description="Information on {0} | `ID: {1}`".format(server.name, server.id), color=0x00ff00)
+        embed = discord.Embed(title= "Server", description="-", color=0x00ff00)
         embed.set_thumbnail(url=server.icon)
         embed.add_field(name="Server Name", value=server.name, inline=False)
         embed.add_field(name="Server Owner", value=server.owner, inline=False)
+        embed.add_field(name="Server ID", value=server.id, inline=True)
+        embed.add_field(name="Server Owner ID", value=server.owner.id, inline=True)
         embed.add_field(name="Member Count", value="- {0} members \n - {1} bots \n - {2} / {3} online".format(humanusers, botusers, online, totalusers), inline=False)
-        embed.add_field(name="Channels", value="- Default channel: {0} \n - Total channels: {1} \n - AFK: {2} after {3}min".format(server.default_channel, totalchannels, server.afk_channel, server.afk_timeout), inline=False)
+        embed.add_field(name="Channels", value="Total Channels : {}".format(totalchannels), inline=True)
         embed.add_field(name="Verification Level", value=server.verification_level, inline=False)
-        embed.add_field(name="Server Region", value=server.region, inline=False)
+        embed.add_field(name="Server Region", value=server.region, inline=True)
         embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(server.created_at, ago), inline=False)
         await ctx.bot.send_message(channel, embed=embed)
 
