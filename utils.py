@@ -59,7 +59,7 @@ class Utils():
         embed.add_field(name="Server Owner", value=server.owner, inline=False)
         embed.add_field(name="Server ID", value=server.id, inline=True)
         embed.add_field(name="Server Owner ID", value=server.owner.id, inline=True)
-        embed.add_field(name="Member Count", value="- {0} members \n - {1} bots \n - {3} total".format(humanusers, botusers, totalusers), inline=False)
+        embed.add_field(name="Member Count", value="- {0} members \n - {1} bots \n - {2} total".format(humanusers, botusers, totalusers), inline=False)
         embed.add_field(name="Channels", value="Total Channels : {}".format(totalchannels), inline=True)
         embed.add_field(name="Verification Level", value=server.verification_level, inline=False)
         embed.add_field(name="Server Region", value=server.region, inline=True)
