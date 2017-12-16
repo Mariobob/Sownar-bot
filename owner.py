@@ -36,7 +36,7 @@ class Owner():
             await ctx.bot.say("Todo list is empty! Use `s.todo add [arg]`")
           else:
             num=0
-            todo = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
+            todo = discord.Embed(title="This stuff is todo !",description="Ranked from oldest to newest",color=0xff0000)
             for x in todo_list:
               num += 1
               todo.add_field(name=num, value=x, inline=False)
