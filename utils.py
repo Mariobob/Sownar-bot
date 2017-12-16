@@ -52,19 +52,18 @@ class Utils():
      #   print(textchannels)
         
         ago = (ctx.message.timestamp - server.created_at).days
-        channel = discord.Object("ctx.message.channel.id")
         embed = discord.Embed(title= "Server", description="-", color=0x00ff00)
         embed.set_thumbnail(url=server.icon)
         embed.add_field(name="Server Name", value=server.name, inline=False)
         embed.add_field(name="Server Owner", value=server.owner, inline=False)
-        embed.add_field(name="Server ID", value=server.id, inline=True)
-        embed.add_field(name="Server Owner ID", value=server.owner.id, inline=True)
+#        embed.add_field(name="Server ID", value=server.id, inline=True)
+#        embed.add_field(name="Server Owner ID", value=server.owner.id, inline=True)
 #        embed.add_field(name="Member Count", value="- {0} members \n - {1} bots \n - {2} total".format(humanusers, botusers, totalusers), inline=False)
 #        embed.add_field(name="Channels", value="Total Channels : {}".format(totalchannels), inline=True)
 #        embed.add_field(name="Verification Level", value=server.verification_level, inline=False)
 #        embed.add_field(name="Server Region", value=server.region, inline=True)
 #        embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(server.created_at, ago), inline=False)
-        await ctx.bot.send_message(channel, embed=embed)
+        await ctx.bot.say(embed=embed)
 
     @commands.command(pass_context = True)
     async def test(ctx):
