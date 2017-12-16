@@ -232,4 +232,5 @@ class Music:
             await self.bot.say('Now playing {} [skips: {}/3]'.format(state.current, skip_count))
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or('$'), description='A playlist example for discord.py')
-bot.add_cog(Music(bot))
+def setup(bot):
+  bot.add_cog(Music)
