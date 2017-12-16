@@ -234,4 +234,4 @@ class Music:
             await ctx.bot.say('Now playing {} [skips: {}/3]'.format(state.current, skip_count))
 
 def setup(bot):
-bot.add_cog(music)
+  bot.add_cog(music)
