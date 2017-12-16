@@ -53,7 +53,7 @@ class Utils():
         
         ago = (ctx.message.timestamp - server.created_at).days
         embed = discord.Embed(title= "Server", description="-", color=0x00ff00)
-        embed.set_thumbnail(url=server.icon)
+#        embed.set_thumbnail(url=server.icon)
         embed.add_field(name="Server Name", value=server.name, inline=False)
         embed.add_field(name="Server Owner", value=server.owner, inline=False)
 #        embed.add_field(name="Server ID", value=server.id, inline=True)
