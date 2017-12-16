@@ -62,7 +62,8 @@ class VoiceState:
             ctx.current.player.start()
             await ctx.play_next_song.wait()
 
-class Music:
+class Music():
+  print("Music loaded")
     """Voice related commands.
     Works in multiple servers at once.
     """
