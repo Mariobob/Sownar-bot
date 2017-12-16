@@ -14,6 +14,7 @@ bot=commands.Bot(command_prefix=prefix)
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
 ownerids=['221381001476046849', '221263215496134656']
 todo_list = []
+finished_list = []
 
 class Owner():
     print('Owner loaded')
@@ -76,7 +77,24 @@ class Owner():
         todohelp.add_field(name="s.todo **add**", value= "add an element to the todo list", inline = False)
         todohelp.add_field(name="s.todo **delete**", value= "remove and element to the todo list", inline = False)
         await ctx.bot.say(embed=todohelp)
+        
+    @todo.command(pass_context = True)
+    async def finish(ctx, *, item = None):
+      if ctx.message.author.id not in ownerids:
+        
+        await ctx.bot.say(embed=perm_error)
       
+      else:
+        if item is None:
+          await ctx.bot.say("Please specify an element")
+        else:
+          finished_list.append(todo_list[item-1])
+          del todo_list[item-1]
+          
+          await ctx.bot.say("Successfully moved element, **{}** to the finished list".format(item))
+          
+
+
           
     @bot.command(pass_context = True)
     async def gameset(ctx, *, game = None):
