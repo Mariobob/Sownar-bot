@@ -41,7 +41,7 @@ class Utils():
             botusers += 1
           else:
             humanusers += 1
-          if members.status.online is True:
+          if members.Status.online is True:
             online += 1
         for channels in server.channels:
           totalchannels += 1
@@ -54,15 +54,13 @@ class Utils():
         ago = (ctx.message.timestamp - server.created_at).days
         embed = discord.Embed(title= "Server", description="-", color=0x00ff00)
 #        embed.set_thumbnail(url=server.icon)
-        embed.add_field(name="Server Name", value=server.name, inline=True)
-        embed.add_field(name="Server ID", value=server.id, inline=True)
-        embed.add_field(name="Server Owner", value=server.owner, inline=True)
-        embed.add_field(name="Server Owner ID", value=server.owner.id, inline=True)
-        embed.add_field(name="Member Count", value="- {0} members \n- {1} bots \n- {2} / {3} online".format(humanusers, botusers, online, totalusers), inline=True)
-        embed.add_field(name="Channels", value="Total Channels : {}".format(totalchannels), inline=True)
-        embed.add_field(name="Verification Level", value=server.verification_level, inline=True)
-        embed.add_field(name="Server Region", value=server.region, inline=True)
-        embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(server.created_at, ago), inline=True)
+        embed.add_field(name="Server Name", value="Name: {1} \nID: {2}".format(server.name, server.id), inline=False)
+        embed.add_field(name="Server Owner", value="Name: {1} \nID: {2}".format(server.owner, server.owner.id), inline=False)
+        embed.add_field(name="Member Count", value="- {0} members \n- {1} bots \n- {2} / {3} online".format(humanusers, botusers, online, totalusers), inline=False)
+        embed.add_field(name="Channels", value="Total Channels : {}".format(totalchannels), inline=False)
+        embed.add_field(name="Verification Level", value=server.verification_level, inline=False)
+        embed.add_field(name="Server Region", value=server.region, inline=False)
+        embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(server.created_at, ago), inline=False)
         await ctx.bot.say(embed=embed)
 
     @commands.command(pass_context = True)
