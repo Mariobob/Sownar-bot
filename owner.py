@@ -116,7 +116,7 @@ class Owner():
           await ctx.bot.change_presence(game=discord.Game(name=game))
           
     @bot.command(pass_context = True)
-    async def changelog():
+    async def changelog(ctx):
       todo = discord.Embed(title="__Todo Functions__", color=0xffae00)
       finish = discord.Embed(title="__Recent Updates__", color=0x00ff00)
       num = 0
