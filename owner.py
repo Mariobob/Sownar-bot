@@ -114,7 +114,24 @@ class Owner():
           await ctx.bot.say(embed=embed)
         else:
           await ctx.bot.change_presence(game=discord.Game(name=game))
+          
+    @bot.command(pass_context = True)
+    async def changelog():
+      todo = discord.Embed(title="__Todo Functions__", color=0xffae00)
+      finish = discord.Embed(title="__Recent Updates__", color=0x00ff00)
+      num = 0
+      for x in todo_list:
+        if num < 5:
+          num += 1
+          todo.add_field(name=num, value=x, inline = True)
+      num = 0
+      for x in finished_list:
+        if num < 5:
+          num += 1
+          finish.add_field(name=num, value=x, inline = True)
       
+      await ctx.bot.say(embed=todo)
+      await ctx.bot.say(embed=finish)
         
 
           
