@@ -123,12 +123,12 @@ class Owner():
       for x in todo_list:
         if num < 5:
           num += 1
-          todo.add_field(name=num, value=x, inline = True)
+          todo.add_field(name=">{0} : {1}".format(num, x), inline = True)
       num = 0
       for x in finished_list:
         if num < 5:
           num += 1
-          finish.add_field(name=num, value=x, inline = True)
+          finish.add_field(name=">{0} : {1}".format(num, x), inline = True)
       
       await ctx.bot.say(embed=todo)
       await ctx.bot.say(embed=finish)
