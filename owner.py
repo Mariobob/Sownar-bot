@@ -60,6 +60,7 @@ class Owner():
             await ctx.bot.say("Successfully deleted element, **{}** from the list".format(item))
           except:
             await ctx.bot.say("You can only use numbers!")
+            
     @todo.command(pass_context = True)
     async def add(ctx, *, todo: str):
       if ctx.message.author.id not in ownerids:
@@ -92,10 +93,13 @@ class Owner():
         if item is None:
           await ctx.bot.say("Please specify an element")
         else:
-          finished_list.append(todo_list[item-1])
-          del todo_list[item-1]
-          
-          await ctx.bot.say("Successfully moved element, **{}** to the finished list".format(item))
+          try:
+            item = int(item)
+            finished_list.append(todo_list[item-1])
+            del todo_list[item-1]
+            await ctx.bot.say("Successfully moved element, **{}** to the finished list".format(item))
+          except:
+            await ctx.bot.say("You can only use numbers!")
           
 
 
