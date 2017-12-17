@@ -72,7 +72,7 @@ class Cool():
       embed.set_author(name="Poll", icon_url=author.avatar_url)
       embed.description = message
       embed.set_footer(text=author.name)
-      x = await ctx.send(embed=embed)
+      x = await ctx.send_message(embed=embed)
       await x.add_reaction("👍")
       await x.add_reaction("👎")
       
