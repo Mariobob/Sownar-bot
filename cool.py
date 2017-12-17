@@ -72,9 +72,9 @@ class Cool():
       embed.set_author(name="Poll", icon_url=author.avatar_url)
       embed.description = message
       embed.set_footer(text=author.name)
-      await ctx.bot.say(embed=embed)
-      await bot.add_reaction("👍")
-      await bot.add_reaction("👎")
+      x = await ctx.send(embed=embed)
+      await x.add_reaction("👍")
+      await x.add_reaction("👎")
       
     
 def setup(bot):
