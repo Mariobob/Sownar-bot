@@ -53,9 +53,13 @@ class Owner():
         if item is None:
           await ctx.bot.say("Please specify an element")
         else:
-          del todo_list[item-1]
-          await ctx.bot.say("Successfully deleted element, **{}** from the list".format(item))
+          try:
+            item = int(item)
           
+            del todo_list[item-1]
+            await ctx.bot.say("Successfully deleted element, **{}** from the list".format(item))
+          except:
+            await ctx.bot.say("You can only use numbers!")
     @todo.command(pass_context = True)
     async def add(ctx, *, todo: str):
       if ctx.message.author.id not in ownerids:
