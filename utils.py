@@ -219,7 +219,14 @@ class Utils():
       await ctx.bot.say(embed = userinfo)
       
         
+    @commands.command(pass_context = True)
+    async def serverlist(ctx):
+      server_list = []
+      for server in ctx.bot.servers:
+        server_list.append(server.name)
+      await ctx.bot.say(server_list)
         
+      
         
         
       
