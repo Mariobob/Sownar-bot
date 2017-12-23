@@ -53,7 +53,7 @@ class Utils():
         embed.set_thumbnail(url=server.icon_url)
         embed.add_field(name="Server Name", value="Name: {0} \nID: {1}".format(server.name, server.id), inline=False)
         embed.add_field(name="Server Owner", value="Name: {0} \nID: {1}".format(server.owner, server.owner.id), inline=False)
-        embed.add_field(name="Member Count", value="- {0} members \n- {1} bots \n- {2} total".format(humanusers, botusers, totalusers), inline=False)
+        embed.add_field(name="Member Count", value="- {0} humans \n- {1} bots \n- {2} total".format(humanusers, botusers, totalusers), inline=False)
         embed.add_field(name="Channels", value="Total Channels : {0}".format(totalchannels), inline=False)
         embed.add_field(name="Roles", value=totalroles, inline=False)
         embed.add_field(name="Verification Level", value=server.verification_level, inline=False)
@@ -216,7 +216,7 @@ class Utils():
       userinfo.add_field(name="Status:", value=user.status)
       userinfo.add_field(name="Joined Server:", value="{0}, about {1} days ago".format(user.joined_at, ago))
       
-      await bot.say(embed = userinfo)
+      await ctx.bot.say(embed = userinfo)
       
         
         
