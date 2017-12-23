@@ -50,7 +50,7 @@ class Utils():
         
         ago = (ctx.message.timestamp - server.created_at).days
         embed = discord.Embed(title= "Server", description="-", color=0x00ff00)
-#        embed.set_thumbnail(url=server.icon)
+        embed.set_thumbnail(url=server.icon_url)
         embed.add_field(name="Server Name", value="Name: {0} \nID: {1}".format(server.name, server.id), inline=False)
         embed.add_field(name="Server Owner", value="Name: {0} \nID: {1}".format(server.owner, server.owner.id), inline=False)
         embed.add_field(name="Member Count", value="- {0} members \n- {1} bots \n- {2} total".format(humanusers, botusers, totalusers), inline=False)
@@ -201,9 +201,24 @@ class Utils():
         embed = discord.Embed(title="{}'s id is:".format(member), description=member.id, color=0x000000)
       await ctx.bot.say(embed=embed)
       
-   # @commands.command(pass_context = True)
-  #  async def userinfo(ctx, *, member: discord.Member = None):
- #     if member is None:
+    @commands.command(pass_context = True)
+    async def userinfo(ctx, *, member: discord.Member = None):
+      if member is None:
+        user = ctx.message.author
+      else:
+        user = member
+      ago = (ctx.message.timestamp - user.joined_at).days
+      userinfo = discord.Embed(title="{}'s info".format(user.name), description="Known As : {}".format(user.nick), color = 0x000000)
+      userinfo.set_thumbnail(url=user.avatar_url)
+      userinfo.add_field(name="ID:", value=user.id)
+      userinfo.add_field(name="Is Bot?:", value=user.bot)
+      userinfo.add_field(name="Playing:", value=user.game)
+      userinfo.add_field(name="Status:", value=user.status)
+      userinfo.add_field(name="Joined Server:", value="{0}, about {1} days ago".format(user.joined_at, ago))
+      
+      await bot.say(embed = userinfo)
+      
+        
         
         
         
