@@ -225,6 +225,7 @@ class Utils():
       message = ""
       for server in ctx.bot.servers:
         server_list.append(server.name)
+      x=0
       while x<len(server_list-1):
         message += server_list[x]
         x += 1
