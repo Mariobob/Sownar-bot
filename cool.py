@@ -77,7 +77,7 @@ class Cool():
     
     @bot.command(pass_context=True)
     async def servericon(ctx):
-      avatar = discord.Embed(title="Server icon, description="")
+      avatar = discord.Embed(title="Server icon", description="")
       avatar.set_image(url=ctx.message.server.icon_url)
       await ctx.bot.say(embed=avatar)
     
