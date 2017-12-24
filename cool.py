@@ -65,7 +65,22 @@ class Cool():
         embed = discord.Embed(title = "", description=message)
         await ctx.bot.say(embed=embed)
     
-      
+    @bot.command(pass_context=True)
+    def async avatar(ctx, *, member: discord.Member = None):
+      if member is None:
+        user = ctx.message.author
+      else:
+        user = member
+      avatar = discord.Embed(title="{}'s avatar".format(user.name), description="")
+      avatar.set_image(url=user.avatar_url)
+      await ctx.bot.say(embed=avatar)
+    
+    @bot.command(pass_context=True)
+    async def servericon(ctx):
+      avatar = discord.Embed(title="Server icon, description="")
+      avatar.set_image(url=ctx.message.server.icon_url)
+      await ctx.bot.say(embed=avatar)
+    
     
 def setup(bot):
     bot.add_cog(Cool)
