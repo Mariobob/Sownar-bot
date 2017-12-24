@@ -66,7 +66,7 @@ class Cool():
         await ctx.bot.say(embed=embed)
     
     @bot.command(pass_context=True)
-    def async avatar(ctx, *, member: discord.Member = None):
+    async def avatar(ctx, *, member: discord.Member = None):
       if member is None:
         user = ctx.message.author
       else:
