@@ -73,14 +73,14 @@ class Cool():
         user = member
       avatar = discord.Embed(title="{}'s avatar".format(user.name), description="")
       avatar.set_image(url=user.avatar_url)
-      avatar.set_footer(text="[{0}]({1})".format("Image", user.avatar_url))
+      avatar.add_field(name="[{0}]({1})".format("Image", user.avatar_url), value="-")
       await ctx.bot.say(embed=avatar)
     
     @bot.command(pass_context=True)
     async def servericon(ctx):
       avatar = discord.Embed(title="Server icon", description="")
       avatar.set_image(url=ctx.message.server.icon_url)
-      avatar.set_footer(text="[{0}]({1})".format("Image", ctx.message.server.icon_url))
+      avatar.add_field(name="[{0}]({1})".format("Image", ctx.message.server.icon_url), value="-")
       await ctx.bot.say(embed=avatar)
       
     
