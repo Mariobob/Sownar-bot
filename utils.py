@@ -195,7 +195,7 @@ class Utils():
         embed.add_field(name="Channels", value="Total channels: {}".format(totalchannels))
         await ctx.bot.say(embed=embed)
         
-    @commands.command(pass_context = True)
+    @commands.command(pass_context = True, aliases = ["id", "userid"])
     async def getid(ctx, *, member: discord.Member = None):
       if member is None:
         embed = discord.Embed(title="Your id is:", description=ctx.message.author.id, color=0x000000)
