@@ -133,15 +133,15 @@ class Fun():
       elif ai == 13:
         ai = "Ace"
       if winner == "won":
-        color = 0x00ff00
+        dcolor = 0x00ff00
       elif winner == "lost":
-        color = 0xff0000
+        dcolor = 0xff0000
       elif winner == "tied":
-        color = 0xffae00
+        dcolor = 0xffae00
         
-      war = discord.Embed(title = ":hearts: :spades: :diamonds: :clubs:", description = "-")
+      war = discord.Embed(title = ":hearts: :spades: :diamonds: :clubs:", description = "-", color=dcolor)
       war.add_field(name = "**---{}---**".format(ctx.message.author), value="`Player: {}` \n`Computer: {}`".format(player, ai))
-      war.add_field(name = "You {0}, {1}".format(winner, ctx.message.author), value="")
+      war.add_field(name = "You {0}, {1}".format(winner, ctx.message.author), value="-")
       await ctx.bot.say(embed=war)
       
       
