@@ -169,7 +169,7 @@ class Fun():
         dcolor = 0xff0000
       
       slots = discord.Embed(title = "---Slots---", description = "{0}|{1}|{2}".format(x, y, z), color = dcolor)
-      slots.set_author(name=":slot_machine:  Slots")
+      slots.set_author(name="Slots", icon_url="https://images.emojiterra.com/twitter/512px/1f3b0.png")
       slots.add_field(name= "You {}".format(winner), value="-", inline = False)
       slots.set_footer(icon_url=ctx.message.author.avatar_url, text="Requested by {}".format(ctx.message.author.name))
       await ctx.bot.say(embed=slots)
