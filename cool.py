@@ -71,8 +71,11 @@ class Cool():
         user = ctx.message.author
       else:
         user = member
+      avatars = user.avatar_url
+      if ".gif" in avatar:
+        avatars += "&f=.gif"
       avatar = discord.Embed(title="{}'s avatar".format(user.name), description="[{0}]({1})".format("Image", user.avatar_url))
-      avatar.set_image(url=user.avatar_url)
+      avatar.set_image(url=avatars)
       await ctx.bot.say(embed=avatar)
     
     @bot.command(pass_context=True)
