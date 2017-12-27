@@ -111,11 +111,11 @@ class Fun():
       player = randint(1,13)
       ai = randint(1,13)
       if player > ai:
-        winner = won
+        winner = "won""
       elif ai > player:
-        winner = lost
+        winner = "lost"
       elif ai == player:
-        winner = tied
+        winner = "tied"
       if player == 10:
         player = "Jack"
       elif player == 11:
@@ -132,11 +132,11 @@ class Fun():
         ai = "King"
       elif ai == 13:
         ai = "Ace"
-      if winner == won:
+      if winner == "won":
         color = 0x00ff00
-      elif winner == lost:
+      elif winner == "lost":
         color = 0xff0000
-      elif winner == tied:
+      elif winner == "tied":
         color = 0xffae00
         
       war = discord.Embed(title = ":hearts: :spades: :diamonds: :clubs:", description = "-")
