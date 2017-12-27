@@ -115,7 +115,6 @@ class Utils():
         util.add_field(name="~~s.about~~", value="Shows info on the bot", inline=False)
         util.add_field(name="s.stats", value="Shows the bot's stats", inline=False)
         util.add_field(name="s.ping", value="Shows the bot's latency", inline=False)
-        util.add_field(name="s.changelog", value="Shows the bot's functions in developpement", inline=False)
         fun = discord.Embed(title="__Fun commands!__", description="", color=0x00ff00)
         fun.add_field(name="s.flip", value="Flips a coin", inline=False)
         fun.add_field(name="s.roll", value="Rolls a dice", inline=False)
