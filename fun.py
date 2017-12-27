@@ -216,7 +216,7 @@ class Fun():
         
       
       while bj_continue == 1:
-        bj_message = await ctx.bot.send_message(embed=bj_embed())
+        bj_message = await ctx.bot.send_message(ctx.message.channel, embed=bj_embed())
         
       
       
