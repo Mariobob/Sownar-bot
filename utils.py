@@ -121,6 +121,7 @@ class Utils():
         fun.add_field(name="s.roll", value="Rolls a dice", inline=False)
         fun.add_field(name="s.8ball [question]", value="See's what the 8ball has to answer", inline=False)
         fun.add_field(name="s.rps [rock/paper/scissors]", value="Plays a game of rock, paper, scissors", inline=False)
+        fun.add_field(name="s.casino [war/slots/blackjack]", value="Play a casino game", inline=False)
         cool = discord.Embed(title="__Random commands!__", description="", color=0x00ff00)
         cool.add_field(name="s.dog", value="Gets a dog picture", inline=False)
         cool.add_field(name="s.say [message]", value="Repeats your message", inline=False)
