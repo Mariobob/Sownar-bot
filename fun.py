@@ -204,7 +204,7 @@ class Fun():
         await ctx.bot.add_reaction(bj_message, "✅")
         await ctx.bot.add_reaction(bj_message, "❌")
         res = await ctx.bot.wait_for_reaction(["✅", "❌"], message=bj_message)
-        await ctx.bot.say("{0.user} reacted with {0.reaction_emoji}".format(res))
+        await ctx.bot.say("{0.user} reacted with {0.reaction.emoji}".format(res))
         
       
       
