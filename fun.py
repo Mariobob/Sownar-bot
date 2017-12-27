@@ -19,6 +19,7 @@ cards = ["Ace" ,"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "
 ballgud = ["Signs point to yes", "You may rely on it", "It is certain", "Without a doubt"] 
 ballbad = ["Don't count on it", "Outlook not so good", "Very doubtful", "Don't count on it"]
 ballok = ["Reply hazy, try again later", "Concentrate and ask again"]
+slot = [":watermelon:", ":cherries:", ":lemon:", ":apple:", ":strawberry:", ":kiwi:"]
 
 class Fun():
     print('Fun loaded')
@@ -144,6 +145,35 @@ class Fun():
       war.add_field(name = "You {0}".format(winner), value="-", inline = False)
       war.set_footer(icon_url= ctx.message.author.avatar_url, text= "Requested by {}".format(ctx.message.author.name))
       await ctx.bot.say(embed=war)
+      
+    @casino.commands(pass_context=True)
+    async def slots(ctx):
+      x=random.choice(slot)
+      y=random.choice(slot)
+      z=random.choice(slot)
+      if x==y:
+        if x==z:
+          winner= "won, `3/3`"
+          dcolor = 0x00ff00
+        else:
+          winner= "close, `2/3`"
+          dcolor = 0xffae00
+      elif y==z:
+        winner= "close, `2/3`"
+        dcolor = 0xffae00
+      elif x==z:
+        winner= "close, `2/3`"
+        dcolor = 0xffae00
+      else:
+        winner= "lost, `0/3`"
+        dcolor = 0xff0000
+      
+      slots = discord.Embed(title = "---Slots---", description = "{0}|{1}|{2}".format(x, y, z), color = dcolor)
+      slots.set_author(name=":slot_machine:  Slots")
+      slots.add_field(name= "You {}".format(winner), value="-", inline = False)
+      slots.set_footer(icon_url=ctx.message.author.avatar_url, text="Requested by {}".format(ctx.message.author.name))
+      await ctx.bot.say(embed=slots)
+       
       
       
 def setup(bot):
