@@ -60,16 +60,16 @@ class Music():
         loading_song = discord.Embed(title="The song is being loaded", description = "Thank you for your patience")
         await ctx.bot.say(embed=loading_song)
         
-      try:
+        try:
             player = await state.voice.create_ytdl_player(song, ytdl_options=opts, after=state.toggle_next)
         except:
-            fmt = 'An error occurred while processing this request'
-            await ctx.bot.send_message(ctx.message.channel, fmt)
-        else:
-            player.volume = 0.6
-            entry = VoiceEntry(ctx.message, player)
-            await ctx.bot.say('Enqueued ' + str(entry))
-            await state.songs.put(entry)
+          fmt = 'An error occurred while processing this request'
+          await ctx.bot.send_message(ctx.message.channel, fmt)
+      else:
+          player.volume = 0.6
+          entry = VoiceEntry(ctx.message, player)
+          await ctx.bot.say('Enqueued ' + str(entry))
+          await state.songs.put(entry)
 
     @bot.command(pass_context=True, no_pm=True)
     async def stop(ctx):
