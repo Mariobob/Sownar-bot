@@ -176,7 +176,7 @@ class Fun():
       slots.set_footer(icon_url=ctx.message.author.avatar_url, text="Requested by {}".format(ctx.message.author.name))
       await ctx.bot.say(embed=slots)
        
-    @casino.commands(pass_context=True, aliases=["21", "bj"])
+    @casino.command(pass_context=True, aliases=["21", "bj"])
     async def blackjack(ctx):
       def bj_embed():
         bj = discord.Embed(title="---Hand---", description="`Player: {0}`\n`Dealer: {1}`".format(player, dealshow))
