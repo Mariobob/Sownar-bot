@@ -201,8 +201,8 @@ class Fun():
       
       while bj_continue == 1:
         bj_message = await ctx.bot.send_message(ctx.message.channel, embed=bj_embed())
-        await ctx.bot.add_reaction(bj_message, "2705")
-        await ctx.bot.add_reaction(bj_message, "274c")
+        await ctx.bot.add_reaction(bj_message, "✅")
+        await ctx.bot.add_reaction(bj_message, "❌")
         res = await ctx.bot.wait_for_reaction(["✅", "❌"], message=bj_message)
         await ctx.bot.say("{0.user} reacted with {0.reaction_emoji}".format(res))
         
