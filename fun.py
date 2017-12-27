@@ -146,7 +146,7 @@ class Fun():
       war.set_footer(icon_url= ctx.message.author.avatar_url, text= "Requested by {}".format(ctx.message.author.name))
       await ctx.bot.say(embed=war)
       
-    @casino.commands(pass_context=True)
+    @casino.command(pass_context=True)
     async def slots(ctx):
       x=random.choice(slot)
       y=random.choice(slot)
