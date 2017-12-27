@@ -198,10 +198,10 @@ class Fun():
           bj.add_field(name="You {}".format(winorlose), value = "-", inline = False)
           bj.set_footer(text="Requested by {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar_url)
           return bj
-        bj_message = await ctx.bot.send_message(ctx.message.channel, embed=bj_embed())
-        await ctx.bot.add_reaction(bj_message, "✅")
-        await ctx.bot.add_reaction(bj_message, "❌")
-        time.sleep(0.5)
+      bj_message = await ctx.bot.send_message(ctx.message.channel, embed=bj_embed())
+      await ctx.bot.add_reaction(bj_message, "✅")
+      await ctx.bot.add_reaction(bj_message, "❌")
+      time.sleep(0.5)
       while bj_continue == 1:
         res = await ctx.bot.wait_for_reaction(["✅", "❌"], message=bj_message)
         if res.reaction.emoji == "✅":
