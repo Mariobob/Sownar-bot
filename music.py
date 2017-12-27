@@ -87,5 +87,3 @@ class Music():
             del ctx.bot.voice_states[server.id]
             await state.voice.disconnect()
             await ctx.bot.say("Cleared the queue and disconnected from voice channel ")
-
-
