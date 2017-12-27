@@ -111,7 +111,7 @@ class Fun():
       player = randint(1,13)
       ai = randint(1,13)
       if player > ai:
-        winner = "won""
+        winner = "won"
       elif ai > player:
         winner = "lost"
       elif ai == player:
