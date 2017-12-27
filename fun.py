@@ -183,12 +183,13 @@ class Fun():
       dealer=randint(1,13)
       dealshow="N/A"
       done = "false"
+      humanplayer=ctx.message.author
       
       def bj_embed():
         if done == "false":
           bj = discord.Embed(title="---Hand---", description="`Player: {0}`\n`Dealer: {1}`".format(player, dealshow))
           bj.set_author(name="BlackJack", icon_url="http://www.emoji.co.uk/files/twitter-emojis/symbols-twitter/11272-playing-card-black-joker.png")
-          bj.add_field(name="`Stand or Hit`?", value="Please type `stop` to take no more cards\nPlease type `continue` to take more cards", inline = False)
+          bj.add_field(name="`Stand or Hit`?", value="Please react with :x: to take no more cards\nPlease type :white_check_mark: to take more cards", inline = False)
           bj.set_footer(text="Requested by {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar_url)
           return bj
         elif done == "true":
@@ -197,26 +198,13 @@ class Fun():
           bj.add_field(name="You {}".format(winorlose), value = "-", inline = False)
           bj.set_footer(text="Requested by {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar_url)
           return bj
-        
-      def on_reaction_add(react, user):
-        if user == ctx.message.author:
-          if react == "2705":
-            player += randint(1,13)
-            dealer += randint(1,13)
-            if player > 21:
-              done = "true"
-            elif dealer > 21:
-              done = "true"
-            done = "false"
-          elif react == "274c":
-            dealshow = dealer
-            done = "true"
-            
-            
-        
       
       while bj_continue == 1:
         bj_message = await ctx.bot.send_message(ctx.message.channel, embed=bj_embed())
+        await ctx.bot.add_reaction(bj_message, "2705")
+        await ctx.bot.add_reaction(bj_message, "274c")
+        res = await ctx.bot.wait_for_reaction(["2705", "274c"], message=bj_message)
+        await ctx.bot.say("{0.user} reacted with {0.reaction_emoji}".format(res))
         
       
       
