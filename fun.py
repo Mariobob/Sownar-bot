@@ -198,7 +198,7 @@ class Fun():
           bj.set_footer(text="Requested by {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar_url)
           return bj
         
-      def bot.on_reaction_add(react, user):
+      def on_reaction_add(react, user):
         if user == ctx.message.author:
           if react == "2705":
             player += randint(1,13)
