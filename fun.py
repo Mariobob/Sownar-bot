@@ -140,6 +140,7 @@ class Fun():
         dcolor = 0xffae00
         
       war = discord.Embed(title = ":hearts: | :spades: | :diamonds: | :clubs:", description = "-", color=dcolor)
+      war.set_author(name="War", icon_url="http://www.clipartlord.com/wp-content/uploads/2014/08/playing-card5.png")
       war.add_field(name = "**---{}---**".format(ctx.message.author.name), value="`Player: {}` \n`Computer: {}`".format(player, ai), inline = False)
       war.add_field(name = "You {0}".format(winner), value="-", inline = False)
       war.set_footer(icon_url= ctx.message.author.avatar_url, text= "Requested by {}".format(ctx.message.author.name))
