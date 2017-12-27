@@ -193,19 +193,47 @@ class Fun():
           bj.set_footer(text="Requested by {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar_url)
           return bj
         elif done == "true":
-          bj = discord.Embed(title="---Hand---", description="`Player: {0}`\n`Dealer: {1}`".format(player, dealshow))
+          bj = discord.Embed(title="---Hand---", description="`Player: {0}`\n`Dealer: {1}`".format(player, dealer), color = dcolor)
           bj.set_author(name="BlackJack", icon_url="http://www.emoji.co.uk/files/twitter-emojis/symbols-twitter/11272-playing-card-black-joker.png")
           bj.add_field(name="You {}".format(winorlose), value = "-", inline = False)
           bj.set_footer(text="Requested by {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar_url)
           return bj
-      
-      while bj_continue == 1:
         bj_message = await ctx.bot.send_message(ctx.message.channel, embed=bj_embed())
         await ctx.bot.add_reaction(bj_message, "✅")
         await ctx.bot.add_reaction(bj_message, "❌")
+        time.sleep(0.5)
+      while bj_continue == 1:
         res = await ctx.bot.wait_for_reaction(["✅", "❌"], message=bj_message)
-        await ctx.bot.say("{0.user} reacted with {0.reaction.emoji}".format(res))
-        
+        if res.reaction.emoji == "✅":
+          await ctx.bot.remove_reaction(bj_message, "✅",  res.user)
+          player += randint(1,13)
+          dealer += randint(1,13)
+          if player > 21:
+            done = "true"
+            winorlose= "lost"
+            dcolor = 0xff0000
+          elif dealer > 21:
+            done="true"
+            winorlose="won"
+            dcolor = 0x00ff00
+          await ctx.bot.edit_message(bj_message, embed=bj_embed())
+        elif res.reaction.emoji == "❌":
+          await ctx.bot.remove_reaction(bj_message, "❌", res.user)
+          done = "true"
+          if player > dealer:
+            winorlose="won"
+            dcolor = 0x00ff00
+          elif player < dealer:
+            winorlose="lost"
+            dcolor = 0xff0000
+          elif player == dealer:
+            winorlose = "tied"
+            dcolor = 0xffae00
+          await ctx.bot.remove_reaction(bj_message, "❌", "375370278810681344")
+          await ctx.bot.remove_reaction(bj_message, "✅", "375370278810681344")
+          await ctx.bot.edit_message(bj_message, embed = bj_embed())
+            
+            
       
       
       
