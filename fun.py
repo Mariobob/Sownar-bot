@@ -203,7 +203,7 @@ class Fun():
       await ctx.bot.add_reaction(bj_message, "❌")
       time.sleep(3)
       while bj_continue == 1:
-        res = await ctx.bot.wait_for_reaction(["✅", "❌"], message=bj_message)
+        res = await ctx.bot.wait_for_reaction(["✅", "❌"], message=bj_message, user=ctx.message.author)
         if res.reaction.emoji == "✅":
           await ctx.bot.remove_reaction(bj_message, "✅",  res.user)
           player += randint(1,13)
