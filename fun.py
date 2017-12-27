@@ -141,7 +141,7 @@ class Fun():
         
       war = discord.Embed(title = ":hearts: | :spades: | :diamonds: | :clubs:", description = "-", color=dcolor)
       war.add_field(name = "**---{}---**".format(ctx.message.author.name), value="`Player: {}` \n`Computer: {}`".format(player, ai), inline = False)
-      war.add_field(name = "You {0}".format(winner), value="", inline = False)
+      war.add_field(name = "You {0}".format(winner), value="-", inline = False)
       war.set_footer(icon_url= ctx.message.author.avatar_url, text= "Requested by {}".format(ctx.message.author.name))
       await ctx.bot.say(embed=war)
       
