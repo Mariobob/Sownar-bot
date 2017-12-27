@@ -140,8 +140,8 @@ class Fun():
         dcolor = 0xffae00
         
       war = discord.Embed(title = ":hearts: :spades: :diamonds: :clubs:", description = "-", color=dcolor)
-      war.add_field(name = "**---{}---**".format(ctx.message.author), value="`Player: {}` \n`Computer: {}`".format(player, ai))
-      war.add_field(name = "You {0}, {1}".format(winner, ctx.message.author), value="-")
+      war.add_field(name = "**---{}---**".format(ctx.message.author.name), value="`Player: {}` \n`Computer: {}`".format(player, ai), inline = False)
+      war.add_field(name = "You {0}, {1}".format(winner, ctx.message.author.name), value="-", inline = False)
       await ctx.bot.say(embed=war)
       
       
