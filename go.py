@@ -70,31 +70,10 @@ async def get_uptime():
 async def game():
   await bot.wait_until_ready
   while not bot.is_closed:
-    await bot.change_presence(game=discord.Game(name='s.help | {} servers'.format(bot.servers)))
+    await bot.change_presence(game=discord.Game(name='s.help | {} servers'.format(len(bot.servers))))
     await asyncio.sleep(120)
-  
-async def cogstatus():
-  if mod == 1:
-    mod = 'Loaded'
-  else:
-    mod = 'Unloaded'
-  if owner == 1:
-    owner = 'Loaded'
-  else:
-    owner = 'Unloaded'
-  if utils == 1:
-    utils = 'Loaded'
-  else:
-    utils = 'Unloaded'
-  if fun == 1:
-    fun = 'Loaded'
-  else:
-    fun = 'Unloaded'
-  if cool == 1:
-    cool = 'Loaded'
-  else:
-    cool = 'Unloaded'
-      
+    await bot.change_presence(game=discord.Game(name='s.invite | {} servers'.format(len(bot.servers))))
+    await asyncio.sleep(120)
     
 class startup():
   
@@ -132,6 +111,7 @@ class startup():
     bot.load_extension("owner")
     bot.load_extension("cool")
     bot.load_extension("mod")
+    bot.load_extension("music")
   
   
   @bot.command()
@@ -151,11 +131,13 @@ class startup():
           bot.unload_extension("owner")
           bot.unload_extension("cool")
           bot.unload_extension("fun")
+          bot.unload_extension("music")
           bot.load_extension("utils")
           bot.load_extension("fun")
           bot.load_extension("owner")
           bot.load_extension("cool")
           bot.load_extension("mod")
+          bot.load_extension("music")
           await ctx.bot.say("All extensions successfully reloaded!")
         else:
           if ext_name in startup_extensions:
@@ -208,6 +190,6 @@ class startup():
           cogs.add_field(name=cog, value=status, inline=False)
         await bot.say(embed=cogs)
 
-bot.loop.create_task(cogstatus())
+bot.loop.create_task(game())
 bot.loop.create_task(get_uptime())
 bot.run(bottoken)
