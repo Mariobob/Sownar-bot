@@ -20,7 +20,7 @@ ballgud = ["Signs point to yes", "You may rely on it", "It is certain", "Without
 ballbad = ["Don't count on it", "Outlook not so good", "Very doubtful", "Don't count on it"]
 ballok = ["Reply hazy, try again later", "Concentrate and ask again"]
 slot = [":watermelon:", ":cherries:", ":lemon:", ":apple:", ":strawberry:", ":kiwi:"]
-
+bot_id = discord.Object("375370278810681344")
 class Fun():
     print('Fun loaded')
     print('------')
@@ -229,8 +229,8 @@ class Fun():
           elif player == dealer:
             winorlose = "tied"
             dcolor = 0xffae00
-          await ctx.bot.remove_reaction(bj_message, "❌", "375370278810681344")
-          await ctx.bot.remove_reaction(bj_message, "✅", "375370278810681344")
+          await ctx.bot.remove_reaction(bj_message, "❌", bot_id)
+          await ctx.bot.remove_reaction(bj_message, "✅", bot_id)
           await ctx.bot.edit_message(bj_message, embed = bj_embed())
             
             
