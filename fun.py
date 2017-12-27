@@ -105,7 +105,9 @@ class Fun():
     @bot.group(pass_context = True)
     async def casino(ctx):
       if ctx.invoked_subcommand is None:
-        casinohelp = discord.Embed(title="All casino commands")
+        casinohelp = discord.Embed(title="All casino commands", description= "`s.casino war`\n`s.casino slots`", color = 0xff0000)
+        await ctx.bot.say(embed=casinohelp)
+        
       
     @casino.command(pass_context = True)
     async def war(ctx):
