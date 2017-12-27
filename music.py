@@ -14,6 +14,8 @@ if not discord.opus.is_loaded():
 prefix='s.'
 bot=commands.Bot(command_prefix=prefix)
 
+def setup(bot):
+  bot.add_cog(Music)
 
 class Music():
     print('Music loaded')
@@ -87,8 +89,3 @@ class Music():
             await ctx.bot.say("Cleared the queue and disconnected from voice channel ")
 
 
-
-
-
-def setup(bot):
-  bot.add_cog(Music)
