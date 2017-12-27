@@ -15,6 +15,7 @@ bot=commands.Bot(command_prefix=prefix)
 flips = ["Heads", "Tails"]
 rolls = ["1", "2", "3", "4", "5", "6"]
 rpss = ["Rock", "Paper", "Scissors"]
+cards = ["Ace" ,"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"]
 ballgud = ["Signs point to yes", "You may rely on it", "It is certain", "Without a doubt"] 
 ballbad = ["Don't count on it", "Outlook not so good", "Very doubtful", "Don't count on it"]
 ballok = ["Reply hazy, try again later", "Concentrate and ask again"]
@@ -99,7 +100,50 @@ class Fun():
       else:
         embed = discord.Embed(title=":x: Error", description="You need to specify a question", color=0xff0000)
         await ctx.bot.say(embed=embed)
-          
-
+    
+    @bot.group(pass_context = True)
+    async def casino(ctx):
+      if ctx.invoked_subcommand is None:
+        casinohelp = discord.Embed(title="All casino commands")
+      
+    @casino.command(pass_context = True)
+    async def war(ctx):
+      player = randint(1,13)
+      ai = randint(1,13)
+      if player > ai:
+        winner = won
+      elif ai > player:
+        winner = lost
+      elif ai == player:
+        winner = tied
+      if player == 10:
+        player = "Jack"
+      elif player == 11:
+        player = "Queen"
+      elif player == 12:
+        player = "King"
+      elif player == 13:
+        player = "Ace"
+      if ai == 10:
+        ai = "Jack"
+      elif ai == 11:
+        ai = "Queen"
+      elif ai == 12:
+        ai = "King"
+      elif ai == 13:
+        ai = "Ace"
+      if winner == won:
+        color = 0x00ff00
+      elif winner == lost:
+        color = 0xff0000
+      elif winner == tied:
+        color = 0xffae00
+        
+      war = discord.Embed(title = ":hearts: :spades: :diamonds: :clubs:", description = "-")
+      war.add_field(name = "**---{}---**".format(ctx.message.author), value="`Player: {}` \n`Computer: {}`".format(player, ai))
+      war.add_field(name = "You {0}, {1}".format(winner, ctx.message.author))
+      await ctx.bot.say(embed=war)
+      
+      
 def setup(bot):
     bot.add_cog(Fun)
