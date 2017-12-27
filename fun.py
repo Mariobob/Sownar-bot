@@ -178,18 +178,32 @@ class Fun():
        
     @casino.command(pass_context=True, aliases=["21", "bj"])
     async def blackjack(ctx):
+      bj_continue = 1
       def bj_embed():
         bj = discord.Embed(title="---Hand---", description="`Player: {0}`\n`Dealer: {1}`".format(player, dealshow))
         bj.set_author(name="BlackJack", icon_url="http://www.emoji.co.uk/files/twitter-emojis/symbols-twitter/11272-playing-card-black-joker.png")
         bj.add_field(name="`Stand or Hit`?", value="Please type `stop` to take no more cards\nPlease type `continue` to take more cards", inline = False)
         bj.set_footer(text="Requested by {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar_url)
-        return bj
-            
-      player=randint(1,13)
-      dealer=randint(1,13)
-      dealshow="N/A"
-      await ctx.bot.say(embed=bj_embed())
-          
+        return 
+      def bj_message_checker(msg):
+        if msg == "stop":
+          dealshow = dealer
+          bj_continue = 0
+          return True
+        elif msg == "continue":
+          dealer += randint(1,13)
+          player += randint(1,13)
+          bj_continue = 1 
+          return True
+      
+      while bj_continue == 1:
+        player=randint(1,13)
+        dealer=randint(1,13)
+        dealshow="N/A"
+        await ctx.bot.say(embed=bj_embed())
+        msg = await bot.wait_for_message(author=ctx.message.author, check=bj_message_checker)
+      
+      
       
       
       
