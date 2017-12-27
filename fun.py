@@ -207,15 +207,22 @@ class Fun():
         if res.reaction.emoji == "✅":
           await ctx.bot.remove_reaction(bj_message, "✅",  res.user)
           player += randint(1,13)
-          dealer += randint(1,13)
+          if (21-dealer)>5:
+            dealer += randint(1,13)
+          else:
+            dealer = dealer
           if player > 21:
             done = "true"
             winorlose= "lost"
             dcolor = 0xff0000
+            await ctx.bot.remove_reaction(bj_message, "❌", bot_id)
+            await ctx.bot.remove_reaction(bj_message, "✅", bot_id)
           elif dealer > 21:
             done="true"
             winorlose="won"
             dcolor = 0x00ff00
+            await ctx.bot.remove_reaction(bj_message, "❌", bot_id)
+            await ctx.bot.remove_reaction(bj_message, "✅", bot_id)
           await ctx.bot.edit_message(bj_message, embed=bj_embed())
         elif res.reaction.emoji == "❌":
           await ctx.bot.remove_reaction(bj_message, "❌", res.user)
