@@ -72,7 +72,7 @@ class Cool():
       else:
         user = member
       avatars = user.avatar_url
-      if ".gif" in avatar:
+      if ".gif" in avatars:
         avatars += "&f=.gif"
       avatar = discord.Embed(title="{}'s avatar".format(user.name), description="[{0}]({1})".format("Image", user.avatar_url))
       avatar.set_image(url=avatars)
