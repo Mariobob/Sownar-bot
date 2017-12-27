@@ -141,7 +141,7 @@ class Fun():
         
       war = discord.Embed(title = ":hearts: :spades: :diamonds: :clubs:", description = "-")
       war.add_field(name = "**---{}---**".format(ctx.message.author), value="`Player: {}` \n`Computer: {}`".format(player, ai))
-      war.add_field(name = "You {0}, {1}".format(winner, ctx.message.author))
+      war.add_field(name = "You {0}, {1}".format(winner, ctx.message.author), value="")
       await ctx.bot.say(embed=war)
       
       
