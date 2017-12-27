@@ -201,7 +201,7 @@ class Fun():
         dealer=randint(1,13)
         dealshow="N/A"
         await ctx.bot.say(embed=bj_embed())
-        msg = await bot.wait_for_message(author=ctx.message.author, check=bj_message_checker)
+        msg = await bot.wait_for_message(author=ctx.message.author, check=bj_message_checker())
       
       
       
