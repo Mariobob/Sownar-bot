@@ -82,8 +82,9 @@ class Music():
             player = state.player
             player.stop()
 
-        try:
-            state.audio_player.cancel()
-            del ctx.bot.voice_states[server.id]
-            await state.voice.disconnect()
-            await ctx.bot.say("Cleared the queue and disconnected from voice channel ")
+       
+        state.audio_player.cancel()
+        del ctx.bot.voice_states[server.id]
+        await state.voice.disconnect()
+        await ctx.bot.say("Cleared the queue and disconnected from voice channel")
+        
