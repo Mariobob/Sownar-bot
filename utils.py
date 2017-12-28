@@ -100,7 +100,6 @@ class Utils():
     async def help(ctx):
       try:
         
-        await ctx.bot.send_message(ctx.message.channel, "Some commands may not be available at the time, sorry for the inconvinience")
         embed = discord.Embed(title="__Bot commands!__", description="", color=0x00ff00)
         embed.add_field(name=":warning: **Remember**", value="More commands will be added in the future", inline=False)
         embed.add_field(name="**For info on a certain command**", value="s.help <command>", inline=False)
@@ -132,7 +131,6 @@ class Utils():
         mod.add_field(name="s.kick", value="Kicks a certain user", inline=False)
         mod.add_field(name="s.clear [x]", value="Clears 'x' messages (Maximum of 100 at a time)", inline=False)
         mod.add_field(name="s.prune [x]", value="Kicks users who have been inactive since 'x' days (Maximum of 30)", inline=False)
-        await ctx.bot.say("Check your DM's :envelope_with_arrow:")
         await ctx.bot.send_message(ctx.message.author, embed=embed)
         await ctx.bot.send_message(ctx.message.author, embed=util)
         await ctx.bot.send_message(ctx.message.author, embed=fun)
@@ -141,7 +139,7 @@ class Utils():
       except:
         todo = discord.Embed(title=":warning: Error!",description="An error occured, you may have DM's disabled",color=0xff0000)
         await ctx.bot.say(embed=todo)
-        
+      await ctx.bot.say("Check your DM's :envelope_with_arrow: {}".format(ctx.message.author.mention))
       
 
     @commands.command(pass_context = True)
