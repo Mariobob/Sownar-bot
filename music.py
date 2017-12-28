@@ -25,7 +25,8 @@ class Music():
         state = ctx.bot.get_voice_state(channel.server)
         state.voice = voice
     
-    async def get_voice_state(server):
+    
+    def get_voice_state(server):
         state = ctx.bot.voice_states.get(server.id)
         if state is None:
             state = VoiceState(self.bot)
@@ -36,6 +37,13 @@ class Music():
 
     @bot.command(pass_context=True)
     async def summon(ctx):
+      def get_voice_state(server):
+        state = ctx.bot.voice_states.get(server.id)
+        if state is None:
+            state = VoiceState(self.bot)
+            ctx.bot.voice_states[server.id] = state
+
+        return state
       summon_channel=ctx.message.author.voice_channel
       if summon_channel is None:
         summon_error = discord.Embed(title=":warning: Error!",description="You don't seem to be in a voice channel",color=0xff0000)
@@ -50,6 +58,13 @@ class Music():
         
     @bot.command(pass_context=True, no_pm=True)
     async def play(ctx, *, song: str):
+      def get_voice_state(server):
+        state = ctx.bot.voice_states.get(server.id)
+        if state is None:
+            state = VoiceState(self.bot)
+            ctx.bot.voice_states[server.id] = state
+
+        return state
       state = get_voice_state(ctx.message.server)
       opts = {
             'default_search': 'auto',
@@ -74,6 +89,13 @@ class Music():
 
     @bot.command(pass_context=True, no_pm=True)
     async def stop(ctx):
+      def get_voice_state(server):
+        state = ctx.bot.voice_states.get(server.id)
+        if state is None:
+            state = VoiceState(self.bot)
+            ctx.bot.voice_states[server.id] = state
+
+        return state
         server = ctx.message.server
         state = get_voice_state(server)
 
