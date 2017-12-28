@@ -102,14 +102,14 @@ class Fun():
         embed = discord.Embed(title=":x: Error", description="You need to specify a question", color=0xff0000)
         await ctx.bot.say(embed=embed)
     
-    @bot.group(pass_context = True)
+    @bot.command(pass_context = True)
     async def casino(ctx):
       if ctx.invoked_subcommand is None:
-        casinohelp = discord.Embed(title="All casino commands", description= "`s.casino war`\n`s.casino slots`", color = 0xff0000)
+        casinohelp = discord.Embed(title="All casino commands", description= "`s.war`\n`s.slots`\n`s.blackjack`", color = 0xff0000)
         await ctx.bot.say(embed=casinohelp)
         
       
-    @casino.command(pass_context = True)
+    @bot.command(pass_context = True)
     async def war(ctx):
       player = randint(1,13)
       ai = randint(1,13)
@@ -148,7 +148,7 @@ class Fun():
       war.set_footer(icon_url= ctx.message.author.avatar_url, text= "Requested by {}".format(ctx.message.author.name))
       await ctx.bot.say(embed=war)
       
-    @casino.command(pass_context=True)
+    @bot.command(pass_context=True)
     async def slots(ctx):
       x=random.choice(slot)
       y=random.choice(slot)
@@ -176,7 +176,7 @@ class Fun():
       slots.set_footer(icon_url=ctx.message.author.avatar_url, text="Requested by {}".format(ctx.message.author.name))
       await ctx.bot.say(embed=slots)
        
-    @casino.command(pass_context=True, aliases=["21", "bj"])
+    @bot.command(pass_context=True, aliases=["21", "bj"])
     async def blackjack(ctx):
       bj_continue = 1
       player=randint(1,13)
