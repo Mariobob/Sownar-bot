@@ -138,14 +138,19 @@ class startup():
           bot.load_extension("cool")
           bot.load_extension("mod")
           bot.load_extension("music")
-          await ctx.bot.say("All extensions successfully reloaded!")
+          embed = discord.Embed(title=":white_check_mark: Success!", description="Successfully reloaded all cogs", color=0x00ff00)
+          await ctx.bot.say(embed=embed)
         else:
           if ext_name in startup_extensions:
             bot.unload_extension(ext_name)
-            bot.load_extension(ext_name)
-            await bot.say("Extension **{}** reloaded".format(ext_name))
+            try:
+              bot.load_extension(ext_name)
+              embed = discord.Embed(title=":white_check_mark: Success!", description="Successfully reloaded `{}`".format(ext_name), color=0x00ff00)
+            except:
+              embed = discord.Embed(title=":warning: Error!", description="An error occured while loading `{}`".format(ext_name), color=0xff0000)
           else:
-            await bot.say("Not a valid extension, see `s.cogslist` for options")
+            embed = discord.Embed(title=":warning: Error!", description="`{}` is not a cog, use `s.cogslist` for a list of all cogs".format(ext_name), color=0xff0000)
+          await bot.say(embed=embed)
         
   @bot.command(pass_context = True)
   async def load(ctx, ext_name: str):
