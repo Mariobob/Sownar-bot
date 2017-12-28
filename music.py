@@ -41,7 +41,7 @@ class Music():
         summon_error = discord.Embed(title=":warning: Error!",description="You don't seem to be in a voice channel",color=0xff0000)
         await ctx.bot.say(embed=summon_error)
       else:
-        state = ctx.bot.get_voice_state(ctx.message.server)
+        state = get_voice_state(ctx.message.server)
         if state.voice is None:
             state.voice = await ctx.bot.join_voice_channel(summoned_channel)
         else:
@@ -50,7 +50,7 @@ class Music():
         
     @bot.command(pass_context=True, no_pm=True)
     async def play(ctx, *, song: str):
-      state = ctx.bot.get_voice_state(ctx.message.server)
+      state = get_voice_state(ctx.message.server)
       opts = {
             'default_search': 'auto',
             'quiet': True,
@@ -75,7 +75,7 @@ class Music():
     @bot.command(pass_context=True, no_pm=True)
     async def stop(ctx):
         server = ctx.message.server
-        state = ctx.bot.get_voice_state(server)
+        state = get_voice_state(server)
 
         if state.is_playing():
             player = state.player
