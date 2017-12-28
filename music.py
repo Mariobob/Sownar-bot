@@ -25,7 +25,7 @@ class Music():
         state = ctx.bot.get_voice_state(channel.server)
         state.voice = voice
     
-    def get_voice_state(server):
+    async def get_voice_state(server):
         state = ctx.bot.voice_states.get(server.id)
         if state is None:
             state = VoiceState(self.bot)
