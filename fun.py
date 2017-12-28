@@ -227,6 +227,8 @@ class Fun():
         elif res.reaction.emoji == "❌":
           await ctx.bot.remove_reaction(bj_message, "❌", res.user)
           done = "true"
+          if (21-dealer)>5:
+            dealer += randint(1,13)
           if player > dealer:
             winorlose="won"
             dcolor = 0x00ff00
