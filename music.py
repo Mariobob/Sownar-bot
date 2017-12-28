@@ -58,14 +58,6 @@ class Music():
         
     @bot.command(pass_context=True, no_pm=True)
     async def play(ctx, *, song: str):
-      def get_voice_state(server):
-        state = ctx.bot.voice_states.get(server.id)
-        if state is None:
-            state = VoiceState(self.bot)
-            ctx.bot.voice_states[server.id] = state
-
-        return state
-      state = get_voice_state(ctx.message.server)
       opts = {
             'default_search': 'auto',
             'quiet': True,
