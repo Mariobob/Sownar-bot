@@ -68,7 +68,7 @@ async def get_uptime():
             days = 0
 
 async def game():
-  await bot.wait_until_ready
+  await bot.wait_until_ready()
   while not bot.is_closed:
     await bot.change_presence(game=discord.Game(name='s.help | {} servers'.format(len(bot.servers))))
     await asyncio.sleep(120)
