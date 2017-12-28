@@ -96,16 +96,16 @@ class Music():
             ctx.bot.voice_states[server.id] = state
 
         return state
-        server = ctx.message.server
-        state = get_voice_state(server)
+      server = ctx.message.server
+      state = get_voice_state(server)
 
-        if state.is_playing():
-            player = state.player
-            player.stop()
+      if state.is_playing():
+          player = state.player
+          player.stop()
 
        
-        state.audio_player.cancel()
-        del ctx.bot.voice_states[server.id]
-        await state.voice.disconnect()
-        await ctx.bot.say("Cleared the queue and disconnected from voice channel")
+      state.audio_player.cancel()
+      del ctx.bot.voice_states[server.id]
+      await state.voice.disconnect()
+      await ctx.bot.say("Cleared the queue and disconnected from voice channel")
         
