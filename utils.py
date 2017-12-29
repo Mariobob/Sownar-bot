@@ -210,6 +210,7 @@ class Utils():
       else:
         user = member
       ago = (ctx.message.timestamp - user.joined_at).days
+      account_ago = (ctx.message.timestamp - user.created_at).days
       userinfo = discord.Embed(title="{}'s info".format(user.name), description="Known As : {}".format(user.nick), color = 0x000000)
       userinfo.set_thumbnail(url=user.avatar_url)
       userinfo.add_field(name="ID:", value=user.id)
@@ -217,6 +218,8 @@ class Utils():
       userinfo.add_field(name="Playing:", value=user.game)
       userinfo.add_field(name="Status:", value=user.status)
       userinfo.add_field(name="Joined Server:", value="{0}, about {1} days ago".format(user.joined_at, ago))
+      userinfo.add_field(name="Account Created:", value="{0}, about {1} days ago".format(user.created_at, account_ago))
+      userinfo.set_footer(text="Requested by {}".format(ctx.message.author), icon_url=ctx.message.author.avatar_url)
       
       await ctx.bot.say(embed = userinfo)
       
