@@ -239,9 +239,10 @@ class Utils():
       else:
         user= member
       em = discord.Embed(title="Server Permissions for {}".format(str(user)),color=user.color)
-      emb = discord.Embed(title="-".format(str(user)),color=user.color)
+      
       up = user.server_permissions
       em.set_thumbnail(url=user.avatar_url)
+      emb = discord.Embed(title="Can Mention Everyone",description=up.mention_everyone ,color=user.color)
       em.add_field(name="Can create invite",value=up.create_instant_invite, inline=False)
       em.add_field(name="Can Kick Members",value=up.kick_members, inline=False)
       em.add_field(name="Can Ban Members",value=up.ban_members, inline=False)
@@ -258,7 +259,6 @@ class Utils():
       em.add_field(name="Can Attach Files",value=up.attach_files, inline=False)
       em.add_field(name="Can Read Message History",value=up.read_message_history, inline=False)
       em.add_field(name="Is Owner",value=(ctx.message.server.owner == user), inline=False)
-      emb.add_field(name="Can Mention Everyone",value=up.mention_everyone, inline=False)
       emb.add_field(name="Can Use External Emojis",value=up.external_emojis, inline=False)
       emb.add_field(name="Can Connect to Voice Channels",value=up.connect, inline=False)
       emb.add_field(name="Can Speak in Voice Channels",value=up.speak, inline=False)
@@ -273,7 +273,7 @@ class Utils():
       emb.set_footer(text="Requested by {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar_url)
       em1 = await ctx.bot.say(embed=em)
       em2 = await ctx.bot.say(embed=emb)
-      time.sleep(15)
+      time.sleep(30)
       await ctx.bot.delete_message(em1)
       await ctx.bot.delete_message(em2)
         
