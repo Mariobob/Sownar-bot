@@ -199,7 +199,6 @@ class startup():
       os.system("open " + '~/runbot_mac.command')
       exit()
 
-bot.loop.create_task(membercount())
 bot.loop.create_task(game())
 bot.loop.create_task(get_uptime())
 bot.run(bottoken)
