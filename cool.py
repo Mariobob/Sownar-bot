@@ -8,7 +8,7 @@ from discord.ext import commands
 import time
 import traceback
 import aiohttp
-import requests
+
 
 
 
@@ -86,21 +86,7 @@ class Cool():
       avatar.set_image(url=ctx.message.server.icon_url)
       await ctx.bot.say(embed=avatar)
     
-    @commands.command()
-    async def urban(self, ctx, *,msg: str):
-      word = ' '.join(msg)
-      api = "http://api.urbandictionary.com/v0/define"
-      response = requests.get(api, params=[("term", word)]).json()
     
-     if len(response["list"]) == 0: 
-       return await ctx.bot.say("Could not find that word!")
-     
-      embed = discord.Embed(title = ":mag: Search Word", description = word, color = 0xffffff)
-      embed.add_field(name = "Top definition:", value = response['list'][0]['definition'])
-      embed.add_field(name = "Examples:", value = response['list'][0]["example"])
-      embed.set_footer(text = "Tags: " + ', '.join(response['tags']))
-
-      await ctx.bot.say(embed = embed)
         
     
     
