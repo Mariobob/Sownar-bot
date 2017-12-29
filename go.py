@@ -200,7 +200,7 @@ class startup():
         await bot.say(embed=perm_error)
     else:
       for cog in startup_extensions:
-        await bot.unload_extension(cog)
+        bot.unload_extension(cog)
       os.system("open " + '~/runbot_mac.command')
       exit()
 
