@@ -239,7 +239,7 @@ class Utils():
       else:
         user= member
       em = discord.Embed(title="Server Permissions for {}".format(str(user)),color=user.color)
-      emb = discord.Embed(title="Server Permissions for {} (cont.)".format(str(user)),color=user.color)
+      emb = discord.Embed(title="-".format(str(user)),color=user.color)
       up = user.server_permissions
       em.set_thumbnail(url=user.avatar_url)
       em.add_field(name="Can create invite",value=up.create_instant_invite, inline=False)
