@@ -50,26 +50,41 @@ class Fun():
       var = randint(1,3)
       if args == "paper" or args == "rock" or args == "scissors":
         if (var == 1):
+          elem=":moyai: Rock"
           if args == "paper":
-            await ctx.bot.say("Rock, You win!")
+            out="win"
+            dcolor = 0x00ff00
           elif args == "rock":
-            await ctx.bot.say("Rock, It's a draw!")
+            out="tied"
+            dcolor = 0xffae00
           elif args == "scissors":
-            await ctx.bot.say("Rock, You lose!")
+            out="lose"
+            dcolor = 0xff0000
         elif (var == 2):
+          elem=":page_facing_up: Paper"
           if args == "paper":
-            await ctx.bot.say("Paper, It's a draw!")
+            out="tied"
+            dcolor = 0xffae00
           elif args == "rock":
-            await ctx.bot.say("Paper, You lose!")
+            out="lose"
+            dcolor = 0xff0000
           elif args == "scissors":
-            await ctx.bot.say("Paper, You win!")
-          elif (var == 3):
-            if args == "paper":
-              await ctx.bot.say("Scissors, You lose!")
-            elif args == "rock":
-              await ctx.bot.say("Scissors, You win!")
-            elif args == "scissors":
-              await ctx.bot.say("Scissors, It's a draw!")
+            out="win"
+            dcolor = 0x00ff00
+        elif (var == 3):
+          elem=":scissors: Scissors"
+          if args == "paper":
+            out="lose"
+            dcolor = 0xff0000
+          elif args == "rock":
+            out="win"
+            dcolor = 0x00ff00
+          elif args == "scissors":
+            out="tied"
+            dcolor = 0xffae00
+        embed= discord.Embed(title=elem, description="You {}".format(out), color=dcolor)
+        embed.set_footer(text="Requested by {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar_url)
+        await ctx.bot.say(embed=embed)
       else:
           embed = discord.Embed(title=":warning: Error", description="You must specify either rock, paper, or scissors!", color=0xff0000)
           await ctx.bot.say(embed=embed)
