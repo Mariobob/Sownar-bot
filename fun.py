@@ -51,7 +51,7 @@ class Fun():
       args = umsg.split(' ')
       args = umsg.replace(args[0], "")
       args = args[1:]
-      var = int(random.random() * 3)
+      var = randint(1,3)
       if args == "paper" or args == "rock" or args == "scissors":
         if (var == 0):
           if args == "paper":
@@ -75,7 +75,7 @@ class Fun():
             elif args == "scissors":
               await ctx.bot.say("Scissors, It's a draw!")
       else:
-          embed = discord.Embed(title=":x: Error", description="You must specify either rock, paper, or scissors!", color=0xff0000)
+          embed = discord.Embed(title=":warning: Error", description="You must specify either rock, paper, or scissors!", color=0xff0000)
           await ctx.bot.say(embed=embed)
           
     @bot.command(name="8ball", pass_context = True)
