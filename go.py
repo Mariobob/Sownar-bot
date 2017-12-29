@@ -67,13 +67,19 @@ async def get_uptime():
             weeks += 1
             days = 0
 
-
+async def membercount():
+  await bot.wait_until_ready()
+  while not bot.is_closed:
+    members = 0
+    for server is bot.servers:
+      members += server.member_count
+      
 async def game():
   await bot.wait_until_ready()
   while not bot.is_closed:
     await bot.change_presence(game=discord.Game(name='s.help | {} servers'.format(len(bot.servers))))
     await asyncio.sleep(120)
-    await bot.change_presence(game=discord.Game(name='s.invite | {} users'.format(len(bot.users))))
+    await bot.change_presence(game=discord.Game(name='s.invite | {} users'.format(members)))
     await asyncio.sleep(120)
     
 class startup():
@@ -108,7 +114,7 @@ class startup():
     print(bot.user.id)
     print("------")
     print("Servers: {}".format(len(bot.servers)))
-    print("Users: {}".format(len(bot.users)))
+    print("Users: {}".format(members))
     print("------")
     bot.load_extension("utils")
     bot.load_extension("fun")
