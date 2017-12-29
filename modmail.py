@@ -11,9 +11,13 @@ import traceback
 prefix='s.'
 bot=commands.Bot(command_prefix=prefix)
 
-def setup(bot):
-  bot.add_cog(modmail)
 
 class ModMail():
     print('ModMail loaded')
     print('------')
+
+
+
+
+def setup(bot):
+  bot.add_cog(modmail)
