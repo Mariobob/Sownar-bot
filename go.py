@@ -36,7 +36,7 @@ utils = 0
 bot=commands.Bot(command_prefix=prefix)
 bot.remove_command("help")
 game = ('{0}help | {1} servers'.format(prefix, len(bot.servers)))
-startup_extensions = ["utils", "mod", "fun", "owner", "cool", "music"]
+startup_extensions = ["utils", "mod", "fun", "owner", "cool", "modmail"]
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
 
 async def get_uptime():
@@ -72,7 +72,7 @@ async def game():
   while not bot.is_closed:
     await bot.change_presence(game=discord.Game(name='s.help | {} servers'.format(len(bot.servers))))
     await asyncio.sleep(120)
-    await bot.change_presence(game=discord.Game(name='s.invite | {} servers'.format(len(bot.servers))))
+    await bot.change_presence(game=discord.Game(name='s.invite | {} users'.format(len(bot.members))))
     await asyncio.sleep(120)
     
 class startup():
@@ -106,12 +106,15 @@ class startup():
     print(bot.user.name)
     print(bot.user.id)
     print("------")
+    print("Servers: {}".format(len(bot.servers)))
+    print("Users: {}".format(len(bot.members)))
+    print("------")
     bot.load_extension("utils")
     bot.load_extension("fun")
     bot.load_extension("owner")
     bot.load_extension("cool")
     bot.load_extension("mod")
-    bot.load_extension("music")
+    bot.load_extension("modmail")
   
   
   @bot.command()
@@ -131,13 +134,13 @@ class startup():
           bot.unload_extension("owner")
           bot.unload_extension("cool")
           bot.unload_extension("fun")
-          bot.unload_extension("music")
+          bot.unload_extension("modmail")
           bot.load_extension("utils")
           bot.load_extension("fun")
           bot.load_extension("owner")
           bot.load_extension("cool")
           bot.load_extension("mod")
-          bot.load_extension("music")
+          bot.load_extension("modmail")
           embed = discord.Embed(title=":white_check_mark: Success!", description="Successfully reloaded all cogs", color=0x00ff00)
           await ctx.bot.say(embed=embed)
         else:
@@ -182,18 +185,17 @@ class startup():
       else:
         cogs = discord.Embed(title="__Current Cogs!__", description="", color=0x00ff00)
         for cog in startup_extensions:
-          if cog == "utils":
-            status = utils
-          elif cog == "mod":
-            status = mod
-          elif cog == "owner":
-            status = owner
-          elif cog == "fun":
-            status = fun
-          elif cog == "cool":
-            status = cool
-          cogs.add_field(name=cog, value=status, inline=False)
+          cogs.add_field(name=cog, value="-", inline=False)
         await bot.say(embed=cogs)
+        
+  @bot.command(pass_context = True)
+  async def restart(ctx):
+    if ctx.message.author.id not in ownerids:
+        await bot.say(embed=perm_error)
+    else:
+      exit()
+      time.sleep(2)
+      os.system(~/runbot_mac.command)
 
 bot.loop.create_task(game())
 bot.loop.create_task(get_uptime())
