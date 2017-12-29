@@ -276,6 +276,7 @@ class Utils():
       time.sleep(30)
       await ctx.bot.delete_message(em1)
       await ctx.bot.delete_message(em2)
+      await ctx.bot.delete_message(ctx.message)
         
       
         
