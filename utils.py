@@ -271,9 +271,11 @@ class Utils():
       emb.add_field(name="Can Manage Webhooks",value=up.manage_webhooks, inline=False)
       emb.add_field(name="Can Manage Emojis",value=up.manage_emojis, inline=False)
       emb.set_footer(text="Requested by {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar_url)
-      await ctx.bot.say(embed=em)
-      await ctx.bot.say(embed=emb)
-        
+      em1 = await ctx.bot.say(embed=em)
+      em2 = await ctx.bot.say(embed=emb)
+      time.sleep(4)
+      await ctx.bot.delete_message(em1)
+      await ctx.bot.delete_message(em2)
         
       
         
