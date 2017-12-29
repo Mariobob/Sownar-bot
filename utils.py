@@ -249,7 +249,7 @@ class Utils():
       em.add_field(name="Can Manage Channels",value=up.manage_channels)
       em.add_field(name="Can Manage Server",value=up.manage_server)
       em.add_field(name="Can Add Reactions",value=up.add_reactions)
-      em.add_field(name="Can View Audit Logs",value=up.view_audit_log)
+      em.add_field(name="Can View Audit Logs",value=up.view_audit_logs)
       em.add_field(name="Can Read Messages",value=up.read_messages)
       em.add_field(name="Can Send Messages",value=up.send_messages)
       em.add_field(name="Can Send TTS Messages",value=up.send_tts_messages)
