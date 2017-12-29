@@ -20,4 +20,4 @@ class ModMail():
 
 
 def setup(bot):
-  bot.add_cog(modmail)
+  bot.add_cog(ModMail)
