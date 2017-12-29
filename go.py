@@ -194,6 +194,7 @@ class startup():
     if ctx.message.author.id not in ownerids:
         await bot.say(embed=perm_error)
     else:
+      await bot.say("Restarting...")
       for cog in startup_extensions:
         bot.unload_extension(cog)
       os.system("open " + '~/runbot_mac.command')
