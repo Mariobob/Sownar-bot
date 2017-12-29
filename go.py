@@ -199,9 +199,8 @@ class startup():
     if ctx.message.author.id not in ownerids:
         await bot.say(embed=perm_error)
     else:
-      exit()
-      time.sleep(2)
       os.popen("~/runbot_mac.command")
+      exit()
 
 bot.loop.create_task(game())
 bot.loop.create_task(get_uptime())
