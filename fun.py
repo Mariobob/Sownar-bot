@@ -82,7 +82,7 @@ class Fun():
           elif args == "scissors":
             out="tied"
             dcolor = 0xffae00
-        embed= discord.Embed(title=elem, description="You {}".format(out), color=dcolor)
+        embed= discord.Embed(title=elem, description="**You {}**".format(out), color=dcolor)
         embed.set_footer(text="Requested by {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar_url)
         await ctx.bot.say(embed=embed)
       else:
