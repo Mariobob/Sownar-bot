@@ -58,7 +58,7 @@ class Utils():
         embed.add_field(name="Roles", value=totalroles, inline=False)
         embed.add_field(name="Verification Level", value=server.verification_level, inline=False)
         embed.add_field(name="Server Region", value=server.region, inline=False)
-        embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(str(server.created_atstrftime("%d/%m/%y %H:%M:%S")), ago), inline=False)
+        embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(str(server.created_at.strftime("%d/%m/%y %H:%M:%S")), ago), inline=False)
         await ctx.bot.say(embed=embed)
 
     @commands.command(pass_context = True, no_pm = True)
