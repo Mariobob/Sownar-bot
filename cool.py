@@ -8,6 +8,8 @@ from discord.ext import commands
 import time
 import traceback
 import aiohttp
+import requests
+
 
 
 prefix='s.'
