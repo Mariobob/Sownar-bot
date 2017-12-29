@@ -49,21 +49,21 @@ class Fun():
     async def rps(ctx, args: str):
       var = randint(1,3)
       if args == "paper" or args == "rock" or args == "scissors":
-        if (var == 0):
+        if (var == 1):
           if args == "paper":
             await ctx.bot.say("Rock, You win!")
           elif args == "rock":
             await ctx.bot.say("Rock, It's a draw!")
           elif args == "scissors":
             await ctx.bot.say("Rock, You lose!")
-        elif (var == 1):
+        elif (var == 2):
           if args == "paper":
             await ctx.bot.say("Paper, It's a draw!")
           elif args == "rock":
             await ctx.bot.say("Paper, You lose!")
           elif args == "scissors":
             await ctx.bot.say("Paper, You win!")
-          elif (var == 2):
+          elif (var == 3):
             if args == "paper":
               await ctx.bot.say("Scissors, You lose!")
             elif args == "rock":
