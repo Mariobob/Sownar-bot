@@ -94,7 +94,7 @@ class Cool():
       response = requests.get(api, params=[("term", word)]).json()
     
       if len(response["list"]) == 0: 
-        return await ctx.bot.say("Could not find that word!")
+        await ctx.bot.say("Could not find that word!")
     
       embed = discord.Embed(title = ":mag: Search Word", description = word, color = 0xffffff)
       embed.add_field(name = "Top definition:", value = response['list'][0]['definition'])
