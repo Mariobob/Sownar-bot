@@ -195,7 +195,7 @@ class startup():
     else:
       exit()
       time.sleep(2)
-      os.system(~/runbot_mac.command)
+      os.popen("~/runbot_mac.command")
 
 bot.loop.create_task(game())
 bot.loop.create_task(get_uptime())
