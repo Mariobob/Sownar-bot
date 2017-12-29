@@ -27,25 +27,25 @@ class Fun():
     global fun
     fun = 1
 
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, no_pm = True)
     async def fun(ctx):
         await ctx.bot.say("I am working!")
       
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, no_pm = True)
     async def flip(ctx):
       flip = random.choice(flips)
       embed = discord.Embed(title="Flipped...", description="It's {}".format(flip), color=0x00ff00)
       await ctx.bot.say(embed=embed)
       
     
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, no_pm = True)
     async def roll(ctx):
       roll = random.choice(rolls)
       embed = discord.Embed(title="Rolled...", description="It's a {}".format(roll), color=0x00ff00)
       await ctx.bot.say(embed=embed)
       
       
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, no_pm = True)
     async def rps(ctx, args: str):
       var = randint(1,3)
       if args == "paper" or args == "rock" or args == "scissors":
@@ -89,7 +89,7 @@ class Fun():
           embed = discord.Embed(title=":warning: Error", description="You must specify either rock, paper, or scissors!", color=0xff0000)
           await ctx.bot.say(embed=embed)
           
-    @bot.command(name="8ball", pass_context = True)
+    @bot.command(name="8ball", pass_context = True, no_pm = True)
     async def _8ball(ctx):
       umsg = ctx.message.content
       omsg = umsg.split(' ')
@@ -113,14 +113,14 @@ class Fun():
         embed = discord.Embed(title=":x: Error", description="You need to specify a question", color=0xff0000)
         await ctx.bot.say(embed=embed)
     
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, no_pm = True)
     async def casino(ctx):
       if ctx.invoked_subcommand is None:
         casinohelp = discord.Embed(title="All casino commands", description= "`s.war`\n`s.slots`\n`s.blackjack`", color = 0xff0000)
         await ctx.bot.say(embed=casinohelp)
         
       
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, no_pm = True)
     async def war(ctx):
       player = randint(1,13)
       ai = randint(1,13)

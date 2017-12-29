@@ -24,7 +24,7 @@ class Utils():
     utils = 1
     
 
-    @commands.command(pass_context = True)
+    @commands.command(pass_context = True, no_pm = True)
     async def serverinfo(ctx):
         server = ctx.message.server
         i = 0
@@ -61,11 +61,11 @@ class Utils():
         embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(server.created_at, ago), inline=False)
         await ctx.bot.say(embed=embed)
 
-    @commands.command(pass_context = True)
+    @commands.command(pass_context = True, no_pm = True)
     async def test(ctx):
         await ctx.bot.say("I am working!")
 
-    @commands.command(pass_context = True)
+    @commands.command(pass_context = True, no_pm = True)
     async def ticket(ctx, *, ticket: str):
         embed = discord.Embed(title="__New Ticket!__", description="I have recieved a new ticket !", color=0x00ff00)
         embed.add_field(name="Sent by", value=ctx.message.author, inline=True)
@@ -74,7 +74,7 @@ class Utils():
         await ctx.bot.send_message(tickets, embed=embed)
         await ctx.bot.say("Your ticket has been sent to my dev team!")
 
-    @commands.command(pass_context = True)
+    @commands.command(pass_context = True, no_pm = True)
     async def ping(ctx):
         channel = ctx.message.channel
         t1 = time.perf_counter()
@@ -82,11 +82,11 @@ class Utils():
         t2 = time.perf_counter()
         await ctx.bot.say("Pong! `{}ms`".format(round((t2-t1)*1000)))
 
-    @commands.command(pass_context = True)
+    @commands.command(pass_context = True, no_pm = True)
     async def about(ctx):
         await ctx.bot.say("This command is undergoing a rewrite, please try again later!")
 
-    @commands.command(pass_context = True)
+    @commands.command(pass_context = True, no_pm = True)
     async def invite(ctx):
       try:
         embed = discord.Embed(title=":link: __Bot Links__", description='[{}]({})''\n[{}]({})'.format("Bot invite", bot_invite, "Support Server", support), color=0x00ff00)
@@ -96,7 +96,7 @@ class Utils():
         todo = discord.Embed(title=":warning: Error!",description="An error occured, you may have DM's disabled",color=0xff0000)
         await ctx.bot.say(embed = todo)
 
-    @commands.command(pass_context = True)
+    @commands.command(pass_context = True, no_pm = True)
     async def help(ctx):
       try:
         
@@ -144,7 +144,7 @@ class Utils():
       await ctx.bot.say("Check your DM's :envelope_with_arrow: {}".format(ctx.message.author.mention))
       
 
-    @commands.command(pass_context = True)
+    @commands.command(pass_context = True, no_pm = True)
     async def suggest(ctx, *, suggests: str):
         embed = discord.Embed(title="__New suggestion!__", description="I have recieved a new suggestion !", color=0x00ff00)
         embed.add_field(name="Sent by", value=ctx.message.author, inline=True)
@@ -153,7 +153,7 @@ class Utils():
         await ctx.bot.send_message(suggest, embed=embed)
         await ctx.bot.say("Your suggestion has been sent to my dev team!")
 
-    @commands.command(pass_context = True)
+    @commands.command(pass_context = True, no_pm = True)
     async def servers(ctx):
       
       serverCount = 0
@@ -166,7 +166,7 @@ class Utils():
       embed = discord.Embed(title="Serving", description='{0} servers for {1} users'.format(serverCount, members), color=0x00ff00)
       await ctx.bot.say(embed=embed)
         
-    @commands.command(pass_context = True)
+    @commands.command(pass_context = True, no_pm = True)
     async def stats(ctx):
         totalusers = 0
         totalchannels = 0
@@ -195,7 +195,7 @@ class Utils():
         embed.add_field(name="Channels", value="Total channels: {}".format(totalchannels))
         await ctx.bot.say(embed=embed)
         
-    @commands.command(pass_context = True, aliases = ["id", "userid"])
+    @commands.command(pass_context = True, no_pm = True, aliases = ["id", "userid"])
     async def getid(ctx, *, member: discord.Member = None):
       if member is None:
         embed = discord.Embed(title="Your id is:", description=ctx.message.author.id, color=0x000000)
@@ -203,7 +203,7 @@ class Utils():
         embed = discord.Embed(title="{}'s id is:".format(member), description=member.id, color=0x000000)
       await ctx.bot.say(embed=embed)
       
-    @commands.command(pass_context = True)
+    @commands.command(pass_context = True, no_pm = True)
     async def userinfo(ctx, *, member: discord.Member = None):
       if member is None:
         user = ctx.message.author
@@ -221,7 +221,7 @@ class Utils():
       await ctx.bot.say(embed = userinfo)
       
         
-    @commands.command(pass_context = True)
+    @commands.command(pass_context = True, no_pm = True)
     async def serverlist(ctx):
       server_list = []
       if len(ctx.bot.servers)<25:
@@ -232,7 +232,7 @@ class Utils():
         todo = discord.Embed(title=":warning: Error!",description="The bot is in too many servers to show them all",color=0xff0000)
         await ctx.bot.say(embed = todo)
     
-    @commands.command(pass_context = True, aliases=["perms", "perm"])
+    @commands.command(pass_context = True, no_pm = True, aliases=["perms", "perm"])
     async def permissions(ctx, member: discord.Member=None):
       if member is None:
         user= ctx.message.author

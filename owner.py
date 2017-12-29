@@ -22,11 +22,11 @@ class Owner():
     global owner
     owner = 1
 
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, no_pm = True)
     async def own(ctx):
         await ctx.bot.say("I am working!")
 
-    @bot.group(pass_context = True)
+    @bot.group(pass_context = True, no_pm = True)
     async def todo(ctx):
       if ctx.message.author.id not in ownerids:
           await ctx.bot.say(embed=perm_error)
@@ -43,7 +43,7 @@ class Owner():
               todo.add_field(name=num, value=x, inline=False)
             await ctx.bot.say(embed=todo)
           
-    @todo.command(pass_context = True)
+    @todo.command(pass_context = True, no_pm = True)
     async def delete(ctx, *, item = None):
       if ctx.message.author.id not in ownerids:
         
@@ -61,7 +61,7 @@ class Owner():
           except:
             await ctx.bot.say("You can only use numbers!")
             
-    @todo.command(pass_context = True)
+    @todo.command(pass_context = True, no_pm = True)
     async def add(ctx, *, todo: str):
       if ctx.message.author.id not in ownerids:
           await ctx.bot.say(embed=perm_error)
@@ -83,7 +83,7 @@ class Owner():
         todohelp.add_field(name="s.todo **delete**", value= "remove and element to the todo list", inline = False)
         await ctx.bot.say(embed=todohelp)
         
-    @todo.command(pass_context = True)
+    @todo.command(pass_context = True, no_pm = True)
     async def finish(ctx, *, item = None):
       if ctx.message.author.id not in ownerids:
         
@@ -104,7 +104,7 @@ class Owner():
 
 
           
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, no_pm = True)
     async def gameset(ctx, *, game = None):
       if ctx.message.author.id not in ownerids:
         await ctx.bot.say(embed=perm_error)
@@ -115,7 +115,7 @@ class Owner():
         else:
           await ctx.bot.change_presence(game=discord.Game(name=game))
           
-#    @bot.command(pass_context = True)
+#    @bot.command(pass_context = True, no_pm = True)
 #    async def changelog(ctx):
 #      todo = discord.Embed(title="__Todo Functions__", description= "-", color=0xffae00)
 #      finish = discord.Embed(title="__Recent Updates__", description="-", color=0x00ff00)

@@ -21,15 +21,15 @@ class Cool():
     global cool
     cool = 1
     
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, no_pm = True)
     async def rand(ctx):
         await ctx.bot.say("I am working!")
         
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, no_pm = True)
     async def say(ctx, *, echo: str):
       await ctx.bot.say(echo)
     
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, no_pm = True)
     async def cat(ctx):
       api = 'https://random.cat/meow'
       async with aiohttp.ClientSession() as session:
@@ -42,7 +42,7 @@ class Cool():
               else:
                   await ctx.bot.say('Error accessing the API')
     
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, no_pm = True)
     async def dog(ctx):            
       api = "https://api.thedogapi.co.uk/v2/dog.php"
       async with aiohttp.ClientSession() as session:
@@ -58,7 +58,7 @@ class Cool():
                   embed.description = x
                   await ctx.bot.say(embed=embed)
                   
-    @bot.command(pass_context=True)
+    @bot.command(pass_context = True, no_pm = True)
     async def embed(ctx, *, message = None ):
       if message is None:
         error = discord.Embed(title=":warning: Error!",description="Please specify a message to embed!",color=0xff0000)
@@ -67,7 +67,7 @@ class Cool():
         embed = discord.Embed(title = "", description=message)
         await ctx.bot.say(embed=embed)
     
-    @bot.command(pass_context=True)
+    @bot.command(pass_context = True, no_pm = True)
     async def avatar(ctx, *, member: discord.Member = None):
       if member is None:
         user = ctx.message.author
@@ -80,7 +80,7 @@ class Cool():
       avatar.set_image(url=avatars)
       await ctx.bot.say(embed=avatar)
     
-    @bot.command(pass_context=True)
+    @bot.command(pass_context = True, no_pm = True)
     async def servericon(ctx):
       avatar = discord.Embed(title="Server icon", description="[{0}]({1})".format("Image", ctx.message.server.icon_url))
       avatar.set_image(url=ctx.message.server.icon_url)

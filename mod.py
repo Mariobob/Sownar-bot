@@ -19,11 +19,11 @@ class Mod():
     global mod
     mod = 1
 
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, no_pm = True)
     async def mod(ctx):
         await ctx.bot.say("I am working!")
 
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, no_pm = True)
     async def ban(ctx, *, member: discord.Member = None):
         if member is None:
           embed = discord.Embed(title=":warning: Error!",description="Who do I ban?",color=0xff0000)
@@ -41,7 +41,7 @@ class Mod():
         else:
             await ctx.bot.say(embed=perm_errorbis)
             
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, no_pm = True)
     async def kick(ctx, *, member: discord.Member = None):
         if member is None:
           embed = discord.Embed(title=":warning: Error!",description="Who do I kick?",color=0xff0000)
@@ -59,7 +59,7 @@ class Mod():
         else:
             await ctx.bot.say(embed=perm_errorbis)
     
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, no_pm = True)
     async def clear(ctx, number = None):
       if number is None:
         embed = discord.Embed(title=":warning: Error!",description="Please specify a number!",color=0xff0000)
@@ -80,7 +80,7 @@ class Mod():
           await ctx.bot.say(embed=embed)
         
     
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, no_pm = True)
     async def prune(ctx, *, num = None):
       if num is None:
         embed = discord.Embed(title=":warning: Error!",description="Please specify a number of days of inactivity!",color=0xff0000)
