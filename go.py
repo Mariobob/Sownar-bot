@@ -200,6 +200,7 @@ class startup():
         await bot.say(embed=perm_error)
     else:
       os.popen("~/runbot_mac.command")
+      time.sleep(2)
       exit()
 
 bot.loop.create_task(game())
