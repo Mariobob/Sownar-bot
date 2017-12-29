@@ -199,7 +199,7 @@ class startup():
     if ctx.message.author.id not in ownerids:
         await bot.say(embed=perm_error)
     else:
-      os.popen("~/runbot_mac.command")
+      os.system("open " + '~/runbot_mac.command')
       time.sleep(2)
       exit()
 
