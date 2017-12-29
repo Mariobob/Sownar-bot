@@ -46,11 +46,7 @@ class Fun():
       
       
     @bot.command(pass_context = True)
-    async def rps(ctx):
-      umsg = ctx.message.content.lower()
-      args = umsg.split(' ')
-      args = umsg.replace(args[0], "")
-      args = args[1:]
+    async def rps(ctx, args: str):
       var = randint(1,3)
       if args == "paper" or args == "rock" or args == "scissors":
         if (var == 0):
