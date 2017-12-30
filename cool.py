@@ -95,8 +95,8 @@ class Cool():
       ga.set_footer(text="None winners")
       ga_react = await ctx.bot.say(embed=ga)
       await ctx.bot.add_reaction(ga_react, "🎉")
-      remain = 10
-      for loop in range(10):
+      remain = time
+      for loop in range(time):
         await asyncio.sleep(1)
         remain = remain - 1
         ga_edit=discord.Embed(title=":tada: NEW GIVEAWAY :tada:", description="-")
