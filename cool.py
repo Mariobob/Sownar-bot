@@ -106,9 +106,9 @@ class Cool():
       ga_channel = ga_react.channel
       print(ga_channel)
       ga_message = await ctx.bot.get_message(ga_channel, ga_message_id)
-      for user in ctx.bot.get_reaction_users(ga_message.reactions[0]):
+      for user in await ctx.bot.get_reaction_users(ga_message.reactions[0]):
         
-        yield from ga_users.append(user)
+        ga_users.append(user)
       winner = random.choice(ga_users)
       ga_end = discord.Embed(title=":tada: GIVEAWAY ENDED :tada:", description="Winner is None")
       await ctx.bot.edit_message(ga_react, embed = ga_end)
