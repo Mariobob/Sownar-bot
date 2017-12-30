@@ -108,9 +108,8 @@ class Cool():
       
     @bot.command(pass_context = True, no_pm = True, aliases = ["countdown"])
     async def cdown(ctx, time:int):
-      now = int(ctx.message.timestamp)
       for loop in range(time):
-        count_down = now - time
+        time -= 1
         await ctx.bot.say(count_down)
     
     
