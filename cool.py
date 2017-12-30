@@ -101,6 +101,7 @@ class Cool():
         ga_edit.add_field(name="None", value="Ends in {} seconds".format(remain), inline =False)
         ga_edit.set_footer(text="None winners")
         await ctx.bot.edit_message(ga_react, embed = ga_edit)
+        await ctx.bot.say(len(ga_react.reactions))
       for user in bot.get_reaction_users(ga_react.reactions):
         
         ga_users.append(user)
