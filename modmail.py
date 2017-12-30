@@ -22,15 +22,18 @@ class ModMail():
   
     @bot.command(pass_context = True, aliases=["modmail", "mailmod", "mail"])
     async def mm(ctx, *, msg:str):
+      if msg == "":
+        
       if ctx.message.channel.is_private is True:
         chan_id = ctx.message.channel.id
         if chan_id not in bl_ids:
           server= ctx.bot.get_server("396469778430296068")
-          try:
-            for chanl in list(server.channels):
-              if chanl.name == ctx.message.channel.id:
-                chan = ctx.bot.get_channel(chanl.id)
-          except:
+          for chanl in list(server.channels):
+            if chanl.name == ctx.message.channel.id:
+              create="false"
+          if create == "false":
+            chan = ctx.bot.get_channel(chanl.id)
+          else:
             chan = await ctx.bot.create_channel(server, chan_id)
           embed= discord.Embed(title="ModMail with {}".format(ctx.message.author), description=msg)
           await ctx.bot.send_message(chan, embed=embed)
