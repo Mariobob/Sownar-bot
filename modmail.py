@@ -24,6 +24,7 @@ class ModMail():
     async def mm(ctx, *, msg:str):
       if ctx.message.channel.is_private is True:
         chan_id = ctx.message.channel.id
+        server= discord.Object("376096854448013325")
         everyone_perms = discord.PermissionOverwrite(read_messages=False)
         my_perms = discord.PermissionOverwrite(read_messages=True)
         everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
