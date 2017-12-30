@@ -104,6 +104,7 @@ class Cool():
       ga_message_id = ga_react.id
       print(ga_message_id)
       ga_channel = ga_react.channel
+      print(ga_channel)
       ga_message = await bot.get_message(ga_channel, ga_message_id)
       for user in ctx.bot.get_reaction_users(ga_message.reactions[0]):
         
