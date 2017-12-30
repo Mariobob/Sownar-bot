@@ -8,11 +8,6 @@ from discord.ext import commands
 import time
 import traceback
 import aiohttp
-
-async def ga_time(sec):
-  return True
-  await asyncio.sleep(sec)
-  return False
   
 
 
@@ -117,9 +112,9 @@ class Cool():
       ga.set_footer(text="{} winners".format(winners))
       ga_react = await ctx.bot.say(embed=ga)
       await ctx.bot.add_reaction(ga_react, "🎉")
-      while ga_time(time) is True:
-        ga_reaction = await ctx.bot.wait_for_reaction("🎉", message=ga_react)
-        ga_users.append(ga_reaction.user)
+      await asyncio.sleep(time)
+      ga_end = discord.Embed(title=":tada: GIVEAWAY ENDED :tada:", description="Winner is None")
+      await ctx.bot.edit_message(ga_react, embed = ga_end)
       
     
     
