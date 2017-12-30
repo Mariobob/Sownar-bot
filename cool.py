@@ -92,7 +92,7 @@ class Cool():
       ga.add_field(name="None", value="Ends in {} seconds".format(time), inline =False)
       ga.set_footer(text="None winners")
       ga_react = await ctx.bot.say(embed=ga)
-      ga_reaction = await ctx.bot.add_reaction(ga_react, "🎉")
+      await ctx.bot.add_reaction(ga_react, "🎉")
       remain = time
       for loop in range(time):
         await asyncio.sleep(1)
@@ -101,7 +101,7 @@ class Cool():
         ga_edit.add_field(name="None", value="Ends in {} seconds".format(remain), inline =False)
         ga_edit.set_footer(text="None winners")
         await ctx.bot.edit_message(ga_react, embed = ga_edit)
-      for user in bot.get_reaction_users(ga_reaction):
+      for user in ctx.bot.get_reaction_users(ga_react.reactions):
         
         ga_users.append(user)
       winner = random.choice(ga_users)
