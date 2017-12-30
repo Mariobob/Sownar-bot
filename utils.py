@@ -70,6 +70,7 @@ class Utils():
         embed = discord.Embed(title="__New Ticket!__", description="I have recieved a new ticket !", color=0x00ff00)
         embed.add_field(name="Sent by", value=ctx.message.author, inline=True)
         embed.add_field(name="Ticket", value=ticket, inline=True)
+        embed.set_footer(text="From: {}".format(ctx.message.server), icon_url=ctx.message.server.icon_url)
         await ctx.bot.delete_message(ctx.message)
         await ctx.bot.send_message(tickets, embed=embed)
         await ctx.bot.say("Your ticket has been sent to my dev team!")
