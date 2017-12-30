@@ -65,8 +65,8 @@ class Utils():
     async def test(ctx):
         await ctx.bot.say("I am working!")
 
-    @commands.command(pass_context = True, no_pm = True)
-    async def ticket(ctx, *, ticket: str):
+    @commands.command(pass_context = True, no_pm = True, aliases=["ticket", "bug"])
+    async def report(ctx, *, ticket: str):
         embed = discord.Embed(title="__New Ticket!__", description="I have recieved a new ticket !", color=0x00ff00)
         embed.add_field(name="Sent by", value=ctx.message.author, inline=True)
         embed.add_field(name="Ticket", value=ticket, inline=True)
@@ -108,7 +108,7 @@ class Utils():
         util = discord.Embed(title="__Utility commands!__", description="", color=0x00ff00)
         util.add_field(name="s.servers", value="Show the number of servers and members the bot is serving", inline=False)
         util.add_field(name="s.serverinfo", value="Shoes information on the server", inline=False)
-        util.add_field(name="s.ticket", value="Sends a ticket to the dev team", inline=False)
+        util.add_field(name="s.report", value="Reports a bug to my dev team", inline=False)
         util.add_field(name="s.suggest", value="Sends a suggestion to the dev team", inline=False)
         util.add_field(name="s.getid [user]", value="Get's a user's id (if left empty author's id will be brought up)", inline=False)
         util.add_field(name="~~s.about~~", value="Shows info on the bot", inline=False)
