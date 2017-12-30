@@ -10,9 +10,10 @@ import traceback
 import aiohttp
   
 
-sownar = await bot.get_member("375370278810681344")
+
 prefix='s.'
 bot=commands.Bot(command_prefix=prefix)
+sownar = await bot.get_member("375370278810681344")
 
 class Cool():
     print('random loaded')
