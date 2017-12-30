@@ -101,7 +101,7 @@ class Cool():
         ga_edit.add_field(name="None", value="Ends in {} seconds".format(remain), inline =False)
         ga_edit.set_footer(text="None winners")
         await ctx.bot.edit_message(ga_react, embed = ga_edit)
-      for user in bot.get_reaction_users("🎉"):
+      for user in bot.get_reaction_users("1f389"):
         ga_users.append(user)
       winner = random.choice(ga_users)
       ga_end = discord.Embed(title=":tada: GIVEAWAY ENDED :tada:", description="Winner is None")
