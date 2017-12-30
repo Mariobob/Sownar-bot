@@ -102,8 +102,8 @@ class Cool():
         ga_edit.set_footer(text="None winners")
         await ctx.bot.edit_message(ga_react, embed = ga_edit)
       ga_message_id = ga_react.id
-      gprint(ga_message_id)
-      a_channel = ga_react.channel
+      print(ga_message_id)
+      ga_channel = ga_react.channel
       ga_message = await bot.get_message(ga_channel, ga_message_id)
       for user in ctx.bot.get_reaction_users(ga_message.reactions[0]):
         
