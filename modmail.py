@@ -23,12 +23,8 @@ class ModMail():
     async def mm(ctx, *, msg:str):
       if ctx.message.channel.is_private is True:
         chan_id = ctx.message.channel.id
-        server= ctx.bot.get_server("376096854448013325")
-        everyone_perms = discord.PermissionOverwrite(read_messages=False)
-        my_perms = discord.PermissionOverwrite(read_messages=True)
-        everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
-        mine = discord.ChannelPermissions(target=server.me, overwrite=my_perms)
-        chan= await ctx.bot.create_channel(server, chan_id, everyone, mine)
+        server= ctx.bot.get_server("396469778430296068")
+        chan= await ctx.bot.create_channel(server, chan_id)
         embed= discord.Embed(title="ModMail with {}".format(ctx.message.author), description=msg)
         await ctx.bot.send_message(chan, embed=embed)
       else:
