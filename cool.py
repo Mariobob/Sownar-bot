@@ -87,32 +87,24 @@ class Cool():
       await ctx.bot.say(embed=avatar)
       
     @bot.command(pass_context = True, no_pm = True, aliases=["ga"])
-    async def giveaway(ctx, *, time:int):
+    async def giveaway(ctx, *, time, title):
       ga_users=[]
       ga=discord.Embed(title=":tada: NEW GIVEAWAY :tada:", description="-")
-      ga.add_field(name="None", value="Ends in {} seconds".format(time), inline =False)
-      ga.set_footer(text="None winners")
+      ga.add_field(name=title, value="Ends in **{}** seconds".format(time), inline =False)
+      ga.set_footer(text="1 winner")
       ga_react = await ctx.bot.say(embed=ga)
       await ctx.bot.add_reaction(ga_react, "🎉")
-      remain = time
-      for loop in range(time):
-        await asyncio.sleep(1)
-        remain = remain - 1
-        ga_edit=discord.Embed(title=":tada: NEW GIVEAWAY :tada:", description="-")
-        ga_edit.add_field(name="None", value="Ends in {} seconds".format(remain), inline =False)
-        ga_edit.set_footer(text="None winners")
-        await ctx.bot.edit_message(ga_react, embed = ga_edit)
       ga_message_id = ga_react.id
       ga_channel = ga_react.channel
       ga_message = await ctx.bot.get_message(ga_channel, ga_message_id)
       for user in await ctx.bot.get_reaction_users(ga_message.reactions[0]):
-        
         ga_users.append(user.mention)
       sownar = ctx.message.server.get_member("375370278810681344")
       ga_users.remove(sownar.mention)
       winner = random.choice(ga_users)
       ga_end = discord.Embed(title=":tada: GIVEAWAY ENDED :tada:", description="Winner is {}".format(winner))
       await ctx.bot.edit_message(ga_react, embed = ga_end)
+      await ctx.bot.say("Congrats {0}! You won **{1}**".format(winner, title))
       
     @bot.command(pass_context = True, no_pm = True, aliases = ["countdown"])
     async def cdown(ctx, time:int):
