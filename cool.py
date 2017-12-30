@@ -109,7 +109,8 @@ class Cool():
     @bot.command(pass_context = True, no_pm = True, aliases = ["countdown"])
     async def cdown(ctx, time:int):
       for loop in range(time):
-        time -= 1
+        tiasyncio.sleep(1)
+        me -= 1
         await ctx.bot.say(time)
     
     
