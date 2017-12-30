@@ -149,6 +149,7 @@ class Utils():
         embed = discord.Embed(title="__New suggestion!__", description="I have recieved a new suggestion !", color=0x00ff00)
         embed.add_field(name="Sent by", value=ctx.message.author, inline=True)
         embed.add_field(name="Suggestion", value=suggests, inline=True)
+        embed.set_footer(text="From: {}".format(ctx.message.server), icon_url=ctx.message.server.icon_url)
         await ctx.bot.delete_message(ctx.message)
         await ctx.bot.send_message(suggest, embed=embed)
         await ctx.bot.say("Your suggestion has been sent to my dev team!")
