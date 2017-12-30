@@ -22,7 +22,6 @@ class ModMail():
   
     @bot.command(pass_context = True, aliases=["modmail", "mailmod", "mail"])
     async def mm(ctx, *, msg:str):
-      if msg == "":
         
       if ctx.message.channel.is_private is True:
         chan_id = ctx.message.channel.id
