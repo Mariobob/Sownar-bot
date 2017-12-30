@@ -110,8 +110,7 @@ class Cool():
     async def cdown(ctx, time:int):
       for loop in range(time):
         time -= 1
-        await ctx.bot.say(count_down)
-    
+        await ctx.bot.say(cotime    
     
 def setup(bot):
     bot.add_cog(Cool)
