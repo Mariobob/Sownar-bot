@@ -24,7 +24,7 @@ class Utils():
     utils = 1
     
 
-    @commands.command(pass_context = True, no_pm = True)
+    @commands.command(pass_context = True, no_pm = True, aliases=["si"])
     async def serverinfo(ctx):
         server = ctx.message.server
         i = 0
