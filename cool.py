@@ -11,9 +11,6 @@ import aiohttp
   
 
 
-prefix='s.'
-bot=commands.Bot(command_prefix=prefix)
-
 
 class Cool():
     print('random loaded')

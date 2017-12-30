@@ -8,8 +8,7 @@ from discord.ext import commands
 import time
 import traceback
 
-prefix='s.'
-bot=commands.Bot(command_prefix=prefix)
+
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
 perm_errorbis = discord.Embed(title=":warning: Error!",description="I do not have the permission to use this command",color=0xff0000)
 

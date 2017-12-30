@@ -8,8 +8,6 @@ from discord.ext import commands
 import time
 import traceback
 
-prefix='s.'
-bot=commands.Bot(command_prefix=prefix)
 ownerids=['221381001476046849', '221263215496134656']
 mm_error = discord.Embed(title=":warning: Error!",description="Please use this command in DM with the bot :wink:",color=0xff0000)
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)

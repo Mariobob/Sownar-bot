@@ -16,7 +16,7 @@ minutes=0
 hours=0
 days=0
 weeks=0
-prefix='s.'
+prefix=["s.", "s>", "s/"]
 ownerids=['221381001476046849', '221263215496134656']
 with open("token_file.pk1", "r") as token_file:
   bottoken = json.load(token_file)

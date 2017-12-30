@@ -13,8 +13,6 @@ tickets = discord.Object("376563001643499522")
 suggest = discord.Object('376776759221288961')
 bot_invite="https://discordapp.com/oauth2/authorize?client_id=375370278810681344&scope=bot&permissions=2146958583"
 support="https://discord.gg/HcMhj3q"
-prefix='s.'
-bot=commands.Bot(command_prefix=prefix)
 bot.remove_command('help')
 
 class Utils():

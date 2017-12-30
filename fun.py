@@ -9,8 +9,6 @@ import time
 import traceback
 from random import randint
 
-prefix='s.'
-bot=commands.Bot(command_prefix=prefix)
 
 flips = ["Heads", "Tails"]
 rolls = ["1", "2", "3", "4", "5", "6"]
