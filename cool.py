@@ -114,7 +114,7 @@ class Cool():
       for loop in range(time):
         await asyncio.sleep(1)
         c_time -= 1
-        c_remain = discord.Embed(title= "Count down from {}".format(time), description="{} seconds remaining".format(c_time))
+        c_remain = discord.Embed(title= "Countdown from {}".format(time), description="{} seconds remaining".format(c_time))
         await ctx.bot.edit_message(c_down, embed = c_remain)
       c_done = discord.Embed(title="Countdown from {} finished !".format(time), description="Time's up!")
       await ctx.bot.edit_message(c_down, embed= c_done)
