@@ -87,7 +87,7 @@ class Cool():
       await ctx.bot.say(embed=avatar)
       
     @bot.command(pass_context = True, no_pm = True, aliases=["ga"])
-    async def giveaway(ctx, time, title):
+    async def giveaway(ctx, time:int, title):
       ga_users=[]
       ga=discord.Embed(title=":tada: NEW GIVEAWAY :tada:", description="-")
       ga.add_field(name=title, value="Ends in **{}** seconds".format(time), inline =False)
