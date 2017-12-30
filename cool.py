@@ -109,7 +109,7 @@ class Cool():
     @bot.command(pass_context = True, no_pm = True, aliases = ["countdown"])
     async def cdown(ctx, time:int):
       c_time = time
-      c_embed = discord.Embed(title= "Count down from {}".format(time), description="{} seconds remaining".format(c_time))
+      c_embed = discord.Embed(title= "Countdown from {}".format(time), description="{} seconds remaining".format(c_time))
       c_down = await ctx.bot.say(embed=c_embed)
       for loop in range(time):
         await asyncio.sleep(1)
