@@ -26,9 +26,9 @@ class ModMail():
         chan_id = ctx.message.channel.id
         if chan_id not in bl_ids:
           server= ctx.bot.get_server("396469778430296068")
-          for channel in server.channels:
-            if channel.name == ctx.message.channel.id:
-              chan = ctx.bot.get_channel(channel.id)
+          for chanl in list(server.channels):
+            if chanl.name == ctx.message.channel.id:
+              chan = ctx.bot.get_channel(chanl.id)
             else:
               chan= await ctx.bot.create_channel(server, chan_id)
           embed= discord.Embed(title="ModMail with {}".format(ctx.message.author), description=msg)
