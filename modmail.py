@@ -28,9 +28,9 @@ class ModMail():
         my_perms = discord.PermissionOverwrite(read_messages=True)
         everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
         mine = discord.ChannelPermissions(target=server.me, overwrite=my_perms)
-        await ctx.bot.create_channel(server, 'chan_id', everyone, mine)
+        chan= await ctx.bot.create_channel(server, chan_id, everyone, mine)
         embed= discord.Embed(title="ModMail with {}".format(ctx.message.author), description=msg)
-        await ctx.bot.say(embed=embed)
+        await ctx.bot.send_message(chan, embed=embed)
       else:
         await ctx.bot.say(embed=mm_error)
     
