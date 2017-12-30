@@ -10,7 +10,6 @@ import traceback
 
 prefix='s.'
 bot=commands.Bot(command_prefix=prefix)
-server= discord.Object("376096854448013325")
 ownerids=['221381001476046849', '221263215496134656']
 mm_error = discord.Embed(title=":warning: Error!",description="Please use this command in DM with the bot :wink:",color=0xff0000)
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
@@ -24,7 +23,7 @@ class ModMail():
     async def mm(ctx, *, msg:str):
       if ctx.message.channel.is_private is True:
         chan_id = ctx.message.channel.id
-        server= discord.Object("376096854448013325")
+        server= ctx.bot.get_server("376096854448013325")
         everyone_perms = discord.PermissionOverwrite(read_messages=False)
         my_perms = discord.PermissionOverwrite(read_messages=True)
         everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
