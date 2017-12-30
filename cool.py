@@ -110,7 +110,7 @@ class Cool():
         
         ga_users.append(user)
       winner = random.choice(ga_users)
-      ga_end = discord.Embed(title=":tada: GIVEAWAY ENDED :tada:", description="Winner is None")
+      ga_end = discord.Embed(title=":tada: GIVEAWAY ENDED :tada:", description="Winner is {}".format(winner))
       await ctx.bot.edit_message(ga_react, embed = ga_end)
       
     @bot.command(pass_context = True, no_pm = True, aliases = ["countdown"])
