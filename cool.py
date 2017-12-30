@@ -86,8 +86,9 @@ class Cool():
       await ctx.bot.say(embed=avatar)
       
     @bot.command(pass_context = True, no_pm = True, aliases=["ga"])
-    async def giveaway(ctx, *, time = None, winners = None, title = None):
+    async def giveaway(ctx, *, time:int, winners:int, title:str):
       ga_users=[]
+      
       if time is None:
         error = discord.Embed(title=":warning: Error!",description="Please specify a time in seconds",color=0xff0000)
         await ctx.bot.say(embed=error)
@@ -112,7 +113,14 @@ class Cool():
       ga.set_footer(text="{} winners".format(winners))
       ga_react = await ctx.bot.say(embed=ga)
       await ctx.bot.add_reaction(ga_react, "🎉")
-      await asyncio.sleep(time)
+      remain = 10
+      for loop in range(10):
+        await asyncio.sleep(1)
+        remain = remain - 1
+        ga_edit=discord.Embed(title=":tada: NEW GIVEAWAY :tada:", description="-")
+        ga_edit.add_field(name=title, value="Ends in {} seconds".format(remain), inline =False)
+        ga_edit.set_footer(text="{} winners".format(winners))
+        await ctx.bot.edit_message(ga_react, embed = ga_edit)
       ga_end = discord.Embed(title=":tada: GIVEAWAY ENDED :tada:", description="Winner is None")
       await ctx.bot.edit_message(ga_react, embed = ga_end)
       
