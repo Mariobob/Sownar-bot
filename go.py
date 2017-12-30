@@ -73,7 +73,7 @@ async def game():
   while not bot.is_closed:
     await bot.change_presence(game=discord.Game(name='s.help | {} servers'.format(len(bot.servers))))
     await asyncio.sleep(120)
-    await bot.change_presence(game=discord.Game(name='s.invite | {} users'.format(len(bot.servers))))
+    await bot.change_presence(game=discord.Game(name='s.invite | {} servers'.format(len(bot.servers))))
     await asyncio.sleep(120)
     
 class startup():
