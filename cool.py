@@ -102,8 +102,9 @@ class Cool():
         ga_edit.set_footer(text="None winners")
         await ctx.bot.edit_message(ga_react, embed = ga_edit)
       ga_message_id = ga_react.id
-      ga_message = discord.Object(ga_message_id)
-      for user in ctx.bot.get_reaction_users(ga_message.reactions):
+      ga_mchannel = ga_react.channel
+      ga_message = await bot.get_message(ga_channel, ga_message_id)
+      for user in ctx.bot.get_reaction_users(ga_message.reactions[0]:
         
         ga_users.append(user)
       winner = random.choice(ga_users)
