@@ -108,7 +108,7 @@ class Cool():
       for user in await ctx.bot.get_reaction_users(ga_message.reactions[0]):
         
         ga_users.append(user.mention)
-      sownar = await ctx.message.server.get_member("375370278810681344")
+      sownar = ctx.message.server.get_member("375370278810681344")
       ga_users.remove(sownar.mention)
       winner = random.choice(ga_users)
       ga_end = discord.Embed(title=":tada: GIVEAWAY ENDED :tada:", description="Winner is {}".format(winner))
