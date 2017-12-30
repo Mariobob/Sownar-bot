@@ -118,6 +118,6 @@ class Cool():
         await ctx.bot.edit_message(c_down, embed = c_remain)
       c_done = discord.Embed(title="Count down from {} finished !".format(time), description="Time's up!")
       await ctx.bot.saedit_messagemc_down, bed= c_done)
-    
-def setup(bot):
+        
+f setup(bot):
     bot.add_cog(Cool)
