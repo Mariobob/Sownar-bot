@@ -7,6 +7,7 @@ from discord.ext import commands
 import time
 import traceback
 import aiohttp
+import random
 
 logs = discord.Object("376778387676594176")
 console = discord.Object("376552211817299968")
@@ -35,7 +36,7 @@ utils = 0
 
 bot=commands.Bot(command_prefix=prefix)
 bot.remove_command("help")
-game = ('{0}help | {1} servers'.format(prefix, len(bot.servers)))
+game = ('{0}help | {1} servers'.format(random.choice(prefix), len(bot.servers)))
 startup_extensions = ["utils", "mod", "fun", "owner", "cool", "modmail"]
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
 
@@ -71,9 +72,9 @@ async def get_uptime():
 async def game():
   await bot.wait_until_ready()
   while not bot.is_closed:
-    await bot.change_presence(game=discord.Game(name='s.help | {} servers'.format(len(bot.servers))))
+    await bot.change_presence(game=discord.Game(name='{0}help | {1} servers'.format(random.choice(prefix), len(bot.servers))))
     await asyncio.sleep(120)
-    await bot.change_presence(game=discord.Game(name='s.invite | {} servers'.format(len(bot.servers))))
+    await bot.change_presence(game=discord.Game(name='{0}invite | {1} servers'.format(random.choice(prefix) len(bot.servers))))
     await asyncio.sleep(120)
     
 class startup():
