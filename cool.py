@@ -10,7 +10,7 @@ import traceback
 import aiohttp
   
 
-
+sownar = discord.Object("375370278810681344")
 prefix='s.'
 bot=commands.Bot(command_prefix=prefix)
 
@@ -102,13 +102,12 @@ class Cool():
         ga_edit.set_footer(text="None winners")
         await ctx.bot.edit_message(ga_react, embed = ga_edit)
       ga_message_id = ga_react.id
-      print(ga_message_id)
       ga_channel = ga_react.channel
-      print(ga_channel)
       ga_message = await ctx.bot.get_message(ga_channel, ga_message_id)
       for user in await ctx.bot.get_reaction_users(ga_message.reactions[0]):
         
-        ga_users.append(user)
+        ga_users.append(user.mention)
+      ga_users.remove(sownar.mention)
       winner = random.choice(ga_users)
       ga_end = discord.Embed(title=":tada: GIVEAWAY ENDED :tada:", description="Winner is {}".format(winner))
       await ctx.bot.edit_message(ga_react, embed = ga_end)
@@ -130,9 +129,7 @@ class Cool():
     async def gettest(ctx):
       ga_react = await ctx.bot.say("blahblabla")
       ga_message_id = ga_react.id
-      print(ga_message_id)
       ga_channel = ga_react.channel
-      print(ga_channel)
       ga_message = await ctx.bot.get_message(ga_channel, ga_message_id)
       await ctx.bot.edit_message(ga_message, "test")
       
