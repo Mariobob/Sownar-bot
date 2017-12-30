@@ -113,7 +113,6 @@ class Cool():
         asyncio.sleep(1)
         tic_me -= 1
         await ctx.bot.say(time)
-    
-    
+     
 def setup(bot):
     bot.add_cog(Cool)
