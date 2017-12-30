@@ -13,7 +13,7 @@ import aiohttp
 
 prefix='s.'
 bot=commands.Bot(command_prefix=prefix)
-sownar = await bot.get_member("375370278810681344")
+
 
 class Cool():
     print('random loaded')
@@ -108,6 +108,7 @@ class Cool():
       for user in await ctx.bot.get_reaction_users(ga_message.reactions[0]):
         
         ga_users.append(user.mention)
+      sownar = await ctx.bot.get_member("375370278810681344")
       ga_users.remove(sownar.mention)
       winner = random.choice(ga_users)
       ga_end = discord.Embed(title=":tada: GIVEAWAY ENDED :tada:", description="Winner is {}".format(winner))
