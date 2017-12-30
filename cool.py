@@ -91,8 +91,8 @@ class Cool():
       
     
       ga=discord.Embed(title=":tada: NEW GIVEAWAY :tada:", description="-")
-      ga.add_field(name=title, value="Ends in {} seconds".format(time), inline =False)
-      ga.set_footer(text="{} winners".format(winners))
+      ga.add_field(name="None", value="Ends in {} seconds".format(time), inline =False)
+      ga.set_footer(text="None winners")
       ga_react = await ctx.bot.say(embed=ga)
       await ctx.bot.add_reaction(ga_react, "🎉")
       remain = 10
@@ -100,8 +100,8 @@ class Cool():
         await asyncio.sleep(1)
         remain = remain - 1
         ga_edit=discord.Embed(title=":tada: NEW GIVEAWAY :tada:", description="-")
-        ga_edit.add_field(name=title, value="Ends in {} seconds".format(remain), inline =False)
-        ga_edit.set_footer(text="{} winners".format(winners))
+        ga_edit.add_field(name="None", value="Ends in {} seconds".format(remain), inline =False)
+        ga_edit.set_footer(text="None winners")
         await ctx.bot.edit_message(ga_react, embed = ga_edit)
       ga_end = discord.Embed(title=":tada: GIVEAWAY ENDED :tada:", description="Winner is None")
       await ctx.bot.edit_message(ga_react, embed = ga_end)
