@@ -9,7 +9,11 @@ import time
 import traceback
 import aiohttp
 
-
+async def ga_time(sec):
+  return True
+  await asyncio.sleep(sec)
+  return False
+  
 
 
 prefix='s.'
@@ -85,9 +89,38 @@ class Cool():
       avatar = discord.Embed(title="Server icon", description="[{0}]({1})".format("Image", ctx.message.server.icon_url))
       avatar.set_image(url=ctx.message.server.icon_url)
       await ctx.bot.say(embed=avatar)
+      
+    @bot.command(pass_context = True, no_pm = True, aliases=["ga"])
+    async def giveaway(ctx, *, time = None, winners = None, title = None):
+      ga_users=[]
+      if time is None:
+        error = discord.Embed(title=":warning: Error!",description="Please specify a time in seconds",color=0xff0000)
+        await ctx.bot.say(embed=error)
+      elif winners is None:
+        winners = 1
+      elif title is None:
+        error = discord.Embed(title=":warning: Error!",description="Please specify the giveaway item",color=0xff0000)
+        await ctx.bot.say(embed=error)
+      try:
+        time = int(time)
+      except:
+        error = discord.Embed(title=":warning: Error!",description="Please specify a time in seconds",color=0xff0000)
+        await ctx.bot.say(embed=error)
+      try:
+        winners = int(winners)
+      except:
+        error = discord.Embed(title=":warning: Error!",description="Please specify a number of winners",color=0xff0000)
+        await ctx.bot.say(embed=error)
+      
+      ga=discord.Embed(title=":tada: NEW GIVEAWAY :tada:", description="-")
+      ga.add_field(name=title, value="Ends in {} seconds".format(time), inline =False)
+      ga.set_footer(text="{} winners".format(winners))
+      ga_react = await ctx.bot.say(embed=ga)
+      await ctx.bot.add_reaction(ga_react, "🎉")
     
-    
-    
-    
+  while ga_time(time) is True:
+        ga_reaction = await ctx.bot.wait_for_reaction("🎉"), message=ga_react    
+     ga_users.append(ga_reaction.user)
+       
 def setup(bot):
     bot.add_cog(Cool)
