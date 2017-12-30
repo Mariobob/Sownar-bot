@@ -117,10 +117,11 @@ class Cool():
       ga.set_footer(text="{} winners".format(winners))
       ga_react = await ctx.bot.say(embed=ga)
       await ctx.bot.add_reaction(ga_react, "🎉")
+      while ga_time(time) is True:
+        ga_reaction = await ctx.bot.wait_for_reaction("🎉", message=ga_react)
+        ga_users.append(ga_reaction.user)
+      
     
-  while ga_time(time) is True:
-        ga_reaction = await ctx.bot.wait_for_reaction("🎉"), message=ga_react    
-     ga_users.append(ga_reaction.user)
-       
+    
 def setup(bot):
     bot.add_cog(Cool)
