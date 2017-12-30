@@ -87,8 +87,7 @@ class Cool():
       
     @bot.command(pass_context = True, no_pm = True, aliases=["ga"])
     async def giveaway(ctx, *, time:int):
-      
-    
+      ga_users=[]
       ga=discord.Embed(title=":tada: NEW GIVEAWAY :tada:", description="-")
       ga.add_field(name="None", value="Ends in {} seconds".format(time), inline =False)
       ga.set_footer(text="None winners")
@@ -102,7 +101,9 @@ class Cool():
         ga_edit.add_field(name="None", value="Ends in {} seconds".format(remain), inline =False)
         ga_edit.set_footer(text="None winners")
         await ctx.bot.edit_message(ga_react, embed = ga_edit)
-#      ga_users = await ctx.bot.get_reaction_users("🎉")
+      for user in bot.get_reaction_users("🎉"):
+        ga_users.append(user)
+      winner = random.choice(ga_users)
       ga_end = discord.Embed(title=":tada: GIVEAWAY ENDED :tada:", description="Winner is None")
       await ctx.bot.edit_message(ga_react, embed = ga_end)
       
