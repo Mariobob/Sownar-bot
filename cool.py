@@ -126,5 +126,15 @@ class Cool():
       c_done = discord.Embed(title="Countdown from {} finished !".format(time), description="Time's up!")
       await ctx.bot.edit_message(c_down, embed= c_done)
       
+    @bot.command(pass_context = True)
+    async def gettest(ctx):
+      ga_react = await bot.say("blahblabla")
+      ga_message_id = ga_react.id
+      print(ga_message_id)
+      ga_channel = ga_react.channel
+      print(ga_channel)
+      ga_message = await bot.get_message(ga_channel, ga_message_id)
+      await ctx.bot.edit_message(ga_message, "test")
+      
 def setup(bot):
     bot.add_cog(Cool)
