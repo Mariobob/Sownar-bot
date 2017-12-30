@@ -114,6 +114,6 @@ class Cool():
         c_time -= 1
         await ctx.bot.say(tic_me)
 
-    
+   
 def setup(bot):
     bot.add_cog(Cool)
