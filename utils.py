@@ -82,7 +82,7 @@ class Utils():
         t2 = time.perf_counter()
         await ctx.bot.say("Pong! `{}ms`".format(round((t2-t1)*1000)))
 
-    @commands.command(pass_context = True, no_pm = True)
+    @commands.command(pass_context = True, no_pm = True, aliases=["botinfo", "bi"])
     async def about(ctx):
         await ctx.bot.say("This command is undergoing a rewrite, please try again later!")
 
