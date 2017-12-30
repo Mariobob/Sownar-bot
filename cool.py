@@ -117,7 +117,7 @@ class Cool():
         c_remain = discord.Embed(title= "Count down from {}".format(time), description="{} seconds remaining".format(c_time))
         await ctx.bot.edit_message(c_down, embed = c_remain)
       c_done = discord.Embed(title="Count down from {} finished !".format(time), description="Time's up!")
-      await ctx.bot.say(embed= c_done)
+      await ctx.bot.saedit_messagemc_down, bed= c_done)
     
 def setup(bot):
     bot.add_cog(Cool)
