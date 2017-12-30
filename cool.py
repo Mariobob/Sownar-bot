@@ -110,9 +110,9 @@ class Cool():
     async def cdown(ctx, time:int):
       c_time = time
       for loop in range(time):
+        await ctx.bot.say(c_time)
         await asyncio.sleep(1)
         c_time -= 1
-        await ctx.bot.say(c_time)
     
 def setup(bot):
     bot.add_cog(Cool)
