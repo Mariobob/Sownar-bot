@@ -38,6 +38,7 @@ class ModMail():
           mm_bl = discord.Embed(title=":warning: Error!",description="You have been blacklisted, please join the ({})[{}] if you consider this to be wrong".format("Support Server", support),color=0xff0000)
           await ctx.bot.say(embed=mm_bl)
       else:
+        await ctx.bot.say("Succesfully sent message!")
         await ctx.bot.say(embed=mm_error)
     
     @bot.command(pass_context = True, no_pm = True)
@@ -47,6 +48,7 @@ class ModMail():
       else:
         user = discord.Object(ctx.message.channel.name)
         mma = discord.Embed(title="A Dev answered your question: ({})".format(ctx.message.author.name), description=msg)
+        await ctx.bot.say("Successfully sent message!")
         await ctx.bot.send_message(user, embed=mma)
         
     @bot.command(pass_context = True, np_pm= True)
@@ -56,7 +58,9 @@ class ModMail():
       else:
         if ctx.message.channel.name in bl_ids:
           bl_ids.remove(ctx.message.channel.name)
+          await ctx.bot.say("Successfully removed from the ModMail blacklist")
         else:
+          await ctx.bot.say("Successfully added to the ModMail blacklist")
           bl_ids.append(ctx.message.channel.name)
           
       
