@@ -276,7 +276,7 @@ class Utils():
       emb.set_footer(text="Requested by {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar_url)
       em1 = await ctx.bot.say(embed=em)
       em2 = await ctx.bot.say(embed=emb)
-      time.sleep(30)
+      await asyncio.sleep(30)
       await ctx.bot.delete_message(em1)
       await ctx.bot.delete_message(em2)
       await ctx.bot.delete_message(ctx.message)
