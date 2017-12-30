@@ -10,7 +10,7 @@ import traceback
 import aiohttp
   
 
-sownar = discord.Object("375370278810681344")
+sownar = await bot.get_member("375370278810681344")
 prefix='s.'
 bot=commands.Bot(command_prefix=prefix)
 
