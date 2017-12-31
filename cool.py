@@ -130,7 +130,7 @@ class Cool():
       
     @bot.command(pass_context = True)
     async def created(ctx):
-      date = ctx.message.server.created_at.strftime("%a, %b %d, %Y")
+      date = ctx.message.server.created_at.strftime("%A, %b %d, %Y")
       await ctx.bot.say(date)
       
 def setup(bot):
