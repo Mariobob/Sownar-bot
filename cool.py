@@ -129,12 +129,9 @@ class Cool():
       await ctx.bot.edit_message(c_down, embed= c_done)
       
     @bot.command(pass_context = True)
-    async def gettest(ctx):
-      ga_react = await ctx.bot.say("blahblabla")
-      ga_message_id = ga_react.id
-      ga_channel = ga_react.channel
-      ga_message = await ctx.bot.get_message(ga_channel, ga_message_id)
-      await ctx.bot.edit_message(ga_message, "test")
+    async def created(ctx):
+      date = ctx.message.server.created_at.strftime("%a, %b %d, %Y")
+      await ctx.bot.say(date)
       
 def setup(bot):
     bot.add_cog(Cool)
