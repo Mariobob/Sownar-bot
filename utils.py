@@ -57,7 +57,7 @@ class Utils():
         embed.add_field(name="Roles", value=totalroles, inline=False)
         embed.add_field(name="Verification Level", value=server.verification_level, inline=False)
         embed.add_field(name="Server Region", value=server.region, inline=False)
-        embed.add_field(name="Server created at", value="{0}, about {1} days ago".format(str(server.created_at.strftime("%d/%m/%y %H:%M:%S")), ago), inline=False)
+        embed.add_field(name="Server created at", value="***{0}***, about {1} days ago".format(str(server.created_at.strftime("%A, %b %d, %Y")), ago), inline=False)
         await ctx.bot.say(embed=embed)
 
     @commands.command(pass_context = True, no_pm = True)
@@ -218,8 +218,8 @@ class Utils():
       userinfo.add_field(name="Is Bot?:", value=user.bot)
       userinfo.add_field(name="Playing:", value=user.game)
       userinfo.add_field(name="Status:", value=user.status)
-      userinfo.add_field(name="Joined Server:", value="{0}, about {1} days ago".format(str(user.joined_at.strftime("%d/%m/%y %H:%M:%S")), ago))
-      userinfo.add_field(name="Account Created:", value="{0}, about {1} days ago".format(str(user.created_at.strftime("%d/%m/%y %H:%M:%S")), account_ago))
+      userinfo.add_field(name="Joined Server:", value="***{0}***, about {1} days ago".format(str(user.joined_at.strftime("%A, %b %d, %Y")), ago))
+      userinfo.add_field(name="Account Created:", value="***{0}***, about {1} days ago".format(str(user.created_at.strftime("%A, %b %d, %Y")), account_ago))
       userinfo.set_footer(text="Requested by {}".format(ctx.message.author), icon_url=ctx.message.author.avatar_url)
       
       await ctx.bot.say(embed = userinfo)
