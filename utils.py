@@ -263,7 +263,7 @@ class Utils():
       up = user.server_permissions
       message = "'Is Owner: {}'.format(ctx.message.server.owner == user)"
       for x in perm_list:
-        message += "\n" + (x)
+        message += "\n" + x
       em.set_thumbnail(url=user.avatar_url)
       em = discord.Embed(title="Server Permissions for {}".format(str(user)),description=message, color=user.color)
       em.set_footer(text="Requested by {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar_url)
