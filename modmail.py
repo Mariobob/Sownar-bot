@@ -40,7 +40,8 @@ class ModMail():
           await ctx.bot.send_message(chan, embed=embed)
           await ctx.bot.say("Succesfully sent message!")
         else:
-          mm_bl = discord.Embed(title=":warning: Error!",description="You have been blacklisted, please join the ({})[{}] if you consider this to be wrong".format("Support Server", support),color=0xff0000)
+          mm_bl = discord.Embed(color=0xff0000)
+          mm_bl.add_field(name=":warning: Error!", value="You have been blacklisted, please join the ({})[{}] if you consider this to be wrong".format("Support Server", support), inline=False)
           await ctx.bot.say(embed=mm_bl)
       else:
         await ctx.bot.say(embed=mm_error)
