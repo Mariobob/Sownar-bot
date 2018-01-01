@@ -8,6 +8,7 @@ from discord.ext import commands
 import time
 import traceback
 import aiohttp
+from pyfiglet import figlet_format as ascii_format
   
 
 prefix=["s.", "s>", "s/"]
@@ -135,7 +136,7 @@ class Cool():
     
     @bot.command(pass_context = True, no_pm = True)  
     async def ascii(self, ctx, variable=None):
-        if variable == None:
+        if variable  is one:
             embed = discord.Embed(title=':warning: Error', description='You need to write the argument!', color=0xff0000)
             await ctx.bot.say(embed=embed)
         else:
