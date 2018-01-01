@@ -140,6 +140,7 @@ class Utils():
       cool.add_field(name="s.cat", value="Gets a cat picture", inline=False)
       cool.add_field(name="s.avatar [user]", value="Gets a user's avatar", inline=False)
       cool.add_field(name="s.servericon", value="Gets the server icon", inline=False)
+      cool.add_field(name="s.ascii [value]", value="Converts text into ascii", inline=False)
       await ctx.bot.say(embed=cool)
       
     @help.command(pass_context = True, no_pm = True)
