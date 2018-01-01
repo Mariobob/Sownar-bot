@@ -81,7 +81,7 @@ class Mod():
         
     
     @bot.command(pass_context = True, no_pm = True)
-    async def prune(ctx, *, num = None):
+    async def purge(ctx, *, num = None):
       if num is None:
         embed = discord.Embed(title=":warning: Error!",description="Please specify a number of days of inactivity!",color=0xff0000)
         await ctx.bot.say(embed=embed)
