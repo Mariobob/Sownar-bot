@@ -111,7 +111,8 @@ class Utils():
     async def utility(ctx):
       util = discord.Embed(title="__Utility commands!__", description="-", color=0x00ff00)
       util.add_field(name="s.servers", value="Show the number of servers and members the bot is serving", inline=False)
-      util.add_field(name="s.serverinfo", value="Shoes information on the server", inline=False)
+      util.add_field(name="s.serverinfo", value="Shows information on the server", inline=False)
+      util.add_field(name="s.userinfo [user]", value="Shows information on the user (if left empty author's info will be brought up)", inline=False)
       util.add_field(name="s.id [user]", value="Get's a user's id (if left empty author's id will be brought up)", inline=False)
       util.add_field(name="~~s.info~~", value="Shows info on the bot", inline=False)
       util.add_field(name="s.ping", value="Shows the bot's latency", inline=False)
@@ -253,48 +254,22 @@ class Utils():
     
     @commands.command(pass_context = True, no_pm = True, aliases=["perms", "perm"])
     async def permissions(ctx, member: discord.Member=None):
+      perm_list=["'Is administrator: {} '.format(up.administrator)", "'Can Manage Emojis: {} '.format(up.manage_emojis)", "'Can Manage Webhooks: {} '.format(up.manage_webhooks)", "'Can Change Nickname: {} '.format(up.change_nickname)", "'Can Move Members: {} '.format(up.move_members)", "'Can Deafen Members: {} '.format(up.deafen_members)", "'Can Mute Members: {} '.format(up.mute_members)", "'Can Speak in Voice Channels: {} '.format(up.speak)", "'Can Connect to Voice Channels: {} '.format(up.connect)", "'Can Use External Emojis: {} '.format(up.external_emojis)", "'Can Read Message History: {} '.format(up.read_message_history)", "'Can Attach Files: {} '.format(up.attach_files)", "'Can Embed Links: {} '.format(up.embed_links)", "'Can View Audit Log: {} '.format(up.view_audit_log)", "'Can Send TTS Messages: {} '.format(up.send_tts_messages)", "'Can Send Messages: {} '.format(up.send_messages)", "'Can Read Messages: {} '.format(up.read_messages)", "'Can Add Reactions: {} '.format(up.add_reactions)", "'Can Manage Roles: {} '.format(up.manage_roles)", "'Can Manage Nicknames: {} '.format(up.manage_nicknames)", "'Can Manage Server: {} '.format(up.manage_server)", "'Can Manage Messages: {} '.format(up.manage_messages)", "'Can Manage Channels: {} '.format(up.manage_channels)", "'Can Mention Everyone: {} '.format(up.mention_everyone)", "'Can Create Invite: {} '.format(up.create_instant_invite)", "'Can Kick Members: {} '.format(up.kick_members)", "'Can Ban Members: {} '.format(up.ban_members)"]
       if member is None:
         user= ctx.message.author
       else:
         user= member
       em = discord.Embed(title="Server Permissions for {}".format(str(user)),color=user.color)
-      
       up = user.server_permissions
+      message = "'Is Owner: {}'.format(ctx.message.server.owner == user)"
+      for x in perm_list:
+        message += "\n{}".format(x)
       em.set_thumbnail(url=user.avatar_url)
-      emb = discord.Embed(title="Can Mention Everyone",description=up.mention_everyone ,color=user.color)
-      em.add_field(name="Can create invite",value=up.create_instant_invite, inline=False)
-      em.add_field(name="Can Kick Members",value=up.kick_members, inline=False)
-      em.add_field(name="Can Ban Members",value=up.ban_members, inline=False)
-      em.add_field(name="Is Administrator",value=up.administrator, inline=False)
-      em.add_field(name="Can Manage Channels",value=up.manage_channels, inline=False)
-      em.add_field(name="Can Manage Server",value=up.manage_server, inline=False)
-      em.add_field(name="Can Add Reactions",value=up.add_reactions, inline=False)
-      em.add_field(name="Can View Audit Logs",value=up.view_audit_logs, inline=False)
-      em.add_field(name="Can Read Messages",value=up.read_messages, inline=False)
-      em.add_field(name="Can Send Messages",value=up.send_messages, inline=False)
-      em.add_field(name="Can Send TTS Messages",value=up.send_tts_messages, inline=False)
-      em.add_field(name="Can Manage Messages",value=up.manage_messages, inline=False)
-      em.add_field(name="Can Embed Links",value=up.embed_links, inline=False)
-      em.add_field(name="Can Attach Files",value=up.attach_files, inline=False)
-      em.add_field(name="Can Read Message History",value=up.read_message_history, inline=False)
-      em.add_field(name="Is Owner",value=(ctx.message.server.owner == user), inline=False)
-      emb.add_field(name="Can Use External Emojis",value=up.external_emojis, inline=False)
-      emb.add_field(name="Can Connect to Voice Channels",value=up.connect, inline=False)
-      emb.add_field(name="Can Speak in Voice Channels",value=up.speak, inline=False)
-      emb.add_field(name="Can Mute Members",value=up.mute_members, inline=False)
-      emb.add_field(name="Can Deafen Members",value=up.deafen_members, inline=False)
-      emb.add_field(name="Can Move Members",value=up.mute_members, inline=False)
-      emb.add_field(name="Can Change Nickname",value=up.change_nickname, inline=False)
-      emb.add_field(name="Can Manage Nicknames",value=up.manage_nicknames, inline=False)
-      emb.add_field(name="Can Manage Roles",value=up.manage_roles, inline=False)
-      emb.add_field(name="Can Manage Webhooks",value=up.manage_webhooks, inline=False)
-      emb.add_field(name="Can Manage Emojis",value=up.manage_emojis, inline=False)
-      emb.set_footer(text="Requested by {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar_url)
+      em = discord.Embed(title="Server Permissions for {}".format(str(user)),description=message, color=user.color)
+      em.set_footer(text="Requested by {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar_url)
       em1 = await ctx.bot.say(embed=em)
-      em2 = await ctx.bot.say(embed=emb)
       await asyncio.sleep(30)
       await ctx.bot.delete_message(em1)
-      await ctx.bot.delete_message(em2)
       await ctx.bot.delete_message(ctx.message)
         
       
