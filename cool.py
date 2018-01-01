@@ -135,7 +135,7 @@ class Cool():
       await ctx.bot.say(date)
     
     @bot.command(pass_context = True, no_pm = True)  
-    async def ascii(self, ctx, variable=None):
+    async def ascii(ctx, variable=None):
         if variable is None:
             embed = discord.Embed(title=':warning: Error', description='You need to write the argument!', color=0xff0000)
             await ctx.bot.say(embed=embed)
