@@ -31,10 +31,9 @@ class ModMail():
           for chanl in list(server.channels):
             if chanl.name == ctx.message.channel.id:
               create = 'false'
+              chan = chanl
               
-          if create == 'false':
-            chan = ctx.bot.get_channel(chanl.id)
-          else:
+          if create == 'true':
             chan = await ctx.bot.create_channel(server, chan_id)
             
           embed= discord.Embed(title="ModMail with {}".format(ctx.message.author), description=msg)
