@@ -113,8 +113,9 @@ class Utils():
       util.add_field(name="s.servers", value="Show the number of servers and members the bot is serving", inline=False)
       util.add_field(name="s.serverinfo", value="Shoes information on the server", inline=False)
       util.add_field(name="s.id [user]", value="Get's a user's id (if left empty author's id will be brought up)", inline=False)
-      util.add_field(name="~~s.about~~", value="Shows info on the bot", inline=False)
+      util.add_field(name="~~s.info~~", value="Shows info on the bot", inline=False)
       util.add_field(name="s.ping", value="Shows the bot's latency", inline=False)
+      util.add_field(name="s.uptime", value="Shows the bot's uptime", inline=False)
       await ctx.bot.say(embed=util)
       
     @help.command(pass_context = True, no_pm = True)
