@@ -140,7 +140,7 @@ class Cool():
             embed = discord.Embed(title=':warning: Error', description='You need to write the argument!', color=0xff0000)
             await ctx.bot.say(embed=embed)
         else:
-            await ctx.bot.say(''.format(ascii_format(variable)))
+            await ctx.bot.say('```{}```'.format(ascii_format(variable)))
       
 def setup(bot):
     bot.add_cog(Cool)
