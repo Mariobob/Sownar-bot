@@ -99,7 +99,7 @@ class Utils():
     @commands.group(pass_context = True, no_pm = True)
     async def help(ctx):
       if ctx.invoked_subcommand is None:
-        embed = discord.Embed(title="__Bot commands!__", description="", color=0x00ff00)
+        embed = discord.Embed(title="__Bot commands!__", description="-", color=0x00ff00)
         embed.add_field(name="Utility", value="`s.help utility`", inline=False)
         embed.add_field(name="Fun", value="`s.help fun`", inline=False)
         embed.add_field(name="Moderation", value="`s.help mod`", inline=False)
@@ -109,7 +109,7 @@ class Utils():
     
     @help.command(pass_context = True, no_pm = True)
     async def utility(ctx):
-      util = discord.Embed(title="__Utility commands!__", description="", color=0x00ff00)
+      util = discord.Embed(title="__Utility commands!__", description="-", color=0x00ff00)
       util.add_field(name="s.servers", value="Show the number of servers and members the bot is serving", inline=False)
       util.add_field(name="s.serverinfo", value="Shoes information on the server", inline=False)
       util.add_field(name="s.id [user]", value="Get's a user's id (if left empty author's id will be brought up)", inline=False)
@@ -119,7 +119,7 @@ class Utils():
       
     @help.command(pass_context = True, no_pm = True)
     async def fun(ctx):
-      fun = discord.Embed(title="__Fun commands!__", description="", color=0x00ff00)
+      fun = discord.Embed(title="__Fun commands!__", description="-", color=0x00ff00)
       fun.add_field(name="s.flip", value="Flips a coin", inline=False)
       fun.add_field(name="s.roll", value="Rolls a dice", inline=False)
       fun.add_field(name="s.8ball [question]", value="See's what the 8ball has to answer", inline=False)
@@ -131,7 +131,7 @@ class Utils():
     
     @help.command(pass_context = True, no_pm = True)
     async def misc(ctx):
-      cool = discord.Embed(title="__Random commands!__", description="", color=0x00ff00)
+      cool = discord.Embed(title="__Random commands!__", description="-", color=0x00ff00)
       cool.add_field(name="s.dog", value="Gets a dog picture", inline=False)
       cool.add_field(name="s.say [message]", value="Repeats your message", inline=False)
       cool.add_field(name="s.cat", value="Gets a cat picture", inline=False)
@@ -141,7 +141,7 @@ class Utils():
       
     @help.command(pass_context = True, no_pm = True)
     async def mod(ctx):  
-      mod = discord.Embed(title="__Moderator commands!__", description="", color=0x00ff00)
+      mod = discord.Embed(title="__Moderator commands!__", description="-", color=0x00ff00)
       mod.add_field(name="s.ban", value="Bans a certain user", inline=False)
       mod.add_field(name="s.kick", value="Kicks a certain user", inline=False)
       mod.add_field(name="s.clear [x]", value="Clears 'x' messages (Maximum of 100 at a time)", inline=False)
@@ -150,7 +150,7 @@ class Utils():
       
     @help.command(pass_context = True, no_pm = True)
     async def support(ctx):
-      support = discord.Embed(title="__Support commands!__", description="", color=0x00ff00)
+      support = discord.Embed(title="__Support commands!__", description="-", color=0x00ff00)
       support.add_field(name="s.report [bug]", value="Reports a bug to my dev team", inline=False)
       support.add_field(name="s.suggest [suggestion]", value="Sends a suggestion to the dev team", inline=False)
       support.add_field(name="s.mm [message]", value="Enters a DM with the bot dev's (Use this command in DM only)", inline=False)
