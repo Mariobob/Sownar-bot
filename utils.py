@@ -261,7 +261,7 @@ class Utils():
         user= member
       em = discord.Embed(title="Server Permissions for {}".format(str(user)),color=user.color)
       up = user.server_permissions
-      message = "'Is Owner: {}'.format(ctx.message.server.owner == user)"
+      message = 'Is Owner: {}'.format(ctx.message.server.owner == user)
       for x in perm_list:
         message += "\n" + x
       em.set_thumbnail(url=user.avatar_url)
