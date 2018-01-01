@@ -112,6 +112,7 @@ class Utils():
       util = discord.Embed(title="__Utility commands!__", description="-", color=0x00ff00)
       util.add_field(name="s.servers", value="Show the number of servers and members the bot is serving", inline=False)
       util.add_field(name="s.serverinfo", value="Shows information on the server", inline=False)
+      util.add_field(name="s.perms [users]", value="Shows users permissions (if left empty author's permissions will be brought up)", inline=False)
       util.add_field(name="s.userinfo [user]", value="Shows information on the user (if left empty author's info will be brought up)", inline=False)
       util.add_field(name="s.id [user]", value="Get's a user's id (if left empty author's id will be brought up)", inline=False)
       util.add_field(name="~~s.info~~", value="Shows info on the bot", inline=False)
