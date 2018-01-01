@@ -110,7 +110,7 @@ class Cool():
         ga_end = discord.Embed(title=":tada: GIVEAWAY ENDED :tada:", description="Winner is {}".format(winner))
         await ctx.bot.edit_message(ga_react, embed = ga_end)
         await ctx.bot.say("Congrats {0}! You won **{1}**".format(winner, title))
-      except: ValueError
+      except ValueError:
         error = discord.Embed(title=":warning: Error!",description="Please use a time in seconds",color=0xff0000)
         await ctx.bot.say(embed=error)
       
