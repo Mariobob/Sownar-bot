@@ -133,5 +133,13 @@ class Cool():
       date = ctx.message.server.created_at.strftime("%A, %b %d, %Y")
       await ctx.bot.say(date)
       
-def setup(bot):
+d    async def ascii(self, ctx, variable=None):
+        if variable == None:
+            embed = discord.Embed(title=':warning: Error', description='You need to write the argument!', color=0xff0000)
+            await ctx.bot.say(embed=embed)
+        else:
+            message = ''.format(ascii_format(variable))
+            await ctx.bot.say(message)
+      
+ef setup(bot):
     bot.add_cog(Cool)
