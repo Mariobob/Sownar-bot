@@ -231,7 +231,7 @@ class Utils():
       ago = (ctx.message.timestamp - user.joined_at).days
       account_ago = (ctx.message.timestamp - user.created_at).days
       user_roles = user.roles
-      user_roles.remove('@everyone')
+      user_roles.remove('everyone')
       msg
       for role in user_roles:
         msg += '\n' + role
