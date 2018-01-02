@@ -230,8 +230,7 @@ class Utils():
         user = member
       ago = (ctx.message.timestamp - user.joined_at).days
       account_ago = (ctx.message.timestamp - user.created_at).days
-      user.roles
-      for role in user_roles:
+      for role in user.roles:
         msg += '\n' + role
       userinfo = discord.Embed(title="{}'s info".format(user.name), description="Known As : {}".format(user.nick), color = 0x000000)
       userinfo.set_thumbnail(url=user.avatar_url)
