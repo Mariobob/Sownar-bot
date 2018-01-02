@@ -232,7 +232,7 @@ class Utils():
       account_ago = (ctx.message.timestamp - user.created_at).days
       msg = ""
       for role in user.roles:
-        msg += '\n' + role
+        msg += '\n' + role.name
       userinfo = discord.Embed(title="{}'s info".format(user.name), description="Known As : {}".format(user.nick), color = 0x000000)
       userinfo.set_thumbnail(url=user.avatar_url)
       userinfo.add_field(name="ID:", value=user.id)
