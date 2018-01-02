@@ -222,7 +222,7 @@ class Utils():
         embed = discord.Embed(title="{}'s id is:".format(member), description=member.id, color=0x000000)
       await ctx.bot.say(embed=embed)
       
-    @commands.command(pass_context = True, no_pm = True)
+    @commands.command(pass_context = True, no_pm = True, aliases=["ui"])
     async def userinfo(ctx, *, member: discord.Member = None):
       if member is None:
         user = ctx.message.author
@@ -230,9 +230,7 @@ class Utils():
         user = member
       ago = (ctx.message.timestamp - user.joined_at).days
       account_ago = (ctx.message.timestamp - user.created_at).days
-      user_roles = user.roles
-      user_roles.remove('everyone')
-      msg
+      user.roles
       for role in user_roles:
         msg += '\n' + role
       userinfo = discord.Embed(title="{}'s info".format(user.name), description="Known As : {}".format(user.nick), color = 0x000000)
@@ -241,7 +239,7 @@ class Utils():
       userinfo.add_field(name="Is Bot?:", value=user.bot)
       userinfo.add_field(name="Playing:", value=user.game)
       userinfo.add_field(name="Status:", value=user.status)
-      userinfo.add_field(name="Roles ({}):".format(len(user_roles)), value=msg)
+      userinfo.add_field(name="Roles ({}):".format(len(user.roles)), value=msg)
       userinfo.add_field(name="Joined Server:", value="***{0}***, about {1} days ago".format(str(user.joined_at.strftime("%A, %b %d, %Y")), ago))
       userinfo.add_field(name="Account Created:", value="***{0}***, about {1} days ago".format(str(user.created_at.strftime("%A, %b %d, %Y")), account_ago))
       userinfo.set_footer(text="Requested by {}".format(ctx.message.author), icon_url=ctx.message.author.avatar_url)
