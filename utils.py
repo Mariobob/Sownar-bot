@@ -7,6 +7,7 @@ import datetime
 from discord.ext import commands
 import time
 import traceback
+import unicodedata
 
 prefix=["s.", "s>", "s/"]
 bot=commands.Bot(command_prefix=prefix)
