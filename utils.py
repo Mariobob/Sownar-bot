@@ -282,7 +282,7 @@ class Utils():
     @bot.command(pass_context=True)
     async def charinfo(ctx, characters: str):
     if len(characters) > 10:
-        return await ctxbot.say(f"**:x:  |  Tooooo many characters. ({len(characters)}/10)**")
+        return await ctx.bot.say(f"**:x:  |  Tooooo many characters. ({len(characters)}/10)**")
 
     def to_string(c):
         digit = f'{ord(c):x}'
