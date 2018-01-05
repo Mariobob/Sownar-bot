@@ -170,7 +170,11 @@ class Utils():
     async def beta(ctx):
       beta = discord.Embed(title="__Beta commands!__", description="-", color=0x00ff00)
       beta.add_field(name="s.giveaway [seconds] [prize]", value="Creates a giveaway in the channel", inline=False)
-      await ctx.bot.say(embed=beta)
+      if ctx.message.author.id not in beta_ids:
+        perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
+        await ctx.bot.say(embed=perm_error)
+      else:
+        await ctx.bot.say(embed=beta)
       
       
 
