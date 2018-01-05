@@ -16,6 +16,7 @@ suggest = discord.Object('376776759221288961')
 bot_invite="https://discordapp.com/oauth2/authorize?client_id=375370278810681344&scope=bot&permissions=2146958583"
 support="https://discord.gg/HcMhj3q"
 bot.remove_command('help')
+beta_ids = ["200598766804271104", "382508564540948492", "221381001476046849"]
 
 class Utils():
     print('Utils Loaded')
@@ -106,7 +107,11 @@ class Utils():
         embed.add_field(name="Moderation", value="`s.help mod`", inline=False)
         embed.add_field(name="Misc", value="`s.help misc`", inline=False)
         embed.add_field(name="Support", value="`s.help support`", inline=False)
-        await ctx.bot.say(embed=embed)
+        if ctx.message.author.id not in beta_ids:
+          await ctx.bot.say(embed=embed)
+        else:
+          embed.add_field(name="Beta Features", value="`s.help beta`", inline=False)
+          await ctx.bot.say(embed=embed)
     
     @help.command(pass_context = True, no_pm = True)
     async def utility(ctx):
@@ -160,6 +165,12 @@ class Utils():
       support.add_field(name="s.suggest [suggestion]", value="Sends a suggestion to the dev team", inline=False)
       support.add_field(name="s.mm [message]", value="Enters a DM with the bot dev's (Use this command in DM only)", inline=False)
       await ctx.bot.say(embed=support)
+    
+    @help.command(pass_context = True, no_pm = True)
+    async def beta(ctx):
+      beta = discord.Embed(title="__Beta commands!__", description="-", color=0x00ff00)
+      beta.add_field(name="s.giveaway [seconds] [prize]", value="Creates a giveaway in the channel", inline=False)
+      await ctx.bot.say(embed=beta)
       
       
 
