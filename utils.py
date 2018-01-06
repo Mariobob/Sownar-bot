@@ -216,7 +216,7 @@ class Utils():
 #            channels += [len(server.channels)]
 #            serverCount += 1
 #            for member in server.members:
-#                totalusers += 1
+#               totalusers += 1
 #                if member.bot is True:
 #                  bots += 1
 #                else:
