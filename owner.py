@@ -144,7 +144,7 @@ class Owner():
 
     @bot.command(hidden=True, name='eval')
     async def _eval(ctx, *, body: str):
-      if ctx.message.author.id is in ownerids:
+      if ctx.message.author.id in ownerids:
         env = {
             'bot': bot,
             'ctx': ctx,
