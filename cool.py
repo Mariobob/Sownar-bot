@@ -99,7 +99,7 @@ class Cool():
           ga_users=[]
           ga=discord.Embed(title=":tada: NEW GIVEAWAY :tada:", description="-")
           ga.add_field(name=title, value="Ends in **{}** seconds".format(time), inline =False)
-          ga.set_footer(text="1 winner")
+          ga.set_footer(text="{} winner".format(winners))
           ga_react = await ctx.bot.say(embed=ga)
           await ctx.bot.add_reaction(ga_react, "🎉")
           await asyncio.sleep(time)
