@@ -115,7 +115,7 @@ class Cool():
             await ctx.bot.say(embed=error)
           else:
             winner_list = []
-            for loop in range(winners)
+            for loop in range(winners):
               winner = random.choice(ga_users)
               ga_users.remove(winner)
               winner_list.append(winner)
