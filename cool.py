@@ -128,7 +128,7 @@ class Cool():
               await ctx.bot.edit_message(ga_react, embed = ga_end)
               await ctx.bot.say("Congrats {0}! You won **{1}**".format(", ".join(winner_list), prize))
       except ValueError:
-        error = discord.Embed(title=":warning: Error!",description="Please use a number inputs for `time` and `winner",color=0xff0000)
+        error = discord.Embed(title=":warning: Error!",description="Please use a number inputs for `time` and `winner`",color=0xff0000)
         await ctx.bot.say(embed=error)
       
       
