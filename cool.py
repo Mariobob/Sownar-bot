@@ -86,43 +86,47 @@ class Cool():
       await ctx.bot.say(embed=avatar)
       
     @bot.command(pass_context = True, no_pm = True, aliases=["ga"])
-    async def giveaway(ctx, time=None, winners=None, prize=""):
+    async def giveaway(ctx, time=None, winners=None, *, prize=None):
       try:
-        time = int(time)
-        winners = int(winners)
         if time is None:
           error = discord.Embed(title=":warning: Error!",description="`time` is a required input",color=0xff0000)
           await ctx.bot.say(embed=error)
         else:
           if winners is None:
             winners = 1
-          ga_users=[]
-          ga=discord.Embed(title=":tada: NEW GIVEAWAY :tada:", description="-")
-          ga.add_field(name=prize, value="Ends in **{}** seconds".format(time), inline =False)
-          ga.set_footer(text="{} winner".format(winners))
-          ga_react = await ctx.bot.say(embed=ga)
-          await ctx.bot.add_reaction(ga_react, "🎉")
-          await asyncio.sleep(time)
-          ga_message_id = ga_react.id
-          ga_channel = ga_react.channel
-          ga_message = await ctx.bot.get_message(ga_channel, ga_message_id)
-          for user in await ctx.bot.get_reaction_users(ga_message.reactions[0]):
-            ga_users.append(user.mention)
-          sownar = ctx.message.server.get_member("375370278810681344")
-          ga_users.remove(sownar.mention)
-          if len(ga_users) < winners:
-            error = discord.Embed(title=":warning: Error!",description="The giveaway ended with not enough participants, could not chose a winner",color=0xff0000)
+          if prize is None:
+            error = discord.Embed(title=":warning: Error!",description="`prize` is a required input",color=0xff0000)
             await ctx.bot.say(embed=error)
           else:
-            winner_list = []
-            for loop in range(winners):
-              winner = random.choice(ga_users)
-              ga_users.remove(winner)
-              winner_list.append(winner)
-            ga_end = discord.Embed(title=":tada: GIVEAWAY ENDED :tada:", description="-")
-            ga_end.add_field(name="Winner(s)", value="\n".join(winner_list))
-            await ctx.bot.edit_message(ga_react, embed = ga_end)
-          await ctx.bot.say("Congrats {0}! You won **{1}**".format(", ".join(winner_list), prize))
+            time = int(time)
+            winners = int(winners)
+            ga_users=[]
+            ga=discord.Embed(title=":tada: NEW GIVEAWAY :tada:", description="-")
+            ga.add_field(name=prize, value="Ends in **{}** seconds".format(time), inline =False)
+            ga.set_footer(text="{} winner".format(winners))
+            ga_react = await ctx.bot.say(embed=ga)
+            await ctx.bot.add_reaction(ga_react, "🎉")
+            await asyncio.sleep(time)
+            ga_message_id = ga_react.id
+            ga_channel = ga_react.channel
+            ga_message = await ctx.bot.get_message(ga_channel, ga_message_id)
+            for user in await ctx.bot.get_reaction_users(ga_message.reactions[0]):
+              ga_users.append(user.mention)
+            sownar = ctx.message.server.get_member("375370278810681344")
+            ga_users.remove(sownar.mention)
+            if len(ga_users) < winners:
+              error = discord.Embed(title=":warning: Error!",description="The giveaway ended with not enough participants, could not chose a winner",color=0xff0000)
+              await ctx.bot.say(embed=error)
+            else:
+              winner_list = []
+              for loop in range(winners):
+                winner = random.choice(ga_users)
+                ga_users.remove(winner)
+                winner_list.append(winner)
+              ga_end = discord.Embed(title=":tada: GIVEAWAY ENDED :tada:", description="-")
+              ga_end.add_field(name="Winner(s)", value="\n".join(winner_list))
+              await ctx.bot.edit_message(ga_react, embed = ga_end)
+              await ctx.bot.say("Congrats {0}! You won **{1}**".format(", ".join(winner_list), prize))
       except ValueError:
         error = discord.Embed(title=":warning: Error!",description="Please use a number inputs for `time` and `winner",color=0xff0000)
         await ctx.bot.say(embed=error)
