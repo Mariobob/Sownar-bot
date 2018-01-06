@@ -15,6 +15,14 @@ ownerids=['221381001476046849', '221263215496134656']
 todo_list = []
 finished_list = []
 
+def cleanup_code(content):
+    '''Automatically removes code blocks from the code.'''
+    # remove ```py\n```
+    if content.startswith('```') and content.endswith('```'):
+        return '\n'.join(content.split('\n')[1:-1])
+
+    return content.strip('` \n')
+
 class Owner():
     print('Owner loaded')
     print('------')
@@ -132,6 +140,57 @@ class Owner():
 #      await ctx.bot.say(embed=todo)
 #      await ctx.bot.say(embed=finish)
         
+
+
+    @bot.command(hidden=True, name='eval')
+    async def _eval(ctx, *, body: str):
+    '''Evaluate python code'''
+      if ctx.message.author.id is in ownerids:
+
+
+
+        env = {
+            'bot': bot,
+            'ctx': ctx,
+            'channel': ctx.message.channel,
+            'author': ctx.message.author,
+            'guild': ctx.message.server,
+            'message': ctx.message,
+        }
+
+        env.update(globals())
+  
+        body = cleanup_code(body)
+        stdout = io.StringIO()
+
+        to_compile = f'async def func():\n{textwrap.indent(body, "  ")}'
+
+        try:
+            exec(to_compile, env)
+        except Exception as e:
+            return await ctx.bot.say(f'```py\n{e.__class__.__name__}: {e}\n```')
+
+        func = env['func']
+        try:
+            with redirect_stdout(stdout):
+                ret = await func()
+        except Exception as e:
+            value = stdout.getvalue()
+            await ctx.bot.say(f'```py\n{value}{traceback.format_exc()}\n```')
+        else:
+            value = stdout.getvalue()
+            try:
+                await ctx.message.add_reaction('\u2705')
+            except:
+                pass
+
+            if ret is None:
+                if value:
+                    await ctx.bot.say(f'```py\n{value}\n```')
+            else:
+                await ctx.bot.say(f'```py\n{value}{ret}\n```')  
+      else:
+        await ctx.bot.say(embed=perm_error)
 
           
         
