@@ -125,33 +125,33 @@ class startup():
     await bot.say(embed=embed)
 
   @bot.command(pass_context = True)
-  async def reload(ctx, ext_name: str):
+  async def reload(ctx, extension: str):
       if ctx.message.author.id not in ownerids:
           await bot.say(embed=perm_error)
       else:
-        if ext_name == "all":
+        if extension == "all":
           bot.unload_extension("mod")
           bot.unload_extension("utils")
           bot.unload_extension("owner")
           bot.unload_extension("cool")
           bot.unload_extension("fun")
           bot.unload_extension("modmail")
-          bot.load_extension("utils")
-          bot.load_extension("fun")
-          bot.load_extension("owner")
-          bot.load_extension("cool")
-          bot.load_extension("mod")
-          bot.load_extension("modmail")
-          embed = discord.Embed(title=":white_check_mark: Success!", description="Successfully reloaded all cogs", color=0x00ff00)
-          await ctx.bot.say(embed=embed)
+          for extension in startup_extensions:
+            try:
+              bot.load_extension(extension)
+              embed = discord.Embed(title=":white_check_mark: Success!", description="Successfully reloaded `{}`".format(extension), color=0x00ff00)
+              await ctx.bot.say(embed=embed)
+            except Exception as e:
+              embed = discord.Embed(title=":warning: Error!", description="Failed loading {0}\n{1}: {2}".format(extension, type(e).__name__, e), color=0xff0000)
         else:
-          if ext_name in startup_extensions:
-            bot.unload_extension(ext_name)
-#            try:
-            bot.load_extension(ext_name)
-            embed = discord.Embed(title=":white_check_mark: Success!", description="Successfully reloaded `{}`".format(ext_name), color=0x00ff00)
- #           except:
-  #            embed = discord.Embed(title=":warning: Error!", description="An error occured while loading `{}`".format(ext_name), color=0xff0000)
+          if extension in startup_extensions:
+            bot.unload_extension(extension)
+            try:
+              bot.load_extension(extension)
+              embed = discord.Embed(title=":white_check_mark: Success!", description="Successfully reloaded `{}`".format(extension), color=0x00ff00)
+              await ctx.bot.say(embed=embed)
+            except Exception as e:
+              embed = discord.Embed(title=":warning: Error!", description="Failed loading {0}\n{1}: {2}".format(extension, type(e).__name__, e), color=0xff0000)
           else:
             embed = discord.Embed(title=":warning: Error!", description="`{}` is not a cog, use `s.cogslist` for a list of all cogs".format(ext_name), color=0xff0000)
           await bot.say(embed=embed)
