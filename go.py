@@ -149,7 +149,6 @@ class startup():
             try:
               bot.load_extension(extension)
               embed = discord.Embed(title=":white_check_mark: Success!", description="Successfully reloaded `{}`".format(extension), color=0x00ff00)
-              await ctx.bot.say(embed=embed)
             except Exception as e:
               embed = discord.Embed(title=":warning: Error!", description="Failed loading {0}\n{1}: {2}".format(extension, type(e).__name__, e), color=0xff0000)
           else:
@@ -198,6 +197,7 @@ class startup():
       for cog in startup_extensions:
         bot.unload_extension(cog)
       os.system("open " + '~/runbot_mac.command')
+      logout()
       exit()
 
 bot.loop.create_task(game())
