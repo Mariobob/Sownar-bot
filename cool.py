@@ -89,7 +89,7 @@ class Cool():
     async def giveaway(ctx, time=None, winners=None, prize=""):
       try:
         time = int(time)
-        winners = int(time)
+        winners = int(winners)
         if time is None:
           error = discord.Embed(title=":warning: Error!",description="`time` is a required input",color=0xff0000)
           await ctx.bot.say(embed=error)
