@@ -98,7 +98,7 @@ class Cool():
             winners = 1
           ga_users=[]
           ga=discord.Embed(title=":tada: NEW GIVEAWAY :tada:", description="-")
-          ga.add_field(name=title, value="Ends in **{}** seconds".format(time), inline =False)
+          ga.add_field(name=prize, value="Ends in **{}** seconds".format(time), inline =False)
           ga.set_footer(text="{} winner".format(winners))
           ga_react = await ctx.bot.say(embed=ga)
           await ctx.bot.add_reaction(ga_react, "🎉")
@@ -122,7 +122,7 @@ class Cool():
             ga_end = discord.Embed(title=":tada: GIVEAWAY ENDED :tada:", description="-")
             ga_end.add_field(name="Winner(s)", value="\n".join(winner_list))
             await ctx.bot.edit_message(ga_react, embed = ga_end)
-          await ctx.bot.say("Congrats {0}! You won **{1}**".format(", ".join(winner_list), title))
+          await ctx.bot.say("Congrats {0}! You won **{1}**".format(", ".join(winner_list), prize))
       except ValueError:
         error = discord.Embed(title=":warning: Error!",description="Please use a number inputs for `time` and `winner",color=0xff0000)
         await ctx.bot.say(embed=error)
