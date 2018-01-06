@@ -201,34 +201,34 @@ class Utils():
       embed = discord.Embed(title="Serving", description='{0} servers for {1} users'.format(serverCount, members), color=0x00ff00)
       await ctx.bot.say(embed=embed)
         
-    @commands.command(pass_context = True, no_pm = True)
-    async def stats(ctx):
-        totalusers = 0
-        totalchannels = 0
-        onlineusers = 0
-        humans = 0
-        bots = 0
-        serverCount = 0
-        members = 0
-        channels = []
-        for server in ctx.bot.servers:
-            members += len(server.members)
-            channels += [len(server.channels)]
-            serverCount += 1
-            for member in server.members:
-                totalusers += 1
-                if member.bot is True:
-                  bots += 1
-                else:
-                  humans += 1
-            for channel in server.channels:
-                totalchannels += 1
-        embed = discord.Embed(title="Here are my stats!", color = 0x000000)
-        embed.set_thumbnail(url=ctx.message.server.me.avatar_url)
-        embed.add_field(name="Total Servers", value=serverCount)
-        embed.add_field(name="Users", value='Total users: {0}\n Human users: {1}\n Bot users: {2}'.format(members, humans, bots))
-        embed.add_field(name="Channels", value="Total channels: {}".format(totalchannels))
-        await ctx.bot.say(embed=embed)
+#    @commands.command(pass_context = True, no_pm = True)
+#    async def stats(ctx):
+#        totalusers = 0
+#        totalchannels = 0
+#        onlineusers = 0
+#        humans = 0
+#        bots = 0
+#        serverCount = 0
+#        members = 0
+#        channels = []
+#        for server in ctx.bot.servers:
+#            members += len(server.members)
+#            channels += [len(server.channels)]
+#            serverCount += 1
+#            for member in server.members:
+#                totalusers += 1
+#                if member.bot is True:
+#                  bots += 1
+#                else:
+#                  humans += 1
+#            for channel in server.channels:
+#                totalchannels += 1
+#        embed = discord.Embed(title="Here are my stats!", color = 0x000000)
+#        embed.set_thumbnail(url=ctx.message.server.me.avatar_url)
+#        embed.add_field(name="Total Servers", value=serverCount)
+#        embed.add_field(name="Users", value='Total users: {0}\n Human users: {1}\n Bot users: {2}'.format(members, humans, bots))
+#        embed.add_field(name="Channels", value="Total channels: {}".format(totalchannels))
+#        await ctx.bot.say(embed=embed)
         
     @commands.command(pass_context = True, no_pm = True, aliases = ["id", "userid"])
     async def getid(ctx, *, member: discord.Member = None):
