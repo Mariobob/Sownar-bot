@@ -86,7 +86,7 @@ class Cool():
       await ctx.bot.say(embed=avatar)
       
     @bot.command(pass_context = True, no_pm = True, aliases=["ga"])
-    async def giveaway(ctx, time=None, winners=None, title=""):
+    async def giveaway(ctx, time=None, winners=None, prize=""):
       try:
         time = int(time)
         winners = int(time)
