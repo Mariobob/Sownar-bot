@@ -84,7 +84,7 @@ class Utils():
         t2 = time.perf_counter()
         await ctx.bot.say("Pong! `{}ms`".format(round((t2-t1)*1000)))
 
-    @commands.command(pass_context = True, no_pm = True, aliases=["botinfo", "bi"])
+    @commands.command(pass_context = True, no_pm = True, aliases=["botinfo", "bi", "stats"])
     async def about(ctx):
         await ctx.bot.say("This command is undergoing a rewrite, please try again later!")
 
@@ -169,7 +169,7 @@ class Utils():
     @help.command(pass_context = True, no_pm = True)
     async def beta(ctx):
       beta = discord.Embed(title="__Beta commands!__", description="-", color=0x00ff00)
-      beta.add_field(name="s.giveaway [seconds] [prize]", value="Creates a giveaway in the channel", inline=False)
+      beta.add_field(name="s.giveaway [seconds] [winners] [prize]", value="Creates a giveaway in the channel", inline=False)
       if ctx.message.author.id not in beta_ids:
         perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
         await ctx.bot.say(embed=perm_error)
