@@ -239,7 +239,7 @@ class Utils():
       userinfo.add_field(name="Is Bot?:", value=user.bot)
       userinfo.add_field(name="Playing:", value=user.game)
       userinfo.add_field(name="Status:", value=user.status)
-      userinfo.add_field(name="Roles ({}):".format(len(user.roles)), value=msg)
+      userinfo.add_field(name="Roles ({}):".format(len(user.roles)-1), value=msg)
       userinfo.add_field(name="Joined Server:", value="***{0}***, about {1} days ago".format(str(user.joined_at.strftime("%A, %b %d, %Y")), ago))
       userinfo.add_field(name="Account Created:", value="***{0}***, about {1} days ago".format(str(user.created_at.strftime("%A, %b %d, %Y")), account_ago))
       userinfo.set_footer(text="Requested by {}".format(ctx.message.author), icon_url=ctx.message.author.avatar_url)
