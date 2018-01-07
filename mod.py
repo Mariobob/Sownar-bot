@@ -47,7 +47,7 @@ class Mod():
           embed = discord.Embed(title=":warning: Error!",description="Who do I kick?",color=0xff0000)
           await ctx.bot.say(embed=embed)
     
-        if ctx.message.server.me.server_permissions.kick_members == True:
+        elif ctx.message.server.me.server_permissions.kick_members == True:
                 if ctx.message.author.server_permissions.kick_members == True:
                     if ctx.message.author.top_role > member.top_role:
                         await ctx.bot.kick(member)
