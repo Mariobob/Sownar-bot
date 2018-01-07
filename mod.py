@@ -141,9 +141,9 @@ class Mod():
                 else:
                     perm_error.add_field(name="Missing permissions:", value="`Ban_Members`")
                     await ctx.bot.say(embed=perm_error)
-        else:
-            perm_errorbis.add_field(name="Missing permissions:", value="`Ban_Members`")
-            await ctx.bot.say(embed=perm_errorbis)
+      else:
+          perm_errorbis.add_field(name="Missing permissions:", value="`Ban_Members`")
+          await ctx.bot.say(embed=perm_errorbis)
             
     @bot.command(pass_context = True, no_pm = True)
     async def unban(ctx, *, member = None):
