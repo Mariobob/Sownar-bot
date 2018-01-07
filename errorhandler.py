@@ -20,7 +20,7 @@ class Error():
     
     @bot.event
     async def on_command_error(error, ctx):
-      if isinstance (error, commands.CommandNotFound):
+      if isinstance(error, commands.CommandNotFound):
 				embed = discord.Embed(title = ":warning: Error", description = "Command attempted: `{}`".format(ctx.message.content))
 				embed.set_author(name=f"{ctx.message.author}", icon_url=f"{ctx.message.author.avatar_url}")
 				embed.add_field(name="In server:", value = ctx.message.server)
