@@ -9,6 +9,7 @@ import time
 import traceback
 import io
 import textwrap
+from contextlib import redirect_stdout
 
 prefix=["s.", "s>", "s/"]
 bot=commands.Bot(command_prefix=prefix)
