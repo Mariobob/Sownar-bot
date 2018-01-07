@@ -35,10 +35,13 @@ class Mod():
                         await ctx.bot.ban(member)
                         await ctx.bot.say(":white_check_mark: Succesfully banned {}".format(member))
                     else:
+                        perm_error.add_field(name="Missing permissions:", value="`Ban_Members`")
                         await ctx.bot.say(embed=perm_error)
                 else:
+                    perm_error.add_field(name="Missing permissions:", value="`Ban_Members`")
                     await ctx.bot.say(embed=perm_error)
         else:
+            perm_errorbis.add_field(name="Missing permissions:", value="`Ban_Members`")
             await ctx.bot.say(embed=perm_errorbis)
             
     @bot.command(pass_context = True, no_pm = True)
@@ -53,10 +56,13 @@ class Mod():
                         await ctx.bot.kick(member)
                         await ctx.bot.say(":white_check_mark: Succesfully kicked {}".format(member))
                     else:
+                        perm_error.add_field(name="Missing permissions:", value="`Kick_Members`")
                         await ctx.bot.say(embed=perm_error)
                 else:
+                    perm_error.add_field(name="Missing permissions:", value="`Kick_Members`")
                     await ctx.bot.say(embed=perm_error)
         else:
+            perm_errorbis.add_field(name="Missing permissions:", value="`Kick_Messages`")
             await ctx.bot.say(embed=perm_errorbis)
     
     @bot.command(pass_context = True, no_pm = True)
@@ -81,31 +87,42 @@ class Mod():
               embed = discord.Embed(title=":warning: Error!",description="Can't delete messages more than 14 days old",color=0xff0000)
               await ctx.bot.say(embed=embed)
         else:
+          perm_error.add_field(name="Missing permissions:", value="`Manage_Messages`")
           await ctx.bot.say(embed=perm_error)
       else:
+        perm_errorbis.add_field(name="Missing permissions:", value="`Manage_Messages`")
         await ctx.bot.say(embed=perm_errorbis)
         
     
     @bot.command(pass_context = True, no_pm = True)
     async def purge(ctx, *, num = None):
-      if num is None:
-        embed = discord.Embed(title=":warning: Error!",description="Please specify a number of days of inactivity!",color=0xff0000)
-        await ctx.bot.say(embed=embed)
-      try:
-        num = int(num)
-      except ValueError:
-        embed = discord.Embed(title=":warning: Error!",description="You must use a number",color=0xff0000)
-        await ctx.bot.say(embed=embed)
-      if num > 30:
-        embed = discord.Embed(title=":warning: Error!",description="You must use a number under 30",color=0xff0000)
-        await ctx.bot.say(embed=embed)
+      if ctx.message.server.me.server_permissions.kick_members == True:
+        if ctx.message.server.author.server_permissions.kick_members == True:
+      
+          if num is None:
+            embed = discord.Embed(title=":warning: Error!",description="Please specify a number of days of inactivity!",color=0xff0000)
+            await ctx.bot.say(embed=embed)
+          try:
+            num = int(num)
+          except ValueError:
+            embed = discord.Embed(title=":warning: Error!",description="You must use a number",color=0xff0000)
+            await ctx.bot.say(embed=embed)
+          if num > 30:
+            embed = discord.Embed(title=":warning: Error!",description="You must use a number under 30",color=0xff0000)
+            await ctx.bot.say(embed=embed)
+          else:
+            server = ctx.message.author.server
+            usertotal = server.member_count
+            await ctx.bot.prune_members(ctx.message.server, days=num)
+            newusertotal = server.member_count
+            pruned = (usertotal - newusertotal)
+            await ctx.bot.say("Kicked {} inactive users".format(pruned))
+        else:
+          perm_error.add_field(name="Missing permissions:", value="`Kick_Members`")
+          await ctx.bot.say(embed=perm_error)
       else:
-        server = ctx.message.author.server
-        usertotal = server.member_count
-        await ctx.bot.prune_members(ctx.message.server, days=num)
-        newusertotal = server.member_count
-        pruned = (usertotal - newusertotal)
-        await ctx.bot.say("Kicked {} inactive users".format(pruned))
-
+        perm_errorbis.add_field(name="Missing permissions:", value="`Kick_Messages`")
+        await ctx.bot.say(embed=perm_errorbis)   
+        
 def setup(bot):
     bot.add_cog(Mod)
