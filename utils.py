@@ -296,15 +296,15 @@ class Utils():
     
     @bot.command(pass_context=True)
     async def charinfo(ctx, characters: str):
-    if len(characters) > 10:
+      if len(characters) > 10:
         return await ctx.bot.say(f"**:x:  |  Tooooo many characters. ({len(characters)}/10)**")
 
-    def to_string(c):
+      def to_string(c):
         digit = f'{ord(c):x}'
         name = unicodedata.name(c, "**:x:  |  Emoji name not found.**")
         return f'`\\U{digit:>08}`: {name} - {c} \N{EM DASH} <http://www.fileformat.info/info/unicode/char/{digit}>'
 
-    await ctx.bot.say("\n".join(map(to_string, characters)))
+      await ctx.bot.say("\n".join(map(to_string, characters)))
         
       
         
