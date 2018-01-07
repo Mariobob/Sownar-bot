@@ -31,7 +31,7 @@ class Mod():
     
         elif ctx.message.server.me.server_permissions.ban_members == True:
                 if ctx.message.author.server_permissions.ban_members == True:
-                    if ctx.message.author.top_role.position > member.top_role.position:
+                    if ctx.message.author.top_role > member.top_role:
                         await ctx.bot.ban(member)
                         await ctx.bot.say(":white_check_mark: Succesfully banned {}".format(member))
                     else:
@@ -49,7 +49,7 @@ class Mod():
     
         if ctx.message.server.me.server_permissions.kick_members == True:
                 if ctx.message.author.server_permissions.kick_members == True:
-                    if ctx.message.author.top_role.position > member.top_role.position:
+                    if ctx.message.author.top_role > member.top_role:
                         await ctx.bot.kick(member)
                         await ctx.bot.say(":white_check_mark: Succesfully kicked {}".format(member))
                     else:
