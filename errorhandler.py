@@ -21,11 +21,10 @@ class Error():
     @bot.event
     async def on_command_error(error, ctx):
       if isinstance(error, commands.CommandNotFound):
-        
-				embed = discord.Embed(title = ":warning: Error", description = "Command attempted: `{}`".format(ctx.message.content))
-				embed.set_author(name=f"{ctx.message.author}", icon_url=f"{ctx.message.author.avatar_url}")
-				embed.add_field(name="In server:", value = ctx.message.server)
-				await ctx.bot.send_message(unkown, embed = embed)
+        error=discord.Embed(title=":warning: Error", description="Command attempted: `{}`".format(ctx.message.content))
+        error.set_footer(text=ctx.message.author, icon_url=ctx.message.author.avatar_url)
+        error.set_author(name=ctx.message.server.name, icon_url=ctx.message.server.icon_url)
+        await ctx.bot.say(unkown, embed=error)
     
       else:
         print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
