@@ -39,9 +39,11 @@ class Mod():
                         await ctx.bot.say(embed=samerole)
                 else:
                     perm_error.add_field(name="Missing permissions:", value="`Ban_Members`")
+                    perm_error.remove_field(0)
                     await ctx.bot.say(embed=perm_error)
         else:
             perm_errorbis.add_field(name="Missing permissions:", value="`Ban_Members`")
+            perm_errorbis.remove_field(0)
             await ctx.bot.say(embed=perm_errorbis)
             
     @bot.command(pass_context = True, no_pm = True)
@@ -56,13 +58,14 @@ class Mod():
                         await ctx.bot.kick(member)
                         await ctx.bot.say(":white_check_mark: Succesfully kicked {}".format(member))
                     else:
-                        perm_error.add_field(name="Missing permissions:", value="`Kick_Members`")
-                        await ctx.bot.say(embed=perm_error)
+                        await ctx.bot.say(embed=samerole)
                 else:
                     perm_error.add_field(name="Missing permissions:", value="`Kick_Members`")
+                    perm_error.remove_field(0)
                     await ctx.bot.say(embed=perm_error)
         else:
             perm_errorbis.add_field(name="Missing permissions:", value="`Kick_Members`")
+            perm_errorbis.remove_field(0)
             await ctx.bot.say(embed=perm_errorbis)
     
     @bot.command(pass_context = True, no_pm = True)
@@ -88,9 +91,11 @@ class Mod():
               await ctx.bot.say(embed=embed)
         else:
           perm_error.add_field(name="Missing permissions:", value="`Manage_Messages`")
+          perm_error.remove_field(0)
           await ctx.bot.say(embed=perm_error)
       else:
         perm_errorbis.add_field(name="Missing permissions:", value="`Manage_Messages`")
+        perm_errorbis.remove_field(0)
         await ctx.bot.say(embed=perm_errorbis)
         
     
@@ -119,9 +124,11 @@ class Mod():
             await ctx.bot.say("Kicked {} inactive users".format(pruned))
         else:
           perm_error.add_field(name="Missing permissions:", value="`Kick_Members`")
+          perm_error.remove_field(0)
           await ctx.bot.say(embed=perm_error)
       else:
         perm_errorbis.add_field(name="Missing permissions:", value="`Kick_Members`")
+        perm_errorbis.remove_field(0)
         await ctx.bot.say(embed=perm_errorbis)
         
     @bot.command(pass_context = True, no_pm = True)
@@ -140,9 +147,11 @@ class Mod():
                         await ctx.bot.say(embed=samerole)
                 else:
                     perm_error.add_field(name="Missing permissions:", value="`Ban_Members`")
+                    perm_error.remove_field(0)
                     await ctx.bot.say(embed=perm_error)
       else:
           perm_errorbis.add_field(name="Missing permissions:", value="`Ban_Members`")
+          perm_errorbis.remove_field(0)
           await ctx.bot.say(embed=perm_errorbis)
             
     @bot.command(pass_context = True, no_pm = True)
@@ -164,9 +173,11 @@ class Mod():
                       await ctx.bot.say(embed=samerole)
                 else:
                   perm_error.add_field(name="Missing permissions:", value="`Ban_Members`")
+                  perm_errorbis.remove_field(0)
                   await ctx.bot.say(embed=perm_error)
       else:
         perm_errorbis.add_field(name="Missing permissions:", value="`Ban_Members`")
+        perm_errorbis.remove_field(0)
         await ctx.bot.say(embed=perm_errorbis)
       
         
