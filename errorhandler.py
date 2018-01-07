@@ -25,10 +25,9 @@ class Error():
         error.set_footer(text=ctx.message.author, icon_url=ctx.message.author.avatar_url)
         error.set_author(name=ctx.message.server.name, icon_url=ctx.message.server.icon_url)
         await ctx.bot.say(unkown, embed=error)
-    
       else:
-        print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
-				traceback.print_exception(type(error),error,error.__traceback__, file=sys.stderr)
+        print('Ignoring exception in command {}'.format(ctx.command), file = sys.stderr)
+        traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 
     
 def setup(bot):
