@@ -12,6 +12,7 @@ prefix=["s.", "s>", "s/"]
 bot=commands.Bot(command_prefix=prefix)
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have sufficient permissions to use this command",color=0xff0000)
 perm_errorbis = discord.Embed(title=":warning: Error!",description="I do not have sufficient permissions to perform that action",color=0xff0000)
+samerole = discord.Embed(title=":warning: Error!",description="You can't `ban/kick` a user with the same permissions as yourself :smirk:",color=0xff0000)
 
 class Mod():
     print('Mod loaded')
@@ -35,8 +36,7 @@ class Mod():
                         await ctx.bot.ban(member)
                         await ctx.bot.say(":white_check_mark: Succesfully banned {}".format(member))
                     else:
-                        perm_error.add_field(name="Missing permissions:", value="`Ban_Members`")
-                        await ctx.bot.say(embed=perm_error)
+                        await ctx.bot.say(embed=samerole)
                 else:
                     perm_error.add_field(name="Missing permissions:", value="`Ban_Members`")
                     await ctx.bot.say(embed=perm_error)
@@ -122,7 +122,53 @@ class Mod():
           await ctx.bot.say(embed=perm_error)
       else:
         perm_errorbis.add_field(name="Missing permissions:", value="`Kick_Members`")
-        await ctx.bot.say(embed=perm_errorbis)   
+        await ctx.bot.say(embed=perm_errorbis)
+        
+    @bot.command(pass_context = True, no_pm = True)
+    async def softban(ctx, *, member: discord.Member = None):
+      if member is None:
+        embed = discord.Embed(title=":warning: Error!",description="Who do I softban?",color=0xff0000)
+        await ctx.bot.say(embed=embed)
+      
+      elif ctx.message.server.me.server_permissions.ban_members == True:
+                if ctx.message.author.server_permissions.ban_members == True:
+                    if ctx.message.author.top_role > member.top_role:
+                        await ctx.bot.ban(member, delete_message_days=7)
+                        await ctx.bot.say(":white_check_mark: Succesfully softbanned {}".format(member))
+                        await ctx.bot.unban(member)
+                    else:
+                        await ctx.bot.say(embed=samerole)
+                else:
+                    perm_error.add_field(name="Missing permissions:", value="`Ban_Members`")
+                    await ctx.bot.say(embed=perm_error)
+        else:
+            perm_errorbis.add_field(name="Missing permissions:", value="`Ban_Members`")
+            await ctx.bot.say(embed=perm_errorbis)
+            
+    @bot.command(pass_context = True, no_pm = True)
+    async def unban(ctx, *, member = None):
+      if member is None:
+        embed = discord.Embed(title=":warning: Error!",description="Who do I unban?",color=0xff0000)
+        await ctx.bot.say(embed=embed)
+        
+      elif ctx.message.server.me.server_permissions.ban_members == True:
+                if ctx.message.author.server_permissions.ban_members == True:
+                    if ctx.message.author.top_role > member.top_role:
+                      try:
+                        await ctx.bot.ban(member, delete_message_days=7)
+                        await ctx.bot.say(":white_check_mark: Succesfully softbanned {}".format(member))
+                        await ctx.bot.unban(member)
+                      except:
+                        embed = discord.Embed(title=":warning: Error!",description="**Unbanning failed**\nPlease use a valid ID",color=0xff0000)
+                    else:
+                      await ctx.bot.say(embed=samerole)
+                else:
+                  perm_error.add_field(name="Missing permissions:", value="`Ban_Members`")
+                  await ctx.bot.say(embed=perm_error)
+      else:
+        perm_errorbis.add_field(name="Missing permissions:", value="`Ban_Members`")
+        await ctx.bot.say(embed=perm_errorbis)
+      
         
 def setup(bot):
     bot.add_cog(Mod)
