@@ -154,28 +154,28 @@ class startup():
             except Exception as e:
               embed = discord.Embed(title=":warning: Error!", description="Failed loading {0}\n{1}: {2}".format(extension, type(e).__name__, e), color=0xff0000)
           else:
-            embed = discord.Embed(title=":warning: Error!", description="`{}` is not a cog, use `s.cogslist` for a list of all cogs".format(ext_name), color=0xff0000)
+            embed = discord.Embed(title=":warning: Error!", description="`{}` is not a cog, use `s.cogslist` for a list of all cogs".format(extension), color=0xff0000)
           await bot.say(embed=embed)
         
   @bot.command(pass_context = True)
-  async def load(ctx, ext_name: str):
+  async def load(ctx, extension: str):
       if ctx.message.author.id not in ownerids:
           await bot.say(embed=perm_error)
       else:
-        if ext_name in startup_extensions:
-          bot.load_extension(ext_name)
-          await bot.say("Extension **{}** loaded".format(ext_name))
+        if extension in startup_extensions:
+          bot.load_extension(extension)
+          await bot.say("Extension **{}** loaded".format(extension))
         else:
           await bot.say("Not a valid extension, see `s.cogslist` for options")
     
   @bot.command(pass_context = True)
-  async def unload(ctx, ext_name: str):
+  async def unload(ctx, extension: str):
       if ctx.message.author.id not in ownerids:
           await bot.say(embed=perm_error)
       else:
-        if ext_name in startup_extensions:
-          bot.unload_extension(ext_name)
-          await bot.say("Extension **{}** unloaded".format(ext_name))
+        if extension in startup_extensions:
+          bot.unload_extension(extension)
+          await bot.say("Extension **{}** unloaded".format(extension))
         else:
           await bot.say("Not a valid extension, see `s.cogslist` for options")
           
@@ -199,7 +199,6 @@ class startup():
       for cog in startup_extensions:
         bot.unload_extension(cog)
       os.system("open " + '~/runbot_mac.command')
-      logout()
       exit()
 
 bot.loop.create_task(game())
