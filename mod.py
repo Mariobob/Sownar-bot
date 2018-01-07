@@ -62,25 +62,28 @@ class Mod():
     @bot.command(pass_context = True, no_pm = True)
     async def clear(ctx, number = None):
       if ctx.message.server.me.server_permissions.manage_messages == True:
-        if number is None:
-          embed = discord.Embed(title=":warning: Error!",description="Please specify a number!",color=0xff0000)
-          await ctx.bot.say(embed=embed)
-        try:
-          val = int(number)
-        except ValueError:
-          embed = discord.Embed(title=":warning: Error!",description="You must use a number from `1-100`",color=0xff0000)
-          await ctx.bot.say(embed=embed)
-        if val > 100:
-          embed = discord.Embed(title=":warning: Error!",description="Number must be under 100",color=0xff0000)
-          await ctx.bot.say(embed=embed)
-        else:
-          try:
-            await ctx.bot.purge_from(ctx.message.channel, limit=val)
-          except:
-            embed = discord.Embed(title=":warning: Error!",description="Can't delete messages more than 14 days old",color=0xff0000)
+        if ctx.message.server.author.server_permissions.manage_messages == True:
+          if number is None:
+            embed = discord.Embed(title=":warning: Error!",description="Please specify a number!",color=0xff0000)
             await ctx.bot.say(embed=embed)
+          try:
+            val = int(number)
+          except ValueError:
+            embed = discord.Embed(title=":warning: Error!",description="You must use a number from `1-100`",color=0xff0000)
+            await ctx.bot.say(embed=embed)
+          if val > 100:
+            embed = discord.Embed(title=":warning: Error!",description="Number must be under 100",color=0xff0000)
+            await ctx.bot.say(embed=embed)
+          else:
+            try:
+              await ctx.bot.purge_from(ctx.message.channel, limit=val)
+            except:
+              embed = discord.Embed(title=":warning: Error!",description="Can't delete messages more than 14 days old",color=0xff0000)
+              await ctx.bot.say(embed=embed)
+        else:
+          await ctx.bot.say(embed=perm_error)
       else:
-        await ctx.bot.say(embed=perm_error)
+        await ctx.bot.say(embed=perm_errorbis)
         
     
     @bot.command(pass_context = True, no_pm = True)
