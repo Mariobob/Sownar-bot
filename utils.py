@@ -153,7 +153,9 @@ class Utils():
     async def mod(ctx):  
       mod = discord.Embed(title="__Moderator commands!__", description="-", color=0x00ff00)
       mod.add_field(name="s.ban", value="Bans a certain user", inline=False)
+      mod.add_field(name="s.unban", value="Unbans a certain user", inline=False)
       mod.add_field(name="s.kick", value="Kicks a certain user", inline=False)
+      mod.add_field(name="s.softban", value="Softbans a certain user", inline=False)
       mod.add_field(name="s.clear [x]", value="Clears 'x' messages (Maximum of 100 at a time)", inline=False)
       mod.add_field(name="s.purge [x]", value="Kicks users who have been inactive since 'x' days (Maximum of 30)", inline=False)
       await ctx.bot.say(embed=mod)

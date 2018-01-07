@@ -155,7 +155,7 @@ class Mod():
           await ctx.bot.say(embed=perm_errorbis)
             
     @bot.command(pass_context = True, no_pm = True)
-    async def unban(ctx, *, member = None):
+    async def unban(ctx, *, member: discord.Member = None):
       if member is None:
         embed = discord.Embed(title=":warning: Error!",description="Who do I unban?",color=0xff0000)
         await ctx.bot.say(embed=embed)
