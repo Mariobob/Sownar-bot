@@ -62,7 +62,7 @@ class Mod():
                     perm_error.add_field(name="Missing permissions:", value="`Kick_Members`")
                     await ctx.bot.say(embed=perm_error)
         else:
-            perm_errorbis.add_field(name="Missing permissions:", value="`Kick_Messages`")
+            perm_errorbis.add_field(name="Missing permissions:", value="`Kick_Members`")
             await ctx.bot.say(embed=perm_errorbis)
     
     @bot.command(pass_context = True, no_pm = True)
@@ -121,7 +121,7 @@ class Mod():
           perm_error.add_field(name="Missing permissions:", value="`Kick_Members`")
           await ctx.bot.say(embed=perm_error)
       else:
-        perm_errorbis.add_field(name="Missing permissions:", value="`Kick_Messages`")
+        perm_errorbis.add_field(name="Missing permissions:", value="`Kick_Members`")
         await ctx.bot.say(embed=perm_errorbis)   
         
 def setup(bot):
