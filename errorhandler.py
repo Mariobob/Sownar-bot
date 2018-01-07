@@ -28,6 +28,7 @@ class Error():
       else:
         print('Ignoring exception in command {}'.format(ctx.message.content))
         traceback.print_exception(type(error), error, error.__traceback__)
+        embed = discord.Embed(title=":warning: Error!", description="Command Error: {0}\n{1}: {2}".format(ctx.command, type(error).__name__, error), color=0xff0000)
 
     
 def setup(bot):
