@@ -68,7 +68,7 @@ class Mod():
     @bot.command(pass_context = True, no_pm = True)
     async def clear(ctx, number = None):
       if ctx.message.server.me.server_permissions.manage_messages == True:
-        if ctx.message.server.author.server_permissions.manage_messages == True:
+        if ctx.message.author.server_permissions.manage_messages == True:
           if number is None:
             embed = discord.Embed(title=":warning: Error!",description="Please specify a number!",color=0xff0000)
             await ctx.bot.say(embed=embed)
@@ -97,7 +97,7 @@ class Mod():
     @bot.command(pass_context = True, no_pm = True)
     async def purge(ctx, *, num = None):
       if ctx.message.server.me.server_permissions.kick_members == True:
-        if ctx.message.server.author.server_permissions.kick_members == True:
+        if ctx.message.author.server_permissions.kick_members == True:
       
           if num is None:
             embed = discord.Embed(title=":warning: Error!",description="Please specify a number of days of inactivity!",color=0xff0000)
