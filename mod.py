@@ -173,10 +173,66 @@ class Mod():
                       await ctx.bot.say(embed=samerole)
                 else:
                   perm_error.add_field(name="Missing permissions:", value="`Ban_Members`")
-                  perm_errorbis.remove_field(0)
+                  perm_error.remove_field(0)
                   await ctx.bot.say(embed=perm_error)
       else:
         perm_errorbis.add_field(name="Missing permissions:", value="`Ban_Members`")
+        perm_errorbis.remove_field(0)
+        await ctx.bot.say(embed=perm_errorbis)
+        
+    @bot.command(pass_context = True, no_pm = True)
+    async def mute(ctx, *, member: discord.Member = None):
+      if member is None:
+        embed = discord.Embed(title=":warning: Error!",description="Who do I mute?",color=0xff0000)
+        await ctx.bot.say(embed=embed)
+        
+      elif ctx.message.server.me.server_permissions.manage_channels == True:
+                if ctx.message.author.server_permissions.manage_channels == True:
+                    if ctx.message.author.top_role > member.top_role:
+                      try:
+                        for channel in [c for c in ctx.message.server.channels if c.type == discord.ChannelType.text]:
+                          await channel.set_permissions(member, overwrite=discord.PermissionOverwrite(send_messages = False))
+                        for channel in [c for c in ctx.message.server.channels if c.type == discord.ChannelType.voice]:
+                          await channel.set_permissions(member, overwrite=discord.PermissionOverwrite(speak = False))
+                        await ctx.bot.say(":white_check_mark: Succesfully muted {}".format(member))
+                      except:
+                        embed = discord.Embed(title=":warning: Error!",description="**Muting failed**\nPlease use a valid `Member`",color=0xff0000)
+                    else:
+                      await ctx.bot.say(embed=samerole)
+                else:
+                  perm_error.add_field(name="Missing permissions:", value="`Mannage_Channels`")
+                  perm_error.remove_field(0)
+                  await ctx.bot.say(embed=perm_error)
+      else:
+        perm_errorbis.add_field(name="Missing permissions:", value="`Mannage_Channels`")
+        perm_errorbis.remove_field(0)
+        await ctx.bot.say(embed=perm_errorbis)
+        
+    @bot.command(pass_context = True, no_pm = True)
+    async def unmute(ctx, *, member: discord.Member = None):
+      if member is None:
+        embed = discord.Embed(title=":warning: Error!",description="Who do I mute?",color=0xff0000)
+        await ctx.bot.say(embed=embed)
+        
+      elif ctx.message.server.me.server_permissions.manage_channels == True:
+                if ctx.message.author.server_permissions.manage_channels == True:
+                    if ctx.message.author.top_role > member.top_role:
+                      try:
+                        for channel in [c for c in ctx.message.server.channels if c.type == discord.ChannelType.text]:
+                          await channel.set_permissions(member, overwrite=None)
+                        for channel in [c for c in ctx.message.server.channels if c.type == discord.ChannelType.voice]:
+                          await channel.set_permissions(member, overwrite=None)
+                        await ctx.bot.say(":white_check_mark: Succesfully unmuted {}".format(member))
+                      except:
+                        embed = discord.Embed(title=":warning: Error!",description="**Unmuting failed**\nPlease use a valid `Member`",color=0xff0000)
+                    else:
+                      await ctx.bot.say(embed=samerole)
+                else:
+                  perm_error.add_field(name="Missing permissions:", value="`Mannage_Channels`")
+                  perm_error.remove_field(0)
+                  await ctx.bot.say(embed=perm_error)
+      else:
+        perm_errorbis.add_field(name="Missing permissions:", value="`Mannage_Channels`")
         perm_errorbis.remove_field(0)
         await ctx.bot.say(embed=perm_errorbis)
       
