@@ -11,7 +11,9 @@ import traceback
 prefix=["s.", "s>", "s/"]
 bot=commands.Bot(command_prefix=prefix)
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have sufficient permissions to use this command",color=0xff0000)
+perm_error.add_field(name="Placeholder", value="-")
 perm_errorbis = discord.Embed(title=":warning: Error!",description="I do not have sufficient permissions to perform that action",color=0xff0000)
+perm_errorbis.add_field(name="Placeholder", value="-")
 samerole = discord.Embed(title=":warning: Error!",description="You can't `ban/kick` a user with the same permissions as yourself :smirk:",color=0xff0000)
 
 class Mod():
@@ -185,6 +187,7 @@ class Mod():
       if member is None:
         embed = discord.Embed(title=":warning: Error!",description="Who do I mute?",color=0xff0000)
         await ctx.bot.say(embed=embed)
+      
         
       elif ctx.message.server.me.server_permissions.manage_channels == True:
                 if ctx.message.author.server_permissions.manage_channels == True:
