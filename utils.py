@@ -251,9 +251,8 @@ class Utils():
       msg = []
       for role in user.roles:
         msg.append(role.mention)
-        print(msg)
         
-      msg.remove['@everyone']
+      msg.remove['<@&376096854448013325>']
       userinfo = discord.Embed(title="{}'s info".format(user.name), description="Known As : {}".format(user.nick), color = 0x000000)
       userinfo.set_thumbnail(url=user.avatar_url)
       userinfo.add_field(name="ID:", value=user.id)
