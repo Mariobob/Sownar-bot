@@ -194,9 +194,9 @@ class Owner():
     @bot.command(name='presence', hidden=True)
     async def _presence(ctx, type=None, *, game=None):
       '''Change the bot's presence'''
-      if not dev_check(ctx.author.id):
-          return
-
+      if ctx.message.author.id not in ownerids:
+        return
+      
       if type is None:
           await ctx.bot.say(f'Usage: `{ctx.prefix}presence [game/stream/watch/listen] [message]`')
       else:
