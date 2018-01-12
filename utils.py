@@ -25,7 +25,7 @@ class Utils():
     utils = 1
     
 
-    @commands.command(pass_context = True, no_pm = True, aliases=["si"])
+    @commands.command(pass_context = True, no_pm = True, aliases=["si", "server"])
     async def serverinfo(ctx):
         server = ctx.message.server
         i = 0
@@ -84,7 +84,7 @@ class Utils():
         t2 = time.perf_counter()
         await ctx.bot.say("Pong! `{}ms`".format(round((t2-t1)*1000)))
 
-    @commands.command(pass_context = True, no_pm = True, aliases=["botinfo", "bi"])
+    @commands.command(pass_context = True, no_pm = True, aliases=["botinfo", "bi", "bot", "info"])
     async def about(ctx):
         await ctx.bot.say("This command is undergoing a rewrite, please try again later!")
 
@@ -240,7 +240,7 @@ class Utils():
         embed = discord.Embed(title="{}'s id is:".format(member), description=member.id, color=0x000000)
       await ctx.bot.say(embed=embed)
       
-    @commands.command(pass_context = True, no_pm = True, aliases=["ui"])
+    @commands.command(pass_context = True, no_pm = True, aliases=["ui", "user"])
     async def userinfo(ctx, *, member: discord.Member = None):
       if member is None:
         user = ctx.message.author
