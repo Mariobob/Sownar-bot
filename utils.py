@@ -251,17 +251,15 @@ class Utils():
       msg = []
       for role in user.roles:
         msg.append(role.mention)
-        
-      msg.remove['<@&376096854448013325>']
       userinfo = discord.Embed(title="{}'s info".format(user.name), description="Known As : {}".format(user.nick), color = 0x000000)
       userinfo.set_thumbnail(url=user.avatar_url)
       userinfo.add_field(name="ID:", value=user.id)
       userinfo.add_field(name="Is Bot?:", value=user.bot)
       userinfo.add_field(name="Playing:", value=user.game)
       userinfo.add_field(name="Status:", value=user.status)
-      userinfo.add_field(name="Roles ({}):".format(len(user.roles)-1), value="\n".join(msg))
       userinfo.add_field(name="Joined Server:", value="***{0}***, about {1} days ago".format(str(user.joined_at.strftime("%A, %b %d, %Y")), ago))
       userinfo.add_field(name="Account Created:", value="***{0}***, about {1} days ago".format(str(user.created_at.strftime("%A, %b %d, %Y")), account_ago))
+      userinfo.add_field(name="Roles"", value=" **|** ".join(msg))
       userinfo.set_footer(text="Requested by {}".format(ctx.message.author), icon_url=ctx.message.author.avatar_url)
       
       await ctx.bot.say(embed = userinfo)
