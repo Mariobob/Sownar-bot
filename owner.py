@@ -190,6 +190,34 @@ class Owner():
                 await ctx.bot.say(f'```py\n{value}{ret}\n```')  
       else:
         await ctx.bot.say(embed=perm_error)
+    
+    @bot.command(name='presence', hidden=True)
+    async def _presence(ctx, type=None, *, game=None):
+      '''Change the bot's presence'''
+      if not dev_check(ctx.author.id):
+          return
+
+      if type is None:
+          await ctx.bot.say(f'Usage: `{ctx.prefix}presence [game/stream/watch/listen] [message]`')
+      else:
+          if type.lower() == 'stream':
+              await ctx.bot.change_presence(game=discord.Game(name=game, type=1, url='https://www.twitch.tv/batshal'), status='online')
+              await ctx.bot.say(f'Set presence to. `Streaming {game}`')
+          elif type.lower() == 'game':
+              await ctx.bot.change_presence(game=discord.Game(name=game))
+              await ctx.bot.say(f'Set presence to `Playing {game}`')
+          elif type.lower() == 'watch':
+              await ctx.bot.change_presence(game=discord.Game(name=game, type=3), afk=True)
+              await ctx.bot.say(f'Set presence to `Watching {game}`')
+          elif type.lower() == 'listen':
+              await ctx.bot.change_presence(game=discord.Game(name=game, type=2), afk=True)
+              await ctx.bot.say(f'Set presence to `Listening to {game}`')
+          elif type.lower() == 'clear':
+              await ctx.bot.change_presence(game=None)
+              await ctx.bot.say('Cleared Presence')
+          else:
+              await ctx.bot.say('Usage: `.presence [game/stream/watch/listen] [message]`')    
+  
 
           
         
