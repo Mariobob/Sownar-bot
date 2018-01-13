@@ -198,21 +198,21 @@ class Owner():
         return
       
       if type is None:
-          await ctx.bot.say(f'Usage: `{ctx.prefix}presence [game/stream/watch/listen] [message]`')
+          await ctx.bot.say(f'Usage: .`s.presence [game/stream/watch/listen] [message]`')
       else:
-          if type.lower() == 'stream':
+          if type == 'stream':
               await ctx.bot.change_presence(game=discord.Game(name=game, type=1, url='https://www.twitch.tv/batshal'), status='online')
               await ctx.bot.say(f'Set presence to. `Streaming {game}`')
-          elif type.lower() == 'game':
+          elif type == 'game':
               await ctx.bot.change_presence(game=discord.Game(name=game))
               await ctx.bot.say(f'Set presence to `Playing {game}`')
-          elif type.lower() == 'watch':
+          elif type == 'watch':
               await ctx.bot.change_presence(game=discord.Game(name=game, type=3), afk=True)
               await ctx.bot.say(f'Set presence to `Watching {game}`')
-          elif type.lower() == 'listen':
+          elif type == 'listen':
               await ctx.bot.change_presence(game=discord.Game(name=game, type=2), afk=True)
               await ctx.bot.say(f'Set presence to `Listening to {game}`')
-          elif type.lower() == 'clear':
+          elif type == 'clear':
               await ctx.bot.change_presence(game=None)
               await ctx.bot.say('Cleared Presence')
           else:
