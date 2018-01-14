@@ -167,7 +167,7 @@ class Cool():
     
       if len(response["list"]) == 0: return await ctx.send("Could not find that word!")
     
-      embed = discord.Embed(title = ":mag: Word Searched:", description = word, timestamp = datetime.datetime.utcnow())
+      embed = discord.Embed(title = ":mag: Word Searched:", description = msg, timestamp = datetime.datetime.utcnow())
       embed.add_field(name = "Top definition:", value = response['list'][0]['definition'])
       embed.add_field(name = "Examples:", value = response['list'][0]["example"])
       embed.set_footer(text = "Tags: " + ', '.join(response['tags']))
