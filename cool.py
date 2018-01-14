@@ -158,7 +158,7 @@ class Cool():
             await ctx.bot.say(embed=embed)
         else:
             await ctx.bot.say('```{}```'.format(ascii_format(variable)))
-     
+    
     @bot.command(pass_context = True, no_pm = True)
     async def urban(ctx, *,msg: str):
       word = ' '.join(msg)
@@ -172,5 +172,7 @@ class Cool():
       embed.add_field(name = "Examples:", value = response['list'][0]["example"])
       embed.set_footer(text = "Tags: " + ', '.join(response['tags']))
 
-      await ctx.bot.say(embed = embed)def setup(bot):
+      await ctx.bot.say(embed = embed)
+      
+def setup(bot):
     bot.add_cog(Cool)
