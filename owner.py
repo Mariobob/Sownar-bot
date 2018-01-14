@@ -191,8 +191,8 @@ class Owner():
       else:
         await ctx.bot.say(embed=perm_error)
     
-    @bot.command(name='presence', hidden=True)
-    async def _presence(ctx, type=None, *, game=None):
+    @bot.command(pass_context = True, hidden=True)
+    async def presence(ctx, type=None, *, game=None):
       '''Change the bot's presence'''
       if ctx.message.author.id not in ownerids:
         return
