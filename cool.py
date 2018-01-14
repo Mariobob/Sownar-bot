@@ -172,5 +172,5 @@ class Cool():
       embed.add_field(name = "Examples:", value = response['list'][0]["example"])
       embed.set_footer(text = "Tags: " + ', '.join(response['tags']))
 
-      await ctxbot.say(embed = embed)def setup(bot):
+      await ctx.bot.say(embed = embed)def setup(bot):
     bot.add_cog(Cool)
