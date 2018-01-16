@@ -165,7 +165,7 @@ class Cool():
       api = "http://api.urbandictionary.com/v0/define"
       response = requests.get(api, params=[("term", word)]).json()
     
-      if len(response["list"]) == 0: return await ctx.send("Could not find that word!")
+      if len(response["list"]) == 0: return await ctx.bot.say("Could not find that word!")
     
       embed = discord.Embed(title = ":mag: Word Searched:", description = msg, timestamp = datetime.datetime.utcnow())
       embed.add_field(name = "Top definition:", value = response['list'][0]['definition'])
