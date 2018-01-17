@@ -87,9 +87,9 @@ class Cool():
       await ctx.bot.say(embed=avatar)
       
     @bot.command(pass_context = True, no_pm = True, aliases=["ga"])
-    async def giveaway(ctx, time=None, winners=None, *, prize=None):
+    async def giveaway(ctx, duration=None, winners=None, *, prize=None):
       try:
-        if time is None:
+        if duration is None:
           error = discord.Embed(title=":warning: Error!",description="`time` is a required input",color=0xff0000)
           await ctx.bot.say(embed=error)
         else:
@@ -99,7 +99,22 @@ class Cool():
             error = discord.Embed(title=":warning: Error!",description="`prize` is a required input",color=0xff0000)
             await ctx.bot.say(embed=error)
           else:
-            time = int(time)
+            unit = duration[-1]
+            if unit == 's':
+              time = int(duration[:-1])
+              longunit = 'seconds'
+            elif unit == 'm':
+              time = int(duration[:-1]) * 60
+              longunit = 'minutes'
+            elif unit == 'h':
+              time = int(duration[:-1]) * 60 * 60
+              longunit = 'hours'
+            elif unit == 'd':
+              time = int(duration[:-1]) * 60 * 60 * 24
+              longunit = 'days'
+            else:
+              await ctx.bot.say('Invalid Unit! Use `s`, `m`, or `h`.')
+            
             winners = int(winners)
             ga_users=[]
             ga=discord.Embed(title=":tada: NEW GIVEAWAY :tada:", description="-")
