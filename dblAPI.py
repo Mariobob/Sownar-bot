@@ -38,6 +38,7 @@ class botsorgapi():
       pass
     else:
       try:
+        await ctx.bot.say(len(bot.servers))
         payload = {"server_count"  : len(bot.servers)}
         requests.post(url, data=payload, headers=headers)
         await ctx.bot.say(":white_check_mark: Succes!")
