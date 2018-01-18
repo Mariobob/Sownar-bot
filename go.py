@@ -37,7 +37,7 @@ utils = 0
 bot=commands.Bot(command_prefix=prefix)
 bot.remove_command("help")
 game = ('{0}help | {1} servers'.format(prefix, len(bot.servers)))
-startup_extensions = ["utils", "mod", "fun", "owner", "cool", "modmail", "errorhandler"]
+startup_extensions = ["utils", "mod", "fun", "owner", "cool", "modmail", "errorhandler", "dblAPI"]
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
 
 async def get_uptime():
@@ -117,6 +117,7 @@ class startup():
     bot.load_extension("mod")
     bot.load_extension("modmail")
     bot.load_extension("errorhandler")
+    bot.load_extension("dblAPI")
   
   
   @bot.command()
@@ -138,6 +139,7 @@ class startup():
           bot.unload_extension("fun")
           bot.unload_extension("modmail")
           bot.unload_extension("errorhandler")
+          bot.unload_extension("dblAPI")
           for extension in startup_extensions:
             try:
               bot.load_extension(extension)
