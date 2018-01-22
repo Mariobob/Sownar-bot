@@ -215,6 +215,7 @@ class Mod():
                         for channel in [c for c in ctx.message.server.channels if c.type == discord.ChannelType.text]:
                           await channel.set_permissions(member, overwrite=discord.PermissionOverwrite(send_messages = False))
                           print("3,25")
+                        print("3,5")
                         for channel in [c for c in ctx.message.server.channels if c.type == discord.ChannelType.voice]:
                           await channel.set_permissions(member, overwrite=discord.PermissionOverwrite(speak = False))
                           print("3,75")
