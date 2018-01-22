@@ -17,7 +17,7 @@ def get_prefix(bot, message):
     else:
         with open("prefixes_list.pk1", "r") as prefixs_list:
                 prefix_list = json.load(prefixs_list)    
-    prefixes = "c."
+    prefixes = "s."
     if len(prefix_list) >= 1:
 
             for pre in prefix_list:
