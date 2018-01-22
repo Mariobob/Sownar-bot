@@ -8,9 +8,24 @@ from discord.ext import commands
 import time
 import traceback
 import unicodedata
+def get_prefix(bot, message):
+    if not os.path.isfile("prefixes_list.pk1"):
+        prefix_list = []
+    else:
+        with open("prefixes_list.pk1", "r") as prefixs_list:
+                prefix_list = json.load(prefixs_list)    
+    prefixes = "c."
+    if len(prefix_list) >= 1:
 
-prefix=["s.", "s>", "s/"]
-bot=commands.Bot(command_prefix=prefix)
+            for pre in prefix_list:
+                    sid,spre = pre.split(":")
+                    if sid == message.server.id:
+                            prefixes = spre
+            
+
+    return prefixes
+
+bot=commands.Bot(command_prefix=get_prefix)
 tickets = discord.Object("376563001643499522")
 suggest = discord.Object('376776759221288961')
 bot_invite="https://discordapp.com/oauth2/authorize?client_id=375370278810681344&scope=bot&permissions=2146958583"
@@ -252,12 +267,14 @@ class Utils():
       msg = []
       for role in user.roles:
         msg.append(role.mention)
+      if user.status == 'online':
+        status = ""
       userinfo = discord.Embed(title="{}'s info".format(user.name), description="Known As : {}".format(user.nick), color = 0x000000)
       userinfo.set_thumbnail(url=user.avatar_url)
       userinfo.add_field(name="ID:", value=user.id)
       userinfo.add_field(name="Is Bot?:", value=user.bot)
       userinfo.add_field(name="Playing:", value=user.game)
-      userinfo.add_field(name="Status:", value=user.status)
+      userinfo.add_field(name="Status:", value=status)
       userinfo.add_field(name="Joined Server:", value="***{0}***, about {1} days ago".format(str(user.joined_at.strftime("%A, %b %d, %Y")), ago))
       userinfo.add_field(name="Account Created:", value="***{0}***, about {1} days ago".format(str(user.created_at.strftime("%A, %b %d, %Y")), account_ago))
       userinfo.add_field(name="Roles:", value=" **|** ".join(msg))

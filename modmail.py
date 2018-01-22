@@ -8,8 +8,24 @@ from discord.ext import commands
 import time
 import traceback
 
-prefix=["s.", "s>", "s/"]
-bot=commands.Bot(command_prefix=prefix)
+def get_prefix(bot, message):
+    if not os.path.isfile("prefixes_list.pk1"):
+        prefix_list = []
+    else:
+        with open("prefixes_list.pk1", "r") as prefixs_list:
+                prefix_list = json.load(prefixs_list)    
+    prefixes = "c."
+    if len(prefix_list) >= 1:
+
+            for pre in prefix_list:
+                    sid,spre = pre.split(":")
+                    if sid == message.server.id:
+                            prefixes = spre
+            
+
+    return prefixes
+
+bot=commands.Bot(command_prefix=get_prefix)
 ownerids=['221381001476046849', '221263215496134656']
 mm_error = discord.Embed(title=":warning: Error!",description="Please use this command in DM with the bot :wink:",color=0xff0000)
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)

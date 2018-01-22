@@ -11,8 +11,24 @@ import io
 import textwrap
 from contextlib import redirect_stdout
 
-prefix=["s.", "s>", "s/"]
-bot=commands.Bot(command_prefix=prefix)
+def get_prefix(bot, message):
+    if not os.path.isfile("prefixes_list.pk1"):
+        prefix_list = []
+    else:
+        with open("prefixes_list.pk1", "r") as prefixs_list:
+                prefix_list = json.load(prefixs_list)    
+    prefixes = "c."
+    if len(prefix_list) >= 1:
+
+            for pre in prefix_list:
+                    sid,spre = pre.split(":")
+                    if sid == message.server.id:
+                            prefixes = spre
+            
+
+    return prefixes
+
+bot=commands.Bot(command_prefix=get_prefix)
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
 ownerids=['221381001476046849', '221263215496134656']
 todo_list = []
@@ -191,7 +207,7 @@ class Owner():
       else:
         await ctx.bot.say(embed=perm_error)
     
-    @bot.command(pass_context = True, hidden=True)
+    @bot.command(pass_context = True, aliases = ["gameset"], hidden=True)
     async def presence(ctx, type=None, *, game=None):
       '''Change the bot's presence'''
       if ctx.message.author.id not in ownerids:
@@ -216,7 +232,29 @@ class Owner():
               await ctx.bot.change_presence(game=None)
               await ctx.bot.say('Cleared Presence')
           else:
-              await ctx.bot.say('Usage: `.presence [game/stream/watch/listen] [message]`')    
+              await ctx.bot.say('Usage: `.presence [game/stream/watch/listen] [message]`') 
+    
+    @bot.command(pass_context = True)
+    async def setprefix(ctx, prefix):
+      if ctx.message.author.server_permissions.administrator is True:
+        prefix_list=[]
+        already = 'no'
+        with open("prefixes_list.pk1", "r") as prefixs_list:
+                prefix_list = json.load(prefixs_list)
+        if len(prefix_list) >= 1:
+                
+                for pre in prefix_list:
+                    sid,spre = pre.split(":")
+                    if sid == ctx.message.server.id:
+                            already = 'yes'
+                            prefix_list.remove(pre)
+                    else:
+                            pass
+        prefix_list.append('{}:{}'.format(ctx.message.server.id, prefix))
+        with open("prefixes_list.pk1", "w") as prefixs_list:
+                json.dump(prefix_list, prefixs_list)
+        await ctx.bot.say(':white_check_mark: New prefix is `{}`'.format(prefix))
+  
   
 
           

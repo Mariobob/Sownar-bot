@@ -8,8 +8,24 @@ from discord.ext import commands
 import time
 import traceback
 from random import randint
-prefix=["s.", "s>", "s/"]
-bot=commands.Bot(command_prefix=prefix)
+def get_prefix(bot, message):
+    if not os.path.isfile("prefixes_list.pk1"):
+        prefix_list = []
+    else:
+        with open("prefixes_list.pk1", "r") as prefixs_list:
+                prefix_list = json.load(prefixs_list)    
+    prefixes = "c."
+    if len(prefix_list) >= 1:
+
+            for pre in prefix_list:
+                    sid,spre = pre.split(":")
+                    if sid == message.server.id:
+                            prefixes = spre
+            
+
+    return prefixes
+
+bot=commands.Bot(command_prefix=get_prefix)
 
 flips = ["Heads", "Tails"]
 rolls = ["1", "2", "3", "4", "5", "6"]

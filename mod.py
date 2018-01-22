@@ -8,8 +8,24 @@ from discord.ext import commands
 import time
 import traceback
 
-prefix=["s.", "s>", "s/"]
-bot=commands.Bot(command_prefix=prefix)
+def get_prefix(bot, message):
+    if not os.path.isfile("prefixes_list.pk1"):
+        prefix_list = []
+    else:
+        with open("prefixes_list.pk1", "r") as prefixs_list:
+                prefix_list = json.load(prefixs_list)    
+    prefixes = "c."
+    if len(prefix_list) >= 1:
+
+            for pre in prefix_list:
+                    sid,spre = pre.split(":")
+                    if sid == message.server.id:
+                            prefixes = spre
+            
+
+    return prefixes
+
+bot=commands.Bot(command_prefix=get_prefix)
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have sufficient permissions to use this command",color=0xff0000)
 perm_error.add_field(name="Placeholder", value="-")
 perm_errorbis = discord.Embed(title=":warning: Error!",description="I do not have sufficient permissions to perform that action",color=0xff0000)

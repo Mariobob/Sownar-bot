@@ -11,9 +11,24 @@ import aiohttp
 import requests
 from pyfiglet import figlet_format as ascii_format
   
+def get_prefix(bot, message):
+    if not os.path.isfile("prefixes_list.pk1"):
+        prefix_list = []
+    else:
+        with open("prefixes_list.pk1", "r") as prefixs_list:
+                prefix_list = json.load(prefixs_list)    
+    prefixes = "c."
+    if len(prefix_list) >= 1:
 
-prefix=["s.", "s>", "s/"]
-bot=commands.Bot(command_prefix=prefix)
+            for pre in prefix_list:
+                    sid,spre = pre.split(":")
+                    if sid == message.server.id:
+                            prefixes = spre
+            
+
+    return prefixes
+
+bot=commands.Bot(command_prefix=get_prefix)
 
 class Cool():
     print('random loaded')
