@@ -235,26 +235,31 @@ class Owner():
               await ctx.bot.say('Usage: `.presence [game/stream/watch/listen] [message]`') 
     
     @bot.command(pass_context = True)
-    async def setprefix(ctx, prefix):
-      if ctx.message.author.server_permissions.administrator is True:
-        prefix_list=[]
-        already = 'no'
-        with open("prefixes_list.pk1", "r") as prefixs_list:
-                prefix_list = json.load(prefixs_list)
-        if len(prefix_list) >= 1:
-                
-                for pre in prefix_list:
-                    sid,spre = pre.split(":")
-                    if sid == ctx.message.server.id:
-                            already = 'yes'
-                            prefix_list.remove(pre)
-                    else:
-                            pass
-        prefix_list.append('{}:{}'.format(ctx.message.server.id, prefix))
-        with open("prefixes_list.pk1", "w") as prefixs_list:
-                json.dump(prefix_list, prefixs_list)
-        await ctx.bot.say(':white_check_mark: New prefix is `{}`'.format(prefix))
-  
+    async def setprefix(ctx, prefix=None):
+      if prefix is None:
+        await ctx.bot.say(":x: `prefix` is a required argument")
+      else:
+        
+        if ctx.message.author.server_permissions.administrator is True:
+          prefix_list=[]
+          already = 'no'
+          with open("prefixes_list.pk1", "r") as prefixs_list:
+                  prefix_list = json.load(prefixs_list)
+          if len(prefix_list) >= 1:
+                  
+                  for pre in prefix_list:
+                      sid,spre = pre.split(":")
+                      if sid == ctx.message.server.id:
+                              already = 'yes'
+                              prefix_list.remove(pre)
+                      else:
+                              pass
+          prefix_list.append('{}:{}'.format(ctx.message.server.id, prefix))
+          with open("prefixes_list.pk1", "w") as prefixs_list:
+                  json.dump(prefix_list, prefixs_list)
+          await ctx.bot.say(':white_check_mark: New prefix is `{}`'.format(prefix))
+      else:
+        await ctx.bot.say(embed=perm_error)
   
 
           

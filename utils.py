@@ -286,11 +286,11 @@ class Utils():
     @commands.command(pass_context = True, no_pm = True)
     async def serverlist(ctx):
       server_list = []
-      if len(ctx.bot.servers)<25:
+      try:
         for server in ctx.bot.servers:
           server_list.append(server.name)
-        await ctx.bot.say(server_list)
-      else:
+        await ctx.bot.say('\n'.join(server_list))
+      except:
         todo = discord.Embed(title=":warning: Error!",description="The bot is in too many servers to show them all",color=0xff0000)
         await ctx.bot.say(embed = todo)
     
