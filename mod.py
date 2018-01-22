@@ -206,13 +206,17 @@ class Mod():
       
         
       elif ctx.message.server.me.server_permissions.manage_channels == True:
+                print("1")
                 if ctx.message.author.server_permissions.manage_channels == True:
+                    print("2")
                     if ctx.message.author.top_role > member.top_role:
                       try:
+                        print("3")
                         for channel in [c for c in ctx.message.server.channels if c.type == discord.ChannelType.text]:
                           await channel.set_permissions(member, overwrite=discord.PermissionOverwrite(send_messages = False))
                         for channel in [c for c in ctx.message.server.channels if c.type == discord.ChannelType.voice]:
                           await channel.set_permissions(member, overwrite=discord.PermissionOverwrite(speak = False))
+                        print("4")
                         await ctx.bot.say(":white_check_mark: Succesfully muted {}".format(member))
                       except:
                         embed = discord.Embed(title=":warning: Error!",description="**Muting failed**\nPlease use a valid `Member`",color=0xff0000)
