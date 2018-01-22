@@ -12,6 +12,7 @@ import random
 logs = discord.Object("376778387676594176")
 console = discord.Object("376552211817299968")
 tickets = discord.Object("376563001643499522")
+status = discord.Object("404796496995942401")
 seconds=0
 minutes=0
 hours=0
@@ -135,6 +136,7 @@ class startup():
     bot.load_extension("modmail")
     bot.load_extension("errorhandler")
     bot.load_extension("dblAPI")
+    await bot.send_message(status, ":white_check_mark: Bot running!")
   
   
   @bot.command()
