@@ -214,8 +214,10 @@ class Mod():
                         print("3")
                         for channel in [c for c in ctx.message.server.channels if c.type == discord.ChannelType.text]:
                           await channel.set_permissions(member, overwrite=discord.PermissionOverwrite(send_messages = False))
+                          print("3,25")
                         for channel in [c for c in ctx.message.server.channels if c.type == discord.ChannelType.voice]:
                           await channel.set_permissions(member, overwrite=discord.PermissionOverwrite(speak = False))
+                          print("3,75")
                         print("4")
                         await ctx.bot.say(":white_check_mark: Succesfully muted {}".format(member))
                       except:
