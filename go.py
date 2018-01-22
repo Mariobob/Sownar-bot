@@ -99,8 +99,8 @@ class startup():
   
   @bot.event
   async def on_server_join(server):
-    embed = discord.Embed(title="__Server Joined!__", description="I have joined a new server !", color=0x00ff00)
-    embed.add_field(name="Server Name", value=server.name, inline=True)
+    embed = discord.Embed(title="__Server Joined! {}__".format(server.name), color=0x00ff00, timestamp = datetime.datetime.utcnow())
+    embed.set_footer(text="Updated Server Count: {}".format(len(bot.servers)))
     embed.add_field(name="Server Owner", value=server.owner, inline=True)
     embed.add_field(name="Member Count", value="{0} members".format(server.member_count), inline=True)
     embed.add_field(name="Server Region", value=server.region, inline=True)
@@ -110,9 +110,9 @@ class startup():
 
   @bot.event
   async def on_server_remove(server):
-    embed = discord.Embed(title="__Server Left!__", description="I have left a server !", color=0xff0000)
-    embed.add_field(name="Server Name", value=server.name, inline=True)
+    embed = discord.Embed(title="__Server Left! {}__".format(server.name), color=0xff0000, timestamp = datetime.datetime.utcnow())
     embed.add_field(name="Server Owner", value=server.owner, inline=True)
+    embed.set_footer(text="Updated Server Count: {}".format(len(bot.servers)))
     embed.add_field(name="Member Count", value="{0} members".format(server.member_count), inline=True)
     embed.add_field(name="Server Region", value=server.region, inline=True)
     await bot.send_message(console, embed=embed)
@@ -122,6 +122,7 @@ class startup():
   
   @bot.event
   async def on_ready():
+    t1 = time.perf_counter()
     print("Logged in as")
     print(bot.user.name)
     print(bot.user.id)
@@ -136,7 +137,8 @@ class startup():
     bot.load_extension("modmail")
     bot.load_extension("errorhandler")
     bot.load_extension("dblAPI")
-    await bot.send_message(status, ":white_check_mark: Bot running!")
+    t2 = time.perf_counter()
+    await bot.send_message(status, ":white_check_mark: Bot running! `Took {}ms`".format(round(t2-t1)*1000))
   
   
   @bot.command()
@@ -161,8 +163,11 @@ class startup():
           bot.unload_extension("dblAPI")
           for extension in startup_extensions:
             try:
+              t1 = time.perf_counter()
               bot.load_extension(extension)
               embed = discord.Embed(title=":white_check_mark: Success!", description="Successfully reloaded `{}`".format(extension), color=0x00ff00)
+              t2 = time.perf_counter()
+              embed.set_footer(text="Took {}ms".format(round(t2-t1)*1000))
               await ctx.bot.say(embed=embed)
             except Exception as e:
               embed = discord.Embed(title=":warning: Error!", description="Failed loading {0}\n{1}: {2}".format(extension, type(e).__name__, e), color=0xff0000)
@@ -170,8 +175,11 @@ class startup():
           if extension in startup_extensions:
             bot.unload_extension(extension)
             try:
+              t1 = time.perf_counter()
               bot.load_extension(extension)
               embed = discord.Embed(title=":white_check_mark: Success!", description="Successfully reloaded `{}`".format(extension), color=0x00ff00)
+              t2 = time.perf_counter()
+              embed.set_footer(text="Took {}ms".format(round(t2-t1)*1000))
             except Exception as e:
               embed = discord.Embed(title=":warning: Error!", description="Failed loading {0}\n{1}: {2}".format(extension, type(e).__name__, e), color=0xff0000)
           else:
