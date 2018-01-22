@@ -34,7 +34,24 @@ cool = 0
 global utils
 utils = 0
 
-bot=commands.Bot(command_prefix=prefix)
+def get_prefix(bot, message):
+    if not os.path.isfile("prefixes_list.pk1"):
+        prefix_list = []
+    else:
+        with open("prefixes_list.pk1", "r") as prefixs_list:
+                prefix_list = json.load(prefixs_list)    
+    prefixes = "s."
+    if len(prefix_list) >= 1:
+
+            for pre in prefix_list:
+                    sid,spre = pre.split(":")
+                    if sid == message.server.id:
+                            prefixes = spre
+            
+
+    return prefixes
+
+bot=commands.Bot(command_prefix=get_prefix)
 bot.remove_command("help")
 game = ('{0}help | {1} servers'.format(prefix, len(bot.servers)))
 startup_extensions = ["utils", "mod", "fun", "owner", "cool", "modmail", "errorhandler", "dblAPI"]
