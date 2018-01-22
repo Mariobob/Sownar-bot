@@ -258,8 +258,8 @@ class Owner():
           with open("prefixes_list.pk1", "w") as prefixs_list:
                   json.dump(prefix_list, prefixs_list)
           await ctx.bot.say(':white_check_mark: New prefix is `{}`'.format(prefix))
-      else:
-        await ctx.bot.say(embed=perm_error)
+        else:
+          await ctx.bot.say(embed=perm_error)
   
 
           
