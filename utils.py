@@ -267,7 +267,7 @@ class Utils():
       msg = []
       for role in user.roles:
         msg.append(role.mention)
-      msg.pop(1)
+      msg.pop(0)
       msg.insert(0, '@everyone')
       if user.status == 'online':
         status = ""
