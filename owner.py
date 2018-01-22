@@ -130,16 +130,7 @@ class Owner():
 
 
           
-    @bot.command(pass_context = True, no_pm = True)
-    async def gameset(ctx, *, game = None):
-      if ctx.message.author.id not in ownerids:
-        await ctx.bot.say(embed=perm_error)
-      else:
-        if game is None:
-          embed = discord.Embed(title=":warning: Error!",description="Please specify a game status!",color=0xff0000)
-          await ctx.bot.say(embed=embed)
-        else:
-          await ctx.bot.change_presence(game=discord.Game(name=game))
+
           
 #    @bot.command(pass_context = True, no_pm = True)
 #    async def changelog(ctx):
