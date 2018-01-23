@@ -182,9 +182,8 @@ class Mod():
                 if ctx.message.author.server_permissions.ban_members == True:
                     if ctx.message.author.top_role > member.top_role:
                       try:
-                        await ctx.bot.ban(member, delete_message_days=7)
-                        await ctx.bot.say(":white_check_mark: Succesfully softbanned {}".format(member))
                         await ctx.bot.unban(member)
+                        await ctx.bot.say(":white_check_mark: Succesfully unbanned {}".format(member))
                       except:
                         embed = discord.Embed(title=":warning: Error!",description="**Unbanning failed**\nPlease use a valid ID",color=0xff0000)
                     else:

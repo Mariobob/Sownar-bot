@@ -153,6 +153,7 @@ class startup():
           await bot.say(embed=perm_error)
       else:
         if extension == "all":
+          t1 = time.perf_counter()
           bot.unload_extension("mod")
           bot.unload_extension("utils")
           bot.unload_extension("owner")
@@ -163,7 +164,6 @@ class startup():
           bot.unload_extension("dblAPI")
           for extension in startup_extensions:
             try:
-              t1 = time.perf_counter()
               bot.load_extension(extension)
               embed = discord.Embed(title=":white_check_mark: Success!", description="Successfully reloaded `{}`".format(extension), color=0x00ff00)
               t2 = time.perf_counter()
@@ -173,9 +173,9 @@ class startup():
               embed = discord.Embed(title=":warning: Error!", description="Failed loading {0}\n{1}: {2}".format(extension, type(e).__name__, e), color=0xff0000)
         else:
           if extension in startup_extensions:
+            t1 = time.perf_counter()
             bot.unload_extension(extension)
             try:
-              t1 = time.perf_counter()
               bot.load_extension(extension)
               embed = discord.Embed(title=":white_check_mark: Success!", description="Successfully reloaded `{}`".format(extension), color=0x00ff00)
               t2 = time.perf_counter()
