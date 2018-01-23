@@ -231,7 +231,7 @@ class Owner():
         await ctx.bot.say(":x: `prefix` is a required argument")
       else:
         
-        if ctx.message.author.server_permissions.administrator is True:
+        if ctx.message.author.server_permissions.administrator is True or ctx.message.author.id is in ownerids:
           prefix_list=[]
           already = 'no'
           with open("prefixes_list.pk1", "r") as prefixs_list:
