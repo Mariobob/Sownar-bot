@@ -138,7 +138,7 @@ class startup():
     bot.load_extension("errorhandler")
     bot.load_extension("dblAPI")
     t2 = time.perf_counter()
-    await bot.send_message(status, ":white_check_mark: Bot running! `Took {}ms`".format((t2-t1)*1000))
+    await bot.send_message(status, ":white_check_mark: Bot running! `Took {}ms`".format('%.1f' % round((t2-t1)*1000), 1))
   
   
   @bot.command()
@@ -167,7 +167,7 @@ class startup():
               bot.load_extension(extension)
               embed = discord.Embed(title=":white_check_mark: Success!", description="Successfully reloaded `{}`".format(extension), color=0x00ff00)
               t2 = time.perf_counter()
-              embed.set_footer(text="Took {}ms".format((t2-t1)*1000))
+              embed.set_footer(text="Took {}ms".format('%.1f' % round((t2-t1)*1000), 1))
               await ctx.bot.say(embed=embed)
             except Exception as e:
               embed = discord.Embed(title=":warning: Error!", description="Failed loading {0}\n{1}: {2}".format(extension, type(e).__name__, e), color=0xff0000)
@@ -179,7 +179,7 @@ class startup():
               bot.load_extension(extension)
               embed = discord.Embed(title=":white_check_mark: Success!", description="Successfully reloaded `{}`".format(extension), color=0x00ff00)
               t2 = time.perf_counter()
-              embed.set_footer(text="Took {}ms".format((t2-t1)*1000))
+              embed.set_footer(text="Took {}ms".format('%.1f' % round((t2-t1)*1000), 1))
             except Exception as e:
               embed = discord.Embed(title=":warning: Error!", description="Failed loading {0}\n{1}: {2}".format(extension, type(e).__name__, e), color=0xff0000)
           else:
