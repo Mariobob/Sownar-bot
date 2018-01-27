@@ -267,7 +267,7 @@ class Owner():
             for elem in msg:
               await ctx.bot.say(elem)
         else:
-          server = get_server(serverl)
+          server = ctx.bot.get_server(serverl)
           i = 0
           humanusers = 0
           botusers = 0
