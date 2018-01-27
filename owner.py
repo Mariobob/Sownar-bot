@@ -202,7 +202,7 @@ class Owner():
     async def presence(ctx, type=None, *, game=None):
       '''Change the bot's presence'''
       if ctx.message.author.id not in ownerids:
-        return
+        await ctx.bot.say(embed=perm_error)
       
       if type is None:
           await ctx.bot.say(f'Usage: .`s.presence [game/stream/watch/listen] [message]`')
@@ -251,6 +251,56 @@ class Owner():
           await ctx.bot.say(':white_check_mark: New prefix is `{}`'.format(prefix))
         else:
           await ctx.bot.say(embed=perm_error)
+          
+    @bot.command(pass_context = True)
+    async def sio(ctx, *, server):
+      if ctx.message.author.id not in ownerids:
+        await ctx.bot.say(embed=perm_error)
+      else:
+        if server == 'list':
+          msg = []
+          for server in ctx.bot.servers:
+            msg.append('Name: {}, ID: {}'.format(server.name, server.id))
+          try:
+            await ctx.bot.say('\n'.join(msg))
+          except:
+            for elem in msg:
+              await ctx.bot.say(elem)
+        else:
+          i = 0
+          humanusers = 0
+          botusers = 0
+          online = 0
+          voicechanneles = 0
+          textchannels = 0 
+          totalusers = 0
+          totalchannels = 0
+          totalroles = 0
+          for members in server.members:
+            totalusers += 1
+            if members.bot is True:
+              botusers += 1
+            else:
+              humanusers += 1
+          for channels in server.channels:
+            totalchannels += 1
+          for roles in server.roles:
+            totalroles += 1
+          
+        
+          ago = (ctx.message.timestamp - server.created_at).days
+          embed = discord.Embed(title= "Server", description="-", color=0x00ff00)
+          embed.set_thumbnail(url=server.icon_url)
+          embed.add_field(name="Server Name", value="Name: {0} \nID: {1}".format(server.name, server.id), inline=False)
+          embed.add_field(name="Server Owner", value="Name: {0} \nID: {1}".format(server.owner, server.owner.id), inline=False)
+          embed.add_field(name="Member Count", value="- {0} humans \n- {1} bots \n- {2} total".format(humanusers, botusers, totalusers), inline=False)
+          embed.add_field(name="Channels", value="Total Channels : {0}".format(totalchannels), inline=False)
+          embed.add_field(name="Roles", value=totalroles, inline=False)
+          embed.add_field(name="Verification Level", value=server.verification_level, inline=False)
+          embed.add_field(name="Server Region", value=server.region, inline=False)
+          embed.add_field(name="Server created at", value="***{0}***, about {1} days ago".format(str(server.created_at.strftime("%A, %b %d, %Y")), ago), inline=False)
+          await ctx.bot.say(embed=embed)
+          
   
 
           
