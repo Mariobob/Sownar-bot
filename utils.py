@@ -116,7 +116,7 @@ class Utils():
     @commands.group(pass_context = True, no_pm = True)
     async def help(ctx):
       if ctx.invoked_subcommand is None:
-        embed = discord.Embed(title="__Bot commands!__", description="Total commands: {}".format(ctx.bot.commands), color=0x00ff00)
+        embed = discord.Embed(title="__Bot commands!__", description="Total commands: {}".format(len(ctx.bot.commands)), color=0x00ff00)
         embed.add_field(name="Utility", value="`s.help utility`", inline=False)
         embed.add_field(name="Fun", value="`s.help fun`", inline=False)
         embed.add_field(name="Moderation", value="`s.help mod`", inline=False)
