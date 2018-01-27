@@ -253,11 +253,11 @@ class Owner():
           await ctx.bot.say(embed=perm_error)
           
     @bot.command(pass_context = True)
-    async def sio(ctx, *, server):
+    async def sio(ctx, *, serverl):
       if ctx.message.author.id not in ownerids:
         await ctx.bot.say(embed=perm_error)
       else:
-        if server == 'list':
+        if serverl == 'list':
           msg = []
           for server in ctx.bot.servers:
             msg.append('Name: {}, ID: {}'.format(server.name, server.id))
@@ -267,6 +267,7 @@ class Owner():
             for elem in msg:
               await ctx.bot.say(elem)
         else:
+          server = get_server(serverl)
           i = 0
           humanusers = 0
           botusers = 0
