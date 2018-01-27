@@ -139,6 +139,7 @@ class Utils():
       util.add_field(name="~~s.info~~", value="Shows info on the bot", inline=False)
       util.add_field(name="s.ping", value="Shows the bot's latency", inline=False)
       util.add_field(name="s.uptime", value="Shows the bot's uptime", inline=False)
+      util.add_field(name="s.setprefix [prefix]", value="Set's a new custom prefix for the server", inline=False)
       await ctx.bot.say(embed=util)
       
     @help.command(pass_context = True, no_pm = True)
