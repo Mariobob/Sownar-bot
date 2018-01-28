@@ -10,7 +10,6 @@ with open("token_file2.pk1", "r") as token_file2:
   dbl = json.load(token_file2)
 bot=commands.Bot(command_prefix='s.')
 ownerids=['221381001476046849', '221263215496134656']
-yup = ctx.bot.get_channel('376552211817299968')
 
 url = "https://discordbots.org/api/bots/" + '375370278810681344' + "/stats"
 headers = {"Authorization" : dbl}
@@ -22,19 +21,19 @@ class botsorgapi():
   async def on_ready():
     payload = {"server_count"  : len(bot.servers)}
     requests.post(url, data=payload, headers=headers)
-    await bot.send_message(yup, ':white_check_mark: Succes!')
+    print('DBL SERVER COUNT UPDATED')
     
   @bot.event
   async def on_server_join(server):
     payload = {"server_count"  : len(bot.servers)}
     requests.post(url, data=payload, headers=headers)
-    await bot.send_message(yup, ':white_check_mark: Succes!')
+    print('DBL SERVER COUNT UPDATED')
     
   @bot.event
   async def on_server_remove(server):
     payload = {"server_count"  : len(bot.servers)}
     requests.post(url, data=payload, headers=headers)
-    await bot.send_message(yup, ':white_check_mark: Succes!')
+    print('DBL SERVER COUNT UPDATED')
     
   @bot.command(pass_context = True, hidden = True)
   async def dblAPIload(ctx):
