@@ -10,7 +10,7 @@ with open("token_file2.pk1", "r") as token_file2:
   dbl = json.load(token_file2)
 bot=commands.Bot(command_prefix='s.')
 ownerids=['221381001476046849', '221263215496134656']
-yup = discord.Object['376552211817299968']
+yup = bot.get_channel('376552211817299968')
 
 url = "https://discordbots.org/api/bots/" + '375370278810681344' + "/stats"
 headers = {"Authorization" : dbl}
