@@ -320,7 +320,7 @@ class Owner():
               if len(tot) == 0:
                 await ctx.bot.say("No emoji's found")
               else:
-                await ctx.send('```\n```'.join(tot))
+                await ctx.bot.say('```\n```'.join(tot))
             else:
               for moji in ctx.bot.get_all_emojis():
                 if moji.name == emoji:
