@@ -138,14 +138,14 @@ class startup():
     print("------")
     print("Servers: {}".format(len(bot.servers)))
     print("------")
-    bot.load_extension("utils")
-    bot.load_extension("fun")
-    bot.load_extension("owner")
-    bot.load_extension("cool")
-    bot.load_extension("mod")
-    bot.load_extension("modmail")
-    bot.load_extension("errorhandler")
-    bot.load_extension("dblAPI")
+    bot.load_extension("cogs.utils")
+    bot.load_extension("cogs.fun")
+    bot.load_extension("cogs.owner")
+    bot.load_extension("cogs.cool")
+    bot.load_extension("cogs.mod")
+    bot.load_extension("cogs.modmail")
+    bot.load_extension("cogs.errorhandler")
+    bot.load_extension("cogs.dblAPI")
     payload = {"server_count"  : len(bot.servers)}
     requests.post(url, data=payload, headers=headers)
     print('DBL SERVER COUNT UPDATED')
@@ -166,14 +166,14 @@ class startup():
       else:
         if extension == "all":
           t1 = time.perf_counter()
-          bot.unload_extension("mod")
-          bot.unload_extension("utils")
-          bot.unload_extension("owner")
-          bot.unload_extension("cool")
-          bot.unload_extension("fun")
-          bot.unload_extension("modmail")
-          bot.unload_extension("errorhandler")
-          bot.unload_extension("dblAPI")
+          bot.unload_extension("cogs.mod")
+          bot.unload_extension("cogs.utils")
+          bot.unload_extension("cogs.owner")
+          bot.unload_extension("cogs.cool")
+          bot.unload_extension("cogs.fun")
+          bot.unload_extension("cogs.modmail")
+          bot.unload_extension("cogs.errorhandler")
+          bot.unload_extension("cogs.dblAPI")
           for extension in startup_extensions:
             try:
               bot.load_extension(extension)
@@ -186,9 +186,9 @@ class startup():
         else:
           if extension in startup_extensions:
             t1 = time.perf_counter()
-            bot.unload_extension(extension)
+            bot.unload_extension('cogs.{}'.format(extension))
             try:
-              bot.load_extension(extension)
+              bot.load_extension('cogs.{}'.format(extension))
               embed = discord.Embed(title=":white_check_mark: Success!", description="Successfully reloaded `{}`".format(extension), color=0x00ff00)
               t2 = time.perf_counter()
               embed.set_footer(text="Took {}ms".format('%.1f' % round((t2-t1)*1000), 1))
@@ -204,7 +204,7 @@ class startup():
           await bot.say(embed=perm_error)
       else:
         if extension in startup_extensions:
-          bot.load_extension(extension)
+          bot.load_extension('cogs.{}'.format(extension))
           await bot.say("Extension **{}** loaded".format(extension))
         else:
           await bot.say("Not a valid extension, see `s.cogslist` for options")
@@ -215,7 +215,7 @@ class startup():
           await bot.say(embed=perm_error)
       else:
         if extension in startup_extensions:
-          bot.unload_extension(extension)
+          bot.unload_extension('cogs.{}'.format(extension))
           await bot.say("Extension **{}** unloaded".format(extension))
         else:
           await bot.say("Not a valid extension, see `s.cogslist` for options")
