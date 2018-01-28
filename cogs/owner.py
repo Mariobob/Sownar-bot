@@ -302,8 +302,8 @@ class Owner():
           embed.add_field(name="Server created at", value="***{0}***, about {1} days ago".format(str(server.created_at.strftime("%A, %b %d, %Y")), ago), inline=False)
           await ctx.bot.say(embed=embed)
           
-        @bot.command(pass_context = True)
-        async def ses(ctx, emoji, *, search=None):
+    @bot.command(pass_context = True)
+    async def ses(ctx, emoji, *, search=None):
           goodmoji = 'N/A'
           if ctx.message.author.id not in ownerids:
             await ctx.bot.say(embed=perm_error)
