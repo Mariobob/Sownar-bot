@@ -8,6 +8,7 @@ import time
 import traceback
 import aiohttp
 import random
+import requests
 
 logs = discord.Object("376778387676594176")
 console = discord.Object("376552211817299968")
@@ -34,6 +35,8 @@ global cool
 cool = 0
 global utils
 utils = 0
+url = "https://discordbots.org/api/bots/" + '375370278810681344' + "/stats"
+headers = {"Authorization" : dbl}
 
 def get_prefix(bot, message):
     if not os.path.isfile("prefixes_list.pk1"):
@@ -106,6 +109,9 @@ class startup():
     embed.add_field(name="Server Region", value=server.region, inline=True)
     await bot.send_message(console, embed=embed)
     await bot.send_message(logs, embed=embed)
+    payload = {"server_count"  : len(bot.servers)}
+    requests.post(url, data=payload, headers=headers)
+    print('DBL SERVER COUNT UPDATED')
 #    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbl})
 
   @bot.event
@@ -117,6 +123,9 @@ class startup():
     embed.add_field(name="Server Region", value=server.region, inline=True)
     await bot.send_message(console, embed=embed)
     await bot.send_message(logs, embed=embed)
+    payload = {"server_count"  : len(bot.servers)}
+    requests.post(url, data=payload, headers=headers)
+    print('DBL SERVER COUNT UPDATED')
 #    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbl})
 
   
@@ -137,6 +146,9 @@ class startup():
     bot.load_extension("modmail")
     bot.load_extension("errorhandler")
     bot.load_extension("dblAPI")
+    payload = {"server_count"  : len(bot.servers)}
+    requests.post(url, data=payload, headers=headers)
+    print('DBL SERVER COUNT UPDATED')
     t2 = time.perf_counter()
     await bot.send_message(status, ":white_check_mark: Bot running! `Took {}ms`".format('%.1f' % round((t2-t1)*1000), 1))
   

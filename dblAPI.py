@@ -17,24 +17,6 @@ headers = {"Authorization" : dbl}
 class botsorgapi():
   print('DBL API Loaded')
   
-  @bot.event
-  async def on_ready():
-    payload = {"server_count"  : len(ctx.bot.servers)}
-    requests.post(url, data=payload, headers=headers)
-    print('DBL SERVER COUNT UPDATED')
-    
-  @bot.event
-  async def on_server_join(server):
-    payload = {"server_count"  : len(ctx.bot.servers)}
-    requests.post(url, data=payload, headers=headers)
-    print('DBL SERVER COUNT UPDATED')
-    
-  @bot.event
-  async def on_server_remove(server):
-    payload = {"server_count"  : len(ctx.bot.servers)}
-    requests.post(url, data=payload, headers=headers)
-    print('DBL SERVER COUNT UPDATED')
-    
   @bot.command(pass_context = True, hidden = True)
   async def dblAPIload(ctx):
     if ctx.message.author.id not in ownerids:
