@@ -311,7 +311,7 @@ class Owner():
           else:
             if emoji == 'search':
               tot = []
-              for moji in ctx.bot.get_all_emojis:
+              for moji in ctx.bot.get_all_emojis():
                 match = re.search(search, moji.name)
                 if match:
                   tot.append(moji.name)
@@ -320,7 +320,7 @@ class Owner():
               if len(tot) == 0:
                 await ctx.bot.say("No emoji's found")
               else:
-                await ctx.send('\n'.join(tot))
+                await ctx.send(```'\n'```.join(tot))
             else:
               for moji in ctx.bot.get_all_emojis():
                 if moji.name == emoji:
@@ -328,11 +328,11 @@ class Owner():
               if goodmoji == 'N/A':
                 await ctx.bot.say(':x: No emojis found')
               else:
-                mojiemoji = "<:{0}:{1}>".format(moji.name, moji.id)
-                em = discord.Emoji(title = moji.name, description = moji.id)
-                em.add_field(name='From server', value = moji.server.name, inline = False)
-                em.set_image(url=moji.url)
-                em.add_field(name='Emoji:', value= '`<:{0}:{1}>` - {2}'.format(moji.name, moji.id, mojiemoji))
+                mojiemoji = "<:{0}:{1}>".format(goodmoji.name, goodmoji.id)
+                em = discord.Emoji(title = goodmoji.name, description = goodmoji.id)
+                em.add_field(name='From server', value = goodmoji.server.name, inline = False)
+                em.set_image(url=goodmoji.url)
+                em.add_field(name='Emoji:', value= '`<:{0}:{1}>` - {2}'.format(goodmoji.name, goodmoji.id, mojiemoji))
                 await ctx.bot.say(embed=em)
           
               
