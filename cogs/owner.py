@@ -331,7 +331,7 @@ class Owner():
                 em = discord.Emoji(title = moji.name, description = moji.id)
                 em.add_field(name='From server', value = moji.server.name, inline = False)
                 em.set_image(url=moji.url)
-                em.add_field(name='Emoji:', value= '`<:{0}:{1}>` - {2}'.format(moji.name, moji.id, mojiemoji)
+                em.add_field(name='Emoji:', value= '`<:{0}:{1}>` - {2}'.format(moji.name, moji.id, mojiemoji))
                 await ctx.bot.say(embed=em)
           
               
