@@ -10,6 +10,7 @@ import traceback
 import io
 import textwrap
 from contextlib import redirect_stdout
+import re
 
 def get_prefix(bot, message):
     if not os.path.isfile("prefixes_list.pk1"):
@@ -321,7 +322,7 @@ class Owner():
               else:
                 await ctx.send('\n'.join(tot))
             else:
-              for moji in ctx.bot.get_all_emojis:
+              for moji in ctx.bot.get_all_emojis():
                 if moji.name == emoji:
                   goodmoji = moji
               if goodmoji == 'N/A':
