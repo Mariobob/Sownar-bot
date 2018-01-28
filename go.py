@@ -176,7 +176,7 @@ class startup():
           bot.unload_extension("cogs.dblAPI")
           for extension in startup_extensions:
             try:
-              bot.load_extension(extension)
+              bot.load_extension('cogs.{}'.format(extension))
               embed = discord.Embed(title=":white_check_mark: Success!", description="Successfully reloaded `{}`".format(extension), color=0x00ff00)
               t2 = time.perf_counter()
               embed.set_footer(text="Took {}ms".format('%.1f' % round((t2-t1)*1000), 1))
