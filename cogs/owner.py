@@ -302,6 +302,41 @@ class Owner():
           embed.add_field(name="Server created at", value="***{0}***, about {1} days ago".format(str(server.created_at.strftime("%A, %b %d, %Y")), ago), inline=False)
           await ctx.bot.say(embed=embed)
           
+        @bot.command(pass_context = True)
+        async def ses(ctx, emoji, *, search=None):
+          goodmoji = 'N/A'
+          if ctx.message.author.id not in ownerids:
+            await ctx.bot.say(embed=perm_error)
+          else:
+            if emoji == 'search':
+              tot = []
+              for moji in ctx.bot.get_all_emojis:
+                match = re.search(search, moji.name)
+                if match:
+                  tot.append(moji.name)
+                else:
+                  pass
+              if len(tot) == 0:
+                await ctx.bot.say("No emoji's found")
+              else:
+                await ctx.send('\n'.join(tot))
+            else:
+              for moji in ctx.bot.get_all_emojis:
+                if moji.name == emoji:
+                  goodmoji = moji
+              if goodmoji == 'N/A':
+                await ctx.bot.say(':x: No emojis found')
+              else:
+                mojiemoji = "<:{0}:{1}>".format(moji.name, moji.id)
+                em = discord.Emoji(title = moji.name, description = moji.id)
+                em.add_field(name='From server', value = moji.server.name, inline = False)
+                em.set_image(url=moji.url)
+                em.add_field(name='Emoji:', value= '`<:{0}:{1}>` - {2}'.format(moji.name, moji.id, mojiemoji)
+                await ctx.bot.say(embed=em)
+          
+              
+          
+          
   
 
           
