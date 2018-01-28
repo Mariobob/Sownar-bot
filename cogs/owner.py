@@ -249,7 +249,7 @@ class Owner():
           prefix_list.append('{}:{}'.format(ctx.message.server.id, prefix))
           with open("prefixes_list.pk1", "w") as prefixs_list:
                   json.dump(prefix_list, prefixs_list)
-          await ctx.bot.say(':white_check_mark: New prefix is `{}`'.format(prefix))
+          await ctx.bot.say('<:tickYes:315009125694177281> New prefix is `{}`'.format(prefix))
         else:
           await ctx.bot.say(embed=perm_error)
           
@@ -304,13 +304,13 @@ class Owner():
           await ctx.bot.say(embed=embed)
           
     @bot.command(pass_context = True)
-    async def ses(ctx, emoji, *, search=None):
+    async def emoji(ctx, emoji, *, search=None):
           goodmoji = 'N/A'
+          tot = []
           if ctx.message.author.id not in ownerids:
             await ctx.bot.say(embed=perm_error)
           else:
             if emoji == 'search':
-              tot = []
               for moji in ctx.bot.get_all_emojis():
                 match = re.search(search, moji.name)
                 if match:
@@ -322,6 +322,16 @@ class Owner():
               else:
                 msg = '\n'.join(tot)
                 await ctx.bot.say('```{}```'.format(msg))
+            elif emoji == 'list':
+              for moji in ctx.bot.get_all_emojis():
+                tot.append(moji.name)
+              try:
+                await ctx.bot.say('\n'.join(tot))
+              except:
+                for elem in tot:
+                  await ctx.bot.say(elem)
+                  
+              
             else:
               for moji in ctx.bot.get_all_emojis():
                 if moji.name == emoji:

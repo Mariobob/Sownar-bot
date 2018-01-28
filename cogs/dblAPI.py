@@ -25,7 +25,7 @@ class botsorgapi():
       try:
         payload = {"server_count"  : len(ctx.bot.servers)}
         requests.post(url, data=payload, headers=headers)
-        await ctx.bot.say(":white_check_mark: Succes!")
+        await ctx.bot.say("<:tickYes:315009125694177281> Succes!")
       except Exception as e:
               embed = discord.Embed(title=":warning: Error!", description="Failed loading {0}\n{1}: {2}".format(extension, type(e).__name__, e), color=0xff0000)
               await ctx.bot.say(embed=embed)

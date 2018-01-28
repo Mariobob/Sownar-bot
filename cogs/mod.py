@@ -52,7 +52,7 @@ class Mod():
                 if ctx.message.author.server_permissions.ban_members == True:
                     if ctx.message.author.top_role > member.top_role:
                         await ctx.bot.ban(member)
-                        await ctx.bot.say(":white_check_mark: Succesfully banned {}".format(member))
+                        await ctx.bot.say("<:tickYes:315009125694177281> Succesfully banned {}".format(member))
                     else:
                         await ctx.bot.say(embed=samerole)
                 else:
@@ -74,7 +74,7 @@ class Mod():
                 if ctx.message.author.server_permissions.kick_members == True:
                     if ctx.message.author.top_role > member.top_role:
                         await ctx.bot.kick(member)
-                        await ctx.bot.say(":white_check_mark: Succesfully kicked {}".format(member))
+                        await ctx.bot.say("<:tickYes:315009125694177281> Succesfully kicked {}".format(member))
                     else:
                         await ctx.bot.say(embed=samerole)
                 else:
@@ -139,7 +139,7 @@ class Mod():
             await ctx.bot.prune_members(ctx.message.server, days=num)
             newusertotal = server.member_count
             pruned = (usertotal - newusertotal)
-            await ctx.bot.say("Kicked {} inactive users".format(pruned))
+            await ctx.bot.say("<:tickYes:315009125694177281> Kicked {} inactive users".format(pruned))
         else:
           perm_error.add_field(name="Missing permissions:", value="`Kick_Members`")
           perm_error.remove_field(0)
@@ -159,7 +159,7 @@ class Mod():
                 if ctx.message.author.server_permissions.ban_members == True:
                     if ctx.message.author.top_role > member.top_role:
                         await ctx.bot.ban(member, delete_message_days=7)
-                        await ctx.bot.say(":white_check_mark: Succesfully softbanned {}".format(member))
+                        await ctx.bot.say("<:tickYes:315009125694177281> Succesfully softbanned {}".format(member))
                         await ctx.bot.unban(member)
                     else:
                         await ctx.bot.say(embed=samerole)
@@ -183,7 +183,7 @@ class Mod():
                     if ctx.message.author.top_role > member.top_role:
                       try:
                         await ctx.bot.unban(member)
-                        await ctx.bot.say(":white_check_mark: Succesfully unbanned {}".format(member))
+                        await ctx.bot.say("<:tickYes:315009125694177281> Succesfully unbanned {}".format(member))
                       except:
                         embed = discord.Embed(title=":warning: Error!",description="**Unbanning failed**\nPlease use a valid ID",color=0xff0000)
                     else:
@@ -212,7 +212,7 @@ class Mod():
                           await ctx.bot.edit_channel_permissions(channel, member, overwrite=discord.PermissionOverwrite(send_messages = False))
                         for channel in [c for c in ctx.message.server.channels if c.type == discord.ChannelType.voice]:
                           await ctx.bot.edit_channel_permissions(channel, member, overwrite=discord.PermissionOverwrite(speak = False))
-                        await ctx.bot.say(":white_check_mark: Succesfully muted {}".format(member))
+                        await ctx.bot.say("<:tickYes:315009125694177281> Succesfully muted {}".format(member))
                       except:
                         embed = discord.Embed(title=":warning: Error!",description="**Muting failed**\nPlease use a valid `Member`",color=0xff0000)
                     else:
@@ -240,7 +240,7 @@ class Mod():
                           await ctx.bot.edit_channel_permissions(channel, member, overwrite=discord.PermissionOverwrite(send_messages = True))
                         for channel in [c for c in ctx.message.server.channels if c.type == discord.ChannelType.voice]:
                           await ctx.bot.edit_channel_permissions(channel, member, overwrite=discord.PermissionOverwrite(speak = True))
-                        await ctx.bot.say(":white_check_mark: Succesfully unmuted {}".format(member))
+                        await ctx.bot.say("<:tickYes:315009125694177281> Succesfully unmuted {}".format(member))
                       except:
                         embed = discord.Embed(title=":warning: Error!",description="**Unmuting failed**\nPlease use a valid `Member`",color=0xff0000)
                     else:
