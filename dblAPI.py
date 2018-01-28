@@ -12,6 +12,9 @@ bot=commands.Bot(command_prefix='s.')
 ownerids=['221381001476046849', '221263215496134656']
 yup = discord.Object('376552211817299968')
 
+url = "https://discordbots.org/api/bots/" + '375370278810681344' + "/stats"
+headers = {"Authorization" : dbl}
+
 def apiload():
   try:
     payload = {"server_count"  : len(bot.servers)}
@@ -22,9 +25,6 @@ def apiload():
   return succes
     
 
-
-url = "https://discordbots.org/api/bots/" + '375370278810681344' + "/stats"
-headers = {"Authorization" : dbl}
 
 class botsorgapi():
   print('DBL API Loaded')
