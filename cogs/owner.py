@@ -331,7 +331,7 @@ class Owner():
               else:
                 mojiemoji = "<:{0}:{1}>".format(goodmoji.name, goodmoji.id)
                 em = discord.Emoji(title = goodmoji.name, description = goodmoji.id)
-                em.add_field(name='From server', value = goodmoji.server.name, inline = False)
+                em.add_field(name='From server', value = goodmoji.name, inline = False)
                 em.set_image(url=goodmoji.url)
                 em.add_field(name='Emoji:', value= '`<:{0}:{1}>` - {2}'.format(goodmoji.name, goodmoji.id, mojiemoji))
                 await ctx.bot.say(embed=em)
