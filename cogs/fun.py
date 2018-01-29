@@ -233,7 +233,7 @@ class Fun():
         if res.reaction.emoji == "✅":
           try:
             await ctx.bot.remove_reaction(bj_message, "✅",  res.user)
-          except Forbidden:
+          except:
             pass
           player += randint(1,13)
           if (21-dealer)>5:
@@ -256,7 +256,7 @@ class Fun():
         elif res.reaction.emoji == "❌":
           try:
             await ctx.bot.remove_reaction(bj_message, "❌", res.user)
-          except Forbidden:
+          except:
             pass
           done = "true"
           if (21-dealer)>5:
