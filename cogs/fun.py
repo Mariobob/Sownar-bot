@@ -231,7 +231,10 @@ class Fun():
       while bj_continue == 1:
         res = await ctx.bot.wait_for_reaction(["✅", "❌"], message=bj_message, user=ctx.message.author)
         if res.reaction.emoji == "✅":
-          await ctx.bot.remove_reaction(bj_message, "✅",  res.user)
+          try:
+            await ctx.bot.remove_reaction(bj_message, "✅",  res.user)
+          except Forbidden:
+            pass
           player += randint(1,13)
           if (21-dealer)>5:
             dealer += randint(1,13)
@@ -251,7 +254,10 @@ class Fun():
             await ctx.bot.remove_reaction(bj_message, "✅", bot_id)
           await ctx.bot.edit_message(bj_message, embed=bj_embed())
         elif res.reaction.emoji == "❌":
-          await ctx.bot.remove_reaction(bj_message, "❌", res.user)
+          try:
+            await ctx.bot.remove_reaction(bj_message, "❌", res.user)
+          except Forbidden:
+            pass
           done = "true"
           if (21-dealer)>5:
             dealer += randint(1,13)
