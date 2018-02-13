@@ -61,8 +61,8 @@ class Fun():
       
       
     @bot.command(pass_context = True, no_pm = True)
-    async def rps(ctx, args: str):
-      if args == '':
+    async def rps(ctx, args = None):
+      if args is None:
           embed = discord.Embed(title=":warning: Error", description="You must specify either rock, paper, or scissors!", color=0xff0000)
           await ctx.bot.say(embed=embed)
       var = randint(1,3)
