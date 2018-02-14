@@ -333,6 +333,35 @@ class Utils():
 
         await ctx.bot.say("\n".join(map(to_string, characters)))
         
+      @bot.command(pass_context = True, aliases = ["mems"])
+      async def members(ctx):
+        online = 0
+        idle = 0
+        dnd = 0
+        offline = 0
+        bots = 0
+        humans = 0
+        total = 0
+        for mems in ctx.guild.members:
+                lm = str(mems.status)
+                elif str(lm) == 'online':
+                        online += 1
+                elif str(lm) == 'idle':
+                        idle += 1
+                elif str(lm) == 'dnd':
+                        dnd += 1
+                else:
+                        offline += 1
+                if mem.bot is True:
+                  bots += 1
+                  total += 1
+                else:
+                  humans += 1
+                  total += 1
+        em= discord.Embed(title='Server Members', description = '**Members:** {} humans | {} bots | {} total\n**Member Statuses:** <:online:313956277808005120> `{}` | <:away:313956277220802560> `{}` | <:dnd:313956276893646850> `{}` | <:offline:313956277237710868> `{}`'.format(humans, bots, total, online, idle, dnd, offline))
+        await ctx.bot.say(embed = em)
+        
+        
       
         
 def setup(bot):

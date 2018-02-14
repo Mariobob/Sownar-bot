@@ -226,7 +226,7 @@ class Owner():
           else:
               await ctx.bot.say('Usage: `.presence [game/stream/watch/listen] [message]`') 
     
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, aliases = ["prefix","pre"])
     async def setprefix(ctx, prefix=None):
       if prefix is None:
         await ctx.bot.say(":x: `prefix` is a required argument")
