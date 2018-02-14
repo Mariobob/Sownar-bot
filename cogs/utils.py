@@ -46,18 +46,33 @@ class Utils():
         i = 0
         humanusers = 0
         botusers = 0
-        online = 0
         voicechanneles = 0
         textchannels = 0 
         totalusers = 0
         totalchannels = 0
         totalroles = 0
+        online = 0
+        idle = 0
+        dnd = 0
+        offline = 0
+        bots = 0
+        humans = 0
+        total = 0
         for members in server.members:
           totalusers += 1
           if members.bot is True:
             botusers += 1
           else:
             humanusers += 1
+          lm = str(members.status)
+          if str(lm) == 'online':
+            online += 1
+          elif str(lm) == 'idle':
+            idle += 1
+          elif str(lm) == 'dnd':
+            dnd += 1
+          else:
+            offline += 1
         for channels in server.channels:
           totalchannels += 1
         for roles in server.roles:
@@ -70,6 +85,7 @@ class Utils():
         embed.add_field(name="Server Name", value="Name: {0} \nID: {1}".format(server.name, server.id), inline=False)
         embed.add_field(name="Server Owner", value="Name: {0} \nID: {1}".format(server.owner, server.owner.id), inline=False)
         embed.add_field(name="Member Count", value="- {0} humans \n- {1} bots \n- {2} total".format(humanusers, botusers, totalusers), inline=False)
+        embed.add_field(name="Member Statuses", value="<:online:313956277808005120> `{}`\n<:away:313956277220802560> `{}`\n<:dnd:313956276893646850> `{}`\n<:offline:313956277237710868> `{}`".format(online, idle, dnd, offline))
         embed.add_field(name="Channels", value="Total Channels : {0}".format(totalchannels), inline=False)
         embed.add_field(name="Roles", value=totalroles, inline=False)
         embed.add_field(name="Verification Level", value=server.verification_level, inline=False)
