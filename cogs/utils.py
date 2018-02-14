@@ -342,7 +342,7 @@ class Utils():
         bots = 0
         humans = 0
         total = 0
-        for mems in ctx.server.members:
+        for mems in ctx.message.server.members:
                 lm = str(mems.status)
                 if str(lm) == 'online':
                         online += 1
