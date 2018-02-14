@@ -342,9 +342,9 @@ class Utils():
         bots = 0
         humans = 0
         total = 0
-        for mems in ctx.guild.members:
+        for mems in ctx.server.members:
                 lm = str(mems.status)
-                elif str(lm) == 'online':
+                if str(lm) == 'online':
                         online += 1
                 elif str(lm) == 'idle':
                         idle += 1
@@ -352,7 +352,7 @@ class Utils():
                         dnd += 1
                 else:
                         offline += 1
-                if mem.bot is True:
+                if mems.bot is True:
                   bots += 1
                   total += 1
                 else:
