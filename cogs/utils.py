@@ -333,8 +333,8 @@ class Utils():
 
         await ctx.bot.say("\n".join(map(to_string, characters)))
         
-      @bot.command(pass_context = True, aliases = ["mems"])
-      async def members(ctx):
+    @bot.command(pass_context = True, aliases = ["mems"])
+    async def members(ctx):
         online = 0
         idle = 0
         dnd = 0
