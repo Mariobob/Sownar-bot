@@ -8,6 +8,9 @@ from discord.ext import commands
 import time
 import traceback
 import unicodedata
+import platform
+import psutil
+
 def get_prefix(bot, message):
     if not os.path.isfile("prefixes_list.pk1"):
         prefix_list = []
@@ -238,6 +241,11 @@ class Utils():
         
     @commands.command(pass_context = True, no_pm = True)
     async def stats(ctx):
+        RAM = psutil.virtual_memory()
+        used = RAM.used >> 20
+        percent = RAM.percent
+        cpu = psutil.cpu_percent()
+        os = platform.system()
         totalusers = 0
         totalchannels = 0
         onlineusers = 0
@@ -262,7 +270,9 @@ class Utils():
         embed.set_thumbnail(url=ctx.message.server.me.avatar_url)
         embed.add_field(name="Total Servers", value=serverCount)
         embed.add_field(name="Users", value='Total users: {0}\n Human users: {1}\n Bot users: {2}'.format(members, humans, bots))
-        embed.add_field(name="Channels", value="Total channels: {}".format(totalchannels))
+        embed.add_field(name="OS", value=os)
+        embed.add_field(name="CPU", value="{}%".format(cpu))
+        embed.add_field(name="RAM", value="{}% ({}MB)".format(percent, used))
         await ctx.bot.say(embed=embed)
         
     @commands.command(pass_context = True, no_pm = True, aliases = ["id", "userid"])
