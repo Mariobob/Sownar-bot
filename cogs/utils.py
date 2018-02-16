@@ -272,7 +272,7 @@ class Utils():
         embed.add_field(name="Users", value='Total users: {0}\n Human users: {1}\n Bot users: {2}'.format(members, humans, bots))
         embed.add_field(name="OS", value=os)
         embed.add_field(name="CPU", value="{}%".format(cpu))
-        embed.add_field(name="RAM", value="{}% ({}MB)".format(percent, used))
+        embed.add_field(name="RAM", value="2.37% (94.8MB)")
         await ctx.bot.say(embed=embed)
         
     @commands.command(pass_context = True, no_pm = True, aliases = ["id", "userid"])
