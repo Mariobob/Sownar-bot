@@ -118,10 +118,6 @@ class Utils():
         t2 = time.perf_counter()
         await ctx.bot.say("Pong! `{}ms`".format(round((t2-t1)*1000)))
 
-    @commands.command(pass_context = True, no_pm = True, aliases=["botinfo", "bi", "bot", "info"])
-    async def about(ctx):
-        await ctx.bot.say("This command is undergoing a rewrite, please try again later!")
-
     @commands.command(pass_context = True, no_pm = True)
     async def invite(ctx):
       try:
@@ -239,7 +235,7 @@ class Utils():
       embed = discord.Embed(title="Serving", description='{0} servers for {1} users'.format(serverCount, members), color=0x00ff00)
       await ctx.bot.say(embed=embed)
         
-    @commands.command(pass_context = True, no_pm = True)
+    @commands.command(pass_context = True, no_pm = True, aliases=["botinfo", "bi", "bot", "info", "about"])
     async def stats(ctx):
         RAM = psutil.virtual_memory()
         used = RAM.used >> 20
@@ -254,25 +250,14 @@ class Utils():
         serverCount = 0
         members = 0
         channels = []
-        for server in ctx.bot.servers:
-            members += len(server.members)
-            channels += [len(server.channels)]
-            serverCount += 1
-            for member in server.members:
-                totalusers += 1
-                if member.bot is True:
-                  bots += 1
-                else:
-                  humans += 1
-            for channel in server.channels:
-                totalchannels += 1
         embed = discord.Embed(title="Here are my stats!", color = 0x000000)
         embed.set_thumbnail(url=ctx.message.server.me.avatar_url)
-        embed.add_field(name="Total Servers", value=serverCount)
-        embed.add_field(name="Users", value='Total users: {0}\n Human users: {1}\n Bot users: {2}'.format(members, humans, bots))
-        embed.add_field(name="OS", value=os)
+        embed.add_field(name="Author", value="Waba#8929")
+        embed.add_field(name="Total Servers", value=len(ctx.bot.servers))
         embed.add_field(name="CPU", value="{}%".format(cpu))
         embed.add_field(name="RAM", value="2.37% (94.8MB)")
+        embed.add_field(name="Discord.py Version", value=discord.__version__)
+        embed.add_field(name="Python Version", value=platform.python_version())
         await ctx.bot.say(embed=embed)
         
     @commands.command(pass_context = True, no_pm = True, aliases = ["id", "userid"])
