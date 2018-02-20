@@ -27,18 +27,13 @@ class botsorgapi():
     if ctx.message.author.id not in ownerids:
       pass
     else:
-        dump = json.dumps({
-            'server_count': len(ctx.bot.servers)
-        })
-        head = {
-            'authorization': bfd,
-            'content-type' : 'application/json'
-        }
+        dump = json.dumps({'server_count': len(ctx.bot.servers)})
+        head = {'authorization': bfd, 'content-type' : 'application/json'}
 
         url2 = '{0}/bots/375370278810681344'.format(uri)
 
-        with aiohttp.ClientSession().post(url2, data=dump, headers=head) as resp:
-            await ctx.bot.say('BFD: returned {0.status} for {1}'.format(resp, dump))
+        requests.post(url2, data=dump, headers=head)
+        
   
   @bot.command(pass_context = True, hidden = True)
   async def dblLoad(ctx):
