@@ -116,7 +116,7 @@ class startup():
     payload = {"server_count"  : len(bot.servers)}
     requests.post(url, data=payload, headers=headers)
     print('DBL SERVER COUNT UPDATED')
-    dump = json.dumps({'server_count': len(ctx.bot.servers)})
+    dump = json.dumps({'server_count': len(bot.servers)})
     head = {'authorization': bfd, 'content-type' : 'application/json'}
     url2 = '{0}/bots/375370278810681344'.format(uri)
     requests.post(url2, data=dump, headers=head)
@@ -135,7 +135,7 @@ class startup():
     payload = {"server_count"  : len(bot.servers)}
     requests.post(url, data=payload, headers=headers)
     print('DBL SERVER COUNT UPDATED')
-    dump = json.dumps({'server_count': len(ctx.bot.servers)})
+    dump = json.dumps({'server_count': len(bot.servers)})
     head = {'authorization': bfd, 'content-type' : 'application/json'}
     url2 = '{0}/bots/375370278810681344'.format(uri)
     requests.post(url2, data=dump, headers=head)
@@ -163,7 +163,7 @@ class startup():
     payload = {"server_count"  : len(bot.servers)}
     requests.post(url, data=payload, headers=headers)
     print('DBL SERVER COUNT UPDATED')
-    dump = json.dumps({'server_count': len(ctx.bot.servers)})
+    dump = json.dumps({'server_count': len(bot.servers)})
     head = {'authorization': bfd, 'content-type' : 'application/json'}
     url2 = '{0}/bots/375370278810681344'.format(uri)
     requests.post(url2, data=dump, headers=head)
@@ -199,7 +199,7 @@ class startup():
               embed = discord.Embed(title=":white_check_mark: Success!", description="Successfully reloaded `{}`".format(extension), color=0x00ff00)
               t2 = time.perf_counter()
               embed.set_footer(text="Took {}ms".format('%.1f' % round((t2-t1)*1000), 1))
-              await ctx.bot.say(embed=embed)
+              await bot.say(embed=embed)
             except Exception as e:
               embed = discord.Embed(title=":warning: Error!", description="Failed loading {0}\n{1}: {2}".format(extension, type(e).__name__, e), color=0xff0000)
         else:
