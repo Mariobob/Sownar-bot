@@ -25,6 +25,8 @@ with open("token_file.pk1", "r") as token_file:
   bottoken = json.load(token_file)
 with open("token_file2.pk1", "r") as token_file2:
   dbl = json.load(token_file2)
+with open("token_file3.pk1", "r") as token_file3:
+  bfd = json.load(token_file3)
 global owner
 owner = 0
 global mod
@@ -37,6 +39,21 @@ global utils
 utils = 0
 url = "https://discordbots.org/api/bots/" + '375370278810681344' + "/stats"
 headers = {"Authorization" : dbl}
+uri = 'https://botsfordiscord.com/api/v1'
+def send(ctx):
+        dump = json.dumps({
+            'server_count': len(bot.servers)
+        })
+        head = {
+            'authorization': bfd,
+            'content-type' : 'application/json'
+        }
+
+        url2 = '{0}/bots/375370278810681344'.format(uri)
+
+        async with aiohttp.ClientSession().post(url2, data=dump, headers=head) as resp:
+            return 'BFD: returned {0.status} for {1}'.format(resp, dump)
+
 
 def get_prefix(bot, message):
     if not os.path.isfile("prefixes_list.pk1"):
@@ -112,6 +129,7 @@ class startup():
     payload = {"server_count"  : len(bot.servers)}
     requests.post(url, data=payload, headers=headers)
     print('DBL SERVER COUNT UPDATED')
+    print(send())
 #    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbl})
 
   @bot.event
@@ -126,6 +144,7 @@ class startup():
     payload = {"server_count"  : len(bot.servers)}
     requests.post(url, data=payload, headers=headers)
     print('DBL SERVER COUNT UPDATED')
+    print(send())
 #    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbl})
 
   
@@ -149,6 +168,7 @@ class startup():
     payload = {"server_count"  : len(bot.servers)}
     requests.post(url, data=payload, headers=headers)
     print('DBL SERVER COUNT UPDATED')
+    print(send())
     t2 = time.perf_counter()
     await bot.send_message(status, ":white_check_mark: Bot running! `Took {}ms`".format('%.1f' % round((t2-t1)*1000), 1))
   

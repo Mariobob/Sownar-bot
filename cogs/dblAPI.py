@@ -8,17 +8,42 @@ from discord.ext import commands
 
 with open("token_file2.pk1", "r") as token_file2:
   dbl = json.load(token_file2)
+with open("token_file3.pk1", "r") as token_file3:
+  bfd = json.load(token_file3)
 bot=commands.Bot(command_prefix='s.')
 ownerids=['221381001476046849', '221263215496134656']
 
 url = "https://discordbots.org/api/bots/" + '375370278810681344' + "/stats"
 headers = {"Authorization" : dbl}
+uri = 'https://botsfordiscord.com/api/v1'
+
 
 class botsorgapi():
   print('DBL API Loaded')
   
+  def send(ctx):
+        dump = json.dumps({
+            'server_count': len(ctx.bot.servers)
+        })
+        head = {
+            'authorization': bfd,
+            'content-type' : 'application/json'
+        }
+
+        url2 = '{0}/bots/375370278810681344'.format(uri)
+
+        async with aiohttp.ClientSession().post(url2, data=dump, headers=head) as resp:
+            await ctx.bot.say('BFD: returned {0.status} for {1}'.format(resp, dump))
+            
   @bot.command(pass_context = True, hidden = True)
-  async def dblAPIload(ctx):
+  async def bfdLoad(ctx):
+    if ctx.message.author.id not in ownerids:
+      pass
+    else:
+      send()
+  
+  @bot.command(pass_context = True, hidden = True)
+  async def dblLoad(ctx):
     if ctx.message.author.id not in ownerids:
       pass
     else:
