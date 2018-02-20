@@ -40,7 +40,7 @@ utils = 0
 url = "https://discordbots.org/api/bots/" + '375370278810681344' + "/stats"
 headers = {"Authorization" : dbl}
 uri = 'https://botsfordiscord.com/api/v1'
-def send(ctx):
+def send():
         dump = json.dumps({
             'server_count': len(bot.servers)
         })
