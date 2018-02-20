@@ -51,7 +51,7 @@ def send():
 
         url2 = '{0}/bots/375370278810681344'.format(uri)
 
-        async with aiohttp.ClientSession().post(url2, data=dump, headers=head) as resp:
+        with aiohttp.ClientSession().post(url2, data=dump, headers=head) as resp:
             return 'BFD: returned {0.status} for {1}'.format(resp, dump)
 
 
