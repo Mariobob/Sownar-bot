@@ -21,7 +21,7 @@ uri = 'https://botsfordiscord.com/api/v1'
 class botsorgapi():
   print('DBL API Loaded')
   
-  def send(ctx):
+  def send():
         dump = json.dumps({
             'server_count': len(ctx.bot.servers)
         })
@@ -33,14 +33,14 @@ class botsorgapi():
         url2 = '{0}/bots/375370278810681344'.format(uri)
 
         with aiohttp.ClientSession().post(url2, data=dump, headers=head) as resp:
-            await ctx.bot.say('BFD: returned {0.status} for {1}'.format(resp, dump))
+            return 'BFD: returned {0.status} for {1}'.format(resp, dump)
             
   @bot.command(pass_context = True, hidden = True)
   async def bfdLoad(ctx):
     if ctx.message.author.id not in ownerids:
       pass
     else:
-      send()
+      await ctx.bot.say(send())
   
   @bot.command(pass_context = True, hidden = True)
   async def dblLoad(ctx):
