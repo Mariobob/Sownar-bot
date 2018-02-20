@@ -16,43 +16,29 @@ ownerids=['221381001476046849', '221263215496134656']
 url = "https://discordbots.org/api/bots/" + '375370278810681344' + "/stats"
 headers = {"Authorization" : dbl}
 uri = 'https://botsfordiscord.com/api/v1'
-def send():
-        dump = json.dumps({
-            'server_count': len(ctx.bot.servers)
-        })
-        head = {
-            'authorization': bfd,
-            'content-type' : 'application/json'
-        }
 
-        url2 = '{0}/bots/375370278810681344'.format(uri)
-
-        with aiohttp.ClientSession().post(url2, data=dump, headers=head) as resp:
-            return 'BFD: returned {0.status} for {1}'.format(resp, dump)
 
 class botsorgapi():
   print('DBL API Loaded')
   
-  def send():
-        dump = json.dumps({
-            'server_count': len(ctx.bot.servers)
-        })
-        head = {
-            'authorization': bfd,
-            'content-type' : 'application/json'
-        }
-
-        url2 = '{0}/bots/375370278810681344'.format(uri)
-
-        with aiohttp.ClientSession().post(url2, data=dump, headers=head) as resp:
-            return 'BFD: returned {0.status} for {1}'.format(resp, dump)
             
   @bot.command(pass_context = True, hidden = True)
   async def bfdLoad(ctx):
     if ctx.message.author.id not in ownerids:
       pass
     else:
-      await ctx.bot.say(send())
+        dump = json.dumps({
+            'server_count': len(ctx.bot.servers)
+        })
+        head = {
+            'authorization': bfd,
+            'content-type' : 'application/json'
+        }
+
+        url2 = '{0}/bots/375370278810681344'.format(uri)
+
+        with aiohttp.ClientSession().post(url2, data=dump, headers=head) as resp:
+            await ctx.bot.say('BFD: returned {0.status} for {1}'.format(resp, dump))
   
   @bot.command(pass_context = True, hidden = True)
   async def dblLoad(ctx):
