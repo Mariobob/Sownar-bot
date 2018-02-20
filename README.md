@@ -1,5 +1,5 @@
 [![Discord Bots](https://discordbots.org/api/widget/375370278810681344.svg)](https://discordbots.org/bot/375370278810681344)
-[![Bots for Discord](https://botsfordiscord.com/api/v1/bots/375370278810681344/embed.svg)]
+![Bots for Discord](https://botsfordiscord.com/api/v1/bots/375370278810681344/embed.svg)
 
 # Sownar-bot
 A multi-purpose discord bot made in python
