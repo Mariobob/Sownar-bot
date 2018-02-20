@@ -33,6 +33,7 @@ class botsorgapi():
         url2 = '{0}/bots/375370278810681344'.format(uri)
 
         requests.post(url2, data=dump, headers=head)
+        await ctx.bot.say("<:tickYes:315009125694177281> Succes!")
         
   
   @bot.command(pass_context = True, hidden = True)

@@ -40,19 +40,6 @@ utils = 0
 url = "https://discordbots.org/api/bots/" + '375370278810681344' + "/stats"
 headers = {"Authorization" : dbl}
 uri = 'https://botsfordiscord.com/api/v1'
-def send():
-        dump = json.dumps({
-            'server_count': len(bot.servers)
-        })
-        head = {
-            'authorization': bfd,
-            'content-type' : 'application/json'
-        }
-
-        url2 = '{0}/bots/375370278810681344'.format(uri)
-
-        with aiohttp.ClientSession().post(url2, data=dump, headers=head) as resp:
-            return 'BFD: returned {0.status} for {1}'.format(resp, dump)
 
 
 def get_prefix(bot, message):
@@ -129,7 +116,11 @@ class startup():
     payload = {"server_count"  : len(bot.servers)}
     requests.post(url, data=payload, headers=headers)
     print('DBL SERVER COUNT UPDATED')
-    print(send())
+    dump = json.dumps({'server_count': len(ctx.bot.servers)})
+    head = {'authorization': bfd, 'content-type' : 'application/json'}
+    url2 = '{0}/bots/375370278810681344'.format(uri)
+    requests.post(url2, data=dump, headers=head)
+    print('BFD SERVER COUNT UPDATED')
 #    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbl})
 
   @bot.event
@@ -144,7 +135,11 @@ class startup():
     payload = {"server_count"  : len(bot.servers)}
     requests.post(url, data=payload, headers=headers)
     print('DBL SERVER COUNT UPDATED')
-    print(send())
+    dump = json.dumps({'server_count': len(ctx.bot.servers)})
+    head = {'authorization': bfd, 'content-type' : 'application/json'}
+    url2 = '{0}/bots/375370278810681344'.format(uri)
+    requests.post(url2, data=dump, headers=head)
+    print('BFD SERVER COUNT UPDATED')
 #    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbl})
 
   
@@ -168,7 +163,11 @@ class startup():
     payload = {"server_count"  : len(bot.servers)}
     requests.post(url, data=payload, headers=headers)
     print('DBL SERVER COUNT UPDATED')
-    print(send())
+    dump = json.dumps({'server_count': len(ctx.bot.servers)})
+    head = {'authorization': bfd, 'content-type' : 'application/json'}
+    url2 = '{0}/bots/375370278810681344'.format(uri)
+    requests.post(url2, data=dump, headers=head)
+    print('BFD SERVER COUNT UPDATED')
     t2 = time.perf_counter()
     await bot.send_message(status, ":white_check_mark: Bot running! `Took {}ms`".format('%.1f' % round((t2-t1)*1000), 1))
   
