@@ -199,13 +199,15 @@ class Cool():
       if len(response["list"]) == 0: 
         await ctx.bot.say("Could not find that word!")
         return
-    
+      
       embed = discord.Embed(title = ":mag: Word Searched:", description = msg, timestamp = datetime.datetime.utcnow())
       embed.add_field(name = "Top definition:", value = response['list'][0]['definition'])
       embed.add_field(name = "Examples:", value = response['list'][0]["example"])
       embed.set_footer(text = "Tags: " + ', '.join(response['tags']))
-
-      await ctx.bot.say(embed = embed)
+      try:
+        await ctx.bot.say(embed = embed)
+      except:
+        await ctx.bot.say("Response too long! I am currently working on a fix for this")
       
 def setup(bot):
     bot.add_cog(Cool)
