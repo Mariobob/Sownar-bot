@@ -201,7 +201,7 @@ class Cool():
         return
       
       embed = discord.Embed(title = ":mag: Word Searched:", description = msg, timestamp = datetime.datetime.utcnow())
-      embed.add_field(name = "Top definition:", value = response['list'][0]['definition'])
+      embed.add_field(name = "Top definition:", value = textwrap.shorten(response['list'][0]['definition'], width = 1024, placeholder = "..."))
       embed.add_field(name = "Examples:", value = response['list'][0]["example"])
       embed.set_footer(text = "Tags: " + ', '.join(response['tags']))
       try:
