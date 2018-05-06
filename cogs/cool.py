@@ -10,6 +10,7 @@ import traceback
 import aiohttp
 import requests
 from pyfiglet import figlet_format as ascii_format
+import textwrap
   
 def get_prefix(bot, message):
     if not os.path.isfile("prefixes_list.pk1"):
