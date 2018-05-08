@@ -27,6 +27,8 @@ with open("token_file2.pk1", "r") as token_file2:
   dbl = json.load(token_file2)
 with open("token_file3.pk1", "r") as token_file3:
   bfd = json.load(token_file3)
+with open("token_file4.pk1", "r") as token_file4:
+  dbw = json.load(token_file4)
 global owner
 owner = 0
 global mod
@@ -121,6 +123,11 @@ class startup():
     url2 = '{0}/bots/375370278810681344'.format(uri)
     requests.post(url2, data=dump, headers=head)
     print('BFD SERVER COUNT UPDATED')
+    payload = {"guild_count": len(bot.servers)}
+    head = {'Authorization': dbw}
+    url3 = 'https://discordbot.world/api/bot/' + bot.user.id + '/stats'
+    requests.post(url3, data = payload, headers = head)
+    print('DBW SERVER COUNT UPDATED')
 #    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbl})
 
   @bot.event
@@ -140,6 +147,11 @@ class startup():
     url2 = '{0}/bots/375370278810681344'.format(uri)
     requests.post(url2, data=dump, headers=head)
     print('BFD SERVER COUNT UPDATED')
+    payload = {"guild_count": len(bot.servers)}
+    head = {'Authorization': dbw}
+    url3 = 'https://discordbot.world/api/bot/' + bot.user.id + '/stats'
+    requests.post(url3, data = payload, headers = head)
+    print('DBW SERVER COUNT UPDATED')
 #    await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(bot.user.id) + '/stats/', json={"server_count": len(bot.servers)}, headers={'Authorization': dbl})
 
   
@@ -160,7 +172,6 @@ class startup():
     bot.load_extension("cogs.modmail")
     bot.load_extension("cogs.errorhandler")
     bot.load_extension("cogs.dblAPI")
-    bot.load_extension("cogs.image")
     payload = {"server_count"  : len(bot.servers)}
     requests.post(url, data=payload, headers=headers)
     print('DBL SERVER COUNT UPDATED')
@@ -169,10 +180,20 @@ class startup():
     url2 = '{0}/bots/375370278810681344'.format(uri)
     requests.post(url2, data=dump, headers=head)
     print('BFD SERVER COUNT UPDATED')
+    payload = {"guild_count": len(bot.servers)}
+    head = {'Authorization': dbw}
+    url3 = 'https://discordbot.world/api/bot/' + str(bot.user.id) + '/stats'
+    requests.post(url3, data = payload, headers = head)
+    print('DBW SERVER COUNT UPDATED')
     t2 = time.perf_counter()
     await bot.send_message(status, ":white_check_mark: Bot running! `Took {}ms`".format('%.1f' % round((t2-t1)*1000), 1))
   
-  
+  @bot.event
+  async def on_message(message):
+      if message.author.bot:
+          return
+      await bot.process_commands(message)
+      
   @bot.command()
   async def uptime():
     msg = "{0} weeks, {1} days, {2} hours, {3} minutes and {4} seconds".format(weeks, days, hours, minutes, seconds)
