@@ -136,6 +136,7 @@ class Utils():
         embed.add_field(name="Fun", value="`s.help fun`", inline=False)
         embed.add_field(name="Moderation", value="`s.help mod`", inline=False)
         embed.add_field(name="Misc", value="`s.help misc`", inline=False)
+        embed.add_field(name="Image", value="`s.help image`", inline=False)
         embed.add_field(name="Support", value="`s.help support`", inline=False)
         if ctx.message.author.id not in beta_ids:
           await ctx.bot.say(embed=embed)
@@ -209,6 +210,12 @@ class Utils():
         await ctx.bot.say(embed=perm_error)
       else:
         await ctx.bot.say(embed=beta)
+        
+    @help.command(pass_context=True, no_pm = True)
+    async def image(ctx):
+      support = discord.Embed(title="__Image commands!__", description="-", color=0x00ff00)
+      support.add_field(name="s.blurple [image/user]", value="Makes an image blurple, if left empty, author's avatar will be used", inline=False)
+      await ctx.bot.say(embed=support)
       
       
 
