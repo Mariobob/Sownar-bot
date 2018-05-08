@@ -38,7 +38,7 @@ class Image():
     print('image loaded')
     print('------')
     
-    @comamnds.command(pass_context = True)
+    @commands.command(pass_context = True)
     @commands.cooldown(rate=1, per=30, type=BucketType.user)
     async def blurple(ctx, arg1 = None):
       picture = None
