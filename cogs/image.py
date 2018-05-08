@@ -13,7 +13,6 @@ import copy
 import sys
 import time
 from resizeimage import resizeimage
-#pip install python-resize-image
 import math
   
 def get_prefix(bot, message):
