@@ -25,6 +25,8 @@ class Error():
         error.set_footer(text=ctx.message.author, icon_url=ctx.message.author.avatar_url)
         error.set_author(name=ctx.message.server.name, icon_url=ctx.message.server.icon_url)
         await ctx.bot.send_message(unkown, embed=error)
+      elif isinstance(error, command.CommandOnCooldown):
+        await ctx.bot.say(error)
       else:
 #        print('Ignoring exception in command {}'.format(ctx.message.content))
 #        traceback.print_exception(type(error), error, error.__traceback__)
