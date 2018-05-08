@@ -61,7 +61,7 @@ class Image():
                 pass
         else:
             picture = arg1
-     else:
+      else:
         link = ctx.message.attachments
         if len(link) != 0:
             for image in link:
@@ -78,33 +78,33 @@ class Image():
         await ctx.send(f"{ctx.author.display_name}, please link a valid image URL")
         return
 
-     colourbuffer = 20
+      colourbuffer = 20
 
-     try:
+      try:
         im = Image.open(BytesIO(response))
-     except Exception:
+      except Exception:
         await ctx.send(f"{ctx.author.display_name}, please link a valid image URL")
         return
 
-     imsize = list(im.size)
-     impixels = imsize[0]*imsize[1]
-     #1250x1250 = 1562500
-     maxpixelcount = 1562500
+      imsize = list(im.size)
+      impixels = imsize[0]*imsize[1]
+      #1250x1250 = 1562500
+      maxpixelcount = 1562500
 
-     try:
+      try:
         i = im.info["version"]
         isgif = True
         gifloop = int(im.info["loop"])
-     except Exception:
+      except Exception:
         isgif = False
 
 
     
 
-     end = time.time()
+      end = time.time()
  
-     start = time.time()
-     if impixels > maxpixelcount:
+      start = time.time()
+      if impixels > maxpixelcount:
         downsizefraction = math.sqrt(maxpixelcount/impixels)
         im = resizeimage.resize_width(im, (imsize[0]*downsizefraction))
         imsize = list(im.size)
@@ -133,7 +133,7 @@ class Image():
         image_file_object.seek(0)
         return image_file_object
 
-     def gifimager(im, gifloop):
+      def gifimager(im, gifloop):
         frames = [frame.copy() for frame in ImageSequence.Iterator(im)]
         newgif = []
 
