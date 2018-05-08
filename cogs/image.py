@@ -55,7 +55,7 @@ class Image():
             arg1 = arg1[2:]
         if arg1.isdigit() == True:
             try:
-                user = await bot.get_user_info(int(arg1))
+                user = await ctx.bot.get_user_info(int(arg1))
                 picture = user.avatar_url
             except Exception:
                 pass
