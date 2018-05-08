@@ -64,7 +64,7 @@ def get_prefix(bot, message):
 bot=commands.Bot(command_prefix=get_prefix)
 bot.remove_command("help")
 game = ('{0}help | {1} servers'.format(prefix, len(bot.servers)))
-startup_extensions = ["utils", "mod", "fun", "owner", "cool", "modmail", "errorhandler", "dblAPI"]
+startup_extensions = ["utils", "mod", "fun", "owner", "cool", "modmail", "errorhandler", "dblAPI", "image"]
 perm_error = discord.Embed(title=":warning: Error!",description="You do not have the permission to use this command",color=0xff0000)
 
 async def get_uptime():
@@ -172,6 +172,7 @@ class startup():
     bot.load_extension("cogs.modmail")
     bot.load_extension("cogs.errorhandler")
     bot.load_extension("cogs.dblAPI")
+    bot.load_extension("cogs.image")
     payload = {"server_count"  : len(bot.servers)}
     requests.post(url, data=payload, headers=headers)
     print('DBL SERVER COUNT UPDATED')
@@ -215,6 +216,7 @@ class startup():
           bot.unload_extension("cogs.modmail")
           bot.unload_extension("cogs.errorhandler")
           bot.unload_extension("cogs.dblAPI")
+          bot.unload_extension("cogs.image")
           for extension in startup_extensions:
             try:
               bot.load_extension('cogs.{}'.format(extension))
