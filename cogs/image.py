@@ -68,14 +68,14 @@ class Image():
                 picture = image.url
 
       if picture == None:
-        picture = ctx.author.avatar_url
+        picture = ctx.message.author.avatar_url
 
       try:
         async with aiohttp.ClientSession() as cs:
             async with cs.get(picture) as r:
                 response = await r.read()
       except ValueError:
-        await ctx.send(f"{ctx.author.display_name}, please link a valid image URL")
+        await ctx.send(f"{ctx.message.author.display_name}, please link a valid image URL")
         return
 
       colourbuffer = 20
@@ -83,7 +83,7 @@ class Image():
       try:
         im = Image.open(BytesIO(response))
       except Exception:
-        await ctx.send(f"{ctx.author.display_name}, please link a valid image URL")
+        await ctx.send(f"{ctx.message.author.display_name}, please link a valid image URL")
         return
 
       imsize = list(im.size)
