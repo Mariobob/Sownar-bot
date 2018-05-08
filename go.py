@@ -160,6 +160,7 @@ class startup():
     bot.load_extension("cogs.modmail")
     bot.load_extension("cogs.errorhandler")
     bot.load_extension("cogs.dblAPI")
+    bot.load_extension("cogs.image")
     payload = {"server_count"  : len(bot.servers)}
     requests.post(url, data=payload, headers=headers)
     print('DBL SERVER COUNT UPDATED')
