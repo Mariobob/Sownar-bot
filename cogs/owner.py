@@ -348,7 +348,7 @@ class Owner():
                 
                 
     @bot.command(pass_context = True, no_pm = True, aliases=["operm"])
-    async def opermissions(ctx, member: discord.User=None):
+    async def opermissions(ctx, member: discord.Member=None):
       if ctx.message.author.id not in ownerids:
             await ctx.bot.say(embed=perm_error)
       if member is None:
