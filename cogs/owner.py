@@ -348,14 +348,11 @@ class Owner():
                 
                 
     @bot.command(pass_context = True, no_pm = True, aliases=["operm"])
-    async def opermissions(ctx, member: discord.Member=None):
+    async def opermissions(ctx, member: discord.User=None, channel):
       if ctx.message.author.id not in ownerids:
             await ctx.bot.say(embed=perm_error)
-      if member is None:
-        user= ctx.message.author
-      else:
-        user= member
-      up = user.server_permissions
+      user= member
+      up = user.permissions_in(await ctx.bot.get_channel(str(channel))
       perm_list=['Is administrator: {} '.format(up.administrator), 'Can Manage Emojis: {} '.format(up.manage_emojis), 'Can Manage Webhooks: {} '.format(up.manage_webhooks), 'Can Change Nickname: {} '.format(up.change_nickname), 'Can Move Members: {} '.format(up.move_members), 'Can Deafen Members: {} '.format(up.deafen_members), 'Can Mute Members: {} '.format(up.mute_members), 'Can Speak in Voice Channels: {} '.format(up.speak), 'Can Connect to Voice Channels: {} '.format(up.connect), 'Can Use External Emojis: {} '.format(up.external_emojis), 'Can Read Message History: {} '.format(up.read_message_history), 'Can Attach Files: {} '.format(up.attach_files), 'Can Embed Links: {} '.format(up.embed_links), 'Can View Audit Log: {} '.format(up.view_audit_logs), 'Can Send TTS Messages: {} '.format(up.send_tts_messages), 'Can Send Messages: {} '.format(up.send_messages), 'Can Read Messages: {} '.format(up.read_messages), 'Can Add Reactions: {} '.format(up.add_reactions), 'Can Manage Roles: {} '.format(up.manage_roles), 'Can Manage Nicknames: {} '.format(up.manage_nicknames), 'Can Manage Server: {} '.format(up.manage_server), 'Can Manage Messages: {} '.format(up.manage_messages), 'Can Manage Channels: {} '.format(up.manage_channels), 'Can Mention Everyone: {} '.format(up.mention_everyone), 'Can Create Invite: {} '.format(up.create_instant_invite), 'Can Kick Members: {} '.format(up.kick_members), 'Can Ban Members: {} '.format(up.ban_members)]
       em = discord.Embed(title="Server Permissions for {}".format(str(user)),color=user.color)
       message = 'Is Owner: {}'.format(ctx.message.server.owner == user)
