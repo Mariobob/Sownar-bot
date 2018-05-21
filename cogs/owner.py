@@ -175,7 +175,6 @@ class Owner():
         try:
             exec(to_compile, env)
         except Exception as e:
-            await ctx.bot.say("error not here")
             return await ctx.bot.say(f'```py\n{e.__class__.__name__}: {e}\n```')
 
         func = env['func']
