@@ -184,8 +184,7 @@ class Owner():
                 ret = await func()
         except Exception as e:
             value = stdout.getvalue()
-            await ctx.bot.say("error here")
-            await ctx.bot.say(f'```py\n{value}{traceback.format_exc()}\n```')
+            await ctx.bot.say(f'```py\n{value}{type(e).__name__}: {e}\n```')
         else:
             value = stdout.getvalue()
             try:
